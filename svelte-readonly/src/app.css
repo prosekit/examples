@@ -1,4 +1,4 @@
-@import 'prosekit/basic/internal/preflight.css';
+@import 'prosekit/basic/typography.css';
 
 @tailwind base;
 @tailwind components;
