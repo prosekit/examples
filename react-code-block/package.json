@@ -16,7 +16,7 @@
     "shikiji": "^0.9.12"
   },
   "devDependencies": {
-    "postcss": "8.4.28",
+    "postcss": "8.4.31",
     "tailwindcss": "3.3.3",
     "@egoist/tailwindcss-icons": "1.5.0",
     "@iconify-json/ci": "1.1.12",
