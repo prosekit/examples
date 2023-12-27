@@ -1,4 +1,4 @@
-import 'prosekit/core/style.css'
+import 'prosekit/core/styles.css'
 
 import { createEditor } from 'prosekit/core'
 import { ProseKit } from 'prosekit/solid'

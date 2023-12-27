@@ -1,6 +1,6 @@
 <script lang="ts">
-import 'prosekit/core/style.css'
-import 'prosekit/extensions/list/style.css'
+import 'prosekit/core/styles.css'
+import 'prosekit/extensions/list/styles.css'
 
 import { createEditor, type NodeJSON } from 'prosekit/core'
 import { ProseKit } from 'prosekit/svelte'

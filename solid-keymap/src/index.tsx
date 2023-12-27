@@ -1,5 +1,5 @@
 /* @refresh reload */
-import './style.css'
+import './styles.css'
 import { render } from 'solid-js/web'
 import Editor from './editor'
 

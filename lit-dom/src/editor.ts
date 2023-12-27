@@ -1,6 +1,6 @@
 // @unocss-include
 
-import 'prosekit/basic/style.css'
+import 'prosekit/basic/styles.css'
 
 import { LitElement, html } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'

@@ -1,5 +1,5 @@
 <script lang="ts">
-import 'prosekit/basic/style.css'
+import 'prosekit/basic/styles.css'
 
 import { onMount, onDestroy } from 'svelte'
 import { createEditor } from 'prosekit/core'

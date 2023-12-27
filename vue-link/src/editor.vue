@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import 'prosekit/basic/style.css'
+import 'prosekit/basic/styles.css'
 
 import { createEditor } from 'prosekit/core'
 import { ProseKit } from 'prosekit/vue'

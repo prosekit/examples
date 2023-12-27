@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import 'prosekit/basic/style.css'
-import 'prosekit/extensions/list/style.css'
+import 'prosekit/basic/styles.css'
+import 'prosekit/extensions/list/styles.css'
 
 import { watchPostEffect, ref } from 'vue'
 import { ProseKit } from 'prosekit/vue'

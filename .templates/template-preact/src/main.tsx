@@ -1,4 +1,4 @@
-import './style.css'
+import './app.css'
 import { render } from 'preact'
 import Editor from './editor.tsx'
 

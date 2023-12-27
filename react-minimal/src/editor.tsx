@@ -1,4 +1,4 @@
-import 'prosekit/basic/style.css'
+import 'prosekit/basic/styles.css'
 
 import { defineBasicExtension } from 'prosekit/basic'
 import { createEditor } from 'prosekit/core'
