@@ -12,7 +12,7 @@ const editor = useEditor<EditorExtension>({ update: true })
     :disabled="!editor.commands.toggleBold.canApply()"
     :onClick="() => editor.commands.toggleBold()"
   >
-    <div class='i-ci-bold h-5 w-5'></div>
+    <div class="i-ci-bold h-5 w-5"></div>
   </Toggle>
 
   <Toggle
@@ -20,7 +20,7 @@ const editor = useEditor<EditorExtension>({ update: true })
     :disabled="!editor.commands.toggleItalic.canApply()"
     :onClick="() => editor.commands.toggleItalic()"
   >
-    <div class='i-ci-italic h-5 w-5'></div>
+    <div class="i-ci-italic h-5 w-5"></div>
   </Toggle>
 
   <Toggle
@@ -28,7 +28,7 @@ const editor = useEditor<EditorExtension>({ update: true })
     :disabled="!editor.commands.toggleUnderline.canApply()"
     :onClick="() => editor.commands.toggleUnderline()"
   >
-    <div class='i-ci-underline h-5 w-5'></div>
+    <div class="i-ci-underline h-5 w-5"></div>
   </Toggle>
 
   <Toggle
@@ -36,7 +36,7 @@ const editor = useEditor<EditorExtension>({ update: true })
     :disabled="!editor.commands.toggleStrike.canApply()"
     :onClick="() => editor.commands.toggleStrike()"
   >
-    <div class='i-ci-strikethrough h-5 w-5'></div>
+    <div class="i-ci-strikethrough h-5 w-5"></div>
   </Toggle>
 
   <Toggle
@@ -44,6 +44,6 @@ const editor = useEditor<EditorExtension>({ update: true })
     :disabled="!editor.commands.toggleCode.canApply()"
     :onClick="() => editor.commands.toggleCode()"
   >
-    <div class='i-ci-code h-5 w-5'></div>
+    <div class="i-ci-code h-5 w-5"></div>
   </Toggle>
 </template>
