@@ -1,5 +1,5 @@
 <script lang="ts">
-import 'prosekit/basic/styles.css'
+import 'prosekit/basic/style.css'
 
 import { defineBasicExtension } from 'prosekit/basic'
 import { createEditor, jsonFromNode } from 'prosekit/core'

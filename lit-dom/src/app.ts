@@ -1,4 +1,4 @@
-import './styles.css'
+import './app.css'
 import './editor'
 
 import { LitElement, html } from 'lit'

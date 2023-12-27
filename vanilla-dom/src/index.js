@@ -1,5 +1,5 @@
-import 'prosekit/basic/styles.css'
-import 'prosekit/extensions/placeholder/styles.css'
+import 'prosekit/basic/style.css'
+import 'prosekit/extensions/placeholder/style.css'
 
 import { defineBasicExtension } from 'prosekit/basic'
 import { createEditor, union } from 'prosekit/core'
@@ -33,8 +33,7 @@ function createList() {
     createItem('Insert Heading 2', () => handleHeadingConvert(2)),
     createItem('Insert Heading 3', () => handleHeadingConvert(3)),
   )
-  list.className =
-    'relative block max-h-[400px] min-w-[120px] select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded border border-solid border-gray-200 bg-white shadow-lg dark:border-gray-700 dark:bg-zinc-800'
+  list.className = 'relative block max-h-[400px] min-w-[120px] select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded border border-solid border-gray-200 bg-white shadow-lg dark:border-gray-700 dark:bg-zinc-800'
   return list
 }
 
@@ -46,8 +45,7 @@ function createItem(text, callback) {
   const item = new AutocompleteItem()
   item.append(text)
   item.onSelect = callback
-  item.className =
-    'relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none aria-selected:bg-gray-200/70 aria-selected:dark:bg-gray-700/70'
+  item.className = 'relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none aria-selected:bg-gray-200/70 aria-selected:dark:bg-gray-700/70'
   return item
 }
 
@@ -71,15 +69,13 @@ function main() {
   root.innerHTML = ''
 
   const viewport = root.appendChild(document.createElement('div'))
-  viewport.className =
-    'box-border h-full max-h-[500px] w-full overflow-y-auto overflow-x-hidden rounded-md border border-solid border-gray-200 shadow dark:border-zinc-700'
+  viewport.className = 'box-border h-full max-h-[500px] w-full overflow-y-auto overflow-x-hidden rounded-md border border-solid border-gray-200 shadow dark:border-zinc-700'
 
   const doc = viewport.appendChild(document.createElement('div'))
   doc.className = 'relative flex min-h-full w-full flex-col'
 
   const content = doc.appendChild(document.createElement('div'))
-  content.className =
-    'dark:bg-dark relative box-border min-h-full flex-1 overflow-auto bg-white px-[max(16px,_calc(50%-330px))] py-[16px] outline-none outline-0 [&_span[data-mention="user"]]:color-blue-500 [&_span[data-mention="tag"]]:color-violet-500 [&_pre]:bg-slate-100'
+  content.className = 'dark:bg-dark relative box-border min-h-full flex-1 overflow-auto bg-white px-[max(16px,_calc(50%-330px))] py-[16px] outline-none outline-0 [&_span[data-mention="user"]]:color-blue-500 [&_span[data-mention="tag"]]:color-violet-500 [&_pre]:bg-slate-100'
 
   editor.mount(content)
 

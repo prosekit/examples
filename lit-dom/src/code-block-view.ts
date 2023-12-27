@@ -13,8 +13,7 @@ export function defineCodeBlockView() {
       const listId = `code-block-${getId()}`
 
       const input = createElement('input', {
-        class:
-          'absolute m-2 box-border cursor-pointer rounded-md border-none bg-transparent px-2 py-0.5 text-xs text-gray-400 outline-none transition-colors hover:bg-gray-500/30 hover:text-gray-800',
+        class: 'absolute m-2 box-border cursor-pointer rounded-md border-none bg-transparent px-2 py-0.5 text-xs text-gray-400 outline-none transition-colors hover:bg-gray-500/30 hover:text-gray-800',
         type: 'text',
         list: listId,
         placeholder: 'Language...',
@@ -38,9 +37,7 @@ export function defineCodeBlockView() {
         {},
         createElement(
           'div',
-          {
-            class: 'relative top-2 box-border flex h-0 w-full overflow-visible',
-          },
+          { class: 'relative top-2 box-border flex h-0 w-full overflow-visible' },
           input,
           createElement(
             'datalist',

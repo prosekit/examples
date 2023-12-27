@@ -1,4 +1,4 @@
-import './styles.css'
+import './app.css'
 import Editor from './editor.svelte'
 
 const app = new Editor({
