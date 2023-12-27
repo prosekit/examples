@@ -1,0 +1,18 @@
+{
+  "name": "prosekit-examples",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "packageManager": "pnpm@8.12.1",
+  "scripts": {
+    "fix": "prettier --write ."
+  },
+  "dependencies": {
+    "prettier": "^3.1.1"
+  },
+  "renovate": {
+    "extends": [
+      "github>ocavue/config-renovate"
+    ]
+  }
+}

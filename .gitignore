@@ -1,3 +1,6 @@
+pnpm-lock.yaml
+.templates/prosekit/
+
 # Logs
 logs
 *.log
