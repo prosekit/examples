@@ -1,0 +1,21 @@
+{
+  "name": "template-lit",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "prosekit": "^0.1.15",
+    "lit": "^3.1.0",
+    "prosemirror-highlight": "^0.3.3",
+    "shikiji": "^0.9.12"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8"
+  }
+}
