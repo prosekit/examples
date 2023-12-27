@@ -11,10 +11,15 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        package-manager: [npm, yarn, pnpm, bun]
+
     steps:
       - uses: actions/checkout@v4
 
       - uses: ./.github/actions/setup
 
-      - name: Lint
-        run: bash .scripts/test.sh
+      - name: Test
+        run: bash .scripts/test.sh ${{ matrix.package-manager }}

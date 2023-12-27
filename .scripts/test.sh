@@ -3,6 +3,9 @@ set -e
 cd $(dirname $0)/..
 ROOT=$(pwd)
 
+# Set the default value for $1 to "pnpm" if it's not provided
+PACKAGE_MANAGER="${1:-pnpm}"
+
 mkdir -p ./.temp
 rm -rf ./.temp
 
@@ -38,6 +41,6 @@ do
         continue
     fi
 
-    pnpm install --prefer-offline
-    pnpm run build 
-done 
+    $PACKAGE_MANAGER install
+    $PACKAGE_MANAGER run build 
+done
