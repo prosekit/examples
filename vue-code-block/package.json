@@ -10,9 +10,9 @@
   },
   "dependencies": {
     "prosekit": "^0.2.0",
+    "vue": "3.3.11",
     "prosemirror-highlight": "^0.3.3",
-    "shikiji": "^0.9.12",
-    "vue": "3.3.11"
+    "shikiji": "^0.9.12"
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "1.7.1",
