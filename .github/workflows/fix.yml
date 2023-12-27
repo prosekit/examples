@@ -14,7 +14,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: ./.github/actions/setup
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install npm, yarn and pnpm
+        run: corepack enable
 
       - name: Fix
         run: bash .scripts/build.sh
