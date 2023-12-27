@@ -1,5 +1,10 @@
-@import 'prosekit/basic/internal/preflight.css';
+@import 'prosekit/basic/typography.css';
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  font-family: ui-sans-serif, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', 'Noto Color Emoji', system-ui;
+}
