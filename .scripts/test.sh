@@ -41,6 +41,6 @@ do
         continue
     fi
 
-    $PACKAGE_MANAGER install
+    $PACKAGE_MANAGER install --prefer-offline
     $PACKAGE_MANAGER run build 
 done
