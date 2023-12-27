@@ -1,0 +1,143 @@
+<script setup lang="ts">
+import { useEditor } from 'prosekit/vue'
+import { ref } from 'vue'
+import type { EditorExtension } from './extension'
+import ImageUploadPopover from './image-upload-popover.vue'
+import Toggle from './toggle.vue'
+
+const editor = useEditor<EditorExtension>({ update: true })
+
+const imagePopoverOpen = ref(false)
+const closeImagePopover = () => {
+  imagePopoverOpen.value = false
+}
+const toggleImagePopover = () => {
+  imagePopoverOpen.value = !imagePopoverOpen.value
+}
+</script>
+
+<template>
+  <div class='z-2 sticky top-0 box-border flex flex-wrap gap-1 bg-gray-100 p-2 dark:bg-zinc-900'>
+    <Toggle
+      :pressed="false"
+      :disabled="!editor.commands.undo.canApply()"
+      :onClick="() => editor.commands.undo()"
+    >
+      <div className='i-ci-arrow-undo-up-left h-5 w-5' />
+    </Toggle>
+
+    <Toggle
+      :pressed="false"
+      :disabled="!editor.commands.redo.canApply()"
+      :onClick="() => editor.commands.redo()"
+    >
+      <div className='i-ci-arrow-undo-up-right h-5 w-5' />
+    </Toggle>
+
+    <Toggle
+      :pressed="editor.marks.bold.isActive()"
+      :disabled="!editor.commands.toggleBold.canApply()"
+      :onClick="() => editor.commands.toggleBold()"
+    >
+      <div class='i-ci-bold h-5 w-5'></div>
+    </Toggle>
+
+    <Toggle
+      :pressed="editor.marks.italic.isActive()"
+      :disabled="!editor.commands.toggleItalic.canApply()"
+      :onClick="() => editor.commands.toggleItalic()"
+    >
+      <div class='i-ci-italic h-5 w-5'></div>
+    </Toggle>
+
+    <Toggle
+      :pressed="editor.marks.underline.isActive()"
+      :disabled="!editor.commands.toggleUnderline.canApply()"
+      :onClick="() => editor.commands.toggleUnderline()"
+    >
+      <div class='i-ci-underline h-5 w-5'></div>
+    </Toggle>
+
+    <Toggle
+      :pressed="editor.marks.strike.isActive()"
+      :disabled="!editor.commands.toggleStrike.canApply()"
+      :onClick="() => editor.commands.toggleStrike()"
+    >
+      <div class='i-ci-strikethrough h-5 w-5'></div>
+    </Toggle>
+
+    <Toggle
+      :pressed="editor.marks.code.isActive()"
+      :disabled="!editor.commands.toggleCode.canApply()"
+      :onClick="() => editor.commands.toggleCode()"
+    >
+      <div class='i-ci-code h-5 w-5'></div>
+    </Toggle>
+
+    <Toggle
+      :pressed="editor.nodes.heading.isActive({ level: 1 })"
+      :disabled="!editor.commands.toggleHeading.canApply({ level: 1 })"
+      :onClick="() => editor.commands.toggleHeading({ level: 1 })"
+    >
+      <div class='i-ci-heading-h1 h-5 w-5'></div>
+    </Toggle>
+
+    <Toggle
+      :pressed="editor.nodes.heading.isActive({ level: 2 })"
+      :disabled="!editor.commands.toggleHeading.canApply({ level: 2 })"
+      :onClick="() => editor.commands.toggleHeading({ level: 2 })"
+    >
+      <div class='i-ci-heading-h2 h-5 w-5'></div>
+    </Toggle>
+
+    <Toggle
+      :pressed="editor.nodes.heading.isActive({ level: 3 })"
+      :disabled="!editor.commands.toggleHeading.canApply({ level: 3 })"
+      :onClick="() => editor.commands.toggleHeading({ level: 3 })"
+    >
+      <div class='i-ci-heading-h3 h-5 w-5'></div>
+    </Toggle>
+
+    <Toggle
+      :pressed="editor.nodes.list.isActive({ kind: 'bullet' })"
+      :disabled="!editor.commands.toggleList.canApply({ kind: 'bullet' })"
+      :onClick="() => editor.commands.toggleList({ kind: 'bullet' })"
+    >
+      <div class='i-ci-list-ul h-5 w-5'></div>
+    </Toggle>
+
+    <Toggle
+      :pressed="editor.nodes.list.isActive({ kind: 'ordered' })"
+      :disabled="!editor.commands.toggleList.canApply({ kind: 'ordered' })"
+      :onClick="() => editor.commands.toggleList({ kind: 'ordered' })"
+    >
+      <div class='i-ci-list-ol h-5 w-5'></div>
+    </Toggle>
+
+    <Toggle
+      :pressed="editor.nodes.list.isActive({ kind: 'task' })"
+      :disabled="!editor.commands.toggleList.canApply({ kind: 'task' })"
+      :onClick="() => editor.commands.toggleList({ kind: 'task' })"
+    >
+      <div class='i-ci-list-checklist h-5 w-5'></div>
+    </Toggle>
+
+    <Toggle
+      :pressed="editor.nodes.list.isActive({ kind: 'toggle' })"
+      :disabled="!editor.commands.toggleList.canApply({ kind: 'toggle' })"
+      :onClick="() => editor.commands.toggleList({ kind: 'toggle' })"
+    >
+      <div class='i-ci-sort-descending h-5 w-5 rotate-180'></div>
+    </Toggle>
+
+    <ImageUploadPopover :open="imagePopoverOpen" :onClose="closeImagePopover">
+      <Toggle
+        :pressed="false"
+        :disabled="!editor.commands.insertImage.canApply()"
+        :onClick="toggleImagePopover"
+      >
+        <div className='i-ci-image-02 h-5 w-5'></div>
+      </Toggle>
+    </ImageUploadPopover>
+  </div>
+</template>
