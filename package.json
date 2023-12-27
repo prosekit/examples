@@ -12,6 +12,7 @@
     "prettier": "^3.1.1"
   },
   "renovate": {
+    "dependencyDashboard": true,
     "extends": [
       "github>ocavue/config-renovate"
     ]
