@@ -10,14 +10,18 @@
   },
   "dependencies": {
     "prosekit": "^0.1.15",
-    "vue": "^3.3.11",
+    "vue": "3.3.11",
     "prosemirror-highlight": "^0.3.3",
     "shikiji": "^0.9.12"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.5.2",
-    "typescript": "^5.2.2",
-    "vite": "^5.0.8",
-    "vue-tsc": "^1.8.25"
+    "postcss": "8.4.28",
+    "tailwindcss": "3.3.3",
+    "@egoist/tailwindcss-icons": "1.5.0",
+    "@iconify-json/ci": "1.1.12",
+    "@vitejs/plugin-vue": "4.5.2",
+    "typescript": "5.2.2",
+    "vite": "5.0.8",
+    "vue-tsc": "1.8.25"
   }
 }
