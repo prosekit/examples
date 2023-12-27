@@ -5,6 +5,7 @@
   "private": true,
   "packageManager": "pnpm@8.12.1",
   "scripts": {
+    "build": "echo 'No build step'",
     "fix": "prettier --write ."
   },
   "dependencies": {
