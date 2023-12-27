@@ -11,10 +11,23 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        package-manager: [npm, yarn, pnpm, bun]
+
     steps:
       - uses: actions/checkout@v4
 
-      - uses: ./.github/actions/setup
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
 
-      - name: Lint
-        run: bash .scripts/test.sh
+      - name: Install npm, yarn and pnpm
+        run: corepack enable
+
+      - name: Install bun
+        uses: oven-sh/setup-bun@v1
+
+      - name: Test
+        run: bash .scripts/test.sh ${{ matrix.package-manager }}
