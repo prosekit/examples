@@ -11,7 +11,6 @@
   "dependencies": {
     "prosekit": "^0.2.3",
     "vue": "3.4.3",
-    "prosemirror-highlight": "^0.4.0",
     "shikiji": "^0.9.16"
   },
   "devDependencies": {
