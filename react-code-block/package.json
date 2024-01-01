@@ -12,8 +12,7 @@
     "prosekit": "^0.2.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "prosemirror-highlight": "^0.3.3",
-    "shikiji": "^0.9.12"
+    "shikiji": "^0.9.16"
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "1.7.1",

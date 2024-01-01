@@ -11,8 +11,7 @@
   "dependencies": {
     "lit": "3.1.0",
     "prosekit": "^0.2.3",
-    "prosemirror-highlight": "^0.3.3",
-    "shikiji": "^0.9.12"
+    "shikiji": "^0.9.16"
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "1.7.1",
