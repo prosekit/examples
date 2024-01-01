@@ -1,8 +1,12 @@
 import { defineNodeView } from 'prosekit/core'
+import { bundledLanguagesInfo } from 'shikiji'
 
 import { createElement } from './create-element'
 import { getId } from './get-id'
-import { languages } from './shikiji'
+
+const languages: Array<[id: string, name: string]> = bundledLanguagesInfo.map(
+  (info) => [info.id, info.name],
+)
 
 export function defineCodeBlockView() {
   return defineNodeView({
@@ -13,7 +17,7 @@ export function defineCodeBlockView() {
       const listId = `code-block-${getId()}`
 
       const input = createElement('input', {
-        class: 'absolute m-2 box-border cursor-pointer rounded-md border-none bg-transparent px-2 py-0.5 text-xs text-gray-400 outline-none transition-colors hover:bg-gray-500/30 hover:text-gray-800',
+        class: 'absolute m-2 box-border cursor-pointer rounded-md border-none bg-transparent px-2 py-0.5 text-xs text-gray-400 outline-none transition hover:bg-gray-500/30 hover:text-gray-800 opacity-0 [div[data-node-view-root]:hover_&]:opacity-100',
         type: 'text',
         list: listId,
         placeholder: 'Language...',
@@ -42,8 +46,12 @@ export function defineCodeBlockView() {
           createElement(
             'datalist',
             { id: listId },
-            ...languages.map((language) => {
-              return createElement('option', { value: language }, language)
+            ...languages.map(([languageId, languageName]) => {
+              return createElement(
+                'option',
+                { value: languageId },
+                languageName,
+              )
             }),
           ),
         ),

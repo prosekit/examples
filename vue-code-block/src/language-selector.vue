@@ -3,8 +3,12 @@ import { ComboBox } from 'prosekit/vue/combo-box'
 import { ComboBoxInput } from 'prosekit/vue/combo-box-input'
 import { ComboBoxItem } from 'prosekit/vue/combo-box-item'
 import { ComboBoxList } from 'prosekit/vue/combo-box-list'
-import { defineProps, ref } from 'vue'
-import { languages } from './shikiji'
+import { ref } from 'vue'
+import { bundledLanguagesInfo } from 'shikiji'
+
+const languages: Array<[id: string, name: string]> = bundledLanguagesInfo.map(
+  (info) => [info.id, info.name],
+)
 
 const props = defineProps<{
   language?: string
@@ -25,7 +29,7 @@ const toggleComboBox = () => {
 <template>
   <div className='relative top-2 box-border flex h-0 w-full overflow-visible'>
     <button
-      className='absolute m-2 box-border cursor-pointer rounded-md border-none bg-transparent px-2 py-0.5 text-xs text-gray-400 outline-none transition-colors hover:bg-gray-500/30 hover:text-gray-800'
+      className='absolute m-2 box-border cursor-pointer rounded-md border-none bg-transparent px-2 py-0.5 text-xs text-gray-400 outline-none transition hover:bg-gray-500/30 hover:text-gray-800 opacity-0 [div[data-node-view-root]:hover_&]:opacity-100'
       @click="toggleComboBox"
       ref="buttonRef"
       contentEditable="false"
@@ -45,12 +49,12 @@ const toggleComboBox = () => {
       ></ComboBoxInput>
       <ComboBoxList className='box-border flex max-h-[300px] flex-col overflow-y-auto overflow-x-hidden border-0 border-solid p-1'>
         <ComboBoxItem
-          v-for="language in languages"
-          :key="language"
+          v-for="[languageId, languageName] in languages"
+          :key="languageId"
           className='relative block scroll-my-1 rounded px-2 py-1.5 text-sm box-border cursor-default select-none whitespace-nowrap outline-none aria-selected:bg-gray-200/70 aria-selected:dark:bg-gray-700/70'
-          @select="() => props.setLanguage(language)"
+          @select="() => props.setLanguage(languageId)"
         >
-          {{ language }}
+          {{ languageName }}
         </ComboBoxItem>
       </ComboBoxList>
     </ComboBox>
