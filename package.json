@@ -12,8 +12,30 @@
   },
   "renovate": {
     "dependencyDashboard": true,
+    "branchNameStrict": true,
+    "rangeStrategy": "bump",
     "extends": [
-      "github>ocavue/config-renovate"
+      "config:base",
+      ":semanticCommitTypeAll(chore)",
+      ":disablePeerDependencies",
+      ":includeNodeModules"
+    ],
+    "packageRules": [
+      {
+        "groupName": "prosekit",
+        "matchPackagePatterns": [
+          "prosekit"
+        ]
+      },
+      {
+        "groupName": "dependencies",
+        "excludePackagePatterns": [
+          "prosekit"
+        ],
+        "extends": [
+          "schedule:monthly"
+        ]
+      }
     ]
   }
 }
