@@ -9,15 +9,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "prosekit": "^0.2.2",
-    "vue": "3.3.13",
-    "prosemirror-highlight": "^0.3.3",
-    "shikiji": "^0.9.12"
+    "prosekit": "^0.2.3",
+    "vue": "3.4.3",
+    "prosemirror-highlight": "^0.4.0",
+    "shikiji": "^0.9.16"
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "1.7.1",
     "@iconify-json/ci": "1.1.13",
-    "@vitejs/plugin-vue": "4.6.0",
+    "@vitejs/plugin-vue": "4.6.2",
     "postcss": "8.4.32",
     "tailwindcss": "3.4.0",
     "typescript": "5.3.3",
