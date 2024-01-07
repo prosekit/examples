@@ -11,7 +11,7 @@ export function createLanguageSelector({
 }) {
   const select = createElement(
     'select',
-    { class: 'relative box-border w-auto cursor-pointer select-none appearance-none rounded border-none bg-transparent px-2 py-1 text-xs outline-none transition focus:outline-none opacity-0 hover:opacity-80 [div[data-node-view-root]:hover_&]:opacity-50 [div[data-node-view-root]:hover_&]:hover:opacity-80' },
+    { class: 'outline-unset focus:outline-unset relative box-border w-auto cursor-pointer select-none appearance-none rounded border-none bg-transparent px-2 py-1 text-xs transition opacity-0 hover:opacity-80 [div[data-node-view-root]:hover_&]:opacity-50 [div[data-node-view-root]:hover_&]:hover:opacity-80' },
     createElement('option', { value: '' }, 'Plain Text'),
     ...bundledLanguagesInfo.map((info) => {
       return createElement('option', { value: info.id }, info.name)
