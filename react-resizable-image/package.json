@@ -1,27 +1,28 @@
 {
-  "name": "template-vue",
+  "name": "template-react",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc && vite build",
+    "build": "tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
     "prosekit": "^0.2.6",
-    "vue": "3.4.3",
-    "shikiji": "^0.9.17"
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "1.7.1",
     "@iconify-json/ci": "1.1.13",
     "@iconify-json/lucide": "1.1.151",
-    "@vitejs/plugin-vue": "4.6.2",
+    "@types/react": "18.2.46",
+    "@types/react-dom": "18.2.18",
+    "@vitejs/plugin-react": "4.2.1",
     "postcss": "8.4.32",
     "tailwindcss": "3.4.0",
     "typescript": "5.3.3",
-    "vite": "5.0.10",
-    "vue-tsc": "1.8.27"
+    "vite": "5.0.10"
   }
 }
