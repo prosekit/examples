@@ -1,0 +1,26 @@
+{
+  "name": "template-vue",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "prosekit": "^0.2.7",
+    "vue": "3.4.3"
+  },
+  "devDependencies": {
+    "@egoist/tailwindcss-icons": "1.7.1",
+    "@iconify-json/ci": "1.1.13",
+    "@iconify-json/lucide": "1.1.151",
+    "@vitejs/plugin-vue": "4.6.2",
+    "postcss": "8.4.32",
+    "tailwindcss": "3.4.0",
+    "typescript": "5.3.3",
+    "vite": "5.0.10",
+    "vue-tsc": "1.8.27"
+  }
+}
