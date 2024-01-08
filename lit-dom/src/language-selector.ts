@@ -23,5 +23,9 @@ export function createLanguageSelector({
     setLanguage((event.target as HTMLSelectElement).value)
   })
 
-  return createElement('div', { class: 'relative left-2 top-3 h-0 select-none overflow-visible' }, select)
+  return createElement(
+    'div',
+    { class: 'relative left-2 top-3 h-0 select-none overflow-visible', contenteditable: 'false' },
+    select,
+  )
 }

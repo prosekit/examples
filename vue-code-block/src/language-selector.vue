@@ -12,7 +12,7 @@ const handleChange = (event: Event) => {
 </script>
 
 <template>
-  <div className='relative left-2 top-3 h-0 select-none overflow-visible'>
+  <div className='relative left-2 top-3 h-0 select-none overflow-visible' contenteditable="false">
     <select
       className='outline-unset focus:outline-unset relative box-border w-auto cursor-pointer select-none appearance-none rounded border-none bg-transparent px-2 py-1 text-xs transition opacity-0 hover:opacity-80 [div[data-node-view-root]:hover_&]:opacity-50 [div[data-node-view-root]:hover_&]:hover:opacity-80'
       @change="handleChange"
