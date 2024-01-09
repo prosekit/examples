@@ -15,15 +15,15 @@
     "shikiji": "^0.9.17"
   },
   "devDependencies": {
-    "@egoist/tailwindcss-icons": "1.7.1",
+    "@egoist/tailwindcss-icons": "1.7.2",
     "@iconify-json/ci": "1.1.13",
-    "@iconify-json/lucide": "1.1.151",
-    "@types/react": "18.2.46",
+    "@iconify-json/lucide": "1.1.152",
+    "@types/react": "18.2.47",
     "@types/react-dom": "18.2.18",
     "@vitejs/plugin-react": "4.2.1",
-    "postcss": "8.4.32",
-    "tailwindcss": "3.4.0",
+    "postcss": "8.4.33",
+    "tailwindcss": "3.4.1",
     "typescript": "5.3.3",
-    "vite": "5.0.10"
+    "vite": "5.0.11"
   }
 }
