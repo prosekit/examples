@@ -23,7 +23,7 @@ export default function Toolbar() {
         disabled={!editor.commands.undo.canApply()}
         onClick={editor.commands.undo}
       >
-        <div className='i-ci-arrow-undo-up-left h-5 w-5' />
+        <div className='i-lucide-undo-2 h-5 w-5' />
       </Toggle>
 
       <Toggle
@@ -31,7 +31,7 @@ export default function Toolbar() {
         disabled={!editor.commands.redo.canApply()}
         onClick={editor.commands.redo}
       >
-        <div className='i-ci-arrow-undo-up-right h-5 w-5' />
+        <div className='i-lucide-redo-2 h-5 w-5' />
       </Toggle>
 
       <Toggle
@@ -39,7 +39,7 @@ export default function Toolbar() {
         disabled={!editor.commands.toggleBold.canApply()}
         onClick={editor.commands.toggleBold}
       >
-        <div className='i-ci-bold h-5 w-5' />
+        <div className='i-lucide-bold h-5 w-5' />
       </Toggle>
 
       <Toggle
@@ -47,7 +47,7 @@ export default function Toolbar() {
         disabled={!editor.commands.toggleItalic.canApply()}
         onClick={editor.commands.toggleItalic}
       >
-        <div className='i-ci-italic h-5 w-5' />
+        <div className='i-lucide-italic h-5 w-5' />
       </Toggle>
 
       <Toggle
@@ -55,7 +55,7 @@ export default function Toolbar() {
         disabled={!editor.commands.toggleHeading.canApply({ level: 1 })}
         onClick={() => editor.commands.toggleHeading({ level: 1 })}
       >
-        <div className='i-ci-heading-h1 h-5 w-5' />
+        <div className='i-lucide-heading-1 h-5 w-5' />
       </Toggle>
 
       <Toggle
@@ -63,7 +63,7 @@ export default function Toolbar() {
         disabled={!editor.commands.toggleHeading.canApply({ level: 2 })}
         onClick={() => editor.commands.toggleHeading({ level: 2 })}
       >
-        <div className='i-ci-heading-h2 h-5 w-5' />
+        <div className='i-lucide-heading-2 h-5 w-5' />
       </Toggle>
 
       <Toggle
@@ -71,7 +71,7 @@ export default function Toolbar() {
         disabled={!editor.commands.toggleHeading.canApply({ level: 3 })}
         onClick={() => editor.commands.toggleHeading({ level: 3 })}
       >
-        <div className='i-ci-heading-h3 h-5 w-5' />
+        <div className='i-lucide-heading-3 h-5 w-5' />
       </Toggle>
 
       <ImageUploadPopover open={imagePopoverOpen} onClose={closeImagePopover}>
@@ -80,7 +80,7 @@ export default function Toolbar() {
           disabled={!editor.commands.insertImage.canApply()}
           onClick={toggleImagePopover}
         >
-          <div className='i-ci-image-02 h-5 w-5' />
+          <div className='i-lucide-image h-5 w-5' />
         </Toggle>
       </ImageUploadPopover>
     </div>

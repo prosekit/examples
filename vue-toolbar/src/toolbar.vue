@@ -13,7 +13,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       :disabled="!editor.commands.undo.canApply()"
       :onClick="() => editor.commands.undo()"
     >
-      <div className='i-ci-arrow-undo-up-left h-5 w-5' />
+      <div className='i-lucide-undo-2 h-5 w-5' />
     </Toggle>
 
     <Toggle
@@ -21,7 +21,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       :disabled="!editor.commands.redo.canApply()"
       :onClick="() => editor.commands.redo()"
     >
-      <div className='i-ci-arrow-undo-up-right h-5 w-5' />
+      <div className='i-lucide-redo-2 h-5 w-5' />
     </Toggle>
 
     <Toggle
@@ -29,7 +29,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       :disabled="!editor.commands.toggleBold.canApply()"
       :onClick="() => editor.commands.toggleBold()"
     >
-      <div class='i-ci-bold h-5 w-5'></div>
+      <div class='i-lucide-bold h-5 w-5'></div>
     </Toggle>
 
     <Toggle
@@ -37,7 +37,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       :disabled="!editor.commands.toggleItalic.canApply()"
       :onClick="() => editor.commands.toggleItalic()"
     >
-      <div class='i-ci-italic h-5 w-5'></div>
+      <div class='i-lucide-italic h-5 w-5'></div>
     </Toggle>
 
     <Toggle
@@ -45,7 +45,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       :disabled="!editor.commands.toggleHeading.canApply({ level: 1 })"
       :onClick="() => editor.commands.toggleHeading({ level: 1 })"
     >
-      <div class='i-ci-heading-h1 h-5 w-5'></div>
+      <div class='i-lucide-heading-1 h-5 w-5'></div>
     </Toggle>
 
     <Toggle
@@ -53,7 +53,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       :disabled="!editor.commands.toggleHeading.canApply({ level: 2 })"
       :onClick="() => editor.commands.toggleHeading({ level: 2 })"
     >
-      <div class='i-ci-heading-h2 h-5 w-5'></div>
+      <div class='i-lucide-heading-2 h-5 w-5'></div>
     </Toggle>
 
     <Toggle
@@ -61,7 +61,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       :disabled="!editor.commands.toggleHeading.canApply({ level: 3 })"
       :onClick="() => editor.commands.toggleHeading({ level: 3 })"
     >
-      <div class='i-ci-heading-h3 h-5 w-5'></div>
+      <div class='i-lucide-heading-3 h-5 w-5'></div>
     </Toggle>
   </div>
 </template>

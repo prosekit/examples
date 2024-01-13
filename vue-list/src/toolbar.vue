@@ -13,7 +13,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       :disabled="!editor.commands.toggleList.canApply({ kind: 'bullet' })"
       :onClick="() => editor.commands.toggleList({ kind: 'bullet' })"
     >
-      <div class='i-ci-list-ul h-5 w-5'></div>
+      <div class='i-lucide-list h-5 w-5'></div>
     </Toggle>
 
     <Toggle
@@ -21,7 +21,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       :disabled="!editor.commands.toggleList.canApply({ kind: 'ordered' })"
       :onClick="() => editor.commands.toggleList({ kind: 'ordered' })"
     >
-      <div class='i-ci-list-ol h-5 w-5'></div>
+      <div class='i-lucide-list-ordered h-5 w-5'></div>
     </Toggle>
 
     <Toggle
@@ -29,7 +29,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       :disabled="!editor.commands.toggleList.canApply({ kind: 'task' })"
       :onClick="() => editor.commands.toggleList({ kind: 'task' })"
     >
-      <div class='i-ci-list-checklist h-5 w-5'></div>
+      <div class='i-lucide-list-checks h-5 w-5'></div>
     </Toggle>
 
     <Toggle
@@ -37,7 +37,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       :disabled="!editor.commands.toggleList.canApply({ kind: 'toggle' })"
       :onClick="() => editor.commands.toggleList({ kind: 'toggle' })"
     >
-      <div class='i-ci-sort-descending h-5 w-5 rotate-180'></div>
+      <div class='i-lucide-list-collapse h-5 w-5'></div>
     </Toggle>
   </div>
 </template>

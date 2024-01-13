@@ -23,7 +23,7 @@ const toggleImagePopover = () => {
       :disabled="!editor.commands.undo.canApply()"
       :onClick="() => editor.commands.undo()"
     >
-      <div className='i-ci-arrow-undo-up-left h-5 w-5' />
+      <div className='i-lucide-undo-2 h-5 w-5' />
     </Toggle>
 
     <Toggle
@@ -31,7 +31,7 @@ const toggleImagePopover = () => {
       :disabled="!editor.commands.redo.canApply()"
       :onClick="() => editor.commands.redo()"
     >
-      <div className='i-ci-arrow-undo-up-right h-5 w-5' />
+      <div className='i-lucide-redo-2 h-5 w-5' />
     </Toggle>
 
     <Toggle
@@ -39,7 +39,7 @@ const toggleImagePopover = () => {
       :disabled="!editor.commands.toggleBold.canApply()"
       :onClick="() => editor.commands.toggleBold()"
     >
-      <div class='i-ci-bold h-5 w-5'></div>
+      <div class='i-lucide-bold h-5 w-5'></div>
     </Toggle>
 
     <Toggle
@@ -47,7 +47,7 @@ const toggleImagePopover = () => {
       :disabled="!editor.commands.toggleItalic.canApply()"
       :onClick="() => editor.commands.toggleItalic()"
     >
-      <div class='i-ci-italic h-5 w-5'></div>
+      <div class='i-lucide-italic h-5 w-5'></div>
     </Toggle>
 
     <Toggle
@@ -55,7 +55,7 @@ const toggleImagePopover = () => {
       :disabled="!editor.commands.toggleUnderline.canApply()"
       :onClick="() => editor.commands.toggleUnderline()"
     >
-      <div class='i-ci-underline h-5 w-5'></div>
+      <div class='i-lucide-underline h-5 w-5'></div>
     </Toggle>
 
     <Toggle
@@ -63,7 +63,7 @@ const toggleImagePopover = () => {
       :disabled="!editor.commands.toggleStrike.canApply()"
       :onClick="() => editor.commands.toggleStrike()"
     >
-      <div class='i-ci-strikethrough h-5 w-5'></div>
+      <div class='i-lucide-strikethrough h-5 w-5'></div>
     </Toggle>
 
     <Toggle
@@ -71,7 +71,7 @@ const toggleImagePopover = () => {
       :disabled="!editor.commands.toggleCode.canApply()"
       :onClick="() => editor.commands.toggleCode()"
     >
-      <div class='i-ci-code h-5 w-5'></div>
+      <div class='i-lucide-code h-5 w-5'></div>
     </Toggle>
 
     <Toggle
@@ -79,7 +79,7 @@ const toggleImagePopover = () => {
       :disabled="!editor.commands.toggleHeading.canApply({ level: 1 })"
       :onClick="() => editor.commands.toggleHeading({ level: 1 })"
     >
-      <div class='i-ci-heading-h1 h-5 w-5'></div>
+      <div class='i-lucide-heading-1 h-5 w-5'></div>
     </Toggle>
 
     <Toggle
@@ -87,7 +87,7 @@ const toggleImagePopover = () => {
       :disabled="!editor.commands.toggleHeading.canApply({ level: 2 })"
       :onClick="() => editor.commands.toggleHeading({ level: 2 })"
     >
-      <div class='i-ci-heading-h2 h-5 w-5'></div>
+      <div class='i-lucide-heading-2 h-5 w-5'></div>
     </Toggle>
 
     <Toggle
@@ -95,7 +95,7 @@ const toggleImagePopover = () => {
       :disabled="!editor.commands.toggleHeading.canApply({ level: 3 })"
       :onClick="() => editor.commands.toggleHeading({ level: 3 })"
     >
-      <div class='i-ci-heading-h3 h-5 w-5'></div>
+      <div class='i-lucide-heading-3 h-5 w-5'></div>
     </Toggle>
 
     <Toggle
@@ -103,7 +103,7 @@ const toggleImagePopover = () => {
       :disabled="!editor.commands.toggleList.canApply({ kind: 'bullet' })"
       :onClick="() => editor.commands.toggleList({ kind: 'bullet' })"
     >
-      <div class='i-ci-list-ul h-5 w-5'></div>
+      <div class='i-lucide-list h-5 w-5'></div>
     </Toggle>
 
     <Toggle
@@ -111,7 +111,7 @@ const toggleImagePopover = () => {
       :disabled="!editor.commands.toggleList.canApply({ kind: 'ordered' })"
       :onClick="() => editor.commands.toggleList({ kind: 'ordered' })"
     >
-      <div class='i-ci-list-ol h-5 w-5'></div>
+      <div class='i-lucide-list-ordered h-5 w-5'></div>
     </Toggle>
 
     <Toggle
@@ -119,7 +119,7 @@ const toggleImagePopover = () => {
       :disabled="!editor.commands.toggleList.canApply({ kind: 'task' })"
       :onClick="() => editor.commands.toggleList({ kind: 'task' })"
     >
-      <div class='i-ci-list-checklist h-5 w-5'></div>
+      <div class='i-lucide-list-checks h-5 w-5'></div>
     </Toggle>
 
     <Toggle
@@ -127,7 +127,15 @@ const toggleImagePopover = () => {
       :disabled="!editor.commands.toggleList.canApply({ kind: 'toggle' })"
       :onClick="() => editor.commands.toggleList({ kind: 'toggle' })"
     >
-      <div class='i-ci-sort-descending h-5 w-5 rotate-180'></div>
+      <div class='i-lucide-list-collapse h-5 w-5'></div>
+    </Toggle>
+
+    <Toggle
+      :pressed="editor.nodes.codeBlock.isActive()"
+      :disabled="!editor.commands.insertNode.canApply({ type: 'codeBlock' })"
+      :onClick="() => editor.commands.insertNode({ type: 'codeBlock' })"
+    >
+      <div class='i-lucide-square-code h-5 w-5'></div>
     </Toggle>
 
     <ImageUploadPopover :open="imagePopoverOpen" :onClose="closeImagePopover">
@@ -136,7 +144,7 @@ const toggleImagePopover = () => {
         :disabled="!editor.commands.insertImage.canApply()"
         :onClick="toggleImagePopover"
       >
-        <div className='i-ci-image-02 h-5 w-5'></div>
+        <div className='i-lucide-image h-5 w-5'></div>
       </Toggle>
     </ImageUploadPopover>
   </div>
