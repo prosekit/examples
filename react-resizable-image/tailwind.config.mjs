@@ -4,7 +4,7 @@ export default {
   content: ['./src/**/*.{html,js,jsx,ts,tsx,vue,svelte}'],
   plugins: [
     iconsPlugin({
-      collections: getIconCollections(['ci']),
+      collections: getIconCollections(['lucide']),
     }),
   ],
 }
