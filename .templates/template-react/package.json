@@ -15,7 +15,6 @@
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "1.7.2",
-    "@iconify-json/ci": "1.1.13",
     "@iconify-json/lucide": "1.1.152",
     "@types/react": "18.2.47",
     "@types/react-dom": "18.2.18",
