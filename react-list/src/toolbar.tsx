@@ -13,7 +13,7 @@ export default function Toolbar() {
         disabled={!editor.commands.toggleList.canApply({ kind: 'bullet' })}
         onClick={() => editor.commands.toggleList({ kind: 'bullet' })}
       >
-        <div className='i-ci-list-ul h-5 w-5' />
+        <div className='i-lucide-list h-5 w-5' />
       </Toggle>
 
       <Toggle
@@ -21,7 +21,7 @@ export default function Toolbar() {
         disabled={!editor.commands.toggleList.canApply({ kind: 'ordered' })}
         onClick={() => editor.commands.toggleList({ kind: 'ordered' })}
       >
-        <div className='i-ci-list-ol h-5 w-5' />
+        <div className='i-lucide-list-ordered h-5 w-5' />
       </Toggle>
 
       <Toggle
@@ -29,7 +29,7 @@ export default function Toolbar() {
         disabled={!editor.commands.toggleList.canApply({ kind: 'task' })}
         onClick={() => editor.commands.toggleList({ kind: 'task' })}
       >
-        <div className='i-ci-list-checklist h-5 w-5' />
+        <div className='i-lucide-list-checks h-5 w-5' />
       </Toggle>
 
       <Toggle
@@ -37,7 +37,7 @@ export default function Toolbar() {
         disabled={!editor.commands.toggleList.canApply({ kind: 'toggle' })}
         onClick={() => editor.commands.toggleList({ kind: 'toggle' })}
       >
-        <div className='i-ci-sort-descending h-5 w-5 rotate-180' />
+        <div className='i-lucide-list-collapse h-5 w-5' />
       </Toggle>
     </div>
   )
