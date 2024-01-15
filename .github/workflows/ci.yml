@@ -25,6 +25,7 @@ jobs:
 
     strategy:
       matrix: ${{ fromJson(needs.collect_dirs.outputs.test_matrix) }}
+      fail-fast: false
 
     steps:
       - uses: actions/checkout@v4
