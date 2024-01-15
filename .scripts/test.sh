@@ -16,9 +16,6 @@ for TEST_DIR in $TEST_DIRS; do
     echo "Testing directory $TEST_DIR"
     cd "$ROOT"
     cd "$TEST_DIR"
-    mkdir -p ./.temp
-    rm -rf ./.temp
-    mkdir -p ./.temp
 
     $PACKAGE_MANAGER install --prefer-offline
     $PACKAGE_MANAGER run build 
