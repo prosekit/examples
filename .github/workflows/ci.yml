@@ -13,20 +13,18 @@ jobs:
   collect_dirs:
     runs-on: ubuntu-latest
     outputs:
-      dirs: ${{ steps.run_collect_dirs.outputs.dirs }}
+      test_matrix: ${{ steps.run_collect_dirs.outputs.test_matrix }}
     steps:
       - uses: actions/checkout@v2
       - id: run_collect_dirs
-        run: echo "dirs=$(bash .scripts/collect_dirs.sh)" >> ${GITHUB_OUTPUT}
+        run: echo "test_matrix=$(python3 .scripts/build_matrix.py)" >> ${GITHUB_OUTPUT}
         
   test:
     runs-on: ubuntu-latest
     needs: collect_dirs
 
     strategy:
-      matrix:
-        package-manager: [npm, yarn, pnpm, bun]
-        dir: ${{ fromJson(needs.collect_dirs.outputs.dirs) }}
+      matrix: ${{ fromJson(needs.collect_dirs.outputs.test_matrix) }}
 
     steps:
       - uses: actions/checkout@v4
@@ -42,4 +40,4 @@ jobs:
         uses: oven-sh/setup-bun@v1
 
       - name: Test
-        run: bash .scripts/test.sh ${{ matrix.package-manager }} ${{ matrix.dir }}
+        run: bash -c ".scripts/test.sh ${{ matrix.package_manager }} ${{ matrix.dirs }}"
