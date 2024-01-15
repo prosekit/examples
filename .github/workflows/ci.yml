@@ -13,11 +13,11 @@ jobs:
   collect_dirs:
     runs-on: ubuntu-latest
     outputs:
-      dirs: ${{ steps.dirs.outputs.dirs }}
+      dirs: ${{ steps.run_collect_dirs.outputs.dirs }}
     steps:
       - uses: actions/checkout@v2
-      - id: dirs
-        run: bash .scripts/collect_dirs.sh >> ${GITHUB_OUTPUT}
+      - id: run_collect_dirs
+        run: echo "dirs=$(bash .scripts/collect_dirs.sh)" >> ${GITHUB_OUTPUT}
         
   test:
     runs-on: ubuntu-latest
