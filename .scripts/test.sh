@@ -1,18 +1,24 @@
+#!/usr/bin/env bash
+
 set -e 
 
 cd $(dirname $0)/..
 ROOT=$(pwd)
 
-# Set the default value for $1 to "pnpm" if it's not provided
-PACKAGE_MANAGER="${1:-pnpm}"
+# First argument is the package manager to use
+PACKAGE_MANAGER="${1}"
+echo "Using package manager $PACKAGE_MANAGER"
 
-mkdir -p ./.temp
-rm -rf ./.temp
+# Rest of the arguments are the directories to test
+TEST_DIRS="${@:2}"
 
-for file in $(find "$ROOT" -name 'package.json' -not -path '*/node_modules/*' | sort)
-do 
-    cd $(dirname $file)
-    echo "Testing $PWD"
+for TEST_DIR in $TEST_DIRS; do
+    echo "Testing directory $TEST_DIR"
+    cd "$ROOT"
+    cd "$TEST_DIR"
+    mkdir -p ./.temp
+    rm -rf ./.temp
+    mkdir -p ./.temp
 
     # Ignore some examples that are not working yet
     base=$(basename "$PWD")
