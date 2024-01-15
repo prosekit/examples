@@ -4,7 +4,7 @@ from typing import List
 import json
 import os
 
-MAX_CONCURRENT = 32
+MAX_CONCURRENT = 20
 
 
 # Find all directories that contain a package.json file in the root directory
