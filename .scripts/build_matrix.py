@@ -15,7 +15,9 @@ def find_directories() -> List[str]:
             continue
         if "package.json" in filenames:
             dirs.append(dirpath)
-    return dirs
+
+    # return the relative paths
+    return [os.path.relpath(d, root) for d in dirs]
 
 
 # Split a list of items into m chunks
@@ -32,15 +34,10 @@ def main():
     max_concurrent = 255
     chunks = chunk(all_dirs, max_concurrent // len(package_managers))
 
-    matrix = []
-    for pm in package_managers:
-        for dirs in chunks:
-            matrix.append(
-                {
-                    "package_manager": pm,
-                    "dirs": " ".join(dirs),
-                }
-            )
+    matrix = {
+        "package_manager": package_managers,
+        "dir": [" ".join(dirs) for dirs in chunks],
+    }
 
     # Dump the matrix to a JSON string, without any whitespace
     matrix_json = json.dumps(matrix, separators=(",", ":"))
