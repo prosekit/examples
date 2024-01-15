@@ -4,6 +4,8 @@ from typing import List
 import json
 import os
 
+MAX_CONCURRENT = 64
+
 
 # Find all directories that contain a package.json file in the root directory
 def find_directories() -> List[str]:
@@ -33,8 +35,8 @@ def chunk(items: List[str], m: int) -> List[List[str]]:
 def main():
     package_managers = ["npm", "yarn", "pnpm", "bun"]
     all_dirs = find_directories()
-    max_concurrent = 255
-    chunks = chunk(all_dirs, max_concurrent // len(package_managers))
+
+    chunks = chunk(all_dirs, MAX_CONCURRENT // len(package_managers))
 
     matrix = {
         "package_manager": package_managers,
