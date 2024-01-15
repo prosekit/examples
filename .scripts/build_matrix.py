@@ -40,7 +40,7 @@ def main():
 
     matrix = {
         "package_manager": package_managers,
-        "dir": [" ".join(dirs) for dirs in chunks],
+        "dirs": [" ".join(dirs) for dirs in chunks],
     }
 
     # Dump the matrix to a JSON string, without any whitespace
