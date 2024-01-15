@@ -7,7 +7,7 @@ ROOT=$(pwd)
 
 mkdir -p ./.temp/prosekit
 rm -rf ./.temp/prosekit
-git clone --depth 1 https://github.com/ocavue/prosekit ./.temp/prosekit
+git clone --depth 1 -b ocavue-fix-example https://github.com/ocavue/prosekit ./.temp/prosekit
 
 for file in $ROOT/.temp/prosekit/playground/examples/**/*
 do 
