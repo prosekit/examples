@@ -17,7 +17,7 @@ const toggleImagePopover = () => {
 </script>
 
 <template>
-  <div class='z-2 sticky top-0 box-border flex flex-wrap gap-1 bg-gray-100 p-2 dark:bg-zinc-900'>
+  <div class='z-2 sticky top-0 box-border flex flex-wrap gap-1 bg-gray-100 p-2 dark:bg-zinc-900 items-center'>
     <Toggle
       :pressed="false"
       :disabled="!editor.commands.undo.canApply()"
@@ -128,14 +128,6 @@ const toggleImagePopover = () => {
       :onClick="() => editor.commands.toggleList({ kind: 'toggle' })"
     >
       <div class='i-lucide-list-collapse h-5 w-5'></div>
-    </Toggle>
-
-    <Toggle
-      :pressed="editor.nodes.codeBlock.isActive()"
-      :disabled="!editor.commands.insertNode.canApply({ type: 'codeBlock' })"
-      :onClick="() => editor.commands.insertNode({ type: 'codeBlock' })"
-    >
-      <div class='i-lucide-square-code h-5 w-5'></div>
     </Toggle>
 
     <ImageUploadPopover :open="imagePopoverOpen" :onClose="closeImagePopover">
