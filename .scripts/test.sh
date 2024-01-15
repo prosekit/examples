@@ -19,10 +19,10 @@ for TEST_DIR in $TEST_DIRS; do
 
     # Ignore some examples that are not working yet
     base=$(basename "$PWD")
-    if [[ "$base" == "vue-code-block" ]]; then
+    if [[ $PACKAGE_MANAGER == "pnpm" && "$base" == "vue-code-block" ]]; then
         continue
     fi
-    if [[ "$base" == "vue-full" ]]; then
+    if [[ $PACKAGE_MANAGER == "pnpm" && "$base" == "vue-full" ]]; then
         continue
     fi
 
