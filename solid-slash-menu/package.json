@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "prosekit": "^0.2.12",
-    "solid-js": "1.8.9"
+    "solid-js": "1.8.11"
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "1.7.2",
