@@ -47,6 +47,12 @@ const handleSubmit = () => {
   editor.commands.insertImage({ src: url.value })
   setTimeout(handleClose, 100)
 }
+
+const handleOpenChange = (open: boolean) => {
+  if (!open) {
+    handleClose()
+  }
+}
 </script>
 
 <template>
@@ -56,7 +62,8 @@ const handleSubmit = () => {
     </div>
     <Popover
       :reference="anchorElement ?? undefined"
-      :active="props.open"
+      :open="props.open"
+      :onOpenChange="handleOpenChange"
       class='max-w-md space-y-4 p-6 text-sm z-10 box-border rounded border border-solid border-gray-200 bg-white shadow-lg dark:border-gray-700 dark:bg-zinc-800'
     >
       <div v-if="!objectUrl">
