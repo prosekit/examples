@@ -54,13 +54,20 @@ export const ImageUploadPopover: FC<{
     setTimeout(handleClose, 100)
   }
 
+  const handleOpenChange = (open: boolean) => {
+    if (!open) {
+      handleClose()
+    }
+  }
+
   return (
     <>
       <div ref={setAnchorElement}>{children}</div>
 
       <Popover
         reference={anchorElement ?? undefined}
-        active={open}
+        open={open}
+        onOpenChange={handleOpenChange}
         className='max-w-md space-y-4 p-6 text-sm z-10 box-border rounded border border-solid border-gray-200 bg-white shadow-lg dark:border-gray-700 dark:bg-zinc-800'
       >
         {objectUrl ? null : (

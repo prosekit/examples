@@ -20,7 +20,7 @@ export default function Editor() {
 
   return (
     <ProseKit editor={editor}>
-      <div className='box-border h-full max-h-[500px] w-full overflow-y-auto overflow-x-hidden rounded-md border border-solid border-gray-200 shadow dark:border-zinc-700'>
+      <div className='box-border h-full w-full overflow-y-auto overflow-x-hidden rounded-md border border-solid border-gray-200 shadow dark:border-zinc-700'>
         <div className='relative flex min-h-full w-full flex-col'>
           <div
             ref={editor.mount}

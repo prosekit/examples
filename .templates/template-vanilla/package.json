@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "prosekit": "^0.2.12"
+    "prosekit": "^0.3.0"
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "1.7.2",
