@@ -8,7 +8,7 @@
     "fix": "prettier --write ."
   },
   "dependencies": {
-    "prettier": "^3.2.2"
+    "prettier": "^3.2.4"
   },
   "renovate": {
     "dependencyDashboard": true,
