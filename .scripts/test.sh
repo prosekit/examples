@@ -18,15 +18,6 @@ for TEST_DIR in $TEST_DIRS; do
     cd "$ROOT"
     cd "$TEST_DIR"
 
-    # Ignore some examples that are not working yet
-    base=$(basename "$PWD")
-    if [[ $PACKAGE_MANAGER == "pnpm" && "$base" == "vue-code-block" ]]; then
-        continue
-    fi
-    if [[ $PACKAGE_MANAGER == "pnpm" && "$base" == "vue-full" ]]; then
-        continue
-    fi
-
     $PACKAGE_MANAGER install --prefer-offline
     $PACKAGE_MANAGER run build 
 done
