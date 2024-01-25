@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "prosekit": "^0.3.0",
+    "prosekit": "^0.3.1",
     "vue": "3.4.15",
     "shikiji": "^0.9.19"
   },
