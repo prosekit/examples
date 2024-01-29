@@ -1,11 +1,13 @@
 import 'prosekit/basic/style.css'
 
 import { defineBasicExtension } from 'prosekit/basic'
-import { createEditor, jsonFromNode } from 'prosekit/core'
-import { ProseKit } from 'prosekit/react'
+import {
+  createEditor,
+  defineDocChangeHandler,
+  jsonFromNode,
+} from 'prosekit/core'
+import { ProseKit, useExtension } from 'prosekit/react'
 import { useCallback, useMemo, useState } from 'react'
-
-import EventHandlers from './event-handlers'
 
 export default function Editor() {
   const [key, setKey] = useState(1)
@@ -21,9 +23,11 @@ export default function Editor() {
     })
   }, [key, defaultDoc])
 
-  const onDocChange = useCallback(() => {
-    setHasUnsavedChange(true)
+  const docChangeExtension = useMemo(() => {
+    const onDocChange = () => setHasUnsavedChange(true)
+    return defineDocChangeHandler(onDocChange)
   }, [])
+  useExtension(docChangeExtension, { editor })
 
   const onSave = useCallback(() => {
     const doc = JSON.stringify(jsonFromNode(editor.view.state.doc))
@@ -70,8 +74,6 @@ export default function Editor() {
       <div className='box-border h-full w-full overflow-y-auto overflow-x-hidden rounded-md border border-solid border-gray-200 shadow dark:border-zinc-700'>
         <div ref={editor.mount} className='dark:bg-zinc-900 relative box-border min-h-full flex-1 overflow-auto bg-white px-[max(16px,_calc(50%-330px))] py-[16px] outline-none outline-0 [&_span[data-mention="user"]]:color-blue-500 [&_span[data-mention="tag"]]:color-violet-500 [&_pre]:color-white [&_pre]:bg-zinc-800'></div>
       </div>
-
-      <EventHandlers onDocChange={onDocChange} />
     </ProseKit>
   )
 }
