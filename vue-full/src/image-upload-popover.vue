@@ -64,27 +64,27 @@ const handleOpenChange = (open: boolean) => {
       :reference="anchorElement ?? undefined"
       :open="props.open"
       :onOpenChange="handleOpenChange"
-      class='max-w-md space-y-4 p-6 text-sm z-10 box-border rounded border border-solid border-gray-200 bg-white shadow-lg dark:border-gray-700 dark:bg-zinc-800'
+      class='flex flex-col gap-y-4 p-6 text-sm w-sm z-10 box-border rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-neutral-900 shadow-lg'
     >
-      <div v-if="!objectUrl">
+      <template v-if="!objectUrl">
         <label>Embed Link</label>
         <input
-          class='mt-2 box-border flex h-10 w-full rounded-md px-3 py-2 outline-none transition focus-visible:outline-none file:border-0 file:bg-transparent file:text-sm file:font-medium [&[type=file]]:hover:bg-gray-500/10 border border-solid border-gray-200 dark:border-gray-700 ring-gray-500 ring-offset-0 focus-visible:ring-2 focus-visible:ring-offset-0'
+          class='flex h-10 rounded-md w-full border box-border bg-white dark:bg-neutral-900 px-3 py-2 text-sm placeholder:text-zinc-500 dark:placeholder:text-zinc-500 transition border-zinc-200 dark:border-zinc-800 border-solid border ring-0 ring-transparent focus-visible:ring-2 focus-visible:ring-zinc-900 dark:focus-visible:ring-zinc-300 focus-visible:ring-offset-0 outline-none focus-visible:outline-none file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:cursor-not-allowed disabled:opacity-50'
           placeholder="Paste the image link..."
           type="url"
           @input="handleWebUrlChange"
         />
-      </div>
-      <div v-if="!webUrl">
+      </template>
+      <template v-if="!webUrl">
         <label>Upload</label>
         <input
-          class='mt-2 box-border flex h-10 w-full rounded-md px-3 py-2 outline-none transition focus-visible:outline-none file:border-0 file:bg-transparent file:text-sm file:font-medium [&[type=file]]:hover:bg-gray-500/10 border border-solid border-gray-200 dark:border-gray-700 ring-gray-500 ring-offset-0 focus-visible:ring-2 focus-visible:ring-offset-0'
+          class='flex h-10 rounded-md w-full border box-border bg-white dark:bg-neutral-900 px-3 py-2 text-sm placeholder:text-zinc-500 dark:placeholder:text-zinc-500 transition border-zinc-200 dark:border-zinc-800 border-solid border ring-0 ring-transparent focus-visible:ring-2 focus-visible:ring-zinc-900 dark:focus-visible:ring-zinc-300 focus-visible:ring-offset-0 outline-none focus-visible:outline-none file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:cursor-not-allowed disabled:opacity-50'
           accept="image/*"
           type="file"
           @input="handleFileChange"
         />
-      </div>
-      <button v-if="url" class='dark:text-dark box-border inline-flex h-10 w-full items-center justify-center rounded-md bg-gray-800 px-4 py-2 text-sm font-medium text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-100' @click="handleSubmit">
+      </template>
+      <button v-if="url" class='inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-white dark:ring-offset-neutral-900 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 dark:focus-visible:ring-zinc-300 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-zinc-900 dark:bg-zinc-50 text-zinc-50 dark:text-zinc-900 hover:bg-zinc-900/90 dark:hover:bg-zinc-50/90 h-10 px-4 py-2 w-full' @click="handleSubmit">
         Insert Image
       </button>
     </Popover>
