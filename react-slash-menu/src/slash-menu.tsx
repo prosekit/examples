@@ -21,33 +21,33 @@ export default function SlashMenu() {
     <AutocompletePopover
       editor={editor}
       regex={/\/.*$/iu}
-      className='relative block max-h-[400px] min-w-[120px] select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded border border-solid border-gray-200 bg-white shadow-lg dark:border-gray-700 dark:bg-zinc-800'
+      className='relative block max-h-[400px] min-w-[120px] select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-neutral-900 shadow-lg'
     >
       <AutocompleteList editor={editor}>
-        <AutocompleteEmpty className='relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none aria-selected:bg-gray-200/70 aria-selected:dark:bg-gray-700/70'>
+        <AutocompleteEmpty className='relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none aria-selected:bg-zinc-100 dark:aria-selected:bg-zinc-800'>
           No Command match
         </AutocompleteEmpty>
 
         <AutocompleteItem
-          className='relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none aria-selected:bg-gray-200/70 aria-selected:dark:bg-gray-700/70'
+          className='relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none aria-selected:bg-zinc-100 dark:aria-selected:bg-zinc-800'
           onSelect={() => handleHeadingInsert(1)}
         >
           Insert Heading 1
         </AutocompleteItem>
         <AutocompleteItem
-          className='relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none aria-selected:bg-gray-200/70 aria-selected:dark:bg-gray-700/70'
+          className='relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none aria-selected:bg-zinc-100 dark:aria-selected:bg-zinc-800'
           onSelect={() => handleHeadingInsert(2)}
         >
           Insert Heading 2
         </AutocompleteItem>
         <AutocompleteItem
-          className='relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none aria-selected:bg-gray-200/70 aria-selected:dark:bg-gray-700/70'
+          className='relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none aria-selected:bg-zinc-100 dark:aria-selected:bg-zinc-800'
           onSelect={() => handleHeadingConvert(1)}
         >
           Turn into Heading 1
         </AutocompleteItem>
         <AutocompleteItem
-          className='relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none aria-selected:bg-gray-200/70 aria-selected:dark:bg-gray-700/70'
+          className='relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none aria-selected:bg-zinc-100 dark:aria-selected:bg-zinc-800'
           onSelect={() => handleHeadingConvert(2)}
         >
           Turn into Heading 2
