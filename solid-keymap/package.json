@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "prosekit": "^0.4.0",
+    "prosekit": "^0.4.1",
     "solid-js": "1.8.11"
   },
   "devDependencies": {
