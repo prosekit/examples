@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "prosekit": "^0.4.2",
+    "prosekit": "^0.4.3",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
