@@ -12,10 +12,10 @@
     "prosekit": "^0.4.4"
   },
   "devDependencies": {
-    "@egoist/tailwindcss-icons": "1.7.2",
-    "@iconify-json/lucide": "1.1.155",
-    "postcss": "8.4.33",
+    "@egoist/tailwindcss-icons": "1.7.4",
+    "@iconify-json/lucide": "1.1.165",
+    "postcss": "8.4.35",
     "tailwindcss": "3.4.1",
-    "vite": "5.0.12"
+    "vite": "5.1.2"
   }
 }
