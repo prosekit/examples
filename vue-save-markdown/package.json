@@ -9,14 +9,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "prosekit": "^0.4.4",
-    "vue": "3.4.19",
+    "prosekit": "^0.4.5",
     "rehype-parse": "^9.0.0",
     "rehype-remark": "^10.0.0",
     "remark-html": "^16.0.1",
     "remark-parse": "^11.0.0",
     "remark-stringify": "^11.0.0",
-    "unified": "^11.0.4"
+    "unified": "^11.0.4",
+    "vue": "3.4.19"
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "1.7.4",
