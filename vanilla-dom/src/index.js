@@ -68,7 +68,7 @@ function main() {
   root.innerHTML = ''
 
   const viewport = root.appendChild(document.createElement('div'))
-  viewport.className = 'box-border h-full w-full overflow-y-auto overflow-x-hidden rounded-md border border-solid border-gray-200 shadow dark:border-zinc-700'
+  viewport.className = 'box-border h-full w-full min-h-32 overflow-y-auto overflow-x-hidden rounded-md border border-solid border-gray-200 shadow dark:border-zinc-700'
 
   const doc = viewport.appendChild(document.createElement('div'))
   doc.className = 'relative flex min-h-full w-full flex-col'
