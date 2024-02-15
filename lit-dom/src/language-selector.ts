@@ -1,4 +1,4 @@
-import { bundledLanguagesInfo } from 'shikiji'
+import { shikiBundledLanguagesInfo } from 'prosekit/extensions/code-block'
 
 import { createElement } from './create-element'
 
@@ -13,7 +13,7 @@ export function createLanguageSelector({
     'select',
     { class: 'outline-unset focus:outline-unset relative box-border w-auto cursor-pointer select-none appearance-none rounded border-none bg-transparent px-2 py-1 text-xs transition color-white opacity-0 hover:opacity-80 [div[data-node-view-root]:hover_&]:opacity-50 [div[data-node-view-root]:hover_&]:hover:opacity-80' },
     createElement('option', { value: '' }, 'Plain Text'),
-    ...bundledLanguagesInfo.map((info) => {
+    ...shikiBundledLanguagesInfo.map((info) => {
       return createElement('option', { value: info.id }, info.name)
     }),
   )
