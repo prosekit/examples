@@ -9,9 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "prosekit": "^0.4.5",
-    "vue": "3.4.19",
-    "shikiji": "^0.10.2"
+    "prosekit": "^0.5.0",
+    "vue": "3.4.19"
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "1.7.4",
