@@ -1,16 +1,16 @@
 import { useEditor } from 'prosekit/react'
-import { Popover } from 'prosekit/react/popover'
+import { PopoverContent } from 'prosekit/react/popover-content'
+import { PopoverRoot } from 'prosekit/react/popover-root'
+import { PopoverTrigger } from 'prosekit/react/popover-trigger'
 import { useState, type FC, type ReactNode } from 'react'
 
 import type { EditorExtension } from './extension'
+import Toggle from './toggle'
 
 export const ImageUploadPopover: FC<{
-  open: boolean
-  onClose: VoidFunction
   children: ReactNode
-}> = ({ open, onClose, children }) => {
-  const [anchorElement, setAnchorElement] = useState<HTMLElement | null>(null)
-
+}> = ({ children }) => {
+  const [open, setOpen] = useState(false)
   const [webUrl, setWebUrl] = useState('')
   const [objectUrl, setObjectUrl] = useState('')
   const url = webUrl || objectUrl
@@ -43,33 +43,37 @@ export const ImageUploadPopover: FC<{
     }
   }
 
-  const handleClose = () => {
-    setWebUrl('')
-    setObjectUrl('')
-    onClose()
+  const deferResetState = () => {
+    setTimeout(() => {
+      setWebUrl('')
+      setObjectUrl('')
+    }, 300)
   }
 
   const handleSubmit = () => {
     editor.commands.insertImage({ src: url })
-    setTimeout(handleClose, 100)
+    deferResetState()
+    setOpen(false)
   }
 
   const handleOpenChange = (open: boolean) => {
     if (!open) {
-      handleClose()
+      deferResetState()
     }
+    setOpen(open)
   }
 
   return (
-    <>
-      <div ref={setAnchorElement}>{children}</div>
-
-      <Popover
-        reference={anchorElement ?? undefined}
-        open={open}
-        onOpenChange={handleOpenChange}
-        className='flex flex-col gap-y-4 p-6 text-sm w-sm z-10 box-border rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-neutral-900 shadow-lg'
+    <PopoverRoot open={open} onOpenChange={handleOpenChange}>
+      <Toggle
+        as={PopoverTrigger}
+        pressed={open}
+        disabled={!editor.commands.insertImage.canApply()}
       >
+        {children}
+      </Toggle>
+
+      <PopoverContent className='flex flex-col gap-y-4 p-6 text-sm w-sm z-10 box-border rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-neutral-900 shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=open]:animate-duration-150 data-[state=closed]:animate-duration-200 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2'>
         {objectUrl ? null : (
           <>
             <label>Embed Link</label>
@@ -77,6 +81,7 @@ export const ImageUploadPopover: FC<{
               className='flex h-10 rounded-md w-full bg-white dark:bg-neutral-900 px-3 py-2 text-sm placeholder:text-zinc-500 dark:placeholder:text-zinc-500 transition border box-border border-zinc-200 dark:border-zinc-800 border-solid ring-0 ring-transparent focus-visible:ring-2 focus-visible:ring-zinc-900 dark:focus-visible:ring-zinc-300 focus-visible:ring-offset-0 outline-none focus-visible:outline-none file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:cursor-not-allowed disabled:opacity-50'
               placeholder="Paste the image link..."
               type="url"
+              value={webUrl}
               onChange={handleWebUrlChange}
             />
           </>
@@ -99,7 +104,7 @@ export const ImageUploadPopover: FC<{
             Insert Image
           </button>
         ) : null}
-      </Popover>
-    </>
+      </PopoverContent>
+    </PopoverRoot>
   )
 }

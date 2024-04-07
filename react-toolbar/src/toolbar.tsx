@@ -1,5 +1,4 @@
 import { useEditor } from 'prosekit/react'
-import { useState } from 'react'
 
 import type { EditorExtension } from './extension'
 import { ImageUploadPopover } from './image-upload-popover'
@@ -7,14 +6,6 @@ import Toggle from './toggle'
 
 export default function Toolbar() {
   const editor = useEditor<EditorExtension>({ update: true })
-
-  const [imagePopoverOpen, setImagePopoverOpen] = useState(false)
-  const closeImagePopover = () => {
-    setImagePopoverOpen(false)
-  }
-  const toggleImagePopover = () => {
-    setImagePopoverOpen((value) => !value)
-  }
 
   return (
     <div className='z-2 sticky top-0 box-border flex flex-wrap gap-1 p-2 items-center bg-white dark:bg-neutral-900 border-zinc-200 dark:border-zinc-800 border-solid border-l-0 border-r-0 border-t-0 border-b'>
@@ -74,14 +65,8 @@ export default function Toolbar() {
         <div className='i-lucide-heading-3 h-5 w-5' />
       </Toggle>
 
-      <ImageUploadPopover open={imagePopoverOpen} onClose={closeImagePopover}>
-        <Toggle
-          pressed={false}
-          disabled={!editor.commands.insertImage.canApply()}
-          onClick={toggleImagePopover}
-        >
-          <div className='i-lucide-image h-5 w-5' />
-        </Toggle>
+      <ImageUploadPopover>
+        <div className='i-lucide-image h-5 w-5' />
       </ImageUploadPopover>
     </div>
   )
