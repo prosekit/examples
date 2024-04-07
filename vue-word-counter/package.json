@@ -14,12 +14,12 @@
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "1.7.4",
-    "@iconify-json/lucide": "1.1.171",
+    "@iconify-json/lucide": "1.1.179",
     "@vitejs/plugin-vue": "5.0.4",
-    "postcss": "8.4.35",
-    "tailwindcss": "3.4.1",
-    "typescript": "5.3.3",
-    "vite": "5.1.7",
+    "postcss": "8.4.38",
+    "tailwindcss": "3.4.3",
+    "typescript": "5.4.4",
+    "vite": "5.2.8",
     "vue-tsc": "1.8.27"
   }
 }
