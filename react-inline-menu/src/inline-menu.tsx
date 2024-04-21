@@ -10,8 +10,8 @@ import Toggle from './toggle'
 export default function InlineMenu() {
   const editor = useEditor<EditorExtension>({ update: true })
 
-  const [linkMenuAvailable, setLinkMenuAvailable] = useState(false)
-  const toggleLinkMenuAvailable = () => setLinkMenuAvailable((open) => !open)
+  const [linkMenuOpen, setLinkMenuOpen] = useState(false)
+  const toggleLinkMenuOpen = () => setLinkMenuOpen((open) => !open)
 
   const getCurrentLink = (state: EditorState): string | undefined => {
     const { $from } = state.selection
@@ -33,18 +33,17 @@ export default function InlineMenu() {
       editor.commands.removeLink()
     }
 
-    setLinkMenuAvailable(false)
+    setLinkMenuOpen(false)
     editor.focus()
   }
 
   return (
     <>
       <InlinePopover
-        className='z-10 box-border rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-neutral-900 shadow-lg relative block min-w-[120px] space-x-1 overflow-auto whitespace-nowrap rounded-md p-1'
-        editor={editor}
+        className='z-10 box-border rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-neutral-900 shadow-lg relative flex min-w-[120px] space-x-1 overflow-auto whitespace-nowrap rounded-md p-1'
         onOpenChange={(open) => {
           if (!open) {
-            setLinkMenuAvailable(false)
+            setLinkMenuOpen(false)
           }
         }}
       >
@@ -93,7 +92,7 @@ export default function InlineMenu() {
             pressed={editor.marks.link.isActive()}
             onClick={() => {
               editor.commands.expandLink()
-              toggleLinkMenuAvailable()
+              toggleLinkMenuOpen()
             }}
           >
             <div className='i-lucide-link h-5 w-5'></div>
@@ -103,22 +102,11 @@ export default function InlineMenu() {
 
       <InlinePopover
         className='z-10 box-border rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-neutral-900 shadow-lg relative flex flex-col w-xs rounded-lg p-4 gap-y-2 items-stretch'
-        editor={editor}
-        positioning={{
-          strategy: 'fixed',
-          placement: 'bottom',
-          offset: 12,
-          flip: false,
-          hide: true,
-          shift: true,
-          overlap: true,
-          fitViewport: true,
-          inline: true,
-        }}
-        available={linkMenuAvailable}
-        onOpenChange={setLinkMenuAvailable}
+        placement={'bottom'}
+        open={linkMenuOpen}
+        onOpenChange={setLinkMenuOpen}
       >
-        {linkMenuAvailable && (
+        {linkMenuOpen && (
           <form
             onSubmit={(event) => {
               event.preventDefault()

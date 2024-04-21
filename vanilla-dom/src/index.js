@@ -3,9 +3,11 @@ import 'prosekit/basic/style.css'
 import { defineBasicExtension } from 'prosekit/basic'
 import { createEditor, union } from 'prosekit/core'
 import { definePlaceholder } from 'prosekit/extensions/placeholder'
-import { AutocompleteItem } from 'prosekit/lit/autocomplete-item'
-import { AutocompleteList } from 'prosekit/lit/autocomplete-list'
-import { AutocompletePopover } from 'prosekit/lit/autocomplete-popover'
+import {
+  AutocompleteItem,
+  AutocompleteList,
+  AutocompletePopover,
+} from 'prosekit/lit/autocomplete'
 
 export function defineExtension() {
   return union([
@@ -44,7 +46,7 @@ function createItem(text, callback) {
   const item = new AutocompleteItem()
   item.append(text)
   item.onSelect = callback
-  item.className = 'relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none aria-selected:bg-zinc-100 dark:aria-selected:bg-zinc-800'
+  item.className = 'relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800'
   return item
 }
 

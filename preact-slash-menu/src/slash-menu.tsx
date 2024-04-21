@@ -1,8 +1,10 @@
 import { useEditor } from 'prosekit/preact'
-import { AutocompleteEmpty } from 'prosekit/preact/autocomplete-empty'
-import { AutocompleteItem } from 'prosekit/preact/autocomplete-item'
-import { AutocompleteList } from 'prosekit/preact/autocomplete-list'
-import { AutocompletePopover } from 'prosekit/preact/autocomplete-popover'
+import {
+  AutocompleteEmpty,
+  AutocompleteItem,
+  AutocompleteList,
+  AutocompletePopover,
+} from 'prosekit/preact/autocomplete'
 
 import type { EditorExtension } from './extension'
 
@@ -18,36 +20,32 @@ export default function SlashMenu() {
   }
 
   return (
-    <AutocompletePopover
-      editor={editor}
-      regex={/\/.*$/iu}
-      class='relative block max-h-[400px] min-w-[120px] select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-neutral-900 shadow-lg'
-    >
-      <AutocompleteList editor={editor}>
-        <AutocompleteEmpty class='relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none aria-selected:bg-zinc-100 dark:aria-selected:bg-zinc-800'>
+    <AutocompletePopover regex={/\/.*$/iu} class='relative block max-h-[400px] min-w-[120px] select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-neutral-900 shadow-lg'>
+      <AutocompleteList>
+        <AutocompleteEmpty class='relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800'>
           No Command match
         </AutocompleteEmpty>
 
         <AutocompleteItem
-          class='relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none aria-selected:bg-zinc-100 dark:aria-selected:bg-zinc-800'
+          class='relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800'
           onSelect={() => handleHeadingInsert(1)}
         >
           Insert Heading 1
         </AutocompleteItem>
         <AutocompleteItem
-          class='relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none aria-selected:bg-zinc-100 dark:aria-selected:bg-zinc-800'
+          class='relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800'
           onSelect={() => handleHeadingInsert(2)}
         >
           Insert Heading 2
         </AutocompleteItem>
         <AutocompleteItem
-          class='relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none aria-selected:bg-zinc-100 dark:aria-selected:bg-zinc-800'
+          class='relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800'
           onSelect={() => handleHeadingConvert(1)}
         >
           Turn into Heading 1
         </AutocompleteItem>
         <AutocompleteItem
-          class='relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none aria-selected:bg-zinc-100 dark:aria-selected:bg-zinc-800'
+          class='relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800'
           onSelect={() => handleHeadingConvert(2)}
         >
           Turn into Heading 2
