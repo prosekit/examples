@@ -1,17 +1,24 @@
 <script setup lang="ts">
 import { useEditor } from 'prosekit/vue'
-import { PopoverTrigger } from 'prosekit/vue/popover-trigger'
-import { PopoverRoot } from 'prosekit/vue/popover-root'
-import { PopoverContent } from 'prosekit/vue/popover-content'
+import {
+  PopoverContent,
+  PopoverRoot,
+  PopoverTrigger,
+} from 'prosekit/vue/popover'
 import { computed, ref } from 'vue'
 import type { EditorExtension } from './extension'
 import Toggle from './toggle.vue'
+
+const props = defineProps<{
+  disabled: Boolean
+  tooltip: string
+}>()
 
 const open = ref(false)
 const webUrl = ref('')
 const objectUrl = ref('')
 const url = computed(() => webUrl.value || objectUrl.value)
-const editor = useEditor<EditorExtension>().value
+const editor = useEditor<EditorExtension>()
 
 const handleFileChange = (event: Event) => {
   const file = (event.target as HTMLInputElement)?.files?.[0]
@@ -43,7 +50,7 @@ const deferResetState = () => {
 }
 
 const handleSubmit = () => {
-  editor.commands.insertImage({ src: url.value })
+  editor.value.commands.insertImage({ src: url.value })
   deferResetState()
   open.value = false
 }
@@ -58,15 +65,17 @@ const handleOpenChange = (openValue: boolean) => {
 
 <template>
   <PopoverRoot :open="open" :onOpenChange="handleOpenChange">
-    <Toggle
-      :as="PopoverTrigger"
-      :pressed="open"
-      :disabled="!editor.commands.insertImage.canApply()"
-    >
-      <slot />
-    </Toggle>
+    <PopoverTrigger>
+      <Toggle
+        :pressed="open"
+        :disabled="props.disabled"
+        :tooltip="props.tooltip"
+      >
+        <slot />
+      </Toggle>
+    </PopoverTrigger>
 
-    <PopoverContent class='flex flex-col gap-y-4 p-6 text-sm w-sm z-10 box-border rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-neutral-900 shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=open]:animate-duration-150 data-[state=closed]:animate-duration-200 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2'>
+    <PopoverContent class='flex flex-col gap-y-4 p-6 text-sm w-sm z-10 box-border rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-neutral-900 shadow-lg will-change-transform data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0 data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95 data-[state=open]:animate-duration-150 data-[state=closed]:animate-duration-200 data-[side=bottom]:slide-in-from-top-2 data-[side=bottom]:slide-out-to-top-2 data-[side=left]:slide-in-from-right-2 data-[side=left]:slide-out-to-right-2 data-[side=right]:slide-in-from-left-2 data-[side=right]:slide-out-to-left-2 data-[side=top]:slide-in-from-bottom-2 data-[side=top]:slide-out-to-bottom-2'>
       <template v-if="!objectUrl">
         <label>Embed Link</label>
         <input

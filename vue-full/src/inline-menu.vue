@@ -7,13 +7,13 @@ import type { EditorExtension } from './extension'
 import Toggle from './toggle.vue'
 
 const editor = useEditor<EditorExtension>({ update: true })
-const linkMenuAvailable = ref(false)
+const linkMenuOpen = ref(false)
 
-const setLinkMenuAvailable = (value: boolean) => {
-  linkMenuAvailable.value = value
+const setLinkMenuOpen = (value: boolean) => {
+  linkMenuOpen.value = value
 }
-const toggleLinkMenuAvailable = () => {
-  linkMenuAvailable.value = !linkMenuAvailable.value
+const toggleLinkMenuOpen = () => {
+  linkMenuOpen.value = !linkMenuOpen.value
 }
 
 const getCurrentLink = (state: EditorState): string | undefined => {
@@ -36,16 +36,17 @@ const handleLinkUpdate = (href?: string) => {
     editor.value.commands.removeLink()
   }
 
-  linkMenuAvailable.value = false
+  linkMenuOpen.value = false
   editor.value.focus()
 }
 </script>
 
 <template>
-  <InlinePopover class='z-10 box-border rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-neutral-900 shadow-lg relative block min-w-[120px] space-x-1 overflow-auto whitespace-nowrap rounded-md p-1' :editor="editor">
+  <InlinePopover class='z-10 box-border rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-neutral-900 shadow-lg relative flex min-w-[120px] space-x-1 overflow-auto whitespace-nowrap rounded-md p-1'>
     <Toggle
       :pressed="editor.marks.bold.isActive()"
       :disabled="!editor.commands.toggleBold.canApply()"
+      tooltip="Bold"
       @click="() => editor.commands.toggleBold()"
     >
       <div class='i-lucide-bold h-5 w-5'></div>
@@ -55,6 +56,7 @@ const handleLinkUpdate = (href?: string) => {
       :pressed="editor.marks.italic.isActive()"
       :disabled="!editor.commands.toggleItalic.canApply()"
       @click="() => editor.commands.toggleItalic()"
+      tooltip="Italic"
     >
       <div class='i-lucide-italic h-5 w-5'></div>
     </Toggle>
@@ -63,6 +65,7 @@ const handleLinkUpdate = (href?: string) => {
       :pressed="editor.marks.underline.isActive()"
       :disabled="!editor.commands.toggleUnderline.canApply()"
       @click="() => editor.commands.toggleUnderline()"
+      tooltip="Underline"
     >
       <div class='i-lucide-underline h-5 w-5'></div>
     </Toggle>
@@ -71,6 +74,7 @@ const handleLinkUpdate = (href?: string) => {
       :pressed="editor.marks.strike.isActive()"
       :disabled="!editor.commands.toggleStrike.canApply()"
       @click="() => editor.commands.toggleStrike()"
+      tooltip="Strike"
     >
       <div class='i-lucide-strikethrough h-5 w-5'></div>
     </Toggle>
@@ -79,6 +83,7 @@ const handleLinkUpdate = (href?: string) => {
       :pressed="editor.marks.code.isActive()"
       :disabled="!editor.commands.toggleCode.canApply()"
       @click="() => editor.commands.toggleCode()"
+      tooltip="Code"
     >
       <div class='i-lucide-code h-5 w-5'></div>
     </Toggle>
@@ -89,9 +94,10 @@ const handleLinkUpdate = (href?: string) => {
       @click="
         () => {
           editor.commands.expandLink()
-          toggleLinkMenuAvailable()
+          toggleLinkMenuOpen()
         }
       "
+      tooltip="Link"
     >
       <div class='i-lucide-link h-5 w-5'></div>
     </Toggle>
@@ -99,23 +105,12 @@ const handleLinkUpdate = (href?: string) => {
 
   <InlinePopover
     class='z-10 box-border rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-neutral-900 shadow-lg relative flex flex-col w-xs rounded-lg p-4 gap-y-2 items-stretch'
-    :editor="editor"
-    :positioning="{
-      strategy: 'fixed',
-      placement: 'bottom',
-      offset: 12,
-      flip: false,
-      hide: true,
-      shift: true,
-      overlap: true,
-      fitViewport: true,
-      inline: true,
-    }"
-    :available="linkMenuAvailable"
-    @openChange="setLinkMenuAvailable"
+    :placement="'bottom'"
+    :open="linkMenuOpen"
+    @openChange="setLinkMenuOpen"
   >
     <form
-      v-if="linkMenuAvailable"
+      v-if="linkMenuOpen"
       @submit.prevent="
         (event) => {
           const target = event.target as HTMLFormElement | null

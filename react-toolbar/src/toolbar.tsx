@@ -13,6 +13,7 @@ export default function Toolbar() {
         pressed={false}
         disabled={!editor.commands.undo.canApply()}
         onClick={editor.commands.undo}
+        tooltip="Undo"
       >
         <div className='i-lucide-undo-2 h-5 w-5' />
       </Toggle>
@@ -21,6 +22,7 @@ export default function Toolbar() {
         pressed={false}
         disabled={!editor.commands.redo.canApply()}
         onClick={editor.commands.redo}
+        tooltip="Redo"
       >
         <div className='i-lucide-redo-2 h-5 w-5' />
       </Toggle>
@@ -29,6 +31,7 @@ export default function Toolbar() {
         pressed={editor.marks.bold.isActive()}
         disabled={!editor.commands.toggleBold.canApply()}
         onClick={editor.commands.toggleBold}
+        tooltip="Bold"
       >
         <div className='i-lucide-bold h-5 w-5' />
       </Toggle>
@@ -37,6 +40,7 @@ export default function Toolbar() {
         pressed={editor.marks.italic.isActive()}
         disabled={!editor.commands.toggleItalic.canApply()}
         onClick={editor.commands.toggleItalic}
+        tooltip="Italic"
       >
         <div className='i-lucide-italic h-5 w-5' />
       </Toggle>
@@ -45,6 +49,7 @@ export default function Toolbar() {
         pressed={editor.nodes.heading.isActive({ level: 1 })}
         disabled={!editor.commands.toggleHeading.canApply({ level: 1 })}
         onClick={() => editor.commands.toggleHeading({ level: 1 })}
+        tooltip="Heading 1"
       >
         <div className='i-lucide-heading-1 h-5 w-5' />
       </Toggle>
@@ -53,6 +58,7 @@ export default function Toolbar() {
         pressed={editor.nodes.heading.isActive({ level: 2 })}
         disabled={!editor.commands.toggleHeading.canApply({ level: 2 })}
         onClick={() => editor.commands.toggleHeading({ level: 2 })}
+        tooltip="Heading 2"
       >
         <div className='i-lucide-heading-2 h-5 w-5' />
       </Toggle>
@@ -61,11 +67,15 @@ export default function Toolbar() {
         pressed={editor.nodes.heading.isActive({ level: 3 })}
         disabled={!editor.commands.toggleHeading.canApply({ level: 3 })}
         onClick={() => editor.commands.toggleHeading({ level: 3 })}
+        tooltip="Heading 3"
       >
         <div className='i-lucide-heading-3 h-5 w-5' />
       </Toggle>
 
-      <ImageUploadPopover>
+      <ImageUploadPopover
+        disabled={!editor.commands.insertImage.canApply()}
+        tooltip="Insert Image"
+      >
         <div className='i-lucide-image h-5 w-5' />
       </ImageUploadPopover>
     </div>
