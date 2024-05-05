@@ -13,6 +13,7 @@ import { useUserQuery } from './use-user-query'
 export default function UserMenuDynamic() {
   const editor = useEditor<EditorExtension>()
   const [query, setQuery] = useState('')
+  const [open, setOpen] = useState(false)
 
   const handleUserInsert = (id: number, username: string) => {
     editor.commands.insertMention({
@@ -23,12 +24,13 @@ export default function UserMenuDynamic() {
     editor.commands.insertText({ text: ' ' })
   }
 
-  const { loading, users } = useUserQuery(query)
+  const { loading, users } = useUserQuery(query, open)
 
   return (
     <AutocompletePopover
       regex={/@\w*$/}
       onQueryChange={setQuery}
+      onOpenChange={setOpen}
       className='relative block max-h-[400px] min-w-[120px] select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-neutral-900 shadow-lg'
     >
       <AutocompleteList filter={null}>
