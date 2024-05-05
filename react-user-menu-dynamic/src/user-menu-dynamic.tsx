@@ -42,7 +42,13 @@ export default function UserMenuDynamic() {
             className='relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800'
             onSelect={() => handleUserInsert(user.id, user.name)}
           >
-            {user.name}
+            <span
+              className={
+                loading ? 'opacity-50 transition-duration-500 transition-opacity' : undefined
+              }
+            >
+              {user.name}
+            </span>
           </AutocompleteItem>
         ))}
       </AutocompleteList>
