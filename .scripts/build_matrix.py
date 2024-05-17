@@ -20,6 +20,10 @@ def find_directories() -> List[str]:
         if "package.json" in filenames:
             dirs.append(dirpath)
 
+    # Sort examples so that they can be grouped by framework, which improves the
+    # cache hit rate.
+    dirs.sort()
+
     # return the relative paths
     return [os.path.relpath(d, root) for d in dirs]
 
