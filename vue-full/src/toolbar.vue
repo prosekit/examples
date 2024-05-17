@@ -135,6 +135,24 @@ const editor = useEditor<EditorExtension>({ update: true })
       <div class='i-lucide-list-collapse h-5 w-5'></div>
     </Toggle>
 
+    <Toggle
+      :pressed="false"
+      :disabled="!editor.commands.indentList.canApply()"
+      :onClick="() => editor.commands.indentList()"
+      tooltip="Increase indentation"
+    >
+      <div class='i-lucide-indent-increase h-5 w-5'></div>
+    </Toggle>
+
+    <Toggle
+      :pressed="false"
+      :disabled="!editor.commands.dedentList.canApply()"
+      :onClick="() => editor.commands.dedentList()"
+      tooltip="Decrease indentation"
+    >
+      <div class='i-lucide-indent-decrease h-5 w-5'></div>
+    </Toggle>
+
     <ImageUploadPopover
       :disabled="!editor.commands.insertImage.canApply()"
       tooltip="Insert Image"
