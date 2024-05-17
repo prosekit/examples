@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {
-   TooltipContent,
+  TooltipContent,
   TooltipRoot,
   TooltipTrigger,
 } from 'prosekit/vue/tooltip'
