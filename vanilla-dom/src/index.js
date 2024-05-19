@@ -33,7 +33,7 @@ function createList() {
     createItem('Insert Heading 2', () => handleHeadingConvert(2)),
     createItem('Insert Heading 3', () => handleHeadingConvert(3)),
   )
-  list.className = 'relative block max-h-[400px] min-w-[120px] select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded-lg border border-border bg-background shadow-lg'
+  list.className = 'relative block max-h-[400px] min-w-[120px] select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-neutral-900 shadow-lg'
   return list
 }
 
@@ -45,7 +45,7 @@ function createItem(text, callback) {
   const item = new AutocompleteItem()
   item.append(text)
   item.onSelect = callback
-  item.className = 'relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-secondary'
+  item.className = 'relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:bg-zinc-800'
   return item
 }
 
@@ -75,7 +75,7 @@ function main() {
   doc.className = 'relative flex min-h-full w-full flex-col'
 
   const content = doc.appendChild(document.createElement('div'))
-  content.className = 'ProseMirror relative box-border min-h-full flex-1 overflow-auto bg-background px-[max(16px,_calc(50%-330px))] py-[16px] outline-none outline-0 [&_span[data-mention="user"]]:text-blue-500 [&_span[data-mention="tag"]]:text-violet-500 [&_pre]:text-white [&_pre]:bg-zinc-800'
+  content.className = 'ProseMirror relative box-border min-h-full flex-1 overflow-auto bg-white dark:bg-neutral-900 px-[max(16px,_calc(50%-330px))] py-[16px] outline-none outline-0 [&_span[data-mention="user"]]:text-blue-500 [&_span[data-mention="tag"]]:text-violet-500 [&_pre]:text-white [&_pre]:bg-zinc-800'
 
   editor.mount(content)
 
