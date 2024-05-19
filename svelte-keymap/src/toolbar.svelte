@@ -9,7 +9,7 @@ const hotkey = writable<'Shift-Enter' | 'Enter'>('Shift-Enter')
 useSubmitKeymap(hotkey, onSubmit)
 </script>
 
-<div class="z-2 sticky top-0 box-border flex flex-wrap gap-1 p-2 items-center bg-background border-border border-solid border-l-0 border-r-0 border-t-0 border-b">
+<div class='z-2 sticky top-0 box-border flex flex-wrap gap-1 p-2 items-center bg-background border-border border-solid border-l-0 border-r-0 border-t-0 border-b'>
   <Toggle
     pressed={$hotkey === 'Shift-Enter'}
     onClick={() => ($hotkey = 'Shift-Enter')}

@@ -33,48 +33,48 @@ const handleSelectList = (kind: 'task' | 'bullet' | 'ordered' | 'toggle') => {
 </script>
 
 <template>
-  <AutocompletePopover :regex="/\/.*$/iu" class="relative block max-h-[400px] min-w-[120px] select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded-lg border border-border bg-background shadow-lg">
+  <AutocompletePopover :regex="/\/.*$/iu" class='relative block max-h-[400px] min-w-[120px] select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded-lg border border-border bg-background shadow-lg'>
     <AutocompleteList>
-      <AutocompleteEmpty class="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-secondary">
+      <AutocompleteEmpty class='relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-secondary'>
         No results
       </AutocompleteEmpty>
 
       <AutocompleteItem
-        class="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-secondary"
+        class='relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-secondary'
         :onSelect="() => handleSelectHeading(1)"
       >
         Heading 1
       </AutocompleteItem>
       <AutocompleteItem
-        class="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-secondary"
+        class='relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-secondary'
         :onSelect="() => handleSelectHeading(2)"
       >
         Heading 2
       </AutocompleteItem>
 
       <AutocompleteItem
-        class="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-secondary"
+        class='relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-secondary'
         :onSelect="() => handleSelectList('task')"
       >
         Task list
       </AutocompleteItem>
 
       <AutocompleteItem
-        class="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-secondary"
+        class='relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-secondary'
         :onSelect="() => handleSelectList('bullet')"
       >
         Bullet list
       </AutocompleteItem>
 
       <AutocompleteItem
-        class="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-secondary"
+        class='relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-secondary'
         :onSelect="() => handleSelectList('ordered')"
       >
         Ordered list
       </AutocompleteItem>
 
       <AutocompleteItem
-        class="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-secondary"
+        class='relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-secondary'
         :onSelect="() => handleSelectList('toggle')"
       >
         Toggle list

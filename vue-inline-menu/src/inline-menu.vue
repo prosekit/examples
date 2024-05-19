@@ -42,13 +42,13 @@ const handleLinkUpdate = (href?: string) => {
 </script>
 
 <template>
-  <InlinePopover class="z-10 box-border border border-border bg-background shadow-lg relative flex min-w-[120px] space-x-1 overflow-auto whitespace-nowrap rounded-md p-1">
+  <InlinePopover class='z-10 box-border border border-border bg-background shadow-lg relative flex min-w-[120px] space-x-1 overflow-auto whitespace-nowrap rounded-md p-1'>
     <Toggle
       :pressed="editor.marks.bold.isActive()"
       :disabled="!editor.commands.toggleBold.canApply()"
       @click="() => editor.commands.toggleBold()"
     >
-      <div class="i-lucide-bold h-5 w-5"></div>
+      <div class='i-lucide-bold h-5 w-5'></div>
     </Toggle>
 
     <Toggle
@@ -56,7 +56,7 @@ const handleLinkUpdate = (href?: string) => {
       :disabled="!editor.commands.toggleItalic.canApply()"
       @click="() => editor.commands.toggleItalic()"
     >
-      <div class="i-lucide-italic h-5 w-5"></div>
+      <div class='i-lucide-italic h-5 w-5'></div>
     </Toggle>
 
     <Toggle
@@ -64,7 +64,7 @@ const handleLinkUpdate = (href?: string) => {
       :disabled="!editor.commands.toggleUnderline.canApply()"
       @click="() => editor.commands.toggleUnderline()"
     >
-      <div class="i-lucide-underline h-5 w-5"></div>
+      <div class='i-lucide-underline h-5 w-5'></div>
     </Toggle>
 
     <Toggle
@@ -72,7 +72,7 @@ const handleLinkUpdate = (href?: string) => {
       :disabled="!editor.commands.toggleStrike.canApply()"
       @click="() => editor.commands.toggleStrike()"
     >
-      <div class="i-lucide-strikethrough h-5 w-5"></div>
+      <div class='i-lucide-strikethrough h-5 w-5'></div>
     </Toggle>
 
     <Toggle
@@ -80,7 +80,7 @@ const handleLinkUpdate = (href?: string) => {
       :disabled="!editor.commands.toggleCode.canApply()"
       @click="() => editor.commands.toggleCode()"
     >
-      <div class="i-lucide-code h-5 w-5"></div>
+      <div class='i-lucide-code h-5 w-5'></div>
     </Toggle>
 
     <Toggle
@@ -93,12 +93,12 @@ const handleLinkUpdate = (href?: string) => {
         }
       "
     >
-      <div class="i-lucide-link h-5 w-5"></div>
+      <div class='i-lucide-link h-5 w-5'></div>
     </Toggle>
   </InlinePopover>
 
   <InlinePopover
-    class="z-10 box-border border border-border bg-background shadow-lg relative flex flex-col w-xs rounded-lg p-4 gap-y-2 items-stretch"
+    class='z-10 box-border border border-border bg-background shadow-lg relative flex flex-col w-xs rounded-lg p-4 gap-y-2 items-stretch'
     :placement="'bottom'"
     :open="linkMenuOpen"
     @openChange="setLinkMenuOpen"
@@ -116,14 +116,14 @@ const handleLinkUpdate = (href?: string) => {
       <input
         placeholder="Paste the link..."
         :defaultValue="getCurrentLink(editor.state)"
-        class="flex h-10 rounded-md w-full bg-background px-3 py-2 text-sm placeholder:text-muted-foreground transition border box-border border-border border-solid ring-0 ring-transparent focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-0 outline-none focus-visible:outline-none file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:cursor-not-allowed disabled:opacity-50"
+        class='flex h-10 rounded-md w-full bg-background px-3 py-2 text-sm placeholder:text-muted-foreground transition border box-border border-border border-solid ring-0 ring-transparent focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-0 outline-none focus-visible:outline-none file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:cursor-not-allowed disabled:opacity-50'
       />
     </form>
     <button
       v-if="editor.marks.link.isActive()"
       @click="handleLinkUpdate()"
       @mousedown.prevent
-      class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-3"
+      class='inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-3'
     >
       Remove link
     </button>

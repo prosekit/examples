@@ -23,15 +23,15 @@ const handleUserInsert = (id: number, username: string) => {
 </script>
 
 <template>
-  <AutocompletePopover :regex="/@\w*$/" class="relative block max-h-[400px] min-w-[120px] select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded-lg border border-border bg-background shadow-lg">
+  <AutocompletePopover :regex="/@\w*$/" class='relative block max-h-[400px] min-w-[120px] select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded-lg border border-border bg-background shadow-lg'>
     <AutocompleteList>
-      <AutocompleteEmpty class="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-secondary">
+      <AutocompleteEmpty class='relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-secondary'>
         No results
       </AutocompleteEmpty>
       <AutocompleteItem
         v-for="user in users"
         :key="user.id"
-        class="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-secondary"
+        class='relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-secondary'
         @select="handleUserInsert(user.id, user.name)"
       >
         {{ user.name }}

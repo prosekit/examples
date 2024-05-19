@@ -31,7 +31,7 @@ effect(() => {
   <InlinePopover
     :open="open"
     :onOpenChange="handleOpenChange"
-    class="z-10 box-border border border-border bg-background shadow-lg relative flex min-w-[120px] space-x-1 overflow-auto whitespace-nowrap rounded-md p-1"
+    class='z-10 box-border border border-border bg-background shadow-lg relative flex min-w-[120px] space-x-1 overflow-auto whitespace-nowrap rounded-md p-1'
   >
     <Toggle
       :pressed="editor.marks.textColor.isActive({ color: red })"

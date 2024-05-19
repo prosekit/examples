@@ -7,13 +7,13 @@ const editor = useEditor<EditorExtension>({ update: true })
 </script>
 
 <template>
-  <div class="z-2 sticky top-0 box-border flex flex-wrap gap-1 p-2 items-center bg-background border-border border-solid border-l-0 border-r-0 border-t-0 border-b">
+  <div class='z-2 sticky top-0 box-border flex flex-wrap gap-1 p-2 items-center bg-background border-border border-solid border-l-0 border-r-0 border-t-0 border-b'>
     <Toggle
       :pressed="editor.nodes.list.isActive({ kind: 'bullet' })"
       :disabled="!editor.commands.toggleList.canApply({ kind: 'bullet' })"
       :onClick="() => editor.commands.toggleList({ kind: 'bullet' })"
     >
-      <div class="i-lucide-list h-5 w-5"></div>
+      <div class='i-lucide-list h-5 w-5'></div>
     </Toggle>
 
     <Toggle
@@ -21,7 +21,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       :disabled="!editor.commands.toggleList.canApply({ kind: 'ordered' })"
       :onClick="() => editor.commands.toggleList({ kind: 'ordered' })"
     >
-      <div class="i-lucide-list-ordered h-5 w-5"></div>
+      <div class='i-lucide-list-ordered h-5 w-5'></div>
     </Toggle>
 
     <Toggle
@@ -29,7 +29,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       :disabled="!editor.commands.toggleList.canApply({ kind: 'task' })"
       :onClick="() => editor.commands.toggleList({ kind: 'task' })"
     >
-      <div class="i-lucide-list-checks h-5 w-5"></div>
+      <div class='i-lucide-list-checks h-5 w-5'></div>
     </Toggle>
 
     <Toggle
@@ -37,7 +37,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       :disabled="!editor.commands.toggleList.canApply({ kind: 'toggle' })"
       :onClick="() => editor.commands.toggleList({ kind: 'toggle' })"
     >
-      <div class="i-lucide-list-collapse h-5 w-5"></div>
+      <div class='i-lucide-list-collapse h-5 w-5'></div>
     </Toggle>
   </div>
 </template>
