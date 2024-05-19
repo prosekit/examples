@@ -13,7 +13,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       :disabled="!editor.commands.undo.canApply()"
       :onClick="() => editor.commands.undo()"
     >
-      <div className='i-lucide-undo-2 h-5 w-5' />
+      <div class='i-lucide-undo-2 h-5 w-5' />
     </Toggle>
 
     <Toggle
@@ -21,7 +21,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       :disabled="!editor.commands.redo.canApply()"
       :onClick="() => editor.commands.redo()"
     >
-      <div className='i-lucide-redo-2 h-5 w-5' />
+      <div class='i-lucide-redo-2 h-5 w-5' />
     </Toggle>
 
     <Toggle

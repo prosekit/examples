@@ -15,7 +15,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       :onClick="() => editor.commands.undo()"
       tooltip="Undo"
     >
-      <div className='i-lucide-undo-2 h-5 w-5' />
+      <div class='i-lucide-undo-2 h-5 w-5' />
     </Toggle>
 
     <Toggle
@@ -24,7 +24,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       :onClick="() => editor.commands.redo()"
       tooltip="Redo"
     >
-      <div className='i-lucide-redo-2 h-5 w-5' />
+      <div class='i-lucide-redo-2 h-5 w-5' />
     </Toggle>
 
     <Toggle
@@ -157,7 +157,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       :disabled="!editor.commands.insertImage.canApply()"
       tooltip="Insert Image"
     >
-      <div className='i-lucide-image h-5 w-5'></div>
+      <div class='i-lucide-image h-5 w-5'></div>
     </ImageUploadPopover>
   </div>
 </template>

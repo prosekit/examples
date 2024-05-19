@@ -13,7 +13,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       :disabled="!editor.commands.setCodeBlock.canApply()"
       :onClick="() => editor.commands.setCodeBlock()"
     >
-      <div className='i-lucide-square-code h-5 w-5' />
+      <div class='i-lucide-square-code h-5 w-5' />
     </Toggle>
   </div>
 </template>
