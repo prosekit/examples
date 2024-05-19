@@ -7,7 +7,7 @@ const editor = useEditor<EditorExtension>({ update: true })
 </script>
 
 <template>
-  <div class="z-2 sticky top-0 box-border flex flex-wrap gap-1 p-2 items-center bg-white dark:bg-neutral-900 border-zinc-200 dark:border-zinc-800 border-solid border-l-0 border-r-0 border-t-0 border-b">
+  <div class="z-2 sticky top-0 box-border flex flex-wrap gap-1 p-2 items-center bg-background border-border border-solid border-l-0 border-r-0 border-t-0 border-b">
     <Toggle
       :pressed="editor.nodes.heading.isActive({ level: 1 })"
       :onClick="() => editor.commands.toggleHeading({ level: 1 })"

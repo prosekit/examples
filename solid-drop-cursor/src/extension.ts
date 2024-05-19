@@ -18,7 +18,7 @@ export function defineExtension() {
     defineDropCursor({
       color: false,
       width: 4,
-      class: 'transition-all bg-blue-500',
+      class: "transition-all bg-blue-500",
     }),
   ])
 }

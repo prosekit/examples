@@ -16,7 +16,7 @@ export default function ImageView(props: ReactNodeViewProps) {
       aspectRatio={aspectRatio}
       onSizeChangeEnd={(attrs) => props.setAttrs(attrs satisfies ImageAttrs)}
       className={clsx(
-        'relative block max-h-[600px] max-w-full',
+        "relative block max-h-[600px] max-w-full",
         (!aspectRatio || aspectRatio <= 1) && 'min-h-[100px]',
         (!aspectRatio || aspectRatio >= 1) && 'min-w-[100px]',
       )}
