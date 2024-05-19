@@ -14,9 +14,9 @@
     "react-dom": "18.3.1"
   },
   "devDependencies": {
-    "@egoist/tailwindcss-icons": "1.7.4",
-    "@iconify-json/lucide": "1.1.186",
-    "@types/react": "18.3.1",
+    "@egoist/tailwindcss-icons": "1.8.0",
+    "@iconify-json/lucide": "1.1.187",
+    "@types/react": "18.3.2",
     "@types/react-dom": "18.3.0",
     "@vitejs/plugin-react": "4.2.1",
     "postcss": "8.4.38",
