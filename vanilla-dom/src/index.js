@@ -1,4 +1,5 @@
 import 'prosekit/basic/style.css'
+
 import { defineBasicExtension } from 'prosekit/basic'
 import { createEditor, union } from 'prosekit/core'
 import { definePlaceholder } from 'prosekit/extensions/placeholder'
@@ -29,9 +30,10 @@ function createList() {
   const list = new AutocompleteList()
   list.editor = editor
   list.append(
-    createItem('Insert Heading 1', () => handleHeadingConvert(1)),
-    createItem('Insert Heading 2', () => handleHeadingConvert(2)),
-    createItem('Insert Heading 3', () => handleHeadingConvert(3)),
+    createItem('Insert Heading 1', () => handleHeadingInsert(1)),
+    createItem('Insert Heading 2', () => handleHeadingInsert(2)),
+    createItem('Turn into Heading 1', () => handleHeadingConvert(1)),
+    createItem('Turn into Heading 2', () => handleHeadingConvert(2)),
   )
   list.className = 'relative block max-h-[400px] min-w-[120px] select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-neutral-900 shadow-lg'
   return list
@@ -52,10 +54,15 @@ function createItem(text, callback) {
 /**
  * @param {number} level
  */
+function handleHeadingInsert(level) {
+  editor.commands.insertHeading({ level })
+}
+
+/**
+ * @param {number} level
+ */
 function handleHeadingConvert(level) {
-  const nodeType = editor.schema.nodes.heading
-  const attrs = { level }
-  editor.commands.setBlockType({ nodeType, attrs })
+  editor.commands.setHeading({ level })
 }
 
 function main() {
