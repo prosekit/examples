@@ -38,7 +38,7 @@ const { users, loading } = useUserQuery(query, open)
   >
     <AutocompleteList :filter="null">
       <AutocompleteEmpty class='relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:bg-zinc-800'>
-        No results
+        {{ loading ? 'Loading...' : 'No results' }}
       </AutocompleteEmpty>
       <AutocompleteItem
         v-for="user in users"
