@@ -4,7 +4,9 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  font-family: ui-sans-serif, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-    'Segoe UI Symbol', 'Noto Color Emoji', system-ui;
+body {
+  max-width: 900px;
+  padding: 16px;
+  margin-left: auto;
+  margin-right: auto;
 }
