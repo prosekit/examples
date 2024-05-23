@@ -47,7 +47,7 @@ function createItem(text, callback) {
   const item = new AutocompleteItem()
   item.append(text)
   item.onSelect = callback
-  item.className = 'relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:bg-zinc-800'
+  item.className = 'relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800'
   return item
 }
 

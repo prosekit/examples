@@ -16,7 +16,7 @@ useExtension(extension)
 
 <template>
   <label>Theme:</label>
-  <select v-model="theme" class='outline-unset focus-visible:outline-unset flex items-center justify-center rounded-md p-2 font-medium transition focus-visible:ring-2 focus-visible:ring-zinc-900 dark:ring-zinc-300 disabled:pointer-events-none disabled:opacity-50 hover:disabled:opacity-50 bg-transparent hover:bg-zinc-100 data-[state=on]:bg-gray-200 dark:bg-gray-700'>
+  <select v-model="theme" class='outline-unset focus-visible:outline-unset flex items-center justify-center rounded-md p-2 font-medium transition focus-visible:ring-2 focus-visible:ring-zinc-900 dark:focus-visible:ring-zinc-300 disabled:pointer-events-none disabled:opacity-50 hover:disabled:opacity-50 bg-transparent hover:bg-zinc-100 dark:hover:bg-zinc-800 data-[state=on]:bg-gray-200 dark:data-[state=on]:bg-gray-700'>
     <option
       v-for="info of shikiBundledThemesInfo"
       :key="info.id"
