@@ -4,7 +4,7 @@ import { useEditor } from 'prosekit/vue'
 import { InlinePopover } from 'prosekit/vue/inline-popover'
 import { ref } from 'vue'
 import type { EditorExtension } from './extension'
-import Toggle from './toggle.vue'
+import Button from './button.vue'
 
 const editor = useEditor<EditorExtension>({ update: true })
 const linkMenuOpen = ref(false)
@@ -43,47 +43,47 @@ const handleLinkUpdate = (href?: string) => {
 
 <template>
   <InlinePopover class='z-10 box-border border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-neutral-900 shadow-lg relative flex min-w-[120px] space-x-1 overflow-auto whitespace-nowrap rounded-md p-1'>
-    <Toggle
+    <Button
       :pressed="editor.marks.bold.isActive()"
       :disabled="!editor.commands.toggleBold.canApply()"
       @click="() => editor.commands.toggleBold()"
     >
       <div class='i-lucide-bold h-5 w-5'></div>
-    </Toggle>
+    </Button>
 
-    <Toggle
+    <Button
       :pressed="editor.marks.italic.isActive()"
       :disabled="!editor.commands.toggleItalic.canApply()"
       @click="() => editor.commands.toggleItalic()"
     >
       <div class='i-lucide-italic h-5 w-5'></div>
-    </Toggle>
+    </Button>
 
-    <Toggle
+    <Button
       :pressed="editor.marks.underline.isActive()"
       :disabled="!editor.commands.toggleUnderline.canApply()"
       @click="() => editor.commands.toggleUnderline()"
     >
       <div class='i-lucide-underline h-5 w-5'></div>
-    </Toggle>
+    </Button>
 
-    <Toggle
+    <Button
       :pressed="editor.marks.strike.isActive()"
       :disabled="!editor.commands.toggleStrike.canApply()"
       @click="() => editor.commands.toggleStrike()"
     >
       <div class='i-lucide-strikethrough h-5 w-5'></div>
-    </Toggle>
+    </Button>
 
-    <Toggle
+    <Button
       :pressed="editor.marks.code.isActive()"
       :disabled="!editor.commands.toggleCode.canApply()"
       @click="() => editor.commands.toggleCode()"
     >
       <div class='i-lucide-code h-5 w-5'></div>
-    </Toggle>
+    </Button>
 
-    <Toggle
+    <Button
       v-if="editor.commands.addLink.canApply({ href: '' })"
       :pressed="editor.marks.link.isActive()"
       @click="
@@ -94,7 +94,7 @@ const handleLinkUpdate = (href?: string) => {
       "
     >
       <div class='i-lucide-link h-5 w-5'></div>
-    </Toggle>
+    </Button>
   </InlinePopover>
 
   <InlinePopover

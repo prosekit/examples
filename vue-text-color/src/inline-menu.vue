@@ -2,7 +2,7 @@
 import { useEditor } from 'prosekit/vue'
 import { InlinePopover } from 'prosekit/vue/inline-popover'
 import type { EditorExtension } from './extension'
-import Toggle from './toggle.vue'
+import Button from './button.vue'
 
 const editor = useEditor<EditorExtension>({ update: true })
 const colors = [
@@ -31,7 +31,7 @@ const toggleTextColor = (color: string) => {
 
 <template>
   <InlinePopover class='z-10 box-border border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-neutral-900 shadow-lg relative flex min-w-[120px] space-x-1 overflow-auto whitespace-nowrap rounded-md p-1'>
-    <Toggle
+    <Button
       v-for="color in colors"
       :key="color.name"
       :pressed="hasTextColor(color.value)"
@@ -39,6 +39,6 @@ const toggleTextColor = (color: string) => {
       :tooltip="color.name"
     >
       <span :style="{ color: color.value }">A</span>
-    </Toggle>
+    </Button>
   </InlinePopover>
 </template>

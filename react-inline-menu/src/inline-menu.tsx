@@ -4,8 +4,8 @@ import { useEditor } from 'prosekit/react'
 import { InlinePopover } from 'prosekit/react/inline-popover'
 import { useState } from 'react'
 
+import Button from './button'
 import type { EditorExtension } from './extension'
-import Toggle from './toggle'
 
 export default function InlineMenu() {
   const editor = useEditor<EditorExtension>({ update: true })
@@ -47,48 +47,48 @@ export default function InlineMenu() {
           }
         }}
       >
-        <Toggle
+        <Button
           pressed={editor.marks.bold.isActive()}
           disabled={!editor.commands.toggleBold.canApply()}
           onClick={() => editor.commands.toggleBold()}
         >
           <div className='i-lucide-bold h-5 w-5'></div>
-        </Toggle>
+        </Button>
 
-        <Toggle
+        <Button
           pressed={editor.marks.italic.isActive()}
           disabled={!editor.commands.toggleItalic.canApply()}
           onClick={() => editor.commands.toggleItalic()}
         >
           <div className='i-lucide-italic h-5 w-5'></div>
-        </Toggle>
+        </Button>
 
-        <Toggle
+        <Button
           pressed={editor.marks.underline.isActive()}
           disabled={!editor.commands.toggleUnderline.canApply()}
           onClick={() => editor.commands.toggleUnderline()}
         >
           <div className='i-lucide-underline h-5 w-5'></div>
-        </Toggle>
+        </Button>
 
-        <Toggle
+        <Button
           pressed={editor.marks.strike.isActive()}
           disabled={!editor.commands.toggleStrike.canApply()}
           onClick={() => editor.commands.toggleStrike()}
         >
           <div className='i-lucide-strikethrough h-5 w-5'></div>
-        </Toggle>
+        </Button>
 
-        <Toggle
+        <Button
           pressed={editor.marks.code.isActive()}
           disabled={!editor.commands.toggleCode.canApply()}
           onClick={() => editor.commands.toggleCode()}
         >
           <div className='i-lucide-code h-5 w-5'></div>
-        </Toggle>
+        </Button>
 
         {editor.commands.addLink.canApply({ href: '' }) && (
-          <Toggle
+          <Button
             pressed={editor.marks.link.isActive()}
             onClick={() => {
               editor.commands.expandLink()
@@ -96,7 +96,7 @@ export default function InlineMenu() {
             }}
           >
             <div className='i-lucide-link h-5 w-5'></div>
-          </Toggle>
+          </Button>
         )}
       </InlinePopover>
 
