@@ -1,5 +1,5 @@
 
-import Toggle from './toggle'
+import Button from './button'
 import { useReadonly } from './use-readonly'
 
 export default function Toolbar() {
@@ -7,13 +7,13 @@ export default function Toolbar() {
 
   return (
     <div className='z-2 sticky top-0 box-border flex flex-wrap gap-1 p-2 items-center bg-white dark:bg-neutral-900 border-zinc-200 dark:border-zinc-800 border-solid border-l-0 border-r-0 border-t-0 border-b'>
-      <Toggle pressed={readonly} onClick={() => setReadonly(true)}>
+      <Button pressed={readonly} onClick={() => setReadonly(true)}>
         Readonly
-      </Toggle>
+      </Button>
 
-      <Toggle pressed={!readonly} onClick={() => setReadonly(false)}>
+      <Button pressed={!readonly} onClick={() => setReadonly(false)}>
         Editable
-      </Toggle>
+      </Button>
     </div>
   )
 }

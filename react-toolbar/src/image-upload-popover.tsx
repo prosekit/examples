@@ -6,8 +6,8 @@ import {
 } from 'prosekit/react/popover'
 import { useState, type FC, type ReactNode } from 'react'
 
+import Button from './button'
 import type { EditorExtension } from './extension'
-import Toggle from './toggle'
 
 export const ImageUploadPopover: FC<{
   tooltip: string
@@ -70,9 +70,9 @@ export const ImageUploadPopover: FC<{
   return (
     <PopoverRoot open={open} onOpenChange={handleOpenChange}>
       <PopoverTrigger>
-        <Toggle pressed={open} disabled={disabled} tooltip={tooltip}>
+        <Button pressed={open} disabled={disabled} tooltip={tooltip}>
           {children}
-        </Toggle>
+        </Button>
       </PopoverTrigger>
 
       <PopoverContent className='flex flex-col gap-y-4 p-6 text-sm w-sm z-10 box-border rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-neutral-900 shadow-lg will-change-transform data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0 data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95 data-[state=open]:animate-duration-150 data-[state=closed]:animate-duration-200 data-[side=bottom]:slide-in-from-top-2 data-[side=bottom]:slide-out-to-top-2 data-[side=left]:slide-in-from-right-2 data-[side=left]:slide-out-to-right-2 data-[side=right]:slide-in-from-left-2 data-[side=right]:slide-out-to-left-2 data-[side=top]:slide-in-from-bottom-2 data-[side=top]:slide-out-to-bottom-2'>
