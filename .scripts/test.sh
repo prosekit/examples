@@ -14,7 +14,10 @@ $PACKAGE_MANAGER --version
 TEST_DIRS="${@:2}"
 
 for TEST_DIR in $TEST_DIRS; do
+    echo "##################################################################"
     echo "Testing directory $TEST_DIR"
+    echo "##################################################################"
+    echo ""
     cd "$ROOT"
     cd "$TEST_DIR"
 
