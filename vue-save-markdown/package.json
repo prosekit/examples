@@ -19,13 +19,13 @@
     "unified": "^11.0.4"
   },
   "devDependencies": {
-    "@egoist/tailwindcss-icons": "1.8.0",
-    "@iconify-json/lucide": "1.1.188",
-    "@vitejs/plugin-vue": "5.0.4",
+    "@egoist/tailwindcss-icons": "1.8.1",
+    "@iconify-json/lucide": "1.1.191",
+    "@vitejs/plugin-vue": "5.0.5",
     "postcss": "8.4.38",
-    "tailwindcss": "3.4.3",
+    "tailwindcss": "3.4.4",
     "typescript": "5.4.5",
-    "vite": "5.2.12",
-    "vue-tsc": "2.0.19"
+    "vite": "5.2.13",
+    "vue-tsc": "2.0.21"
   }
 }
