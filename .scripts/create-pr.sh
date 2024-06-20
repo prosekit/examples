@@ -16,7 +16,7 @@ git checkout -b "$branch_local"
 
 for temp_dir in $(ls -d $ROOT/.templates/template*); do
     cd $temp_dir
-    echo "Updating $(dirname $temp_dir)"
+    echo "Updating $$temp_dir"
     pnpm add prosekit@$target
 done
 git commit -am "feat: update prosekit to $target"
