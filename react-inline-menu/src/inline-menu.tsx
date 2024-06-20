@@ -40,6 +40,7 @@ export default function InlineMenu() {
   return (
     <>
       <InlinePopover
+        data-testid="inline-menu-main"
         className='z-10 box-border border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-neutral-900 shadow-lg relative flex min-w-[120px] space-x-1 overflow-auto whitespace-nowrap rounded-md p-1'
         onOpenChange={(open) => {
           if (!open) {
@@ -51,6 +52,7 @@ export default function InlineMenu() {
           pressed={editor.marks.bold.isActive()}
           disabled={!editor.commands.toggleBold.canApply()}
           onClick={() => editor.commands.toggleBold()}
+          tooltip="Bold"
         >
           <div className='i-lucide-bold h-5 w-5'></div>
         </Button>
@@ -59,6 +61,7 @@ export default function InlineMenu() {
           pressed={editor.marks.italic.isActive()}
           disabled={!editor.commands.toggleItalic.canApply()}
           onClick={() => editor.commands.toggleItalic()}
+          tooltip="Italic"
         >
           <div className='i-lucide-italic h-5 w-5'></div>
         </Button>
@@ -67,6 +70,7 @@ export default function InlineMenu() {
           pressed={editor.marks.underline.isActive()}
           disabled={!editor.commands.toggleUnderline.canApply()}
           onClick={() => editor.commands.toggleUnderline()}
+          tooltip="Underline"
         >
           <div className='i-lucide-underline h-5 w-5'></div>
         </Button>
@@ -75,6 +79,7 @@ export default function InlineMenu() {
           pressed={editor.marks.strike.isActive()}
           disabled={!editor.commands.toggleStrike.canApply()}
           onClick={() => editor.commands.toggleStrike()}
+          tooltip="Strikethrough"
         >
           <div className='i-lucide-strikethrough h-5 w-5'></div>
         </Button>
@@ -83,6 +88,7 @@ export default function InlineMenu() {
           pressed={editor.marks.code.isActive()}
           disabled={!editor.commands.toggleCode.canApply()}
           onClick={() => editor.commands.toggleCode()}
+          tooltip="Code"
         >
           <div className='i-lucide-code h-5 w-5'></div>
         </Button>
@@ -94,6 +100,7 @@ export default function InlineMenu() {
               editor.commands.expandLink()
               toggleLinkMenuOpen()
             }}
+            tooltip="Link"
           >
             <div className='i-lucide-link h-5 w-5'></div>
           </Button>
@@ -101,10 +108,12 @@ export default function InlineMenu() {
       </InlinePopover>
 
       <InlinePopover
-        className='z-10 box-border border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-neutral-900 shadow-lg relative flex flex-col w-xs rounded-lg p-4 gap-y-2 items-stretch'
         placement={'bottom'}
+        defaultOpen={false}
         open={linkMenuOpen}
         onOpenChange={setLinkMenuOpen}
+        data-testid="inline-menu-link"
+        className='z-10 box-border border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-neutral-900 shadow-lg relative flex flex-col w-xs rounded-lg p-4 gap-y-2 items-stretch'
       >
         {linkMenuOpen && (
           <form
