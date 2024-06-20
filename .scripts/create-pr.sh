@@ -15,6 +15,6 @@ for temp_dir in $(ls -d $ROOT/.templates/template*); do
 done
 
 git checkout -b update-prosekit-$target-$(date +%Y%m%d%H%M%S)
-git commit -m "Update prosekit to $target"
+git commit -am "Update prosekit to $target"
 git push --set-upstream origin update-prosekit-$target
 gh pr create --title "feat: update prosekit to $target"
