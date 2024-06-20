@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { useEditor } from 'prosekit/vue'
+import { useEditor, useKeymap } from 'prosekit/vue'
 import { InlinePopover } from 'prosekit/vue/inline-popover'
-import type { EditorExtension } from './extension'
+import { ref } from 'vue'
 import Button from './button.vue'
+import type { EditorExtension } from './extension'
 
 const editor = useEditor<EditorExtension>({ update: true })
 const colors = [
@@ -27,10 +28,29 @@ const toggleTextColor = (color: string) => {
     editor.value.commands.setTextColor({ color })
   }
 }
+
+const open = ref(false)
+const onOpenChange = (value: boolean) => {
+  open.value = value
+}
+
+const onEscape = () => {
+  if (open.value) {
+    open.value = false
+    return true
+  }
+  return false
+}
+
+useKeymap({ Escape: onEscape })
 </script>
 
 <template>
-  <InlinePopover class='z-10 box-border border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-neutral-900 shadow-lg relative flex min-w-[120px] space-x-1 overflow-auto whitespace-nowrap rounded-md p-1'>
+  <InlinePopover
+    class='z-10 box-border border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-neutral-900 shadow-lg relative flex min-w-[120px] space-x-1 overflow-auto whitespace-nowrap rounded-md p-1'
+    :onOpenChange="onOpenChange"
+    :open="open"
+  >
     <Button
       v-for="color in colors"
       :key="color.name"
