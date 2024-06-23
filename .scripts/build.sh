@@ -19,9 +19,6 @@ function sync_example() {
     local template_dir=$2
     local target_dir=$3
 
-    template_dir="./.templates/$template_name/"
-    target_dir="./$target_name/"
-
     rsync --exclude 'node_modules' -av "$template_dir" "$target_dir"
     rsync --exclude 'node_modules' -av "$source_dir" "${target_dir}src/"
 
