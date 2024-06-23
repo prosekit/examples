@@ -35,7 +35,7 @@ do
     rm -rf ./$framework-*
     for source_dir in ./.temp/prosekit/playground/examples/$framework-*/
     do
-        template_dir="./.templates/framework-$framework/"
+        template_dir="./.templates/template-$framework/"
         target_dir="./$(basename "$source_dir")/"
         sync_example "$source_dir" "$template_dir" "$target_dir"
     done
