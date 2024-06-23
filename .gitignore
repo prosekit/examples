@@ -1,5 +1,5 @@
 pnpm-lock.yaml
-.templates/prosekit/
+next-env.d.ts
 
 # Logs
 logs

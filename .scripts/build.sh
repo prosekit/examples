@@ -43,3 +43,6 @@ done
 
 rm -rf ./nuxt-full
 sync_example ./.temp/prosekit/playground/examples/vue-full/ ./.templates/template-nuxt/ ./nuxt-full/
+
+rm -rf ./next-full
+sync_example ./.temp/prosekit/playground/examples/react-toolbar/ ./.templates/template-next/ ./next-full/
