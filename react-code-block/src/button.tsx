@@ -3,7 +3,7 @@ import {
   TooltipRoot,
   TooltipTrigger,
 } from 'prosekit/react/tooltip'
-import type { ReactNode } from 'react'
+import { useState, type ReactNode } from 'react'
 
 export default function Button({
   pressed,
@@ -18,8 +18,10 @@ export default function Button({
   tooltip?: string
   children: ReactNode
 }) {
+  const [tooltipOpen, setTooltipOpen] = useState(false)
+
   return (
-    <TooltipRoot>
+    <TooltipRoot open={tooltipOpen} onOpenChange={setTooltipOpen}>
       <TooltipTrigger className='block'>
         <button
           data-state={pressed ? 'on' : 'off'}
@@ -32,7 +34,7 @@ export default function Button({
           {tooltip ? <span className="sr-only">{tooltip}</span> : null}
         </button>
       </TooltipTrigger>
-      {tooltip && !disabled ? (
+      {tooltip && !disabled && tooltipOpen ? (
         <TooltipContent className='z-50 overflow-hidden rounded-md border border-solid bg-zinc-900 dark:bg-zinc-50 px-3 py-1.5 text-xs text-zinc-50 dark:text-zinc-900 shadow-sm will-change-transform data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0 data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95 data-[state=open]:animate-duration-150 data-[state=closed]:animate-duration-200 data-[side=bottom]:slide-in-from-top-2 data-[side=bottom]:slide-out-to-top-2 data-[side=left]:slide-in-from-right-2 data-[side=left]:slide-out-to-right-2 data-[side=right]:slide-in-from-left-2 data-[side=right]:slide-out-to-left-2 data-[side=top]:slide-in-from-bottom-2 data-[side=top]:slide-out-to-bottom-2'>
           {tooltip}
         </TooltipContent>

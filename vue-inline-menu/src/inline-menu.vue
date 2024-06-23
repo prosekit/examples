@@ -3,8 +3,8 @@ import type { EditorState } from 'prosekit/pm/state'
 import { useEditor } from 'prosekit/vue'
 import { InlinePopover } from 'prosekit/vue/inline-popover'
 import { ref } from 'vue'
-import type { EditorExtension } from './extension'
 import Button from './button.vue'
+import type { EditorExtension } from './extension'
 
 const editor = useEditor<EditorExtension>({ update: true })
 const linkMenuOpen = ref(false)
@@ -42,10 +42,14 @@ const handleLinkUpdate = (href?: string) => {
 </script>
 
 <template>
-  <InlinePopover class='z-10 box-border border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-neutral-900 shadow-lg relative flex min-w-[120px] space-x-1 overflow-auto whitespace-nowrap rounded-md p-1'>
+  <InlinePopover
+    data-testid="inline-menu-main"
+    class='z-10 box-border border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-neutral-900 shadow-lg relative flex min-w-[120px] space-x-1 overflow-auto whitespace-nowrap rounded-md p-1'
+  >
     <Button
       :pressed="editor.marks.bold.isActive()"
       :disabled="!editor.commands.toggleBold.canApply()"
+      tooltip="Bold"
       @click="() => editor.commands.toggleBold()"
     >
       <div class='i-lucide-bold h-5 w-5'></div>
@@ -55,6 +59,7 @@ const handleLinkUpdate = (href?: string) => {
       :pressed="editor.marks.italic.isActive()"
       :disabled="!editor.commands.toggleItalic.canApply()"
       @click="() => editor.commands.toggleItalic()"
+      tooltip="Italic"
     >
       <div class='i-lucide-italic h-5 w-5'></div>
     </Button>
@@ -63,6 +68,7 @@ const handleLinkUpdate = (href?: string) => {
       :pressed="editor.marks.underline.isActive()"
       :disabled="!editor.commands.toggleUnderline.canApply()"
       @click="() => editor.commands.toggleUnderline()"
+      tooltip="Underline"
     >
       <div class='i-lucide-underline h-5 w-5'></div>
     </Button>
@@ -71,6 +77,7 @@ const handleLinkUpdate = (href?: string) => {
       :pressed="editor.marks.strike.isActive()"
       :disabled="!editor.commands.toggleStrike.canApply()"
       @click="() => editor.commands.toggleStrike()"
+      tooltip="Strike"
     >
       <div class='i-lucide-strikethrough h-5 w-5'></div>
     </Button>
@@ -79,6 +86,7 @@ const handleLinkUpdate = (href?: string) => {
       :pressed="editor.marks.code.isActive()"
       :disabled="!editor.commands.toggleCode.canApply()"
       @click="() => editor.commands.toggleCode()"
+      tooltip="Code"
     >
       <div class='i-lucide-code h-5 w-5'></div>
     </Button>
@@ -92,16 +100,19 @@ const handleLinkUpdate = (href?: string) => {
           toggleLinkMenuOpen()
         }
       "
+      tooltip="Link"
     >
       <div class='i-lucide-link h-5 w-5'></div>
     </Button>
   </InlinePopover>
 
   <InlinePopover
-    class='z-10 box-border border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-neutral-900 shadow-lg relative flex flex-col w-xs rounded-lg p-4 gap-y-2 items-stretch'
     :placement="'bottom'"
+    :defaultOpen="false"
     :open="linkMenuOpen"
     @openChange="setLinkMenuOpen"
+    data-testid="inline-menu-link"
+    class='z-10 box-border border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-neutral-900 shadow-lg relative flex flex-col w-xs rounded-lg p-4 gap-y-2 items-stretch'
   >
     <form
       v-if="linkMenuOpen"
