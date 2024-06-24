@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "prosekit": "0.8.1",
-    "vue": "3.4.27",
+    "vue": "3.4.30",
     "rehype-parse": "^9.0.0",
     "rehype-remark": "^10.0.0",
     "remark-html": "^16.0.1",
@@ -20,12 +20,12 @@
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "1.8.1",
-    "@iconify-json/lucide": "1.1.191",
+    "@iconify-json/lucide": "1.1.194",
     "@vitejs/plugin-vue": "5.0.5",
     "postcss": "8.4.38",
     "tailwindcss": "3.4.4",
-    "typescript": "5.4.5",
-    "vite": "5.2.13",
-    "vue-tsc": "2.0.21"
+    "typescript": "5.5.2",
+    "vite": "5.3.1",
+    "vue-tsc": "2.0.22"
   }
 }
