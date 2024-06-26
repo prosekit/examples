@@ -9,6 +9,7 @@ ROOT=$(pwd)
 target="${1:-latest}"
 
 git checkout master
+git pull
 branch_local="update-$target-$(date +%Y%m%d%H%M%S)"
 branch_remote="update-$target"
 
