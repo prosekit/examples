@@ -1,5 +1,5 @@
 {
-  "name": "template-preact",
+  "name": "example-preact-minimal",
   "private": true,
   "version": "0.0.0",
   "type": "module",
