@@ -18,16 +18,24 @@ function sync_example() {
     local source_dir=$1
     local template_dir=$2
     local target_dir=$3
+    local target_pkg_json="${target_dir}package.json"
+    local target_src_pkg_json="${target_dir}src/package.json"
+    local tmp=$(mktemp)
 
     rsync --exclude 'node_modules' -av "$template_dir" "$target_dir"
     rsync --exclude 'node_modules' -av "$source_dir" "${target_dir}src/"
 
-    if test -f "${target_dir}src/package.json"; then
+    if test -f "$target_src_pkg_json"; then
         # Merge two package.json files
-        jq -s '.[0] * .[1]' "${template_dir}package.json" "${target_dir}src/package.json" > ./.temp/package.json 
-        mv ./.temp/package.json "${target_dir}package.json"
-        rm "${target_dir}src/package.json"
+        jq -s '.[0] * .[1]' "$target_pkg_json" "$target_src_pkg_json" > "$tmp"
+        mv "$tmp" "$target_pkg_json"
+        rm "$target_src_pkg_json"
     fi
+
+    # Alter the package.json and change the "name" field
+    example_name=$(basename "$target_dir")
+    jq ".name = \"example-${example_name}\"" "$target_pkg_json" > "$tmp"
+    mv "$tmp" "$target_pkg_json"
 }
 
 for framework in lit preact react solid svelte vanilla vue 
