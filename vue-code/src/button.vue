@@ -4,7 +4,6 @@ import {
   TooltipRoot,
   TooltipTrigger,
 } from 'prosekit/vue/tooltip'
-import { ref } from 'vue'
 
 defineProps<{
   pressed?: Boolean
@@ -12,15 +11,10 @@ defineProps<{
   tooltip?: string
   onClick?: VoidFunction
 }>()
-
-const tooltipOpen = ref(false)
 </script>
 
 <template>
-  <TooltipRoot
-    :open="tooltipOpen"
-    @openChange="(value) => (tooltipOpen = value)"
-  >
+  <TooltipRoot>
     <TooltipTrigger class='block'>
       <button
         :data-state="pressed ? 'on' : 'off'"
@@ -33,10 +27,7 @@ const tooltipOpen = ref(false)
         <span v-if="tooltip" class="sr-only">{{ tooltip }}</span>
       </button>
     </TooltipTrigger>
-    <TooltipContent
-      v-if="tooltip && !disabled && tooltipOpen"
-      class='z-50 overflow-hidden rounded-md border border-solid bg-zinc-900 dark:bg-zinc-50 px-3 py-1.5 text-xs text-zinc-50 dark:text-zinc-900 shadow-sm will-change-transform data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0 data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95 data-[state=open]:animate-duration-150 data-[state=closed]:animate-duration-200 data-[side=bottom]:slide-in-from-top-2 data-[side=bottom]:slide-out-to-top-2 data-[side=left]:slide-in-from-right-2 data-[side=left]:slide-out-to-right-2 data-[side=right]:slide-in-from-left-2 data-[side=right]:slide-out-to-left-2 data-[side=top]:slide-in-from-bottom-2 data-[side=top]:slide-out-to-bottom-2'
-    >
+    <TooltipContent class='z-50 overflow-hidden rounded-md border border-solid bg-zinc-900 dark:bg-zinc-50 px-3 py-1.5 text-xs text-zinc-50 dark:text-zinc-900 shadow-sm will-change-transform data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0 data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95 data-[state=open]:animate-duration-150 data-[state=closed]:animate-duration-200 data-[side=bottom]:slide-in-from-top-2 data-[side=bottom]:slide-out-to-top-2 data-[side=left]:slide-in-from-right-2 data-[side=left]:slide-out-to-right-2 data-[side=right]:slide-in-from-left-2 data-[side=right]:slide-out-to-left-2 data-[side=top]:slide-in-from-bottom-2 data-[side=top]:slide-out-to-bottom-2'>
       {{ tooltip }}
     </TooltipContent>
   </TooltipRoot>
