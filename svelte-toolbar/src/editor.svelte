@@ -1,17 +1,17 @@
 <script lang="ts">
 import 'prosekit/basic/style.css'
 
-import { defineBasicExtension } from 'prosekit/basic'
 import { createEditor } from 'prosekit/core'
 import { ProseKit } from 'prosekit/svelte'
+import { defineExtension } from './extension'
 import Toolbar from './toolbar.svelte'
 
-const extension = defineBasicExtension()
+const extension = defineExtension()
 const editor = createEditor({ extension })
 
 const mount = (element: HTMLElement) => {
   editor.mount(element)
-  return { destroy: () => editor.mount(null) }
+  return { destroy: () => editor.unmount() }
 }
 </script>
 
