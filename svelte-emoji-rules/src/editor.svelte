@@ -3,12 +3,12 @@ import 'prosekit/basic/style.css'
 
 import { createEditor, jsonFromNode, type NodeJSON } from 'prosekit/core'
 import { ProseKit, useDocChange } from 'prosekit/svelte'
-import { defineRootExtension } from './extension'
+import { defineExtension } from './extension'
 
 export let defaultDoc: NodeJSON | undefined = undefined
 export let onDocUpdate: ((doc: NodeJSON) => void) | undefined = undefined
 
-const extension = defineRootExtension()
+const extension = defineExtension()
 const editor = createEditor({ extension, defaultDoc })
 
 useDocChange((doc) => onDocUpdate?.(jsonFromNode(doc)), { editor })

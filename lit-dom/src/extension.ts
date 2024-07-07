@@ -7,7 +7,7 @@ import {
 
 import { defineCodeBlockView } from './code-block-view'
 
-export function defineRootExtension() {
+export function defineExtension() {
   return union([
     defineBasicExtension(),
     defineCodeBlock(),
@@ -16,4 +16,4 @@ export function defineRootExtension() {
   ])
 }
 
-export type RootExtension = ReturnType<typeof defineRootExtension>
+export type EditorExtension = ReturnType<typeof defineExtension>
