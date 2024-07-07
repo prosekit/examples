@@ -5,8 +5,8 @@ import { defineBasicExtension } from 'prosekit/basic'
 import { createEditor, jsonFromNode } from 'prosekit/core'
 import { ProseKit } from 'prosekit/svelte'
 import { onDestroy, onMount } from 'svelte'
-import Toolbar from './toolbar.svelte'
 import { writable } from 'svelte/store'
+import Toolbar from './toolbar.svelte'
 
 const extension = defineBasicExtension()
 const editor = createEditor({ extension })
@@ -32,7 +32,7 @@ const pushSubmition = (hotkey: string) => {
       <div bind:this={place} class='ProseMirror box-border min-h-full px-[max(40px,_calc(50%-330px))] py-[24px] outline-none outline-0 [&_span[data-mention="user"]]:text-blue-500 [&_span[data-mention="tag"]]:text-violet-500 [&_pre]:text-white [&_pre]:bg-zinc-800'></div>
     </div>
   </div>
-  <fieldset class="mt-4 border">
+  <fieldset class='mt-4 box-border flex max-w-full w-full overflow-x-auto border p-4 rounded-md shadow min-w-0'>
     <legend>Submit Records</legend>
     <ol>
       {#each $submitions as submition, index (index)}
