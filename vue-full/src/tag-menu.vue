@@ -15,7 +15,7 @@ const editor = useEditor<EditorExtension>()
 const handleTagInsert = (id: number, label: string) => {
   editor.value.commands.insertMention({
     id: id.toString(),
-    value: '#' + label,
+    value: '#'  + label,
     kind: 'tag',
   })
   editor.value.commands.insertText({ text: ' ' })
