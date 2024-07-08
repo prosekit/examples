@@ -1,0 +1,16 @@
+<script lang="ts">
+import { useEditor } from 'prosekit/svelte'
+import type { EditorExtension } from './extension'
+import Button from './button.svelte'
+
+const editor = useEditor<EditorExtension>({ update: true })
+</script>
+
+<div class='z-2 box-border border-zinc-200 dark:border-zinc-800 border-solid border-l-0 border-r-0 border-t-0 border-b flex flex-wrap gap-1 p-2 items-center'>
+  <Button
+    pressed={$editor.marks.code.isActive()}
+    onClick={() => $editor.commands.toggleCode()}
+  >
+    Code
+  </Button>
+</div>
