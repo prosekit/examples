@@ -32,7 +32,7 @@ const handleUserInsert = (id: number, username: string) => {
         v-for="user in users"
         :key="user.id"
         class='relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800'
-        @select="handleUserInsert(user.id, user.name)"
+        @select="() => handleUserInsert(user.id, user.name)"
       >
         {{ user.name }}
       </AutocompleteItem>

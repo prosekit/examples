@@ -43,7 +43,7 @@ const { users, loading } = useUserQuery(query, open)
       <AutocompleteItem
         v-for="user in users"
         :key="user.id"
-        @select="handleUserInsert(user.id, user.name)"
+        @select="() => handleUserInsert(user.id, user.name)"
         class='relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800'
       >
         <span :class="loading && 'opacity-50'">
