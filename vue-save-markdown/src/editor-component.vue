@@ -7,12 +7,15 @@ import { ref, watchPostEffect } from 'vue'
 
 const props = defineProps<{
   editor: Editor
-  onDocChange: () => void
+}>()
+
+const emit = defineEmits<{
+  docChange: []
 }>()
 
 useDocChange(
   () => {
-    props.onDocChange()
+    emit('docChange')
   },
   { editor: props.editor },
 )

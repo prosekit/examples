@@ -18,7 +18,7 @@ const isTextAlignActive = (editor: Editor<EditorExtension>, value: string) => {
     <Button
       :pressed="isTextAlignActive(editor, 'left')"
       :disabled="!editor.commands.setTextAlign.canApply('left')"
-      :onClick="() => editor.commands.setTextAlign('left')"
+      @click="() => editor.commands.setTextAlign('left')"
     >
       Left
     </Button>
@@ -26,7 +26,7 @@ const isTextAlignActive = (editor: Editor<EditorExtension>, value: string) => {
     <Button
       :pressed="isTextAlignActive(editor, 'center')"
       :disabled="!editor.commands.setTextAlign.canApply('center')"
-      :onClick="() => editor.commands.setTextAlign('center')"
+      @click="() => editor.commands.setTextAlign('center')"
     >
       Center
     </Button>
@@ -34,7 +34,7 @@ const isTextAlignActive = (editor: Editor<EditorExtension>, value: string) => {
     <Button
       :pressed="isTextAlignActive(editor, 'right')"
       :disabled="!editor.commands.setTextAlign.canApply('right')"
-      :onClick="() => editor.commands.setTextAlign('right')"
+      @click="() => editor.commands.setTextAlign('right')"
     >
       Right
     </Button>
@@ -42,7 +42,7 @@ const isTextAlignActive = (editor: Editor<EditorExtension>, value: string) => {
     <Button
       :pressed="isTextAlignActive(editor, 'justify')"
       :disabled="!editor.commands.setTextAlign.canApply('justify')"
-      :onClick="() => editor.commands.setTextAlign('justify')"
+      @click="() => editor.commands.setTextAlign('justify')"
     >
       Justify
     </Button>

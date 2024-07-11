@@ -64,7 +64,7 @@ const handleOpenChange = (openValue: boolean) => {
 </script>
 
 <template>
-  <PopoverRoot :open="open" :onOpenChange="handleOpenChange">
+  <PopoverRoot :open="open" @openChange="handleOpenChange">
     <PopoverTrigger>
       <Button
         :pressed="open"
