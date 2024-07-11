@@ -9,7 +9,7 @@ mkdir -p ./.temp/prosekit
 rm -rf ./.temp/prosekit
 git clone --depth 1 https://github.com/ocavue/prosekit ./.temp/prosekit
 
-for file in $ROOT/.temp/prosekit/playground/examples/**/*
+for file in $(find $ROOT/.temp/prosekit/playground/examples/ -type f)
 do 
     node .scripts/replace-class-names.mjs "$file"
 done
@@ -38,19 +38,19 @@ function sync_example() {
     mv "$tmp" "$target_pkg_json"
 }
 
-for framework in lit preact react solid svelte vanilla vue 
+for framework in lit preact react solid svelte vanilla vue
 do 
     rm -rf ./$framework-*
-    for source_dir in ./.temp/prosekit/playground/examples/$framework-*/
+    for source_dir in ./.temp/prosekit/playground/examples/$framework/*/
     do
         template_dir="./.templates/template-$framework/"
-        target_dir="./$(basename "$source_dir")/"
+        target_dir="./${framework}-$(basename "$source_dir")/"
         sync_example "$source_dir" "$template_dir" "$target_dir"
     done
 done
 
 rm -rf ./nuxt-full
-sync_example ./.temp/prosekit/playground/examples/vue-full/ ./.templates/template-nuxt/ ./nuxt-full/
+sync_example ./.temp/prosekit/playground/examples/vue/full/ ./.templates/template-nuxt/ ./nuxt-full/
 
 rm -rf ./next-full
-sync_example ./.temp/prosekit/playground/examples/react-toolbar/ ./.templates/template-next/ ./next-full/
+sync_example ./.temp/prosekit/playground/examples/react/toolbar/ ./.templates/template-next/ ./next-full/
