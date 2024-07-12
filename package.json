@@ -19,23 +19,6 @@
       ":semanticCommitTypeAll(chore)",
       ":disablePeerDependencies",
       ":includeNodeModules"
-    ],
-    "packageRules": [
-      {
-        "groupName": "prosekit",
-        "matchPackagePatterns": [
-          "prosekit"
-        ]
-      },
-      {
-        "groupName": "dependencies",
-        "excludePackagePatterns": [
-          "prosekit"
-        ],
-        "extends": [
-          "schedule:monthly"
-        ]
-      }
     ]
   }
 }
