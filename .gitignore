@@ -1,5 +1,6 @@
 pnpm-lock.yaml
 next-env.d.ts
+package-lock.json
 
 # Logs
 logs
