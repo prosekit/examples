@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "1.8.1",
-    "@iconify-json/lucide": "1.1.199",
+    "@iconify-json/lucide": "1.1.200",
     "@sveltejs/vite-plugin-svelte": "3.1.1",
     "@tsconfig/svelte": "5.0.4",
     "postcss": "8.4.39",
