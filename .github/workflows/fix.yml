@@ -25,6 +25,6 @@ jobs:
         run: bash .scripts/build.sh
 
       - name: Fix linting
-        run: pnpm install && pnpm run fix
+        run: npm install && npm run fix
 
       - uses: autofix-ci/action@2891949f3779a1cafafae1523058501de3d4e944
