@@ -28,6 +28,8 @@ function sync_example() {
     local target_src_pkg_json="${target_dir}${target_src_dir}package.json"
     local tmp=$(mktemp)
 
+    rm -rf "$target_dir"
+
     rsync --exclude 'node_modules' -av "$template_dir" "$target_dir"
     rsync --exclude 'node_modules' -av "$source_dir" "${target_dir}${target_src_dir}"
 
@@ -55,11 +57,8 @@ do
     done
 done
 
-rm -rf ./nuxt-full
 sync_example ./.temp/prosekit/playground/examples/vue/full/ ./.templates/template-nuxt/ ./nuxt-full/
 
-rm -rf ./next-full
 sync_example ./.temp/prosekit/playground/examples/react/toolbar/ ./.templates/template-next/ ./next-full/
 
-rm -rf ./sveltekit-full
 sync_example ./.temp/prosekit/playground/examples/svelte/full/ ./.templates/template-sveltekit/ ./sveltekit-full/ lib/
