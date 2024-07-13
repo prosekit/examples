@@ -67,7 +67,7 @@ export default function Search({ onClose }: { onClose?: VoidFunction }) {
   }
 
   return (
-    <div className='z-2 box-border border-zinc-200 dark:border-zinc-800 border-solid border-l-0 border-r-0 border-t-0 border-b grid grid-cols-[min-content_1fr_min-content] gap-2 p-2'>
+    <div className="z-2 box-border border-zinc-200 dark:border-zinc-800 border-solid border-l-0 border-r-0 border-t-0 border-b grid grid-cols-[min-content_1fr_min-content] gap-2 p-2">
       <Button tooltip="Toggle Replace" onClick={toggleReplace}>
         <span
           className={clsx(
@@ -84,20 +84,20 @@ export default function Search({ onClose }: { onClose?: VoidFunction }) {
         value={searchText}
         onChange={(event) => setSearchText(event.target.value)}
         onKeyDown={handleSearchKeyDown}
-        className='flex h-9 rounded-md w-full bg-white dark:bg-neutral-900 px-3 py-2 text-sm placeholder:text-zinc-500 dark:placeholder:text-zinc-500 transition border box-border border-zinc-200 dark:border-zinc-800 border-solid ring-0 ring-transparent focus-visible:ring-2 focus-visible:ring-zinc-900 dark:focus-visible:ring-zinc-300 focus-visible:ring-offset-0 outline-none focus-visible:outline-none file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:cursor-not-allowed disabled:opacity-50 col-start-2'
+        className="flex h-9 rounded-md w-full bg-white dark:bg-neutral-900 px-3 py-2 text-sm placeholder:text-zinc-500 dark:placeholder:text-zinc-500 transition border box-border border-zinc-200 dark:border-zinc-800 border-solid ring-0 ring-transparent focus-visible:ring-2 focus-visible:ring-zinc-900 dark:focus-visible:ring-zinc-300 focus-visible:ring-offset-0 outline-none focus-visible:outline-none file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:cursor-not-allowed disabled:opacity-50 col-start-2"
       />
-      <div className='flex items-center justify-between gap-1'>
+      <div className="flex items-center justify-between gap-1">
         <Button
           tooltip="Previous (Shift Enter)"
           onClick={editor.commands.findPrev}
         >
-          <span className='i-lucide-arrow-left h-5 w-5' />
+          <span className="i-lucide-arrow-left h-5 w-5" />
         </Button>
         <Button tooltip="Next (Enter)" onClick={editor.commands.findNext}>
-          <span className='i-lucide-arrow-right h-5 w-5' />
+          <span className="i-lucide-arrow-right h-5 w-5" />
         </Button>
         <Button tooltip="Close" onClick={onClose}>
-          <span className='i-lucide-x h-5 w-5' />
+          <span className="i-lucide-x h-5 w-5" />
         </Button>
       </div>
       {showReplace && (
@@ -107,11 +107,11 @@ export default function Search({ onClose }: { onClose?: VoidFunction }) {
           value={replaceText}
           onChange={(event) => setReplaceText(event.target.value)}
           onKeyDown={handleReplaceKeyDown}
-          className='flex h-9 rounded-md w-full bg-white dark:bg-neutral-900 px-3 py-2 text-sm placeholder:text-zinc-500 dark:placeholder:text-zinc-500 transition border box-border border-zinc-200 dark:border-zinc-800 border-solid ring-0 ring-transparent focus-visible:ring-2 focus-visible:ring-zinc-900 dark:focus-visible:ring-zinc-300 focus-visible:ring-offset-0 outline-none focus-visible:outline-none file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:cursor-not-allowed disabled:opacity-50 col-start-2'
+          className="flex h-9 rounded-md w-full bg-white dark:bg-neutral-900 px-3 py-2 text-sm placeholder:text-zinc-500 dark:placeholder:text-zinc-500 transition border box-border border-zinc-200 dark:border-zinc-800 border-solid ring-0 ring-transparent focus-visible:ring-2 focus-visible:ring-zinc-900 dark:focus-visible:ring-zinc-300 focus-visible:ring-offset-0 outline-none focus-visible:outline-none file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:cursor-not-allowed disabled:opacity-50 col-start-2"
         />
       )}
       {showReplace && (
-        <div className='flex items-center justify-between gap-1'>
+        <div className="flex items-center justify-between gap-1">
           <Button
             tooltip="Replace (Enter)"
             onClick={editor.commands.replaceNext}
