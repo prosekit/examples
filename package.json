@@ -13,7 +13,7 @@
   "renovate": {
     "dependencyDashboard": true,
     "branchNameStrict": true,
-    "rangeStrategy": "pin",
+    "rangeStrategy": "bump",
     "extends": [
       "config:base",
       ":semanticCommitTypeAll(chore)",
