@@ -21,7 +21,10 @@ jobs:
       - name: Install npm, yarn and pnpm
         run: corepack enable
 
-      - name: Fix
+      - name: Build examples
         run: bash .scripts/build.sh
+
+      - name: Fix linting
+        run: npm install && npm run fix
 
       - uses: autofix-ci/action@2891949f3779a1cafafae1523058501de3d4e944

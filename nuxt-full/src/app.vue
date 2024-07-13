@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Editor from "./editor.vue";
+import Editor from './editor.vue'
 </script>
 
 <template>
