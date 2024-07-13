@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "build": "echo 'No build step'",
     "fix": "prettier --write ."
   },
   "dependencies": {
