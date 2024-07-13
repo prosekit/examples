@@ -23,7 +23,6 @@ function sync_example() {
     local target_dir=$3
     # Optional sub directory for the target, defaults to "src/"
     local target_src_dir=${4:-"src/"}
-x
 
     local target_pkg_json="${target_dir}package.json"
     local target_src_pkg_json="${target_dir}${target_src_dir}package.json"
