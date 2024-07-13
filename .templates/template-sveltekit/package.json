@@ -12,7 +12,7 @@
 	"devDependencies": {
 		"@egoist/tailwindcss-icons": "1.8.1",
 		"@iconify-json/lucide": "1.1.199",
-		"@sveltejs/adapter-auto": "^3.0.0",
+		"@sveltejs/adapter-auto": "^3.2.2",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
 		"postcss": "8.4.39",
