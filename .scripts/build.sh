@@ -15,15 +15,23 @@ do
 done
 
 function sync_example() {
+    # ProseKit example directory to copy from
     local source_dir=$1
+    # Framework template directory to copy from
     local template_dir=$2
+    # Target directory to copy to
     local target_dir=$3
+    # Optional sub directory for the target, defaults to "src/"
+    local target_src_dir=${4:-"src/"}
+
     local target_pkg_json="${target_dir}package.json"
-    local target_src_pkg_json="${target_dir}src/package.json"
+    local target_src_pkg_json="${target_dir}${target_src_dir}package.json"
     local tmp=$(mktemp)
 
+    rm -rf "$target_dir"
+
     rsync --exclude 'node_modules' -av "$template_dir" "$target_dir"
-    rsync --exclude 'node_modules' -av "$source_dir" "${target_dir}src/"
+    rsync --exclude 'node_modules' -av "$source_dir" "${target_dir}${target_src_dir}"
 
     if test -f "$target_src_pkg_json"; then
         # Merge two package.json files
@@ -49,8 +57,8 @@ do
     done
 done
 
-rm -rf ./nuxt-full
 sync_example ./.temp/prosekit/playground/examples/vue/full/ ./.templates/template-nuxt/ ./nuxt-full/
 
-rm -rf ./next-full
 sync_example ./.temp/prosekit/playground/examples/react/toolbar/ ./.templates/template-next/ ./next-full/
+
+sync_example ./.temp/prosekit/playground/examples/svelte/full/ ./.templates/template-sveltekit/ ./sveltekit-full/ src/lib/
