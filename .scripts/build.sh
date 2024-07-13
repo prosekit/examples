@@ -60,3 +60,6 @@ sync_example ./.temp/prosekit/playground/examples/vue/full/ ./.templates/templat
 
 rm -rf ./next-full
 sync_example ./.temp/prosekit/playground/examples/react/toolbar/ ./.templates/template-next/ ./next-full/
+
+rm -rf ./sveltekit-full
+sync_example ./.temp/prosekit/playground/examples/svelte/full/ ./.templates/template-sveltekit/ ./sveltekit-full/ lib/
