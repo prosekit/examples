@@ -46,7 +46,7 @@ const handleSubmit = (event: Event) => {
 }
 </script>
 
-<InlinePopover data-testid="inline-menu-main" class='z-10 box-border border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-neutral-900 shadow-lg relative flex min-w-[120px] space-x-1 overflow-auto whitespace-nowrap rounded-md p-1'>
+<InlinePopover data-testid="inline-menu-main" class='z-10 box-border border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-neutral-900 shadow-lg [&:not([data-state])]:hidden relative flex min-w-[120px] space-x-1 overflow-auto whitespace-nowrap rounded-md p-1'>
   <Button
     pressed={$editor.marks.bold.isActive()}
     disabled={!$editor.commands.toggleBold.canApply()}
@@ -112,7 +112,7 @@ const handleSubmit = (event: Event) => {
   open={linkMenuOpen}
   onOpenChange={setLinkMenuOpen}
   data-testid="inline-menu-link"
-  class='z-10 box-border border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-neutral-900 shadow-lg relative flex flex-col w-xs rounded-lg p-4 gap-y-2 items-stretch'
+  class='z-10 box-border border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-neutral-900 shadow-lg [&:not([data-state])]:hidden relative flex flex-col w-xs rounded-lg p-4 gap-y-2 items-stretch'
 >
   {#if linkMenuOpen}
     <form on:submit|preventDefault={handleSubmit}>
