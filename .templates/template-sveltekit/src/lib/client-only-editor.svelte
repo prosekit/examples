@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	
-	const load = () => import('../lib/editor.svelte');
+	const load = () => import('./editor.svelte');
 	
 	let Editor: Awaited<ReturnType<typeof load>>['default'];
 	
