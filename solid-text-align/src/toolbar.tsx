@@ -1,3 +1,4 @@
+import type { NodeAction } from 'prosekit/core'
 import { useEditor } from 'prosekit/solid'
 
 import Button from './button'
@@ -7,7 +8,7 @@ export default function Toolbar() {
   const editor = useEditor<EditorExtension>({ update: true })
 
   const isTextAlignActive = (value: string) => {
-    return Object.values(editor().nodes).some((node) => {
+    return Object.values(editor().nodes).some((node: NodeAction<any>) => {
       return node.isActive({ textAlign: value })
     })
   }
