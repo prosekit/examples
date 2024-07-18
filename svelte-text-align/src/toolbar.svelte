@@ -2,12 +2,12 @@
 import Button from './button.svelte'
 import type { EditorExtension } from './extension'
 import { useEditor } from 'prosekit/svelte'
-import type { Editor } from 'prosekit/core'
+import type { Editor, NodeAction } from 'prosekit/core'
 
 const editor = useEditor<EditorExtension>({ update: true })
 
 const isTextAlignActive = (editor: Editor<EditorExtension>, value: string) => {
-  return Object.values(editor.nodes).some((node) => {
+  return Object.values(editor.nodes).some((node: NodeAction<any>) => {
     return node.isActive({ textAlign: value })
   })
 }
