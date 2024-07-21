@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "nuxt": "3.12.3",
-    "prosekit": "0.9.9",
+    "prosekit": "0.9.10",
     "vue": "3.4.31"
   },
   "devDependencies": {
