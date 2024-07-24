@@ -1,7 +1,6 @@
 <script lang="ts">
 import 'prosekit/basic/style.css'
 
-
 import { useDocChange, ProseKit } from 'prosekit/svelte'
 import type { Editor } from 'prosekit/core'
 
