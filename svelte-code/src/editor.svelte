@@ -1,6 +1,7 @@
 <script lang="ts">
 import 'prosekit/basic/style.css'
 
+
 import { ProseKit } from 'prosekit/svelte'
 import { defineExtension } from './extension'
 import Toolbar from './toolbar.svelte'

@@ -1,6 +1,7 @@
 <script lang="ts">
 import 'prosekit/basic/style.css'
 
+
 import { defineBasicExtension } from 'prosekit/basic'
 import { createEditor, jsonFromNode, type NodeJSON } from 'prosekit/core'
 import { ProseKit, useDocChange } from 'prosekit/svelte'

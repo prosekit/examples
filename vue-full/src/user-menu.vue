@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useEditor } from 'prosekit/vue'
 import {
   AutocompleteEmpty,
   AutocompleteItem,
@@ -6,13 +7,12 @@ import {
   AutocompletePopover,
 } from 'prosekit/vue/autocomplete'
 
-import { useEditor } from 'prosekit/vue'
 import type { EditorExtension } from './extension'
 import { users } from './user-data'
 
 const editor = useEditor<EditorExtension>()
 
-const handleUserInsert = (id: number, username: string) => {
+function handleUserInsert(id: number, username: string) {
   editor.value.commands.insertMention({
     id: id.toString(),
     value: '@' + username,

@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { useEditor } from 'prosekit/vue'
-import type { EditorExtension } from './extension'
+
 import Button from './button.vue'
+import type { EditorExtension } from './extension'
 
 const editor = useEditor<EditorExtension>({ update: true })
 </script>
@@ -15,7 +16,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       :disabled="!editor.commands.toggleList.canApply({ kind: 'bullet' })"
       @click="() => editor.commands.toggleList({ kind: 'bullet' })"
     >
-      <div class="i-lucide-list h-5 w-5"></div>
+      <div class="i-lucide-list h-5 w-5" />
     </Button>
 
     <Button
@@ -23,7 +24,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       :disabled="!editor.commands.toggleList.canApply({ kind: 'ordered' })"
       @click="() => editor.commands.toggleList({ kind: 'ordered' })"
     >
-      <div class="i-lucide-list-ordered h-5 w-5"></div>
+      <div class="i-lucide-list-ordered h-5 w-5" />
     </Button>
 
     <Button
@@ -31,7 +32,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       :disabled="!editor.commands.toggleList.canApply({ kind: 'task' })"
       @click="() => editor.commands.toggleList({ kind: 'task' })"
     >
-      <div class="i-lucide-list-checks h-5 w-5"></div>
+      <div class="i-lucide-list-checks h-5 w-5" />
     </Button>
 
     <Button
@@ -39,7 +40,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       :disabled="!editor.commands.toggleList.canApply({ kind: 'toggle' })"
       @click="() => editor.commands.toggleList({ kind: 'toggle' })"
     >
-      <div class="i-lucide-list-collapse h-5 w-5"></div>
+      <div class="i-lucide-list-collapse h-5 w-5" />
     </Button>
   </div>
 </template>
