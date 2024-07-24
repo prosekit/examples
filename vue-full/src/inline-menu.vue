@@ -3,20 +3,21 @@ import type { EditorState } from 'prosekit/pm/state'
 import { useEditor } from 'prosekit/vue'
 import { InlinePopover } from 'prosekit/vue/inline-popover'
 import { ref } from 'vue'
+
 import Button from './button.vue'
 import type { EditorExtension } from './extension'
 
 const editor = useEditor<EditorExtension>({ update: true })
 const linkMenuOpen = ref(false)
 
-const setLinkMenuOpen = (value: boolean) => {
+function setLinkMenuOpen(value: boolean) {
   linkMenuOpen.value = value
 }
-const toggleLinkMenuOpen = () => {
+function toggleLinkMenuOpen() {
   linkMenuOpen.value = !linkMenuOpen.value
 }
 
-const getCurrentLink = (state: EditorState): string | undefined => {
+function getCurrentLink(state: EditorState): string | undefined {
   const { $from } = state.selection
   const marks = $from.marksAcross($from)
   if (!marks) {
@@ -29,7 +30,7 @@ const getCurrentLink = (state: EditorState): string | undefined => {
   }
 }
 
-const handleLinkUpdate = (href?: string) => {
+function handleLinkUpdate(href?: string) {
   if (href) {
     editor.value.commands.addLink({ href })
   } else {
@@ -52,67 +53,67 @@ const handleLinkUpdate = (href?: string) => {
       tooltip="Bold"
       @click="() => editor.commands.toggleBold()"
     >
-      <div class="i-lucide-bold h-5 w-5"></div>
+      <div class="i-lucide-bold h-5 w-5" />
     </Button>
 
     <Button
       :pressed="editor.marks.italic.isActive()"
       :disabled="!editor.commands.toggleItalic.canApply()"
-      @click="() => editor.commands.toggleItalic()"
       tooltip="Italic"
+      @click="() => editor.commands.toggleItalic()"
     >
-      <div class="i-lucide-italic h-5 w-5"></div>
+      <div class="i-lucide-italic h-5 w-5" />
     </Button>
 
     <Button
       :pressed="editor.marks.underline.isActive()"
       :disabled="!editor.commands.toggleUnderline.canApply()"
-      @click="() => editor.commands.toggleUnderline()"
       tooltip="Underline"
+      @click="() => editor.commands.toggleUnderline()"
     >
-      <div class="i-lucide-underline h-5 w-5"></div>
+      <div class="i-lucide-underline h-5 w-5" />
     </Button>
 
     <Button
       :pressed="editor.marks.strike.isActive()"
       :disabled="!editor.commands.toggleStrike.canApply()"
-      @click="() => editor.commands.toggleStrike()"
       tooltip="Strike"
+      @click="() => editor.commands.toggleStrike()"
     >
-      <div class="i-lucide-strikethrough h-5 w-5"></div>
+      <div class="i-lucide-strikethrough h-5 w-5" />
     </Button>
 
     <Button
       :pressed="editor.marks.code.isActive()"
       :disabled="!editor.commands.toggleCode.canApply()"
-      @click="() => editor.commands.toggleCode()"
       tooltip="Code"
+      @click="() => editor.commands.toggleCode()"
     >
-      <div class="i-lucide-code h-5 w-5"></div>
+      <div class="i-lucide-code h-5 w-5" />
     </Button>
 
     <Button
       v-if="editor.commands.addLink.canApply({ href: '' })"
       :pressed="editor.marks.link.isActive()"
+      tooltip="Link"
       @click="
         () => {
           editor.commands.expandLink()
           toggleLinkMenuOpen()
         }
       "
-      tooltip="Link"
     >
-      <div class="i-lucide-link h-5 w-5"></div>
+      <div class="i-lucide-link h-5 w-5" />
     </Button>
   </InlinePopover>
 
   <InlinePopover
     :placement="'bottom'"
-    :defaultOpen="false"
+    :default-open="false"
     :open="linkMenuOpen"
-    @openChange="setLinkMenuOpen"
     data-testid="inline-menu-link"
     class="z-10 box-border border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-neutral-900 shadow-lg [&:not([data-state])]:hidden relative flex flex-col w-xs rounded-lg p-4 gap-y-2 items-stretch"
+    @open-change="setLinkMenuOpen"
   >
     <form
       v-if="linkMenuOpen"
@@ -132,9 +133,9 @@ const handleLinkUpdate = (href?: string) => {
     </form>
     <button
       v-if="editor.marks.link.isActive()"
+      class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-white dark:ring-offset-neutral-900 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 dark:focus-visible:ring-zinc-300 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border-0 bg-zinc-900 dark:bg-zinc-50 text-zinc-50 dark:text-zinc-900 hover:bg-zinc-900/90 dark:hover:bg-zinc-50/90 h-9 px-3"
       @click="handleLinkUpdate()"
       @mousedown.prevent
-      class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-white dark:ring-offset-neutral-900 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 dark:focus-visible:ring-zinc-300 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border-0 bg-zinc-900 dark:bg-zinc-50 text-zinc-50 dark:text-zinc-900 hover:bg-zinc-900/90 dark:hover:bg-zinc-50/90 h-9 px-3"
     >
       Remove link
     </button>

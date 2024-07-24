@@ -40,7 +40,7 @@ export default function Editor() {
       setHasUnsavedChange(false)
       setKey((key) => key + 1)
     },
-    [records, editor.schema],
+    [editor.schema],
   )
 
   return (

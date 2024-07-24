@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useEditor } from 'prosekit/vue'
 import {
   AutocompleteEmpty,
   AutocompleteItem,
@@ -6,13 +7,12 @@ import {
   AutocompletePopover,
 } from 'prosekit/vue/autocomplete'
 
-import { useEditor } from 'prosekit/vue'
 import type { EditorExtension } from './extension'
 import { tags } from './tag-data'
 
 const editor = useEditor<EditorExtension>()
 
-const handleTagInsert = (id: number, label: string) => {
+function handleTagInsert(id: number, label: string) {
   editor.value.commands.insertMention({
     id: id.toString(),
     value: '#' + label,

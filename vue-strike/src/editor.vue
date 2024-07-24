@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import 'prosekit/basic/style.css'
 
-import { watchPostEffect, ref } from 'vue'
+import { createEditor } from 'prosekit/core'
 import { ProseKit } from 'prosekit/vue'
+import { watchPostEffect, ref } from 'vue'
+
 import { defineExtension } from './extension'
 import Toolbar from './toolbar.vue'
-import { createEditor } from 'prosekit/core'
 
 const defaultHTML = `
   <p><s>Strikethrough</s></p>
@@ -32,7 +33,7 @@ watchPostEffect((onCleanup) => {
         <div
           ref="editorRef"
           class="ProseMirror box-border min-h-full px-[max(40px,_calc(50%-330px))] py-[24px] outline-none outline-0 [&_span[data-mention=&quot;user&quot;]]:text-blue-500 [&_span[data-mention=&quot;tag&quot;]]:text-violet-500 [&_pre]:text-white [&_pre]:bg-zinc-800"
-        ></div>
+        />
       </div>
     </div>
   </ProseKit>

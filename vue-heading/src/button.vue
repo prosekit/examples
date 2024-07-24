@@ -22,11 +22,11 @@ const emit = defineEmits<{
       <button
         :data-state="pressed ? 'on' : 'off'"
         :disabled="disabled ? true : undefined"
+        class="outline-unset focus-visible:outline-unset flex items-center justify-center rounded-md p-2 font-medium transition focus-visible:ring-2 text-sm focus-visible:ring-zinc-900 dark:focus-visible:ring-zinc-300 disabled:pointer-events-none min-w-9 min-h-9 disabled:opacity-50 hover:disabled:opacity-50 bg-transparent hover:bg-zinc-100 dark:hover:bg-zinc-800 data-[state=on]:bg-gray-200 dark:data-[state=on]:bg-gray-700"
         @click="() => emit('click')"
         @mousedown.prevent
-        class="outline-unset focus-visible:outline-unset flex items-center justify-center rounded-md p-2 font-medium transition focus-visible:ring-2 text-sm focus-visible:ring-zinc-900 dark:focus-visible:ring-zinc-300 disabled:pointer-events-none min-w-9 min-h-9 disabled:opacity-50 hover:disabled:opacity-50 bg-transparent hover:bg-zinc-100 dark:hover:bg-zinc-800 data-[state=on]:bg-gray-200 dark:data-[state=on]:bg-gray-700"
       >
-        <slot></slot>
+        <slot />
         <span v-if="tooltip" class="sr-only">{{ tooltip }}</span>
       </button>
     </TooltipTrigger>
