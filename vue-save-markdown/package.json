@@ -26,6 +26,6 @@
     "tailwindcss": "^3.4.6",
     "typescript": "^5.5.4",
     "vite": "^5.3.4",
-    "vue-tsc": "^2.0.26"
+    "vue-tsc": "^2.0.29"
   }
 }
