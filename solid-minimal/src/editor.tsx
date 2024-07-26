@@ -5,11 +5,14 @@ import { createEditor, jsonFromNode, type NodeJSON } from 'prosekit/core'
 import { ProseKit, useDocChange } from 'prosekit/solid'
 
 export default function Editor(props: {
-  defaultDoc?: NodeJSON
+  defaultContent?: NodeJSON
   onDocUpdate?: (doc: NodeJSON) => void
 }) {
   const extension = defineBasicExtension()
-  const editor = createEditor({ extension, defaultDoc: props.defaultDoc })
+  const editor = createEditor({
+    extension,
+    defaultContent: props.defaultContent,
+  })
 
   useDocChange((doc) => props.onDocUpdate?.(jsonFromNode(doc)), { editor })
 

@@ -8,7 +8,7 @@ import { ref, watchPostEffect } from 'vue'
 import { defineExtension } from './extension'
 
 const props = defineProps<{
-  defaultDoc?: NodeJSON
+  defaultContent?: NodeJSON
 }>()
 
 const emit = defineEmits<{
@@ -16,7 +16,7 @@ const emit = defineEmits<{
 }>()
 
 const extension = defineExtension()
-const editor = createEditor({ extension, defaultDoc: props.defaultDoc })
+const editor = createEditor({ extension, defaultContent: props.defaultContent })
 
 useDocChange(
   (doc) => {

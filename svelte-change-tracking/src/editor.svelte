@@ -8,7 +8,7 @@ import EditorDiff from './editor-diff.svelte'
 import EditorMain from './editor-main.svelte'
 
 let commits: { id: string; date: Date; commit: Commit }[] = []
-let defaultDoc: NodeJSON
+let defaultContent: NodeJSON
 
 const commitRecorder = new CommitRecorder()
 
@@ -22,7 +22,7 @@ function handleCommit() {
 function handleRestore(id: string) {
   const index = commits.findIndex((commit) => commit.id === id)
   if (index === -1) return
-  defaultDoc = commits[index].commit.doc
+  defaultContent = commits[index].commit.doc
   commits = commits.slice(index)
 }
 </script>
@@ -30,8 +30,8 @@ function handleRestore(id: string) {
 <div class="grid grid-cols-2 gap-2">
   <div class="flex flex-col gap-4">
     <div class="max-h-md">
-      {#key defaultDoc}
-        <EditorMain {defaultDoc} {commitRecorder} />
+      {#key defaultContent}
+        <EditorMain {defaultContent} {commitRecorder} />
       {/key}
     </div>
     <button on:click={handleCommit} class='inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-white dark:ring-offset-neutral-900 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 dark:focus-visible:ring-zinc-300 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border-0 bg-zinc-900 dark:bg-zinc-50 text-zinc-50 dark:text-zinc-900 hover:bg-zinc-900/90 dark:hover:bg-zinc-50/90 h-10 px-4 py-2'>

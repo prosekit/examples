@@ -9,7 +9,7 @@ import { defineExtension } from './extension'
 export default function Editor() {
   const editor = useMemo(() => {
     const extension = defineExtension()
-    return createEditor({ extension, defaultDoc })
+    return createEditor({ extension, defaultContent })
   }, [])
 
   return (
@@ -26,7 +26,7 @@ export default function Editor() {
   )
 }
 
-const defaultDoc: NodeJSON = {
+const defaultContent: NodeJSON = {
   type: 'doc',
   content: [
     {
