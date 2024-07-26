@@ -17,7 +17,7 @@ export class MyEditor extends LitElement {
   editor?: Editor<EditorExtension>
 
   @property({ type: Object, attribute: false })
-  defaultDoc?: NodeJSON
+  defaultContent?: NodeJSON
 
   private editorRef: Ref<HTMLDivElement> = createRef()
 
@@ -26,7 +26,7 @@ export class MyEditor extends LitElement {
       const extension = defineExtension()
       this.editor = createEditor({
         extension,
-        defaultDoc: this.defaultDoc || defaultDoc,
+        defaultContent: this.defaultContent || defaultContent,
       })
     }
 
@@ -49,7 +49,7 @@ export class MyEditor extends LitElement {
   }
 }
 
-const defaultDoc: NodeJSON = {
+const defaultContent: NodeJSON = {
   type: 'doc',
   content: [
     {

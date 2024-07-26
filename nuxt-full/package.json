@@ -10,16 +10,16 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "nuxt": "3.12.3",
-    "prosekit": "0.9.13",
-    "vue": "3.4.31"
+    "nuxt": "^3.12.4",
+    "prosekit": "^0.9.13",
+    "vue": "^3.4.31"
   },
   "devDependencies": {
-    "@egoist/tailwindcss-icons": "1.8.1",
-    "@iconify-json/lucide": "1.1.200",
-    "autoprefixer": "10.4.19",
-    "postcss": "8.4.39",
-    "tailwindcss": "3.4.6",
-    "typescript": "5.5.4"
+    "@egoist/tailwindcss-icons": "^1.8.1",
+    "@iconify-json/lucide": "^1.1.200",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.39",
+    "tailwindcss": "^3.4.6",
+    "typescript": "^5.5.4"
   }
 }

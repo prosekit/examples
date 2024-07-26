@@ -9,7 +9,7 @@ import Toolbar from './toolbar'
 
 export default function Editor() {
   const editor = useMemo(() => {
-    return createEditor({ extension: defineExtension(), defaultDoc })
+    return createEditor({ extension: defineExtension(), defaultContent })
   }, [])
 
   return (
@@ -27,7 +27,7 @@ export default function Editor() {
   )
 }
 
-const defaultDoc: NodeJSON = {
+const defaultContent: NodeJSON = {
   type: 'doc',
   content: [
     {
