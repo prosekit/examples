@@ -10,7 +10,6 @@ import SlashMenu from './slash-menu.svelte'
 import TagMenu from './tag-menu.svelte'
 import Toolbar from './toolbar.svelte'
 import UserMenu from './user-menu.svelte'
-
 const editor = createEditor({ extension: defineExtension() })
 
 const mount = (element: HTMLElement) => {

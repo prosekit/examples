@@ -1,7 +1,6 @@
 <script lang="ts">
 import 'prosekit/basic/style.css'
 
-
 import { createEditor } from 'prosekit/core'
 import { defineExtension } from './extension'
 import { ProseKit } from 'prosekit/svelte'
