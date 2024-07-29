@@ -12,7 +12,7 @@ import { useCallback, useMemo, useState } from 'react'
 import EditorComponent from './editor-component'
 
 export default function Editor() {
-  const [defaultContent, setDefaultDoc] = useState<NodeJSON | undefined>()
+  const [defaultContent, setDefaultContent] = useState<NodeJSON | undefined>()
   const [records, setRecords] = useState<string[]>([])
   const [hasUnsavedChange, setHasUnsavedChange] = useState(false)
   const [key, setKey] = useState(1)
@@ -36,7 +36,7 @@ export default function Editor() {
   // Load a document from a HTML string
   const handleLoad = useCallback(
     (record: string) => {
-      setDefaultDoc(jsonFromHTML(record, { schema: editor.schema }))
+      setDefaultContent(jsonFromHTML(record, { schema: editor.schema }))
       setHasUnsavedChange(false)
       setKey((key) => key + 1)
     },
