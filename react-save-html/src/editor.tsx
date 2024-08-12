@@ -2,10 +2,10 @@ import 'prosekit/basic/style.css'
 
 import { defineBasicExtension } from 'prosekit/basic'
 import {
+  type NodeJSON,
   createEditor,
   htmlFromNode,
   jsonFromHTML,
-  type NodeJSON,
 } from 'prosekit/core'
 import { useCallback, useMemo, useState } from 'react'
 
