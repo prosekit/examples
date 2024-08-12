@@ -1,6 +1,6 @@
 import 'prosekit/basic/style.css'
 
-import { Editor } from 'prosekit/core'
+import type { Editor } from 'prosekit/core'
 import { ProseKit, useDocChange } from 'prosekit/react'
 
 export default function EditorComponent({
