@@ -1,4 +1,5 @@
 import 'prosekit/basic/style.css'
+import 'prosekit/basic/typography.css'
 
 import { LitElement, html } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
@@ -7,7 +8,7 @@ import { createEditor, type Editor, type NodeJSON } from 'prosekit/core'
 
 import { defineExtension, type EditorExtension } from './extension'
 
-@customElement('my-editor')
+@customElement('example-lit-dom')
 export class MyEditor extends LitElement {
   createRenderRoot() {
     return this
