@@ -26,7 +26,6 @@ export default function Editor() {
           ></div>
           <WordCounter />
         </div>
-        ƒ
       </div>
     </ProseKit>
   )
