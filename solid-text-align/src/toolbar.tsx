@@ -17,7 +17,7 @@ export default function Toolbar() {
     <div class="z-2 box-border border-zinc-200 dark:border-zinc-800 border-solid border-l-0 border-r-0 border-t-0 border-b flex flex-wrap gap-1 p-2 items-center">
       <Button
         pressed={() => isTextAlignActive('left')}
-        disabled={() => !editor().commands.setTextAlign.canApply('left')}
+        disabled={() => !editor().commands.setTextAlign.canExec('left')}
         onClick={() => editor().commands.setTextAlign('left')}
       >
         Left
@@ -25,7 +25,7 @@ export default function Toolbar() {
 
       <Button
         pressed={() => isTextAlignActive('center')}
-        disabled={() => !editor().commands.setTextAlign.canApply('center')}
+        disabled={() => !editor().commands.setTextAlign.canExec('center')}
         onClick={() => editor().commands.setTextAlign('center')}
       >
         Center
@@ -33,7 +33,7 @@ export default function Toolbar() {
 
       <Button
         pressed={() => isTextAlignActive('right')}
-        disabled={() => !editor().commands.setTextAlign.canApply('right')}
+        disabled={() => !editor().commands.setTextAlign.canExec('right')}
         onClick={() => editor().commands.setTextAlign('right')}
       >
         Right
@@ -41,7 +41,7 @@ export default function Toolbar() {
 
       <Button
         pressed={() => isTextAlignActive('justify')}
-        disabled={() => !editor().commands.setTextAlign.canApply('justify')}
+        disabled={() => !editor().commands.setTextAlign.canExec('justify')}
         onClick={() => editor().commands.setTextAlign('justify')}
       >
         Justify

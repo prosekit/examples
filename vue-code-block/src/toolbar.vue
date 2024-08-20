@@ -13,7 +13,7 @@ const editor = useEditor<EditorExtension>({ update: true })
   >
     <Button
       :pressed="editor.nodes.codeBlock.isActive()"
-      :disabled="!editor.commands.setCodeBlock.canApply()"
+      :disabled="!editor.commands.setCodeBlock.canExec()"
       @click="() => editor.commands.setCodeBlock()"
     >
       <div class="i-lucide-square-code h-5 w-5" />

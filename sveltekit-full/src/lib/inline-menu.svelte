@@ -49,7 +49,7 @@ const handleSubmit = (event: Event) => {
 <InlinePopover data-testid="inline-menu-main" class='z-10 box-border border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-neutral-900 shadow-lg [&:not([data-state])]:hidden relative flex min-w-[120px] space-x-1 overflow-auto whitespace-nowrap rounded-md p-1'>
   <Button
     pressed={$editor.marks.bold.isActive()}
-    disabled={!$editor.commands.toggleBold.canApply()}
+    disabled={!$editor.commands.toggleBold.canExec()}
     tooltip="Bold"
     onClick={() => $editor.commands.toggleBold()}
   >
@@ -58,7 +58,7 @@ const handleSubmit = (event: Event) => {
 
   <Button
     pressed={$editor.marks.italic.isActive()}
-    disabled={!$editor.commands.toggleItalic.canApply()}
+    disabled={!$editor.commands.toggleItalic.canExec()}
     onClick={() => $editor.commands.toggleItalic()}
     tooltip="Italic"
   >
@@ -67,7 +67,7 @@ const handleSubmit = (event: Event) => {
 
   <Button
     pressed={$editor.marks.underline.isActive()}
-    disabled={!$editor.commands.toggleUnderline.canApply()}
+    disabled={!$editor.commands.toggleUnderline.canExec()}
     onClick={() => $editor.commands.toggleUnderline()}
     tooltip="Underline"
   >
@@ -76,7 +76,7 @@ const handleSubmit = (event: Event) => {
 
   <Button
     pressed={$editor.marks.strike.isActive()}
-    disabled={!$editor.commands.toggleStrike.canApply()}
+    disabled={!$editor.commands.toggleStrike.canExec()}
     onClick={() => $editor.commands.toggleStrike()}
     tooltip="Strike"
   >
@@ -85,14 +85,14 @@ const handleSubmit = (event: Event) => {
 
   <Button
     pressed={$editor.marks.code.isActive()}
-    disabled={!$editor.commands.toggleCode.canApply()}
+    disabled={!$editor.commands.toggleCode.canExec()}
     onClick={() => $editor.commands.toggleCode()}
     tooltip="Code"
   >
     <div class='i-lucide-code h-5 w-5'></div>
   </Button>
 
-  {#if $editor.commands.addLink.canApply({ href: '' })}
+  {#if $editor.commands.addLink.canExec({ href: '' })}
     <Button
       pressed={$editor.marks.link.isActive()}
       onClick={() => {
