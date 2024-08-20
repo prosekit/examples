@@ -13,7 +13,7 @@ const editor = useEditor<EditorExtension>({ update: true })
   >
     <Button
       :pressed="editor.nodes.list.isActive({ kind: 'bullet' })"
-      :disabled="!editor.commands.toggleList.canApply({ kind: 'bullet' })"
+      :disabled="!editor.commands.toggleList.canExec({ kind: 'bullet' })"
       @click="() => editor.commands.toggleList({ kind: 'bullet' })"
     >
       <div class="i-lucide-list h-5 w-5" />
@@ -21,7 +21,7 @@ const editor = useEditor<EditorExtension>({ update: true })
 
     <Button
       :pressed="editor.nodes.list.isActive({ kind: 'ordered' })"
-      :disabled="!editor.commands.toggleList.canApply({ kind: 'ordered' })"
+      :disabled="!editor.commands.toggleList.canExec({ kind: 'ordered' })"
       @click="() => editor.commands.toggleList({ kind: 'ordered' })"
     >
       <div class="i-lucide-list-ordered h-5 w-5" />
@@ -29,7 +29,7 @@ const editor = useEditor<EditorExtension>({ update: true })
 
     <Button
       :pressed="editor.nodes.list.isActive({ kind: 'task' })"
-      :disabled="!editor.commands.toggleList.canApply({ kind: 'task' })"
+      :disabled="!editor.commands.toggleList.canExec({ kind: 'task' })"
       @click="() => editor.commands.toggleList({ kind: 'task' })"
     >
       <div class="i-lucide-list-checks h-5 w-5" />
@@ -37,7 +37,7 @@ const editor = useEditor<EditorExtension>({ update: true })
 
     <Button
       :pressed="editor.nodes.list.isActive({ kind: 'toggle' })"
-      :disabled="!editor.commands.toggleList.canApply({ kind: 'toggle' })"
+      :disabled="!editor.commands.toggleList.canExec({ kind: 'toggle' })"
       @click="() => editor.commands.toggleList({ kind: 'toggle' })"
     >
       <div class="i-lucide-list-collapse h-5 w-5" />

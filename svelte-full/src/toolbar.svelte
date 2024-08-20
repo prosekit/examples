@@ -10,7 +10,7 @@ const editor = useEditor<EditorExtension>({ update: true })
 <div class='z-2 box-border border-zinc-200 dark:border-zinc-800 border-solid border-l-0 border-r-0 border-t-0 border-b flex flex-wrap gap-1 p-2 items-center'>
   <Button
     pressed={false}
-    disabled={!$editor.commands.undo.canApply()}
+    disabled={!$editor.commands.undo.canExec()}
     onClick={() => $editor.commands.undo()}
     tooltip="Undo"
   >
@@ -19,7 +19,7 @@ const editor = useEditor<EditorExtension>({ update: true })
 
   <Button
     pressed={false}
-    disabled={!$editor.commands.redo.canApply()}
+    disabled={!$editor.commands.redo.canExec()}
     onClick={() => $editor.commands.redo()}
     tooltip="Redo"
   >
@@ -28,7 +28,7 @@ const editor = useEditor<EditorExtension>({ update: true })
 
   <Button
     pressed={$editor.marks.bold.isActive()}
-    disabled={!$editor.commands.toggleBold.canApply()}
+    disabled={!$editor.commands.toggleBold.canExec()}
     onClick={() => $editor.commands.toggleBold()}
     tooltip="Bold"
   >
@@ -37,7 +37,7 @@ const editor = useEditor<EditorExtension>({ update: true })
 
   <Button
     pressed={$editor.marks.italic.isActive()}
-    disabled={!$editor.commands.toggleItalic.canApply()}
+    disabled={!$editor.commands.toggleItalic.canExec()}
     onClick={() => $editor.commands.toggleItalic()}
     tooltip="Italic"
   >
@@ -46,7 +46,7 @@ const editor = useEditor<EditorExtension>({ update: true })
 
   <Button
     pressed={$editor.marks.underline.isActive()}
-    disabled={!$editor.commands.toggleUnderline.canApply()}
+    disabled={!$editor.commands.toggleUnderline.canExec()}
     onClick={() => $editor.commands.toggleUnderline()}
     tooltip="Underline"
   >
@@ -55,7 +55,7 @@ const editor = useEditor<EditorExtension>({ update: true })
 
   <Button
     pressed={$editor.marks.strike.isActive()}
-    disabled={!$editor.commands.toggleStrike.canApply()}
+    disabled={!$editor.commands.toggleStrike.canExec()}
     onClick={() => $editor.commands.toggleStrike()}
     tooltip="Strike"
   >
@@ -64,7 +64,7 @@ const editor = useEditor<EditorExtension>({ update: true })
 
   <Button
     pressed={$editor.marks.code.isActive()}
-    disabled={!$editor.commands.toggleCode.canApply()}
+    disabled={!$editor.commands.toggleCode.canExec()}
     onClick={() => $editor.commands.toggleCode()}
     tooltip="Code"
   >
@@ -73,7 +73,7 @@ const editor = useEditor<EditorExtension>({ update: true })
 
   <Button
     pressed={$editor.nodes.heading.isActive({ level: 1 })}
-    disabled={!$editor.commands.toggleHeading.canApply({ level: 1 })}
+    disabled={!$editor.commands.toggleHeading.canExec({ level: 1 })}
     onClick={() => $editor.commands.toggleHeading({ level: 1 })}
     tooltip="Heading 1"
   >
@@ -82,7 +82,7 @@ const editor = useEditor<EditorExtension>({ update: true })
 
   <Button
     pressed={$editor.nodes.heading.isActive({ level: 2 })}
-    disabled={!$editor.commands.toggleHeading.canApply({ level: 2 })}
+    disabled={!$editor.commands.toggleHeading.canExec({ level: 2 })}
     onClick={() => $editor.commands.toggleHeading({ level: 2 })}
     tooltip="Heading 2"
   >
@@ -91,7 +91,7 @@ const editor = useEditor<EditorExtension>({ update: true })
 
   <Button
     pressed={$editor.nodes.heading.isActive({ level: 3 })}
-    disabled={!$editor.commands.toggleHeading.canApply({ level: 3 })}
+    disabled={!$editor.commands.toggleHeading.canExec({ level: 3 })}
     onClick={() => $editor.commands.toggleHeading({ level: 3 })}
     tooltip="Heading 3"
   >
@@ -100,7 +100,7 @@ const editor = useEditor<EditorExtension>({ update: true })
 
   <Button
     pressed={$editor.nodes.list.isActive({ kind: 'bullet' })}
-    disabled={!$editor.commands.toggleList.canApply({ kind: 'bullet' })}
+    disabled={!$editor.commands.toggleList.canExec({ kind: 'bullet' })}
     onClick={() => $editor.commands.toggleList({ kind: 'bullet' })}
     tooltip="Bullet List"
   >
@@ -109,7 +109,7 @@ const editor = useEditor<EditorExtension>({ update: true })
 
   <Button
     pressed={$editor.nodes.list.isActive({ kind: 'ordered' })}
-    disabled={!$editor.commands.toggleList.canApply({ kind: 'ordered' })}
+    disabled={!$editor.commands.toggleList.canExec({ kind: 'ordered' })}
     onClick={() => $editor.commands.toggleList({ kind: 'ordered' })}
     tooltip="Ordered List"
   >
@@ -118,7 +118,7 @@ const editor = useEditor<EditorExtension>({ update: true })
 
   <Button
     pressed={$editor.nodes.list.isActive({ kind: 'task' })}
-    disabled={!$editor.commands.toggleList.canApply({ kind: 'task' })}
+    disabled={!$editor.commands.toggleList.canExec({ kind: 'task' })}
     onClick={() => $editor.commands.toggleList({ kind: 'task' })}
     tooltip="Task List"
   >
@@ -127,7 +127,7 @@ const editor = useEditor<EditorExtension>({ update: true })
 
   <Button
     pressed={$editor.nodes.list.isActive({ kind: 'toggle' })}
-    disabled={!$editor.commands.toggleList.canApply({ kind: 'toggle' })}
+    disabled={!$editor.commands.toggleList.canExec({ kind: 'toggle' })}
     onClick={() => $editor.commands.toggleList({ kind: 'toggle' })}
     tooltip="Toggle List"
   >
@@ -136,7 +136,7 @@ const editor = useEditor<EditorExtension>({ update: true })
 
   <Button
     pressed={false}
-    disabled={!$editor.commands.indentList.canApply()}
+    disabled={!$editor.commands.indentList.canExec()}
     onClick={() => $editor.commands.indentList()}
     tooltip="Increase indentation"
   >
@@ -145,7 +145,7 @@ const editor = useEditor<EditorExtension>({ update: true })
 
   <Button
     pressed={false}
-    disabled={!$editor.commands.dedentList.canApply()}
+    disabled={!$editor.commands.dedentList.canExec()}
     onClick={() => $editor.commands.dedentList()}
     tooltip="Decrease indentation"
   >
@@ -153,7 +153,7 @@ const editor = useEditor<EditorExtension>({ update: true })
   </Button>
 
   <ImageUploadPopover
-    disabled={!$editor.commands.insertImage.canApply()}
+    disabled={!$editor.commands.insertImage.canExec()}
     tooltip="Insert Image"
   >
     <div class='i-lucide-image h-5 w-5'></div>

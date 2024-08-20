@@ -11,7 +11,7 @@ export default function Toolbar() {
     <div className="z-2 box-border border-zinc-200 dark:border-zinc-800 border-solid border-l-0 border-r-0 border-t-0 border-b flex flex-wrap gap-1 p-2 items-center">
       <Button
         pressed={false}
-        disabled={!editor.commands.undo.canApply()}
+        disabled={!editor.commands.undo.canExec()}
         onClick={editor.commands.undo}
         tooltip="Undo"
       >
@@ -20,7 +20,7 @@ export default function Toolbar() {
 
       <Button
         pressed={false}
-        disabled={!editor.commands.redo.canApply()}
+        disabled={!editor.commands.redo.canExec()}
         onClick={editor.commands.redo}
         tooltip="Redo"
       >
@@ -29,7 +29,7 @@ export default function Toolbar() {
 
       <Button
         pressed={editor.marks.bold.isActive()}
-        disabled={!editor.commands.toggleBold.canApply()}
+        disabled={!editor.commands.toggleBold.canExec()}
         onClick={editor.commands.toggleBold}
         tooltip="Bold"
       >
@@ -38,7 +38,7 @@ export default function Toolbar() {
 
       <Button
         pressed={editor.marks.italic.isActive()}
-        disabled={!editor.commands.toggleItalic.canApply()}
+        disabled={!editor.commands.toggleItalic.canExec()}
         onClick={editor.commands.toggleItalic}
         tooltip="Italic"
       >
@@ -47,7 +47,7 @@ export default function Toolbar() {
 
       <Button
         pressed={editor.nodes.heading.isActive({ level: 1 })}
-        disabled={!editor.commands.toggleHeading.canApply({ level: 1 })}
+        disabled={!editor.commands.toggleHeading.canExec({ level: 1 })}
         onClick={() => editor.commands.toggleHeading({ level: 1 })}
         tooltip="Heading 1"
       >
@@ -56,7 +56,7 @@ export default function Toolbar() {
 
       <Button
         pressed={editor.nodes.heading.isActive({ level: 2 })}
-        disabled={!editor.commands.toggleHeading.canApply({ level: 2 })}
+        disabled={!editor.commands.toggleHeading.canExec({ level: 2 })}
         onClick={() => editor.commands.toggleHeading({ level: 2 })}
         tooltip="Heading 2"
       >
@@ -65,7 +65,7 @@ export default function Toolbar() {
 
       <Button
         pressed={editor.nodes.heading.isActive({ level: 3 })}
-        disabled={!editor.commands.toggleHeading.canApply({ level: 3 })}
+        disabled={!editor.commands.toggleHeading.canExec({ level: 3 })}
         onClick={() => editor.commands.toggleHeading({ level: 3 })}
         tooltip="Heading 3"
       >
@@ -73,7 +73,7 @@ export default function Toolbar() {
       </Button>
 
       <ImageUploadPopover
-        disabled={!editor.commands.insertImage.canApply()}
+        disabled={!editor.commands.insertImage.canExec()}
         tooltip="Insert Image"
       >
         <div className="i-lucide-image h-5 w-5" />
