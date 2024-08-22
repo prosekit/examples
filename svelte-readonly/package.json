@@ -12,7 +12,7 @@
     "prosekit": "^0.9.17"
   },
   "devDependencies": {
-    "@egoist/tailwindcss-icons": "^1.8.0",
+    "@egoist/tailwindcss-icons": "^1.8.1",
     "@iconify-json/lucide": "^1.1.207",
     "@sveltejs/vite-plugin-svelte": "^3.1.1",
     "@tsconfig/svelte": "^5.0.4",
