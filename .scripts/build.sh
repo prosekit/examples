@@ -7,7 +7,7 @@ ROOT=$(pwd)
 
 mkdir -p ./.temp/prosekit
 rm -rf ./.temp/prosekit
-git clone --depth 1 https://github.com/ocavue/prosekit ./.temp/prosekit
+git clone --depth 1 https://github.com/ocavue/prosekit --branch master ./.temp/prosekit
 
 for file in $(find $ROOT/.temp/prosekit/playground/examples/ -type f)
 do 
@@ -62,3 +62,5 @@ sync_example ./.temp/prosekit/playground/examples/vue/full/ ./.templates/templat
 sync_example ./.temp/prosekit/playground/examples/react/toolbar/ ./.templates/template-next/ ./next-full/
 
 sync_example ./.temp/prosekit/playground/examples/svelte/full/ ./.templates/template-sveltekit/ ./sveltekit-full/ src/lib/
+
+rsync --exclude 'node_modules' -av "./.overrides/" "./"

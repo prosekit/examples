@@ -46,5 +46,13 @@ jobs:
   after_test:
     runs-on: ubuntu-latest
     needs: test
+    if: always()
     steps:
-      - run: echo "All tests passed"
+      - name: Check test results
+        run: |
+          if [[ ${{ contains(needs.test.result, 'failure') }} == 'true' ]]; then
+            echo "One or more tests failed"
+            exit 1
+          else
+            echo "All tests passed"
+          fi
