@@ -63,4 +63,4 @@ sync_example ./.temp/prosekit/playground/examples/react/toolbar/ ./.templates/te
 
 sync_example ./.temp/prosekit/playground/examples/svelte/full/ ./.templates/template-sveltekit/ ./sveltekit-full/ src/lib/
 
-rsync --exclude 'node_modules' -av "./.overrides" "."
+rsync --exclude 'node_modules' -av "./.overrides/" "./"
