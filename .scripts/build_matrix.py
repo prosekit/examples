@@ -17,7 +17,7 @@ def find_directories() -> List[str]:
     for dirpath, _, filenames in os.walk(root):
         if "node_modules" in dirpath:
             continue
-        if "package.json" in filenames:
+        if "package.json" in filenames and not dirpath.startswith("."):
             dirs.append(dirpath)
 
     # Sort examples so that they can be grouped by framework, which improves the
