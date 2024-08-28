@@ -20,7 +20,6 @@ def find_directories() -> List[str]:
             "package.json" in filenames
             and "node_modules" not in parts
             and not any(part.startswith(".") for part in parts)
-            and not any(part == "src" for part in parts)
         ):
             dirs.append(dirpath)
 

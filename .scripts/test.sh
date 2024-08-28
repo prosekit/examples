@@ -21,12 +21,6 @@ for TEST_DIR in $TEST_DIRS; do
     cd "$ROOT"
     cd "$TEST_DIR"
 
-    # Skip current directory if $TEST_DIR ends with src
-    if [[ $TEST_DIR =~ src$ ]]; then
-        echo "Skipping directory $TEST_DIR because it ends with src"
-        continue
-    fi
-
     $PACKAGE_MANAGER install --prefer-offline
 
     # If the package manager is yarn v1, we need to run special commands to 
