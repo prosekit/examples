@@ -21,9 +21,9 @@ for TEST_DIR in $TEST_DIRS; do
     cd "$ROOT"
     cd "$TEST_DIR"
 
-    # Temporary disble all dir that end with src
-    if [ -d "src" ]; then
-        echo "Skipping directory $TEST_DIR because it contains a src directory"
+    # Skip current directory if $TEST_DIR ends with src
+    if [[ $TEST_DIR =~ src$ ]]; then
+        echo "Skipping directory $TEST_DIR because it ends with src"
         continue
     fi
 
