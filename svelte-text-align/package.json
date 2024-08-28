@@ -1,11 +1,11 @@
 {
   "name": "example-svelte-text-align",
-  "private": true,
   "version": "0.0.0",
+  "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
     "build": "svelte-check --tsconfig ./tsconfig.json && vite build",
+    "dev": "vite",
     "preview": "vite preview"
   },
   "dependencies": {

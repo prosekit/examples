@@ -15,9 +15,12 @@ def find_directories() -> List[str]:
     # find all directories that contain a package.json file
     dirs = []
     for dirpath, _, filenames in os.walk(root):
-        if "node_modules" in dirpath:
-            continue
-        if "package.json" in filenames:
+        parts = dirpath.split(os.sep)
+        if (
+            "package.json" in filenames
+            and "node_modules" not in parts
+            and not any(part.startswith(".") for part in parts)
+        ):
             dirs.append(dirpath)
 
     # Sort examples so that they can be grouped by framework, which improves the

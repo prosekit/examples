@@ -2,12 +2,13 @@
   "name": "template-sveltekit",
   "version": "0.0.1",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "vite dev",
     "build": "vite build",
-    "preview": "vite preview",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+    "dev": "vite dev",
+    "preview": "vite preview"
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "^1.8.1",
@@ -23,6 +24,5 @@
     "tslib": "^2.7.0",
     "typescript": "^5.5.4",
     "vite": "^5.4.2"
-  },
-  "type": "module"
+  }
 }
