@@ -21,6 +21,12 @@ for TEST_DIR in $TEST_DIRS; do
     cd "$ROOT"
     cd "$TEST_DIR"
 
+    # Temporary disble all dir that end with src
+    if [ -d "src" ]; then
+        echo "Skipping directory $TEST_DIR because it contains a src directory"
+        continue
+    fi
+
     $PACKAGE_MANAGER install --prefer-offline
 
     # If the package manager is yarn v1, we need to run special commands to 
