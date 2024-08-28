@@ -1,5 +1,6 @@
 {
   "semi": false,
   "singleQuote": true,
-  "htmlWhitespaceSensitivity": "ignore"
+  "htmlWhitespaceSensitivity": "ignore",
+  "plugins": ["prettier-plugin-packagejson"]
 }

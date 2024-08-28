@@ -1,14 +1,21 @@
 {
   "name": "prosekit-examples",
-  "type": "module",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "build": "echo 'No build step'",
+    "build": "bun .scripts/build.ts",
+    "clone": "bash .scripts/clone.sh",
     "fix": "prettier --write ."
   },
   "dependencies": {
-    "prettier": "3.3.3"
+    "@types/bun": "^1.1.8",
+    "@types/node": "^20.0.0",
+    "prettier": "3.3.3",
+    "prettier-plugin-packagejson": "^2.5.2"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.0"
   },
   "renovate": {
     "dependencyDashboard": true,

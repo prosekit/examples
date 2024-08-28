@@ -14,17 +14,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 18
+      - name: Install bun
+        uses: oven-sh/setup-bun@v2
 
-      - name: Install npm, yarn and pnpm
-        run: corepack enable
-
-      - name: Build examples
-        run: bash .scripts/build.sh
-
-      - name: Fix linting
-        run: npm install && npm run fix
+      - run: bun install
+      - run: bun run clone
+      - run: bun run build
+      - run: bun run fix
 
       - uses: autofix-ci/action@ff86a557419858bb967097bfc916833f5647fa8c
