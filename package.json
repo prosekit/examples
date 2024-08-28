@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "build": "echo 'noop'",
-    "copy": "bun .scripts/build.ts",
     "clone": "bash .scripts/clone.sh",
+    "copy": "bun .scripts/build.ts",
     "fix": "prettier --write ."
   },
   "dependencies": {
