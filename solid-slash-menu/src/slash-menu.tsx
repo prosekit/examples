@@ -11,14 +11,6 @@ import type { EditorExtension } from './extension'
 export default function SlashMenu() {
   const editor = useEditor<EditorExtension>()
 
-  const handleHeadingInsert = (level: number) => {
-    editor().commands.insertHeading({ level })
-  }
-
-  const handleHeadingConvert = (level: number) => {
-    editor().commands.setHeading({ level })
-  }
-
   return (
     <AutocompletePopover
       regex={/\/.*$/iu}
@@ -31,27 +23,43 @@ export default function SlashMenu() {
 
         <AutocompleteItem
           class="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
-          onSelect={() => handleHeadingInsert(1)}
+          onSelect={() => editor().commands.setHeading({ level: 1 })}
         >
-          Insert Heading 1
+          Heading 1
         </AutocompleteItem>
         <AutocompleteItem
           class="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
-          onSelect={() => handleHeadingInsert(2)}
+          onSelect={() => editor().commands.setHeading({ level: 2 })}
         >
-          Insert Heading 2
+          Heading 2
         </AutocompleteItem>
+
         <AutocompleteItem
           class="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
-          onSelect={() => handleHeadingConvert(1)}
+          onSelect={() => editor().commands.wrapInList({ kind: 'task' })}
         >
-          Turn into Heading 1
+          Task list
         </AutocompleteItem>
+
         <AutocompleteItem
           class="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
-          onSelect={() => handleHeadingConvert(2)}
+          onSelect={() => editor().commands.wrapInList({ kind: 'bullet' })}
         >
-          Turn into Heading 2
+          Bullet list
+        </AutocompleteItem>
+
+        <AutocompleteItem
+          class="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
+          onSelect={() => editor().commands.wrapInList({ kind: 'ordered' })}
+        >
+          Ordered list
+        </AutocompleteItem>
+
+        <AutocompleteItem
+          class="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
+          onSelect={() => editor().commands.wrapInList({ kind: 'toggle' })}
+        >
+          Toggle list
         </AutocompleteItem>
       </AutocompleteList>
     </AutocompletePopover>
