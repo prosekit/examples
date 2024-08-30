@@ -11,27 +11,6 @@ import type { EditorExtension } from './extension'
 export default function SlashMenu() {
   const editor = useEditor<EditorExtension>()
 
-  function isBlockEmpty() {
-    const selection = editor.view.state.selection
-    return selection.empty && selection.$from.parent.content.size === 0
-  }
-
-  function handleSelectHeading(level: number) {
-    if (isBlockEmpty()) {
-      editor.commands.setHeading({ level })
-    } else {
-      editor.commands.insertHeading({ level })
-    }
-  }
-
-  function handleSelectList(kind: 'task' | 'bullet' | 'ordered' | 'toggle') {
-    if (isBlockEmpty()) {
-      editor.commands.wrapInList({ kind })
-    } else {
-      editor.commands.insertList({ kind })
-    }
-  }
-
   return (
     <AutocompletePopover
       regex={/\/.*$/iu}
@@ -44,41 +23,41 @@ export default function SlashMenu() {
 
         <AutocompleteItem
           className="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
-          onSelect={() => handleSelectHeading(1)}
+          onSelect={() => editor.commands.setHeading({ level: 1 })}
         >
           Heading 1
         </AutocompleteItem>
         <AutocompleteItem
           className="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
-          onSelect={() => handleSelectHeading(2)}
+          onSelect={() => editor.commands.setHeading({ level: 2 })}
         >
           Heading 2
         </AutocompleteItem>
 
         <AutocompleteItem
           className="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
-          onSelect={() => handleSelectList('task')}
+          onSelect={() => editor.commands.wrapInList({ kind: 'task' })}
         >
           Task list
         </AutocompleteItem>
 
         <AutocompleteItem
           className="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
-          onSelect={() => handleSelectList('bullet')}
+          onSelect={() => editor.commands.wrapInList({ kind: 'bullet' })}
         >
           Bullet list
         </AutocompleteItem>
 
         <AutocompleteItem
           className="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
-          onSelect={() => handleSelectList('ordered')}
+          onSelect={() => editor.commands.wrapInList({ kind: 'ordered' })}
         >
           Ordered list
         </AutocompleteItem>
 
         <AutocompleteItem
           className="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
-          onSelect={() => handleSelectList('toggle')}
+          onSelect={() => editor.commands.wrapInList({ kind: 'toggle' })}
         >
           Toggle list
         </AutocompleteItem>
