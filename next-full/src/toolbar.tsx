@@ -46,6 +46,46 @@ export default function Toolbar() {
       </Button>
 
       <Button
+        pressed={editor.marks.underline.isActive()}
+        disabled={!editor.commands.toggleUnderline.canExec()}
+        onClick={editor.commands.toggleUnderline}
+        tooltip="Underline"
+      >
+        <div className="i-lucide-underline h-5 w-5" />
+      </Button>
+
+      <Button
+        pressed={editor.marks.strike.isActive()}
+        disabled={!editor.commands.toggleStrike.canExec()}
+        onClick={editor.commands.toggleStrike}
+        tooltip="Strike"
+      >
+        <div className="i-lucide-strikethrough h-5 w-5" />
+      </Button>
+
+      <Button
+        pressed={editor.marks.code.isActive()}
+        disabled={!editor.commands.toggleCode.canExec()}
+        onClick={editor.commands.toggleCode}
+        tooltip="Code"
+      >
+        <div className="i-lucide-code h-5 w-5" />
+      </Button>
+
+      <Button
+        pressed={editor.nodes.codeBlock.isActive()}
+        disabled={
+          !editor.commands.toggleCodeBlock.canExec({ language: 'javascript' })
+        }
+        onClick={() =>
+          editor.commands.toggleCodeBlock({ language: 'javascript' })
+        }
+        tooltip="Code Block"
+      >
+        <div className="i-lucide-square-code h-5 w-5" />
+      </Button>
+
+      <Button
         pressed={editor.nodes.heading.isActive({ level: 1 })}
         disabled={!editor.commands.toggleHeading.canExec({ level: 1 })}
         onClick={() => editor.commands.toggleHeading({ level: 1 })}
@@ -70,6 +110,60 @@ export default function Toolbar() {
         tooltip="Heading 3"
       >
         <div className="i-lucide-heading-3 h-5 w-5" />
+      </Button>
+
+      <Button
+        pressed={editor.nodes.list.isActive({ kind: 'bullet' })}
+        disabled={!editor.commands.toggleList.canExec({ kind: 'bullet' })}
+        onClick={() => editor.commands.toggleList.canExec({ kind: 'bullet' })}
+        tooltip="Bullet List"
+      >
+        <div className="i-lucide-list h-5 w-5" />
+      </Button>
+
+      <Button
+        pressed={editor.nodes.list.isActive({ kind: 'ordered' })}
+        disabled={!editor.commands.toggleList.canExec({ kind: 'ordered' })}
+        onClick={() => editor.commands.toggleList.canExec({ kind: 'ordered' })}
+        tooltip="Ordered List"
+      >
+        <div className="i-lucide-list-ordered h-5 w-5" />
+      </Button>
+
+      <Button
+        pressed={editor.nodes.list.isActive({ kind: 'task' })}
+        disabled={!editor.commands.toggleList.canExec({ kind: 'task' })}
+        onClick={() => editor.commands.toggleList.canExec({ kind: 'task' })}
+        tooltip="Task List"
+      >
+        <div className="i-lucide-list-checks h-5 w-5" />
+      </Button>
+
+      <Button
+        pressed={editor.nodes.list.isActive({ kind: 'toggle' })}
+        disabled={!editor.commands.toggleList.canExec({ kind: 'toggle' })}
+        onClick={() => editor.commands.toggleList.canExec({ kind: 'toggle' })}
+        tooltip="Toggle List"
+      >
+        <div className="i-lucide-list-collapse h-5 w-5" />
+      </Button>
+
+      <Button
+        pressed={false}
+        disabled={!editor.commands.indentList.canExec()}
+        tooltip="Increase indentation"
+        onClick={() => editor.commands.indentList()}
+      >
+        <div className="i-lucide-indent-increase h-5 w-5" />
+      </Button>
+
+      <Button
+        pressed={false}
+        disabled={!editor.commands.dedentList.canExec()}
+        tooltip="Decrease indentation"
+        onClick={() => editor.commands.dedentList()}
+      >
+        <div className="i-lucide-indent-decrease h-5 w-5" />
       </Button>
 
       <ImageUploadPopover
