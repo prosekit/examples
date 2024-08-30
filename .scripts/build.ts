@@ -195,7 +195,7 @@ async function main() {
 
   // Copy other examples
   await copyExample('vue', 'full', 'nuxt', 'nuxt-full')
-  await copyExample('react', 'toolbar', 'next', 'next-full')
+  await copyExample('react', 'full', 'next', 'next-full')
   await copyExample('svelte', 'full', 'sveltekit', 'sveltekit-full', 'src/lib')
 }
 
