@@ -1,11 +1,18 @@
-import { BlockDragHandle, BlockPopover } from 'prosekit/react/block-handle'
+import {
+  BlockHandleAdd,
+  BlockHandleDraggable,
+  BlockHandlePopover,
+} from 'prosekit/react/block-handle'
 
 export default function BlockHandle() {
   return (
-    <BlockPopover className="flex items-center box-border justify-center my-[0.5em] h-[1.5em] w-[1.2em] hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded text-zinc-500/50 dark:text-zinc-500/50 transition [&:not([data-state])]:hidden will-change-transform data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0 data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95 data-[state=open]:animate-duration-150 data-[state=closed]:animate-duration-200">
-      <BlockDragHandle>
+    <BlockHandlePopover className="flex items-center flex-row box-border justify-center transition py-2 [&:not([data-state])]:hidden will-change-transform data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0 data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95 data-[state=open]:animate-duration-150 data-[state=closed]:animate-duration-200">
+      <BlockHandleAdd className="flex items-center box-border justify-center h-[1.5em] w-[1.5em] hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded text-zinc-500/50 dark:text-zinc-500/50 cursor-pointer">
+        <div className="i-lucide-plus h-5 w-5" />
+      </BlockHandleAdd>
+      <BlockHandleDraggable className="flex items-center box-border justify-center h-[1.5em] w-[1.2em] hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded text-zinc-500/50 dark:text-zinc-500/50 cursor-grab">
         <div className="i-lucide-grip-vertical h-5 w-5" />
-      </BlockDragHandle>
-    </BlockPopover>
+      </BlockHandleDraggable>
+    </BlockHandlePopover>
   )
 }
