@@ -147,7 +147,7 @@ async function writeReadme(dir: string) {
 Run the example locally with:
 
 \`\`\`bash
-npx degit prosekit/examples/${name}
+npx degit prosekit/examples/${name} ${name}
 cd ${name}
 npm install
 npm run dev
