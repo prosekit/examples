@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/react-block-handle
+npx degit prosekit/examples/react-block-handle react-block-handle
 cd react-block-handle
 npm install
 npm run dev

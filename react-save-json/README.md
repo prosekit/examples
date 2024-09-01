@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/react-save-json
+npx degit prosekit/examples/react-save-json react-save-json
 cd react-save-json
 npm install
 npm run dev

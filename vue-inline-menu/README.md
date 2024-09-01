@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/vue-inline-menu
+npx degit prosekit/examples/vue-inline-menu vue-inline-menu
 cd vue-inline-menu
 npm install
 npm run dev

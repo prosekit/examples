@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/svelte-slash-menu
+npx degit prosekit/examples/svelte-slash-menu svelte-slash-menu
 cd svelte-slash-menu
 npm install
 npm run dev

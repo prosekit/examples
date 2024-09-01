@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/vue-mark-rule
+npx degit prosekit/examples/vue-mark-rule vue-mark-rule
 cd vue-mark-rule
 npm install
 npm run dev

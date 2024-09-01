@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/svelte-save-json
+npx degit prosekit/examples/svelte-save-json svelte-save-json
 cd svelte-save-json
 npm install
 npm run dev

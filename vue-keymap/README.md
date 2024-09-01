@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/vue-keymap
+npx degit prosekit/examples/vue-keymap vue-keymap
 cd vue-keymap
 npm install
 npm run dev

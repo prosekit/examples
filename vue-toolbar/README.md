@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/vue-toolbar
+npx degit prosekit/examples/vue-toolbar vue-toolbar
 cd vue-toolbar
 npm install
 npm run dev

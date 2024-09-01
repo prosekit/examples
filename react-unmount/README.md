@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/react-unmount
+npx degit prosekit/examples/react-unmount react-unmount
 cd react-unmount
 npm install
 npm run dev

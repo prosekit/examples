@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/react-search
+npx degit prosekit/examples/react-search react-search
 cd react-search
 npm install
 npm run dev

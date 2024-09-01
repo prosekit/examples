@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/vue-save-markdown
+npx degit prosekit/examples/vue-save-markdown vue-save-markdown
 cd vue-save-markdown
 npm install
 npm run dev

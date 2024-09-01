@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/react-change-tracking
+npx degit prosekit/examples/react-change-tracking react-change-tracking
 cd react-change-tracking
 npm install
 npm run dev

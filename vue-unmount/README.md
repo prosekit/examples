@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/vue-unmount
+npx degit prosekit/examples/vue-unmount vue-unmount
 cd vue-unmount
 npm install
 npm run dev

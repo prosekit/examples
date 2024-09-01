@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/vue-word-counter
+npx degit prosekit/examples/vue-word-counter vue-word-counter
 cd vue-word-counter
 npm install
 npm run dev

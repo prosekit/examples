@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/react-word-counter
+npx degit prosekit/examples/react-word-counter react-word-counter
 cd react-word-counter
 npm install
 npm run dev

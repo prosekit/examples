@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/svelte-minimal
+npx degit prosekit/examples/svelte-minimal svelte-minimal
 cd svelte-minimal
 npm install
 npm run dev

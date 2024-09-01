@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/svelte-readonly
+npx degit prosekit/examples/svelte-readonly svelte-readonly
 cd svelte-readonly
 npm install
 npm run dev

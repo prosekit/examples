@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/vue-code-block-themes
+npx degit prosekit/examples/vue-code-block-themes vue-code-block-themes
 cd vue-code-block-themes
 npm install
 npm run dev

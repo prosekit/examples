@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/svelte-keymap
+npx degit prosekit/examples/svelte-keymap svelte-keymap
 cd svelte-keymap
 npm install
 npm run dev

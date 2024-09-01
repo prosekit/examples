@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/react-keymap
+npx degit prosekit/examples/react-keymap react-keymap
 cd react-keymap
 npm install
 npm run dev

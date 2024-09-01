@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/vue-readonly
+npx degit prosekit/examples/vue-readonly vue-readonly
 cd vue-readonly
 npm install
 npm run dev

@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/react-toolbar
+npx degit prosekit/examples/react-toolbar react-toolbar
 cd react-toolbar
 npm install
 npm run dev

@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/vue-text-color
+npx degit prosekit/examples/vue-text-color vue-text-color
 cd vue-text-color
 npm install
 npm run dev

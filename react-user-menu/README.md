@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/react-user-menu
+npx degit prosekit/examples/react-user-menu react-user-menu
 cd react-user-menu
 npm install
 npm run dev

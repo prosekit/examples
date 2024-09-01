@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/vanilla-dom
+npx degit prosekit/examples/vanilla-dom vanilla-dom
 cd vanilla-dom
 npm install
 npm run dev

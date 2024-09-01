@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/solid-readonly
+npx degit prosekit/examples/solid-readonly solid-readonly
 cd solid-readonly
 npm install
 npm run dev

@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/svelte-text-align
+npx degit prosekit/examples/svelte-text-align svelte-text-align
 cd svelte-text-align
 npm install
 npm run dev

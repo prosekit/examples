@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/preact-minimal
+npx degit prosekit/examples/preact-minimal preact-minimal
 cd preact-minimal
 npm install
 npm run dev

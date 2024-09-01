@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/preact-slash-menu
+npx degit prosekit/examples/preact-slash-menu preact-slash-menu
 cd preact-slash-menu
 npm install
 npm run dev

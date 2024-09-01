@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/vue-save-json
+npx degit prosekit/examples/vue-save-json vue-save-json
 cd vue-save-json
 npm install
 npm run dev

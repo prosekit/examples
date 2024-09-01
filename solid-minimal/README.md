@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/solid-minimal
+npx degit prosekit/examples/solid-minimal solid-minimal
 cd solid-minimal
 npm install
 npm run dev

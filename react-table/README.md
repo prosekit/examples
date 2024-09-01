@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/react-table
+npx degit prosekit/examples/react-table react-table
 cd react-table
 npm install
 npm run dev
