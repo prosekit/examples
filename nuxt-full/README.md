@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/nuxt-full
+npx degit prosekit/examples/nuxt-full nuxt-full
 cd nuxt-full
 npm install
 npm run dev

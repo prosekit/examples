@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/react-gap-cursor
+npx degit prosekit/examples/react-gap-cursor react-gap-cursor
 cd react-gap-cursor
 npm install
 npm run dev

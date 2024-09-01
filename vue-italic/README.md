@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/vue-italic
+npx degit prosekit/examples/vue-italic vue-italic
 cd vue-italic
 npm install
 npm run dev

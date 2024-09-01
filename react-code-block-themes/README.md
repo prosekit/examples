@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/react-code-block-themes
+npx degit prosekit/examples/react-code-block-themes react-code-block-themes
 cd react-code-block-themes
 npm install
 npm run dev

@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/next-full
+npx degit prosekit/examples/next-full next-full
 cd next-full
 npm install
 npm run dev

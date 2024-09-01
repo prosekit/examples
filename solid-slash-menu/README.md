@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/solid-slash-menu
+npx degit prosekit/examples/solid-slash-menu solid-slash-menu
 cd solid-slash-menu
 npm install
 npm run dev

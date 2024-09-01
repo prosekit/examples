@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/svelte-toolbar
+npx degit prosekit/examples/svelte-toolbar svelte-toolbar
 cd svelte-toolbar
 npm install
 npm run dev

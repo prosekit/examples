@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/react-loro
+npx degit prosekit/examples/react-loro react-loro
 cd react-loro
 npm install
 npm run dev

@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/solid-text-align
+npx degit prosekit/examples/solid-text-align solid-text-align
 cd solid-text-align
 npm install
 npm run dev

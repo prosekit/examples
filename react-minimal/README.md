@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/react-minimal
+npx degit prosekit/examples/react-minimal react-minimal
 cd react-minimal
 npm install
 npm run dev

@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/preact-readonly
+npx degit prosekit/examples/preact-readonly preact-readonly
 cd preact-readonly
 npm install
 npm run dev

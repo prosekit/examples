@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/react-inline-menu
+npx degit prosekit/examples/react-inline-menu react-inline-menu
 cd react-inline-menu
 npm install
 npm run dev

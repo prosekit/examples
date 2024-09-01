@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/svelte-drop-cursor
+npx degit prosekit/examples/svelte-drop-cursor svelte-drop-cursor
 cd svelte-drop-cursor
 npm install
 npm run dev

@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/react-yjs
+npx degit prosekit/examples/react-yjs react-yjs
 cd react-yjs
 npm install
 npm run dev

@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/vue-placeholder
+npx degit prosekit/examples/vue-placeholder vue-placeholder
 cd vue-placeholder
 npm install
 npm run dev

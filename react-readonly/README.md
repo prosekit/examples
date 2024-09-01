@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/react-readonly
+npx degit prosekit/examples/react-readonly react-readonly
 cd react-readonly
 npm install
 npm run dev

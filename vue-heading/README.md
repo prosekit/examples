@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/vue-heading
+npx degit prosekit/examples/vue-heading vue-heading
 cd vue-heading
 npm install
 npm run dev

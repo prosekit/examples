@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/vue-bold
+npx degit prosekit/examples/vue-bold vue-bold
 cd vue-bold
 npm install
 npm run dev

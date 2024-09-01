@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/svelte-emoji-rules
+npx degit prosekit/examples/svelte-emoji-rules svelte-emoji-rules
 cd svelte-emoji-rules
 npm install
 npm run dev

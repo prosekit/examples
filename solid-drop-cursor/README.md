@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/solid-drop-cursor
+npx degit prosekit/examples/solid-drop-cursor solid-drop-cursor
 cd solid-drop-cursor
 npm install
 npm run dev

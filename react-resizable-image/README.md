@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/react-resizable-image
+npx degit prosekit/examples/react-resizable-image react-resizable-image
 cd react-resizable-image
 npm install
 npm run dev

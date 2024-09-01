@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/vue-drop-cursor
+npx degit prosekit/examples/vue-drop-cursor vue-drop-cursor
 cd vue-drop-cursor
 npm install
 npm run dev

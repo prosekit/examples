@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/svelte-word-counter
+npx degit prosekit/examples/svelte-word-counter svelte-word-counter
 cd svelte-word-counter
 npm install
 npm run dev

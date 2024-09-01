@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/react-mark-rule
+npx degit prosekit/examples/react-mark-rule react-mark-rule
 cd react-mark-rule
 npm install
 npm run dev

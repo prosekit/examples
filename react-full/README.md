@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/react-full
+npx degit prosekit/examples/react-full react-full
 cd react-full
 npm install
 npm run dev

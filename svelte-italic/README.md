@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/svelte-italic
+npx degit prosekit/examples/svelte-italic svelte-italic
 cd svelte-italic
 npm install
 npm run dev

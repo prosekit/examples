@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/svelte-change-tracking
+npx degit prosekit/examples/svelte-change-tracking svelte-change-tracking
 cd svelte-change-tracking
 npm install
 npm run dev

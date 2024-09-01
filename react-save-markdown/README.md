@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/react-save-markdown
+npx degit prosekit/examples/react-save-markdown react-save-markdown
 cd react-save-markdown
 npm install
 npm run dev

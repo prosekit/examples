@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/preact-keymap
+npx degit prosekit/examples/preact-keymap preact-keymap
 cd preact-keymap
 npm install
 npm run dev

@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/vue-text-align
+npx degit prosekit/examples/vue-text-align vue-text-align
 cd vue-text-align
 npm install
 npm run dev

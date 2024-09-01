@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/vue-underline
+npx degit prosekit/examples/vue-underline vue-underline
 cd vue-underline
 npm install
 npm run dev

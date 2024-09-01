@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/solid-keymap
+npx degit prosekit/examples/solid-keymap solid-keymap
 cd solid-keymap
 npm install
 npm run dev

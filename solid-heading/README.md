@@ -6,7 +6,7 @@
 Run the example locally with:
 
 ```bash
-npx degit prosekit/examples/solid-heading
+npx degit prosekit/examples/solid-heading solid-heading
 cd solid-heading
 npm install
 npm run dev
