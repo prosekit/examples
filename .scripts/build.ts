@@ -135,6 +135,29 @@ async function updatePackageJsonName(dir: string, name: string) {
   await fs.writeFile(filePath, JSON.stringify(json, null, 2))
 }
 
+async function writeReadme(dir: string) {
+  const filePath = path.join(dir, 'README.md')
+  const name = path.basename(dir)
+
+  const text = `# ${name}
+
+A [ProseKit](https://prosekit.dev) example.
+
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/prosekit/examples/tree/master/${name})
+[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/prosekit/examples/tree/master/${name})
+
+Run the example locally with:
+
+\`\`\`bash
+npx degit prosekit/examples/${name} ${name}
+cd ${name}
+npm install
+npm run dev
+\`\`\`
+`
+  await fs.writeFile(filePath, text)
+}
+
 async function copyExample(
   framework: string,
   story: string,
@@ -158,6 +181,7 @@ async function copyExample(
   await syncDir(overrideDir, destDir, transform)
 
   await updatePackageJsonName(destDir, `example-${dest}`)
+  await writeReadme(dest)
 }
 
 async function main() {
