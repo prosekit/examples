@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "loro-crdt": "^0.16.11",
+    "loro-crdt": "^0.16.12",
     "loro-prosemirror": "^0.0.7"
   },
   "devDependencies": {
