@@ -99,6 +99,15 @@ const editor = useEditor<EditorExtension>({ update: true })
   </Button>
 
   <Button
+    pressed={$editor.nodes.horizontalRule.isActive()}
+    disabled={!$editor.commands.insertHorizontalRule.canExec()}
+    onClick={() => $editor.commands.insertHorizontalRule()}
+    tooltip="Divider"
+  >
+    <div class='i-lucide-minus h-5 w-5'></div>
+  </Button>
+
+  <Button
     pressed={$editor.nodes.list.isActive({ kind: 'bullet' })}
     disabled={!$editor.commands.toggleList.canExec({ kind: 'bullet' })}
     onClick={() => $editor.commands.toggleList({ kind: 'bullet' })}

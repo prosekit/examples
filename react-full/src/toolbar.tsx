@@ -75,10 +75,10 @@ export default function Toolbar() {
       <Button
         pressed={editor.nodes.codeBlock.isActive()}
         disabled={
-          !editor.commands.toggleCodeBlock.canExec({ language: 'javascript' })
+          !editor.commands.insertCodeBlock.canExec({ language: 'javascript' })
         }
         onClick={() =>
-          editor.commands.toggleCodeBlock({ language: 'javascript' })
+          editor.commands.insertCodeBlock({ language: 'javascript' })
         }
         tooltip="Code Block"
       >
@@ -110,6 +110,15 @@ export default function Toolbar() {
         tooltip="Heading 3"
       >
         <div className="i-lucide-heading-3 h-5 w-5" />
+      </Button>
+
+      <Button
+        pressed={editor.nodes.horizontalRule.isActive()}
+        disabled={!editor.commands.insertHorizontalRule.canExec()}
+        onClick={() => editor.commands.insertHorizontalRule()}
+        tooltip="Divider"
+      >
+        <div className="i-lucide-minus h-5 w-5"></div>
       </Button>
 
       <Button
