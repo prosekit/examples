@@ -26,41 +26,41 @@ const editor = useEditor<EditorExtension>()
 
       <AutocompleteItem
         class="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
-        :on-select="() => editor.commands.setHeading({ level: 1 })"
+        @select="() => editor.commands.setHeading({ level: 1 })"
       >
         Heading 1
       </AutocompleteItem>
       <AutocompleteItem
         class="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
-        :on-select="() => editor.commands.setHeading({ level: 2 })"
+        @select="() => editor.commands.setHeading({ level: 2 })"
       >
         Heading 2
       </AutocompleteItem>
 
       <AutocompleteItem
         class="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
-        :on-select="() => editor.commands.wrapInList({ kind: 'task' })"
+        @select="() => editor.commands.wrapInList({ kind: 'task' })"
       >
         Task list
       </AutocompleteItem>
 
       <AutocompleteItem
         class="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
-        :on-select="() => editor.commands.wrapInList({ kind: 'bullet' })"
+        @select="() => editor.commands.wrapInList({ kind: 'bullet' })"
       >
         Bullet list
       </AutocompleteItem>
 
       <AutocompleteItem
         class="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
-        :on-select="() => editor.commands.wrapInList({ kind: 'ordered' })"
+        @select="() => editor.commands.wrapInList({ kind: 'ordered' })"
       >
         Ordered list
       </AutocompleteItem>
 
       <AutocompleteItem
         class="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
-        :on-select="() => editor.commands.wrapInList({ kind: 'toggle' })"
+        @select="() => editor.commands.wrapInList({ kind: 'toggle' })"
       >
         Toggle list
       </AutocompleteItem>

@@ -27,29 +27,29 @@ const editor = useEditor<EditorExtension>({ update: true })
         class="relative block max-h-[400px] min-w-[120px] select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-neutral-900 shadow-lg [&:not([data-state])]:hidden"
       >
         <TableHandlePopoverItem
+          v-if="editor.commands.addTableColumnBefore.canExec()"
           class="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
-          :disabled="!editor.commands.addTableColumnBefore.canExec()"
           @select="editor.commands.addTableColumnBefore"
         >
           Insert Left
         </TableHandlePopoverItem>
         <TableHandlePopoverItem
+          v-if="editor.commands.addTableColumnAfter.canExec()"
           class="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
-          :disabled="!editor.commands.addTableColumnAfter.canExec()"
           @select="editor.commands.addTableColumnAfter"
         >
           Insert Right
         </TableHandlePopoverItem>
         <TableHandlePopoverItem
+          v-if="editor.commands.deleteCellSelection.canExec()"
           class="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
-          :disabled="!editor.commands.deleteCellSelection.canExec()"
           @select="editor.commands.deleteCellSelection"
         >
           Clear Contents
         </TableHandlePopoverItem>
         <TableHandlePopoverItem
+          v-if="editor.commands.deleteTableColumn.canExec()"
           class="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
-          :disabled="!editor.commands.deleteTableColumn.canExec()"
           @select="editor.commands.deleteTableColumn"
         >
           Delete Column
@@ -66,29 +66,29 @@ const editor = useEditor<EditorExtension>({ update: true })
         class="relative block max-h-[400px] min-w-[120px] select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-neutral-900 shadow-lg [&:not([data-state])]:hidden"
       >
         <TableHandlePopoverItem
+          v-if="editor.commands.addTableRowAbove.canExec()"
           class="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
-          :disabled="!editor.commands.addTableRowAbove.canExec()"
           @select="editor.commands.addTableRowAbove"
         >
           Insert Above
         </TableHandlePopoverItem>
         <TableHandlePopoverItem
+          v-if="editor.commands.addTableRowBelow.canExec()"
           class="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
-          :disabled="!editor.commands.addTableRowBelow.canExec()"
           @select="editor.commands.addTableRowBelow"
         >
           Insert Below
         </TableHandlePopoverItem>
         <TableHandlePopoverItem
+          v-if="editor.commands.deleteCellSelection.canExec()"
           class="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
-          :disabled="!editor.commands.deleteCellSelection.canExec()"
           @select="editor.commands.deleteCellSelection"
         >
           Clear Contents
         </TableHandlePopoverItem>
         <TableHandlePopoverItem
+          v-if="editor.commands.deleteTableRow.canExec()"
           class="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
-          :disabled="!editor.commands.deleteTableRow.canExec()"
           @select="editor.commands.deleteTableRow"
         >
           Delete Row
