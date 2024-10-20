@@ -10,6 +10,8 @@ import { definePlaceholder } from 'prosekit/extensions/placeholder'
 import { defineVueNodeView, type VueNodeViewComponent } from 'prosekit/vue'
 
 import CodeBlockView from './code-block-view.vue'
+import ImageView from './image-view.vue'
+import { defineImageFileHandlers } from './upload-file'
 
 export function defineExtension() {
   return union(
@@ -18,12 +20,17 @@ export function defineExtension() {
     defineMention(),
     defineCodeBlock(),
     defineCodeBlockShiki(),
+    defineHorizontalRule(),
     defineVueNodeView({
       name: 'codeBlock',
       contentAs: 'code',
       component: CodeBlockView as VueNodeViewComponent,
     }),
-    defineHorizontalRule(),
+    defineVueNodeView({
+      name: 'image',
+      component: ImageView as VueNodeViewComponent,
+    }),
+    defineImageFileHandlers(),
   )
 }
 
