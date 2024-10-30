@@ -20,37 +20,40 @@ export function TableHandle() {
         <TableHandleColumnTrigger>
           <div className="i-lucide-grip-horizontal h-5 w-5"></div>
         </TableHandleColumnTrigger>
-        <TableHandlePopoverContent className="relative block max-h-[400px] min-w-[120px] select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-neutral-900 shadow-lg [&:not([data-state])]:hidden">
+        <TableHandlePopoverContent className="relative block max-h-[25rem] min-w-[8rem] select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-neutral-900 shadow-lg [&:not([data-state])]:hidden">
           {editor.commands.addTableColumnBefore.canExec() && (
             <TableHandlePopoverItem
-              className="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
+              className="relative min-w-[8rem] scroll-my-1 rounded px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
               onSelect={editor.commands.addTableColumnBefore}
             >
-              Insert Left
+              <span>Insert Left</span>
             </TableHandlePopoverItem>
           )}
           {editor.commands.addTableColumnAfter.canExec() && (
             <TableHandlePopoverItem
-              className="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
+              className="relative min-w-[8rem] scroll-my-1 rounded px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
               onSelect={editor.commands.addTableColumnAfter}
             >
-              Insert Right
+              <span>Insert Right</span>
             </TableHandlePopoverItem>
           )}
           {editor.commands.deleteCellSelection.canExec() && (
             <TableHandlePopoverItem
-              className="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
+              className="relative min-w-[8rem] scroll-my-1 rounded px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
               onSelect={editor.commands.deleteCellSelection}
             >
-              Clear Contents
+              <span>Clear Contents</span>
+              <span className="text-xs tracking-widest text-zinc-500 dark:text-zinc-500">
+                Del
+              </span>
             </TableHandlePopoverItem>
           )}
           {editor.commands.deleteTableColumn.canExec() && (
             <TableHandlePopoverItem
-              className="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
+              className="relative min-w-[8rem] scroll-my-1 rounded px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
               onSelect={editor.commands.deleteTableColumn}
             >
-              Delete Column
+              <span>Delete Column</span>
             </TableHandlePopoverItem>
           )}
         </TableHandlePopoverContent>
@@ -59,37 +62,40 @@ export function TableHandle() {
         <TableHandleRowTrigger>
           <div className="i-lucide-grip-vertical h-5 w-5"></div>
         </TableHandleRowTrigger>
-        <TableHandlePopoverContent className="relative block max-h-[400px] min-w-[120px] select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-neutral-900 shadow-lg [&:not([data-state])]:hidden">
+        <TableHandlePopoverContent className="relative block max-h-[25rem] min-w-[8rem] select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-neutral-900 shadow-lg [&:not([data-state])]:hidden">
           {editor.commands.addTableRowAbove.canExec() && (
             <TableHandlePopoverItem
-              className="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
+              className="relative min-w-[8rem] scroll-my-1 rounded px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
               onSelect={editor.commands.addTableRowAbove}
             >
-              Insert Above
+              <span>Insert Above</span>
             </TableHandlePopoverItem>
           )}
           {editor.commands.addTableRowBelow.canExec() && (
             <TableHandlePopoverItem
-              className="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
+              className="relative min-w-[8rem] scroll-my-1 rounded px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
               onSelect={editor.commands.addTableRowBelow}
             >
-              Insert Below
+              <span>Insert Below</span>
             </TableHandlePopoverItem>
           )}
           {editor.commands.deleteCellSelection.canExec() && (
             <TableHandlePopoverItem
-              className="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
+              className="relative min-w-[8rem] scroll-my-1 rounded px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
               onSelect={editor.commands.deleteCellSelection}
             >
-              Clear Contents
+              <span>Clear Contents</span>
+              <span className="text-xs tracking-widest text-zinc-500 dark:text-zinc-500">
+                Del
+              </span>
             </TableHandlePopoverItem>
           )}
           {editor.commands.deleteTableRow.canExec() && (
             <TableHandlePopoverItem
-              className="relative block min-w-[120px] scroll-my-1 rounded px-3 py-1.5 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
+              className="relative min-w-[8rem] scroll-my-1 rounded px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-zinc-100 dark:data-[focused]:bg-zinc-800"
               onSelect={editor.commands.deleteTableRow}
             >
-              Delete Row
+              <span>Delete Row</span>
             </TableHandlePopoverItem>
           )}
         </TableHandlePopoverContent>
