@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "loro-crdt": "^1.0.8",
-    "loro-prosemirror": "^0.1.0"
+    "loro-prosemirror": "^0.2.0"
   },
   "devDependencies": {
     "vite-plugin-top-level-await": "^1.4.4",
