@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "loro-crdt": "^1.0.9",
+    "loro-crdt": "^1.1.0",
     "loro-prosemirror": "^0.2.0",
     "prosekit": "^0.10.4",
     "react": "^18.3.1",
