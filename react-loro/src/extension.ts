@@ -1,4 +1,4 @@
-import type { LoroDocType, CursorAwareness } from 'loro-prosemirror'
+import type { CursorAwareness, LoroDocType } from 'loro-prosemirror'
 import {
   defineBaseCommands,
   defineBaseKeymap,

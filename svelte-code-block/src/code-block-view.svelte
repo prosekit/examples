@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { CodeBlockAttrs } from 'prosekit/extensions/code-block'
-import type { SvelteNodeViewProps } from 'prosekit/svelte'
 import { shikiBundledLanguagesInfo } from 'prosekit/extensions/code-block'
+import type { SvelteNodeViewProps } from 'prosekit/svelte'
 
 export let node: SvelteNodeViewProps['node']
 export let setAttrs: SvelteNodeViewProps['setAttrs']

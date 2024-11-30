@@ -2,8 +2,8 @@
 import 'prosekit/basic/style.css'
 
 import { createEditor } from 'prosekit/core'
-import { defineExtension } from './extension'
 import { ProseKit } from 'prosekit/svelte'
+import { defineExtension } from './extension'
 import SlashMenu from './slash-menu.svelte'
 
 const editor = createEditor({ extension: defineExtension() })

@@ -1,7 +1,7 @@
 import 'prosekit/basic/style.css'
 import 'prosekit/basic/typography.css'
 
-import { LitElement, html } from 'lit'
+import { html, LitElement } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
 import { createRef, ref, type Ref } from 'lit/directives/ref.js'
 import { createEditor, type Editor, type NodeJSON } from 'prosekit/core'

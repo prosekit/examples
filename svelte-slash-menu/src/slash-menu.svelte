@@ -1,11 +1,11 @@
 <script lang="ts">
-import {
-  AutocompleteItem,
-  AutocompletePopover,
-  AutocompleteEmpty,
-  AutocompleteList,
-} from 'prosekit/svelte/autocomplete'
 import { useEditor } from 'prosekit/svelte'
+import {
+  AutocompleteEmpty,
+  AutocompleteItem,
+  AutocompleteList,
+  AutocompletePopover,
+} from 'prosekit/svelte/autocomplete'
 import type { EditorExtension } from './extension'
 
 const editor = useEditor<EditorExtension>()

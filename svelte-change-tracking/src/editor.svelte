@@ -2,7 +2,10 @@
 import 'prosekit/basic/style.css'
 
 import type { NodeJSON } from 'prosekit/core'
-import { CommitRecorder, type Commit } from 'prosekit/extensions/commit'
+import {
+  CommitRecorder,
+  type Commit,
+} from 'prosekit/extensions/commit'
 
 import EditorDiff from './editor-diff.svelte'
 import EditorMain from './editor-main.svelte'
