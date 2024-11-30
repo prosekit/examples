@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { useEditor } from 'prosekit/vue'
 import {
-  TableHandleRoot,
   TableHandleColumnRoot,
   TableHandleColumnTrigger,
   TableHandlePopoverContent,
   TableHandlePopoverItem,
+  TableHandleRoot,
   TableHandleRowRoot,
   TableHandleRowTrigger,
 } from 'prosekit/vue/table-handle'

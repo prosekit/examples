@@ -4,7 +4,7 @@ import 'prosekit/extensions/list/style.css'
 
 import { createEditor } from 'prosekit/core'
 import { ProseKit } from 'prosekit/vue'
-import { watchPostEffect, ref } from 'vue'
+import { ref, watchPostEffect } from 'vue'
 
 import { defineExtension } from './extension'
 import Toolbar from './toolbar.vue'
