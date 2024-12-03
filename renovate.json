@@ -1,0 +1,12 @@
+{
+    "dependencyDashboard": true,
+    "branchNameStrict": true,
+    "rangeStrategy": "bump",
+    "automerge": true,
+    "extends": [
+        "config:base",
+        ":semanticCommitTypeAll(chore)",
+        ":disablePeerDependencies",
+        ":includeNodeModules"
+    ]
+}
