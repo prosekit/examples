@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts">
 import { useEditor } from 'prosekit/svelte'
 import Button from './button.svelte'
 import type { EditorExtension } from './extension'
@@ -13,6 +13,6 @@ const editor = useEditor<EditorExtension>({ update: true })
     onClick={() => $editor.commands.setCodeBlock()}
     tooltip="Heading 1"
   >
-    <div class='i-lucide-square-code h-5 w-5' />
+    <div class='i-lucide-square-code h-5 w-5'></div>
   </Button>
 </div>
