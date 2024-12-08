@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts">
 import { useEditor } from 'prosekit/svelte'
 import Button from './button.svelte'
 import type { EditorExtension } from './extension'
