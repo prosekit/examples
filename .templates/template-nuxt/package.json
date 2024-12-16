@@ -15,7 +15,7 @@
     "vue": "^3.5.13"
   },
   "devDependencies": {
-    "@egoist/tailwindcss-icons": "^1.8.1",
+    "@egoist/tailwindcss-icons": "^1.8.2",
     "@iconify-json/lucide": "^1.2.18",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.49",
