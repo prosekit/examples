@@ -13,7 +13,7 @@
     "prosekit": "^0.11.0"
   },
   "devDependencies": {
-    "@egoist/tailwindcss-icons": "^1.8.1",
+    "@egoist/tailwindcss-icons": "^1.8.2",
     "@iconify-json/lucide": "^1.2.18",
     "@preact/preset-vite": "^2.9.3",
     "postcss": "^8.4.49",
