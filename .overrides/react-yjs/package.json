@@ -2,7 +2,7 @@
   "dependencies": {
     "y-prosemirror": "^1.2.15",
     "y-protocols": "^1.0.6",
-    "y-websocket": "^2.0.4",
+    "y-websocket": "^2.1.0",
     "yjs": "^13.6.20"
   }
 }
