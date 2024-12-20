@@ -5,6 +5,6 @@
   },
   "devDependencies": {
     "vite-plugin-top-level-await": "^1.4.4",
-    "vite-plugin-wasm": "^3.3.0"
+    "vite-plugin-wasm": "^3.4.1"
   }
 }
