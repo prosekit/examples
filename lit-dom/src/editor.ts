@@ -10,7 +10,7 @@ import { defineExtension, type EditorExtension } from './extension'
 
 @customElement('example-lit-dom')
 export class MyEditor extends LitElement {
-  createRenderRoot() {
+  override createRenderRoot() {
     return this
   }
 
@@ -22,7 +22,7 @@ export class MyEditor extends LitElement {
 
   private editorRef: Ref<HTMLDivElement> = createRef()
 
-  protected firstUpdated(): void {
+  protected override firstUpdated(): void {
     if (!this.editor) {
       const extension = defineExtension()
       this.editor = createEditor({
@@ -34,7 +34,7 @@ export class MyEditor extends LitElement {
     this.editor.mount(this.editorRef.value)
   }
 
-  render() {
+  override render() {
     return html`
       <div
         class="box-border h-full w-full min-h-36 overflow-y-hidden overflow-x-hidden rounded-md border border-solid border-gray-200 shadow dark:border-zinc-700 flex flex-col bg-white dark:bg-neutral-900"
