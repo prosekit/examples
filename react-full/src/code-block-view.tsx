@@ -14,7 +14,7 @@ export default function CodeBlockView(props: ReactNodeViewProps) {
   return (
     <>
       <div
-        className="relative left-2 top-3 h-0 select-none overflow-visible"
+        className="relative mx-2 top-3 h-0 select-none overflow-visible text-xs"
         contentEditable={false}
       >
         <select

@@ -20,7 +20,7 @@ const language = computed({
 
 <template>
   <div
-    class="relative left-2 top-3 h-0 select-none overflow-visible"
+    class="relative mx-2 top-3 h-0 select-none overflow-visible text-xs"
     contenteditable="false"
   >
     <select
