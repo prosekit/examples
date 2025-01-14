@@ -15,7 +15,7 @@ export default function CodeBlockView(props: SolidNodeViewProps) {
   return (
     <>
       <div
-        class="relative left-2 top-3 h-0 select-none overflow-visible"
+        class="relative mx-2 top-3 h-0 select-none overflow-visible text-xs"
         contentEditable={false}
       >
         <select
