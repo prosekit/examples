@@ -124,7 +124,7 @@ export default function Toolbar() {
       <Button
         pressed={editor.nodes.list.isActive({ kind: 'bullet' })}
         disabled={!editor.commands.toggleList.canExec({ kind: 'bullet' })}
-        onClick={() => editor.commands.toggleList.canExec({ kind: 'bullet' })}
+        onClick={() => editor.commands.toggleList({ kind: 'bullet' })}
         tooltip="Bullet List"
       >
         <div className="i-lucide-list h-5 w-5" />
@@ -133,7 +133,7 @@ export default function Toolbar() {
       <Button
         pressed={editor.nodes.list.isActive({ kind: 'ordered' })}
         disabled={!editor.commands.toggleList.canExec({ kind: 'ordered' })}
-        onClick={() => editor.commands.toggleList.canExec({ kind: 'ordered' })}
+        onClick={() => editor.commands.toggleList({ kind: 'ordered' })}
         tooltip="Ordered List"
       >
         <div className="i-lucide-list-ordered h-5 w-5" />
@@ -142,7 +142,7 @@ export default function Toolbar() {
       <Button
         pressed={editor.nodes.list.isActive({ kind: 'task' })}
         disabled={!editor.commands.toggleList.canExec({ kind: 'task' })}
-        onClick={() => editor.commands.toggleList.canExec({ kind: 'task' })}
+        onClick={() => editor.commands.toggleList({ kind: 'task' })}
         tooltip="Task List"
       >
         <div className="i-lucide-list-checks h-5 w-5" />
@@ -151,7 +151,7 @@ export default function Toolbar() {
       <Button
         pressed={editor.nodes.list.isActive({ kind: 'toggle' })}
         disabled={!editor.commands.toggleList.canExec({ kind: 'toggle' })}
-        onClick={() => editor.commands.toggleList.canExec({ kind: 'toggle' })}
+        onClick={() => editor.commands.toggleList({ kind: 'toggle' })}
         tooltip="Toggle List"
       >
         <div className="i-lucide-list-collapse h-5 w-5" />
