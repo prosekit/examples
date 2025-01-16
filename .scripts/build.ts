@@ -168,6 +168,7 @@ async function copyExample(
   const sourceDir = path.join(
     PROSEKIT_DIR,
     'playground',
+    'src',
     'examples',
     framework,
     story,
@@ -208,6 +209,7 @@ async function main() {
     const storiesDir = path.join(
       PROSEKIT_DIR,
       'playground',
+      'src',
       'examples',
       framework,
     )
