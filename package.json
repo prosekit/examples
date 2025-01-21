@@ -10,7 +10,7 @@
     "fix": "prettier --write ."
   },
   "dependencies": {
-    "@types/bun": "1.1.17",
+    "@types/bun": "1.1.18",
     "@types/node": "22.10.7",
     "prettier": "3.4.2",
     "prettier-plugin-packagejson": "2.5.8"
