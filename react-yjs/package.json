@@ -18,7 +18,7 @@
     "yjs": "^13.6.23"
   },
   "devDependencies": {
-    "@egoist/tailwindcss-icons": "^1.8.2",
+    "@egoist/tailwindcss-icons": "^1.9.0",
     "@iconify-json/lucide": "^1.2.25",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
