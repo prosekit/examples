@@ -1,13 +1,7 @@
 import 'prosekit/basic/style.css'
 
 import { defineBasicExtension } from 'prosekit/basic'
-import {
-  createEditor,
-  htmlFromNode,
-  jsonFromHTML,
-  type NodeJSON,
-} from 'prosekit/core'
-import { ListDOMSerializer } from 'prosekit/extensions/list'
+import { createEditor, jsonFromHTML, type NodeJSON } from 'prosekit/core'
 import { useCallback, useMemo, useState } from 'react'
 
 import EditorComponent from './editor-component'
@@ -30,9 +24,7 @@ export default function Editor() {
 
   // Save the current document as a Markdown string
   const handleSave = useCallback(() => {
-    const html = htmlFromNode(editor.view.state.doc, {
-      DOMSerializer: ListDOMSerializer,
-    })
+    const html = editor.getDocHTML()
     const record = markdownFromHTML(html)
     setRecords((records) => [...records, record])
     setHasUnsavedChange(false)

@@ -2,13 +2,7 @@
 import 'prosekit/basic/style.css'
 
 import { defineBasicExtension } from 'prosekit/basic'
-import {
-  createEditor,
-  htmlFromNode,
-  jsonFromHTML,
-  type NodeJSON,
-} from 'prosekit/core'
-import { ListDOMSerializer } from 'prosekit/extensions/list'
+import { createEditor, jsonFromHTML, type NodeJSON } from 'prosekit/core'
 import { computed, ref } from 'vue'
 
 import EditorComponent from './editor-component.vue'
@@ -30,9 +24,7 @@ const handleDocChange = () => (hasUnsavedChange.value = true)
 
 // Save the current document as a Markdown string
 function handleSave() {
-  const html = htmlFromNode(editor.value.view.state.doc, {
-    DOMSerializer: ListDOMSerializer,
-  })
+  const html = editor.value.getDocHTML()
   const record = markdownFromHTML(html)
   records.value.push(record)
   hasUnsavedChange.value = false
