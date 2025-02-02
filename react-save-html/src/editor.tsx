@@ -1,12 +1,7 @@
 import 'prosekit/basic/style.css'
 
 import { defineBasicExtension } from 'prosekit/basic'
-import {
-  createEditor,
-  htmlFromNode,
-  jsonFromHTML,
-  type NodeJSON,
-} from 'prosekit/core'
+import { createEditor, jsonFromHTML, type NodeJSON } from 'prosekit/core'
 import { useCallback, useMemo, useState } from 'react'
 
 import EditorComponent from './editor-component'
@@ -28,7 +23,7 @@ export default function Editor() {
 
   // Save the current document as a HTML string
   const handleSave = useCallback(() => {
-    const record = htmlFromNode(editor.view.state.doc)
+    const record = editor.getDocHTML()
     setRecords((records) => [...records, record])
     setHasUnsavedChange(false)
   }, [editor])
