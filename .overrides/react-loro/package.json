@@ -4,7 +4,7 @@
     "loro-prosemirror": "^0.2.1"
   },
   "devDependencies": {
-    "vite-plugin-top-level-await": "^1.4.4",
+    "vite-plugin-top-level-await": "^1.5.0",
     "vite-plugin-wasm": "^3.4.1"
   }
 }
