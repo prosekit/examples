@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@types/bun": "1.2.2",
-    "@types/node": "22.13.4",
+    "@types/node": "22.13.5",
     "prettier": "3.5.1",
     "prettier-plugin-packagejson": "2.5.8"
   }
