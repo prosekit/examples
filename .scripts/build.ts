@@ -204,7 +204,6 @@ async function main() {
 
   // Copy frameworks
   for (const framework of frameworks) {
-    // Find example dir under PROSEKIT_DIR/playground/examples/${framework}
     const storiesDir = path.join(EXAMPLES_SOURCE_DIR, framework)
     for (const story of await fs.readdir(storiesDir)) {
       if (!(await isDirectory(path.join(storiesDir, story)))) continue
