@@ -41,7 +41,7 @@ function handleLoad(record: string) {
 
 <template>
   <div
-    class="box-border h-full w-full min-h-36 overflow-y-hidden overflow-x-hidden rounded-md border border-solid border-gray-200 shadow dark:border-zinc-700 flex flex-col bg-white dark:bg-neutral-900"
+    class="box-border h-full w-full min-h-36 overflow-y-hidden overflow-x-hidden rounded-md border border-solid border-gray-200 shadow dark:border-zinc-700 flex flex-col bg-white dark:bg-gray-950"
   >
     <button
       :disabled="!hasUnsavedChange"
