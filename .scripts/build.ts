@@ -5,6 +5,12 @@ import { replaceThemes } from './replace-themes'
 const __dirname = path.dirname(new URL(import.meta.url).pathname)
 const ROOT = path.resolve(__dirname, '..')
 const PROSEKIT_DIR = path.join(ROOT, '.temp', 'prosekit')
+const EXAMPLES_SOURCE_DIR = path.join(
+  PROSEKIT_DIR,
+  'playground',
+  'src',
+  'examples',
+)
 
 async function isDirectory(path: string) {
   try {
@@ -165,14 +171,7 @@ async function copyExample(
   dest: string,
   srcDir: string = 'src',
 ) {
-  const sourceDir = path.join(
-    PROSEKIT_DIR,
-    'playground',
-    'src',
-    'examples',
-    framework,
-    story,
-  )
+  const sourceDir = path.join(EXAMPLES_SOURCE_DIR, framework, story)
   const templateDir = path.join(ROOT, '.templates', 'template-' + template)
   const overrideDir = path.join(ROOT, '.overrides', template + '-' + story)
   const destDir = path.join(ROOT, dest)
@@ -206,13 +205,7 @@ async function main() {
   // Copy frameworks
   for (const framework of frameworks) {
     // Find example dir under PROSEKIT_DIR/playground/examples/${framework}
-    const storiesDir = path.join(
-      PROSEKIT_DIR,
-      'playground',
-      'src',
-      'examples',
-      framework,
-    )
+    const storiesDir = path.join(EXAMPLES_SOURCE_DIR, framework)
     for (const story of await fs.readdir(storiesDir)) {
       if (!(await isDirectory(path.join(storiesDir, story)))) continue
       await copyExample(framework, story, framework, `${framework}-${story}`)
