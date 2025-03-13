@@ -12,7 +12,7 @@ const editor = useEditor<EditorExtension>({ update: true })
     disabled={!$editor.commands.undo.canExec()}
     onClick={() => $editor.commands.undo()}
   >
-    <div class='i-lucide-undo-2 h-5 w-5' />
+    <div class='i-lucide-undo-2 h-5 w-5'></div>
   </Button>
 
   <Button
@@ -20,7 +20,7 @@ const editor = useEditor<EditorExtension>({ update: true })
     disabled={!$editor.commands.redo.canExec()}
     onClick={() => $editor.commands.redo()}
   >
-    <div class='i-lucide-redo-2 h-5 w-5' />
+    <div class='i-lucide-redo-2 h-5 w-5'></div>
   </Button>
 
   <Button
