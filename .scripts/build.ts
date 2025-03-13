@@ -7,7 +7,7 @@ const ROOT = path.resolve(__dirname, '..')
 const PROSEKIT_DIR = path.join(ROOT, '.temp', 'prosekit')
 const EXAMPLES_SOURCE_DIR = path.join(
   PROSEKIT_DIR,
-  'playground',
+  'website',
   'src',
   'examples',
 )
