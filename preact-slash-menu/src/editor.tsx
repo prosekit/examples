@@ -1,4 +1,5 @@
 import 'prosekit/basic/style.css'
+import 'prosekit/basic/typography.css'
 
 import { useMemo } from 'preact/hooks'
 import { createEditor } from 'prosekit/core'
