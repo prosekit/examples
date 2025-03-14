@@ -1,5 +1,3 @@
-@import 'prosekit/basic/typography.css';
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

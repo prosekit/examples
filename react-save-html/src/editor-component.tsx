@@ -1,4 +1,5 @@
 import 'prosekit/basic/style.css'
+import 'prosekit/basic/typography.css'
 
 import type { Editor } from 'prosekit/core'
 import { ProseKit, useDocChange } from 'prosekit/react'
