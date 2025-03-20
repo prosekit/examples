@@ -3,6 +3,7 @@
   "branchNameStrict": true,
   "rangeStrategy": "bump",
   "automerge": true,
+  "gitIgnoredAuthors": ["autofix-ci[bot]"],
   "extends": [
     "config:recommended",
     ":semanticCommitTypeAll(chore)",
