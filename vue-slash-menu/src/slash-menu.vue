@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { useEditor } from 'prosekit/vue'
 import {
-  AutocompleteEmpty,
-  AutocompleteItem,
   AutocompleteList,
   AutocompletePopover,
 } from 'prosekit/vue/autocomplete'
 
 import type { EditorExtension } from './extension'
+import SlashMenuEmpty from './slash-menu-empty.vue'
+import SlashMenuItem from './slash-menu-item.vue'
 
 const editor = useEditor<EditorExtension>()
 </script>
@@ -15,55 +15,80 @@ const editor = useEditor<EditorExtension>()
 <template>
   <AutocompletePopover
     :regex="/\/.*$/iu"
-    class="relative block max-h-[25rem] min-w-[8rem] select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg [&:not([data-state])]:hidden"
+    class="relative block max-h-[25rem] min-w-[15rem] select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg [&:not([data-state])]:hidden"
   >
     <AutocompleteList>
-      <AutocompleteEmpty
-        class="relative block min-w-[8rem] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-gray-100 dark:data-[focused]:bg-gray-800"
-      >
-        No results
-      </AutocompleteEmpty>
+      <SlashMenuItem
+        label="Text"
+        @select="() => editor.commands.setParagraph()"
+      />
 
-      <AutocompleteItem
-        class="relative block min-w-[8rem] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-gray-100 dark:data-[focused]:bg-gray-800"
+      <SlashMenuItem
+        label="Heading 1"
+        kbd="#"
         @select="() => editor.commands.setHeading({ level: 1 })"
-      >
-        Heading 1
-      </AutocompleteItem>
-      <AutocompleteItem
-        class="relative block min-w-[8rem] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-gray-100 dark:data-[focused]:bg-gray-800"
+      />
+
+      <SlashMenuItem
+        label="Heading 2"
+        kbd="##"
         @select="() => editor.commands.setHeading({ level: 2 })"
-      >
-        Heading 2
-      </AutocompleteItem>
+      />
 
-      <AutocompleteItem
-        class="relative block min-w-[8rem] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-gray-100 dark:data-[focused]:bg-gray-800"
-        @select="() => editor.commands.wrapInList({ kind: 'task' })"
-      >
-        Task list
-      </AutocompleteItem>
+      <SlashMenuItem
+        label="Heading 3"
+        kbd="###"
+        @select="() => editor.commands.setHeading({ level: 3 })"
+      />
 
-      <AutocompleteItem
-        class="relative block min-w-[8rem] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-gray-100 dark:data-[focused]:bg-gray-800"
+      <SlashMenuItem
+        label="Bullet list"
+        kbd="-"
         @select="() => editor.commands.wrapInList({ kind: 'bullet' })"
-      >
-        Bullet list
-      </AutocompleteItem>
+      />
 
-      <AutocompleteItem
-        class="relative block min-w-[8rem] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-gray-100 dark:data-[focused]:bg-gray-800"
+      <SlashMenuItem
+        label="Ordered list"
+        kbd="1."
         @select="() => editor.commands.wrapInList({ kind: 'ordered' })"
-      >
-        Ordered list
-      </AutocompleteItem>
+      />
 
-      <AutocompleteItem
-        class="relative block min-w-[8rem] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-gray-100 dark:data-[focused]:bg-gray-800"
+      <SlashMenuItem
+        label="Task list"
+        kbd="[]"
+        @select="() => editor.commands.wrapInList({ kind: 'task' })"
+      />
+
+      <SlashMenuItem
+        label="Toggle list"
+        kbd=">>"
         @select="() => editor.commands.wrapInList({ kind: 'toggle' })"
-      >
-        Toggle list
-      </AutocompleteItem>
+      />
+
+      <SlashMenuItem
+        label="Quote"
+        kbd=">"
+        @select="() => editor.commands.setBlockquote()"
+      />
+
+      <SlashMenuItem
+        label="Table"
+        @select="() => editor.commands.insertTable({ row: 3, col: 3 })"
+      />
+
+      <SlashMenuItem
+        label="Divider"
+        kbd="---"
+        @select="() => editor.commands.insertHorizontalRule()"
+      />
+
+      <SlashMenuItem
+        label="Code"
+        kbd="```"
+        @select="() => editor.commands.setCodeBlock()"
+      />
+
+      <SlashMenuEmpty />
     </AutocompleteList>
   </AutocompletePopover>
 </template>
