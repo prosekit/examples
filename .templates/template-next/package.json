@@ -18,7 +18,7 @@
     "@egoist/tailwindcss-icons": "^1.9.0",
     "@iconify-json/lucide": "^1.2.31",
     "@types/node": "^22.13.10",
-    "@types/react": "^19.0.10",
+    "@types/react": "^19.0.12",
     "@types/react-dom": "^19.0.4",
     "postcss": "^8.5.3",
     "tailwindcss": "^3.4.17",
