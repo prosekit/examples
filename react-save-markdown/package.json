@@ -10,8 +10,8 @@
   },
   "dependencies": {
     "prosekit": "^0.12.1",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "rehype-parse": "^9.0.1",
     "rehype-remark": "^10.0.0",
     "remark-html": "^16.0.1",
