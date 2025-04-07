@@ -10,12 +10,15 @@ import Toolbar from './toolbar'
 
 export default function Editor() {
   const editor = useMemo(() => {
-    return createEditor({ extension: defineExtension() })
+    return createEditor({
+      extension: defineExtension(),
+      defaultContent: '<h1>H1</h1>',
+    })
   }, [])
 
   return (
     <ProseKit editor={editor}>
-      <div className="box-border h-full w-full min-h-36 overflow-y-hidden overflow-x-hidden rounded-md border border-solid border-gray-200 shadow dark:border-zinc-700 flex flex-col bg-white dark:bg-gray-950">
+      <div className="box-border h-full w-full min-h-36 overflow-y-hidden overflow-x-hidden rounded-md border border-solid border-gray-200 dark:border-gray-700 shadow flex flex-col bg-white dark:bg-gray-950 color-black dark:color-white">
         <Toolbar />
         <div className="relative w-full flex-1 box-border overflow-y-scroll">
           <div

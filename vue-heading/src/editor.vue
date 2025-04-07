@@ -9,7 +9,10 @@ import { ref, watchPostEffect } from 'vue'
 import { defineExtension } from './extension'
 import Toolbar from './toolbar.vue'
 
-const editor = createEditor({ extension: defineExtension() })
+const editor = createEditor({
+  extension: defineExtension(),
+  defaultContent: '<h1>H1</h1>',
+})
 const editorRef = ref<HTMLDivElement | null>(null)
 watchPostEffect((onCleanup) => {
   editor.mount(editorRef.value)
@@ -20,7 +23,7 @@ watchPostEffect((onCleanup) => {
 <template>
   <ProseKit :editor="editor">
     <div
-      class="box-border h-full w-full min-h-36 overflow-y-hidden overflow-x-hidden rounded-md border border-solid border-gray-200 shadow dark:border-zinc-700 flex flex-col bg-white dark:bg-gray-950"
+      class="box-border h-full w-full min-h-36 overflow-y-hidden overflow-x-hidden rounded-md border border-solid border-gray-200 dark:border-gray-700 shadow flex flex-col bg-white dark:bg-gray-950 color-black dark:color-white"
     >
       <Toolbar />
       <div class="relative w-full flex-1 box-border overflow-y-scroll">
