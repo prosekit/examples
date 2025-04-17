@@ -10,11 +10,14 @@ import SlashMenuEmpty from './slash-menu-empty.vue'
 import SlashMenuItem from './slash-menu-item.vue'
 
 const editor = useEditor<EditorExtension>()
+
+// Match inputs like "/", "/table", "/heading 1" etc. Do not match "/ heading".
+const regex = /\/(|\S.*)$/iu
 </script>
 
 <template>
   <AutocompletePopover
-    :regex="/\/.*$/iu"
+    :regex="regex"
     class="relative block max-h-[25rem] min-w-[15rem] select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg [&:not([data-state])]:hidden"
   >
     <AutocompleteList>
