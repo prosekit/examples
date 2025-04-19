@@ -23,16 +23,11 @@ for TEST_DIR in $TEST_DIRS; do
 
     $PACKAGE_MANAGER install --prefer-offline
 
-    # If the package manager is yarn v1, we need to run special commands to 
-    # ensure that the version range "^0.0.0-next" won't install "0.0.0".
-    if [ "$PACKAGE_MANAGER" = "yarn" ]; then
-        # Install yarn-deduplicate if it's not already installed
-        if ! yarn-deduplicate --version > /dev/null 2>&1; then
-            echo "Installing yarn-deduplicate"
-            yarn global add yarn-deduplicate
-        fi
-        yarn-deduplicate --strategy fewer
-        yarn install --prefer-offline
+    # If the package manager is yarn v1, and TEST_DIR contains "preact", we need
+    # to install package "magic-string" as a workaround for
+    # https://github.com/preactjs/vite-prerender-plugin/issues/16
+    if [ "$PACKAGE_MANAGER" = "yarn" ] && [[ "$TEST_DIR" == *"preact"* ]]; then
+        yarn add magic-string
     fi
 
     $PACKAGE_MANAGER run build 
