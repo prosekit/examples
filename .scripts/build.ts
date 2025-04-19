@@ -164,6 +164,16 @@ npm run dev
   await fs.writeFile(filePath, text)
 }
 
+async function writeGitignore(dir: string) {
+  const filePath = path.join(dir, '.gitignore')
+  const text = `node_modules
+dist
+.next
+.svelte-kit
+`
+  await fs.writeFile(filePath, text)
+}
+
 async function copyExample(
   framework: string,
   story: string,
@@ -182,6 +192,7 @@ async function copyExample(
 
   await updatePackageJsonName(destDir, `example-${dest}`)
   await writeReadme(dest)
+  await writeGitignore(dest)
 }
 
 async function main() {
