@@ -168,6 +168,8 @@ async function writeGitignore(dir: string) {
   const filePath = path.join(dir, '.gitignore')
   const text = `node_modules
 dist
+.next
+.svelte-kit
 `
   await fs.writeFile(filePath, text)
 }
