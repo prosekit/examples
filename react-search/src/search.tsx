@@ -1,4 +1,3 @@
-import { clsx } from 'prosekit/core'
 import { defineSearchQuery } from 'prosekit/extensions/search'
 import { useEditor, useExtension } from 'prosekit/react'
 import { useMemo, useState } from 'react'
@@ -70,12 +69,8 @@ export default function Search({ onClose }: { onClose?: VoidFunction }) {
     <div className="z-2 box-border border-gray-200 dark:border-gray-800 border-solid border-l-0 border-r-0 border-t-0 border-b grid grid-cols-[min-content_1fr_min-content] gap-2 p-2">
       <Button tooltip="Toggle Replace" onClick={toggleReplace}>
         <span
-          className={clsx(
-            'i-lucide-chevron-right h-5 w-5',
-            showReplace
-              ? 'rotate-90 transition-transform'
-              : 'transition-transform',
-          )}
+          data-rotate={showReplace ? '' : undefined}
+          className="i-lucide-chevron-right h-5 w-5 transition-transform data-[rotate]:rotate-90"
         />
       </Button>
       <input
