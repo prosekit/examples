@@ -7,14 +7,14 @@ import ImageUploadPopover from './image-upload-popover.svelte'
 const editor = useEditor<EditorExtension>({ update: true })
 </script>
 
-<div class='z-2 box-border border-gray-200 dark:border-gray-800 border-solid border-l-0 border-r-0 border-t-0 border-b flex flex-wrap gap-1 p-2 items-center'>
+<div class="z-2 box-border border-gray-200 dark:border-gray-800 border-solid border-l-0 border-r-0 border-t-0 border-b flex flex-wrap gap-1 p-2 items-center">
   <Button
     pressed={false}
     disabled={!$editor.commands.undo.canExec()}
     onClick={() => $editor.commands.undo()}
     tooltip="Undo"
   >
-    <div class='i-lucide-undo-2 h-5 w-5'></div>
+    <div class="i-lucide-undo-2 h-5 w-5"></div>
   </Button>
 
   <Button
@@ -23,7 +23,7 @@ const editor = useEditor<EditorExtension>({ update: true })
     onClick={() => $editor.commands.redo()}
     tooltip="Redo"
   >
-    <div class='i-lucide-redo-2 h-5 w-5'></div>
+    <div class="i-lucide-redo-2 h-5 w-5"></div>
   </Button>
 
   <Button
@@ -32,7 +32,7 @@ const editor = useEditor<EditorExtension>({ update: true })
     onClick={() => $editor.commands.toggleBold()}
     tooltip="Bold"
   >
-    <div class='i-lucide-bold h-5 w-5'></div>
+    <div class="i-lucide-bold h-5 w-5"></div>
   </Button>
 
   <Button
@@ -41,7 +41,7 @@ const editor = useEditor<EditorExtension>({ update: true })
     onClick={() => $editor.commands.toggleItalic()}
     tooltip="Italic"
   >
-    <div class='i-lucide-italic h-5 w-5'></div>
+    <div class="i-lucide-italic h-5 w-5"></div>
   </Button>
 
   <Button
@@ -50,7 +50,7 @@ const editor = useEditor<EditorExtension>({ update: true })
     onClick={() => $editor.commands.toggleUnderline()}
     tooltip="Underline"
   >
-    <div class='i-lucide-underline h-5 w-5'></div>
+    <div class="i-lucide-underline h-5 w-5"></div>
   </Button>
 
   <Button
@@ -59,7 +59,7 @@ const editor = useEditor<EditorExtension>({ update: true })
     onClick={() => $editor.commands.toggleStrike()}
     tooltip="Strike"
   >
-    <div class='i-lucide-strikethrough h-5 w-5'></div>
+    <div class="i-lucide-strikethrough h-5 w-5"></div>
   </Button>
 
   <Button
@@ -68,7 +68,7 @@ const editor = useEditor<EditorExtension>({ update: true })
     onClick={() => $editor.commands.toggleCode()}
     tooltip="Code"
   >
-    <div class='i-lucide-code h-5 w-5'></div>
+    <div class="i-lucide-code h-5 w-5"></div>
   </Button>
 
   <Button
@@ -77,7 +77,7 @@ const editor = useEditor<EditorExtension>({ update: true })
     onClick={() => $editor.commands.toggleHeading({ level: 1 })}
     tooltip="Heading 1"
   >
-    <div class='i-lucide-heading-1 h-5 w-5'></div>
+    <div class="i-lucide-heading-1 h-5 w-5"></div>
   </Button>
 
   <Button
@@ -86,7 +86,7 @@ const editor = useEditor<EditorExtension>({ update: true })
     onClick={() => $editor.commands.toggleHeading({ level: 2 })}
     tooltip="Heading 2"
   >
-    <div class='i-lucide-heading-2 h-5 w-5'></div>
+    <div class="i-lucide-heading-2 h-5 w-5"></div>
   </Button>
 
   <Button
@@ -95,7 +95,7 @@ const editor = useEditor<EditorExtension>({ update: true })
     onClick={() => $editor.commands.toggleHeading({ level: 3 })}
     tooltip="Heading 3"
   >
-    <div class='i-lucide-heading-3 h-5 w-5'></div>
+    <div class="i-lucide-heading-3 h-5 w-5"></div>
   </Button>
 
   <Button
@@ -104,7 +104,7 @@ const editor = useEditor<EditorExtension>({ update: true })
     onClick={() => $editor.commands.insertHorizontalRule()}
     tooltip="Divider"
   >
-    <div class='i-lucide-minus h-5 w-5'></div>
+    <div class="i-lucide-minus h-5 w-5"></div>
   </Button>
 
   <Button
@@ -113,7 +113,7 @@ const editor = useEditor<EditorExtension>({ update: true })
     onClick={() => $editor.commands.toggleList({ kind: 'bullet' })}
     tooltip="Bullet List"
   >
-    <div class='i-lucide-list h-5 w-5'></div>
+    <div class="i-lucide-list h-5 w-5"></div>
   </Button>
 
   <Button
@@ -122,7 +122,7 @@ const editor = useEditor<EditorExtension>({ update: true })
     onClick={() => $editor.commands.toggleList({ kind: 'ordered' })}
     tooltip="Ordered List"
   >
-    <div class='i-lucide-list-ordered h-5 w-5'></div>
+    <div class="i-lucide-list-ordered h-5 w-5"></div>
   </Button>
 
   <Button
@@ -131,7 +131,7 @@ const editor = useEditor<EditorExtension>({ update: true })
     onClick={() => $editor.commands.toggleList({ kind: 'task' })}
     tooltip="Task List"
   >
-    <div class='i-lucide-list-checks h-5 w-5'></div>
+    <div class="i-lucide-list-checks h-5 w-5"></div>
   </Button>
 
   <Button
@@ -140,7 +140,7 @@ const editor = useEditor<EditorExtension>({ update: true })
     onClick={() => $editor.commands.toggleList({ kind: 'toggle' })}
     tooltip="Toggle List"
   >
-    <div class='i-lucide-list-collapse h-5 w-5'></div>
+    <div class="i-lucide-list-collapse h-5 w-5"></div>
   </Button>
 
   <Button
@@ -149,7 +149,7 @@ const editor = useEditor<EditorExtension>({ update: true })
     onClick={() => $editor.commands.indentList()}
     tooltip="Increase indentation"
   >
-    <div class='i-lucide-indent-increase h-5 w-5'></div>
+    <div class="i-lucide-indent-increase h-5 w-5"></div>
   </Button>
 
   <Button
@@ -158,13 +158,13 @@ const editor = useEditor<EditorExtension>({ update: true })
     onClick={() => $editor.commands.dedentList()}
     tooltip="Decrease indentation"
   >
-    <div class='i-lucide-indent-decrease h-5 w-5'></div>
+    <div class="i-lucide-indent-decrease h-5 w-5"></div>
   </Button>
 
   <ImageUploadPopover
     disabled={!$editor.commands.insertImage.canExec()}
     tooltip="Insert Image"
   >
-    <div class='i-lucide-image h-5 w-5'></div>
+    <div class="i-lucide-image h-5 w-5"></div>
   </ImageUploadPopover>
 </div>

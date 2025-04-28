@@ -1,4 +1,15 @@
-// @ts-ignore: no types
-import { replaceThemes as _replaceThemes } from '../.temp/prosekit/packages/themes/dist/prosekit-themes.gen.js'
+import classes from '../.temp/prosekit/packages/config-unocss/lib/classes.gen.json' with { type: 'json' }
 
-export const replaceThemes: (text: string) => string = _replaceThemes
+if (!classes || typeof classes !== 'object') {
+  throw new TypeError('Unable to import classes.gen.json')
+}
+
+export function replaceThemes(code: string): string {
+  return code.replaceAll(/(CSS_[\dA-Z_]+)/g, (match) => {
+    const output = (classes as Record<string, string>)[match]
+    if (!output) {
+      throw new Error(`Unable to find class name: ${match}`)
+    }
+    return output
+  })
+}
