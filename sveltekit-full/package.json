@@ -14,7 +14,7 @@
     "@egoist/tailwindcss-icons": "^1.9.0",
     "@iconify-json/lucide": "^1.2.39",
     "@sveltejs/adapter-auto": "^6.0.0",
-    "@sveltejs/kit": "^2.20.7",
+    "@sveltejs/kit": "^2.20.8",
     "@sveltejs/vite-plugin-svelte": "^5.0.3",
     "postcss": "^8.5.3",
     "prosekit": "^0.12.1",
