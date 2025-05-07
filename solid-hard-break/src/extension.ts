@@ -1,8 +1,6 @@
-import { defineBaseKeymap } from 'prosekit/core'
-import { union } from 'prosekit/core'
+import { defineBaseKeymap, union } from 'prosekit/core'
 import { defineDoc } from 'prosekit/extensions/doc'
-import { defineDropCursor } from 'prosekit/extensions/drop-cursor'
-import { defineImage } from 'prosekit/extensions/image'
+import { defineHardBreak } from 'prosekit/extensions/hard-break'
 import { defineParagraph } from 'prosekit/extensions/paragraph'
 import { defineText } from 'prosekit/extensions/text'
 
@@ -12,12 +10,7 @@ export function defineExtension() {
     defineDoc(),
     defineText(),
     defineParagraph(),
-    defineImage(),
-    defineDropCursor({
-      color: false,
-      width: 4,
-      class: 'transition-all bg-blue-500',
-    }),
+    defineHardBreak(),
   )
 }
 
