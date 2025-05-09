@@ -13,6 +13,6 @@
     "@types/bun": "1.2.12",
     "@types/node": "22.15.17",
     "prettier": "3.5.3",
-    "prettier-plugin-packagejson": "2.5.11"
+    "prettier-plugin-packagejson": "2.5.12"
   }
 }
