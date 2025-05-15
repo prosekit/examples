@@ -12,7 +12,7 @@
   "dependencies": {
     "nuxt": "^3.17.3",
     "prosekit": "^0.13.2",
-    "vue": "^3.5.13"
+    "vue": "^3.5.14"
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "^1.9.0",
