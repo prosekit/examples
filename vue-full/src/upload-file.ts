@@ -71,7 +71,7 @@ const tmpfilesUploader: Uploader<string> = ({
     formData.append('file', file)
 
     xhr.upload.addEventListener('progress', (event) => {
-      if (event.lengthComputable && onProgress) {
+      if (event.lengthComputable) {
         onProgress({
           loaded: event.loaded,
           total: event.total,
