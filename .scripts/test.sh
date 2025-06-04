@@ -23,12 +23,5 @@ for TEST_DIR in $TEST_DIRS; do
 
     $PACKAGE_MANAGER install --prefer-offline
 
-    # If the package manager is yarn v1, and TEST_DIR contains "preact", we need
-    # to install package "magic-string" as a workaround for
-    # https://github.com/preactjs/vite-prerender-plugin/issues/16
-    if [ "$PACKAGE_MANAGER" = "yarn" ] && [[ "$TEST_DIR" == *"preact"* ]]; then
-        yarn add magic-string
-    fi
-
     $PACKAGE_MANAGER run build 
 done
