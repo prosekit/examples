@@ -16,7 +16,7 @@
     "@sveltejs/adapter-auto": "^6.0.1",
     "@sveltejs/kit": "^2.21.4",
     "@sveltejs/vite-plugin-svelte": "^5.1.0",
-    "postcss": "^8.5.4",
+    "postcss": "^8.5.5",
     "prosekit": "^0.13.5",
     "svelte": "5.33.19",
     "svelte-check": "^4.2.1",
