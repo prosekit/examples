@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "prosekit": "^0.13.5",
-    "prosemirror-flat-list": "^0.5.0",
+    "prosemirror-flat-list": "^0.5.5",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
