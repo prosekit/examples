@@ -1,5 +1,5 @@
 {
   "dependencies": {
-    "prosemirror-flat-list": "^0.5.0"
+    "prosemirror-flat-list": "^0.5.5"
   }
 }
