@@ -40,6 +40,9 @@ jobs:
           corepack --version
           corepack enable
 
+      - name: Install pnpm
+        run: corepack install -g pnpm@latest-9
+
       - name: Install bun
         uses: oven-sh/setup-bun@v2
 
