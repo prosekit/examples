@@ -23,7 +23,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Print test matrix
-        run: scripts/build_matrix.py
+        run: .scripts/build_matrix.py
 
       - id: run_collect_dirs
         run: echo "test_matrix=$(.scripts/build_matrix.py)" >> ${GITHUB_OUTPUT}
