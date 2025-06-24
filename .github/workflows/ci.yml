@@ -55,8 +55,15 @@ jobs:
   after_test:
     runs-on: ubuntu-latest
     needs: test
-    if: always()
     steps:
+      - name: Print results
+        run: |
+          echo "Results: ${{ toJSON(needs) }}"
+
+      - name: Print test results
+        run: |
+          echo "Test results: ${{ toJSON(needs.test.result) }}"
+
       - name: Check test results
         run: |
           if [[ ${{ contains(needs.test.result, 'failure') }} == 'true' ]]; then
