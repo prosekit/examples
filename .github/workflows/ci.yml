@@ -22,8 +22,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - run: echo "test_matrix=$(.scripts/build_matrix.py)" > output.txt
+
+      - run: cat output.txt
+
       - id: run_collect_dirs
-        run: echo "test_matrix=$(.scripts/build_matrix.py)" >> ${GITHUB_OUTPUT}
+        run: cat output.txt >> ${GITHUB_OUTPUT}
 
   test:
     runs-on: ubuntu-latest
@@ -57,11 +61,11 @@ jobs:
     needs: test
     if: always()
     steps:
-      - name: Check test results
+      - name: Print tests results
         run: |
-          if [[ ${{ contains(needs.test.result, 'failure') }} == 'true' ]]; then
-            echo "One or more tests failed"
-            exit 1
-          else
-            echo "All tests passed"
-          fi
+          echo "Test results:"
+          echo "${{ toJSON(needs) }}"
+
+      - name: Exit with failure if any tests failed
+        if: always() && needs.test.result != 'success'
+        run: exit 1
