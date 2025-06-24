@@ -8,6 +8,12 @@ on:
   pull_request:
     branches:
       - master
+
+env:
+  # Disable corepack from downloading the latest version of package managers,
+  # which may be buggy.
+  COREPACK_DEFAULT_TO_LATEST: 0
+
 jobs:
   collect_dirs:
     runs-on: ubuntu-latest
@@ -39,9 +45,6 @@ jobs:
           npm install -g corepack
           corepack --version
           corepack enable
-
-      - name: Install pnpm
-        run: corepack install -g pnpm@latest-9
 
       - name: Install bun
         uses: oven-sh/setup-bun@v2
