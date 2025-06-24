@@ -48,8 +48,6 @@ def chunk(items: List[str], m: int) -> List[List[str]]:
 def main():
     package_managers = ["npm", "yarn", "pnpm", "bun"]
     all_dirs = find_directories()
-    all_dirs = [x for x in all_dirs if "next" not in x]
-    all_dirs = all_dirs[:2]
 
     chunks = chunk(all_dirs, MAX_CONCURRENT // len(package_managers))
 

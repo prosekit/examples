@@ -21,15 +21,6 @@ for TEST_DIR in $TEST_DIRS; do
     cd "$ROOT"
     cd "$TEST_DIR"
 
-    if [ "$PACKAGE_MANAGER" == "yarn" ]; then
-        echo "Sleeping for 240 seconds"
-        for i in {1..240}; do
-            echo "Sleeping for $i seconds"
-            sleep 1
-        done
-        exit 1
-    fi
-
     $PACKAGE_MANAGER install --prefer-offline
 
     $PACKAGE_MANAGER run build 
