@@ -23,12 +23,18 @@ def find_directories() -> List[str]:
         ):
             dirs.append(dirpath)
 
+    # Convert the absolute paths to relative paths
+    dirs = [os.path.relpath(d, root) for d in dirs]
+
     # Sort examples so that they can be grouped by framework, which improves the
     # cache hit rate.
     dirs.sort()
 
+    # Remove the root directory from the paths
+    dirs = [d for d in dirs if d != "."]
+
     # return the relative paths
-    return [os.path.relpath(d, root) for d in dirs]
+    return dirs
 
 
 # Split a list of items into m chunks
@@ -43,7 +49,7 @@ def main():
     package_managers = ["npm", "yarn", "pnpm", "bun"]
     all_dirs = find_directories()
     all_dirs = [x for x in all_dirs if "next" not in x]
-    all_dirs = all_dirs[:3]
+    all_dirs = all_dirs[:2]
 
     chunks = chunk(all_dirs, MAX_CONCURRENT // len(package_managers))
 
