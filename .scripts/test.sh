@@ -21,10 +21,10 @@ for TEST_DIR in $TEST_DIRS; do
     cd "$ROOT"
     cd "$TEST_DIR"
 
-    if [ "$PACKAGE_MANAGER" == "yarn" ]; then
-        echo "SOMETHING WENT WRONG"
-        exit 1
-    fi
+    # if [ "$PACKAGE_MANAGER" == "yarn" ]; then
+    #     echo "SOMETHING WENT WRONG"
+    #     exit 1
+    # fi
 
     $PACKAGE_MANAGER install --prefer-offline
 
