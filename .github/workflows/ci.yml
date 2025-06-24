@@ -24,6 +24,8 @@ jobs:
 
       - run: echo "test_matrix=$(.scripts/build_matrix.py)" > output.txt
 
+      - run: cat output.txt
+
       - id: run_collect_dirs
         run: cat output.txt >> ${GITHUB_OUTPUT}
 
