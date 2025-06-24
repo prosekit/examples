@@ -22,11 +22,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Print test matrix
-        run: .scripts/build_matrix.py
+      - run: echo "test_matrix=$(.scripts/build_matrix.py)" > output.txt
 
       - id: run_collect_dirs
-        run: echo "test_matrix=$(.scripts/build_matrix.py)" >> ${GITHUB_OUTPUT}
+        run: cat output.txt >> ${GITHUB_OUTPUT}
 
   test:
     runs-on: ubuntu-latest
