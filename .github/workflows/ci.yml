@@ -63,7 +63,8 @@ jobs:
     steps:
       - name: Print tests results
         run: |
-          echo "Test results: ${{ toJSON(needs) }}"
+          echo "Test results:"
+          echo "${{ toJSON(needs) }}"
 
       - name: Exit with failure if any tests failed
         if: always() && needs.test.result != 'success'
