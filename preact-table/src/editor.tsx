@@ -1,12 +1,12 @@
 import 'prosekit/basic/style.css'
 import 'prosekit/basic/typography.css'
 
+import { useMemo } from 'preact/hooks'
 import { createEditor } from 'prosekit/core'
-import { ProseKit } from 'prosekit/react'
-import { useMemo } from 'react'
+import { ProseKit } from 'prosekit/preact'
 
 import { defineExtension } from './extension'
-import { TableHandle } from './table-handle'
+import TableHandle from './table-handle'
 
 export default function Editor() {
   const editor = useMemo(() => {
@@ -21,7 +21,7 @@ export default function Editor() {
           <div
             ref={editor.mount}
             className="ProseMirror box-border min-h-full px-[max(4rem,_calc(50%-20rem))] py-8 outline-none outline-0 [&_span[data-mention=user]]:text-blue-500 [&_span[data-mention=tag]]:text-violet-500"
-          ></div>
+          />
           <TableHandle />
         </div>
       </div>
