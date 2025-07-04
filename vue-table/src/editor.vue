@@ -32,15 +32,9 @@ watchPostEffect((onCleanup) => {
   editor.mount(editorRef.value)
   onCleanup(() => editor.unmount())
 })
-
-function addTable() {
-  editor.commands.exitTable()
-  editor.commands.insertTable({ row: 3, col: 3, header: true })
-}
 </script>
 
 <template>
-  <button @click="addTable">Add table</button>
   <ProseKit :editor="editor">
     <div
       class="box-border h-full w-full min-h-36 overflow-y-hidden overflow-x-hidden rounded-md border border-solid border-gray-200 dark:border-gray-700 shadow flex flex-col bg-white dark:bg-gray-950 color-black dark:color-white"

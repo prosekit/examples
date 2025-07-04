@@ -23,7 +23,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       {#if $editor.commands.addTableColumnBefore.canExec()}
         <TableHandlePopoverItem
           class="relative min-w-[8rem] scroll-my-1 rounded px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-gray-100 dark:data-[focused]:bg-gray-800"
-          on:select={$editor.commands.addTableColumnBefore}
+          onSelect={$editor.commands.addTableColumnBefore}
         >
           <span>Insert Left</span>
         </TableHandlePopoverItem>
@@ -31,7 +31,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       {#if $editor.commands.addTableColumnAfter.canExec()}
         <TableHandlePopoverItem
           class="relative min-w-[8rem] scroll-my-1 rounded px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-gray-100 dark:data-[focused]:bg-gray-800"
-          on:select={$editor.commands.addTableColumnAfter}
+          onSelect={$editor.commands.addTableColumnAfter}
         >
           <span>Insert Right</span>
         </TableHandlePopoverItem>
@@ -39,7 +39,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       {#if $editor.commands.deleteCellSelection.canExec()}
         <TableHandlePopoverItem
           class="relative min-w-[8rem] scroll-my-1 rounded px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-gray-100 dark:data-[focused]:bg-gray-800"
-          on:select={$editor.commands.deleteCellSelection}
+          onSelect={$editor.commands.deleteCellSelection}
         >
           <span>Clear Contents</span>
           <span class="text-xs tracking-widest text-gray-500 dark:text-gray-500">Del</span>
@@ -48,7 +48,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       {#if $editor.commands.deleteTableColumn.canExec()}
         <TableHandlePopoverItem
           class="relative min-w-[8rem] scroll-my-1 rounded px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-gray-100 dark:data-[focused]:bg-gray-800"
-          on:select={$editor.commands.deleteTableColumn}
+          onSelect={$editor.commands.deleteTableColumn}
         >
           <span>Delete Column</span>
         </TableHandlePopoverItem>
@@ -63,7 +63,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       {#if $editor.commands.addTableRowAbove.canExec()}
         <TableHandlePopoverItem
           class="relative min-w-[8rem] scroll-my-1 rounded px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-gray-100 dark:data-[focused]:bg-gray-800"
-          on:select={$editor.commands.addTableRowAbove}
+          onSelect={$editor.commands.addTableRowAbove}
         >
           <span>Insert Above</span>
         </TableHandlePopoverItem>
@@ -71,7 +71,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       {#if $editor.commands.addTableRowBelow.canExec()}
         <TableHandlePopoverItem
           class="relative min-w-[8rem] scroll-my-1 rounded px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-gray-100 dark:data-[focused]:bg-gray-800"
-          on:select={$editor.commands.addTableRowBelow}
+          onSelect={$editor.commands.addTableRowBelow}
         >
           <span>Insert Below</span>
         </TableHandlePopoverItem>
@@ -79,7 +79,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       {#if $editor.commands.deleteCellSelection.canExec()}
         <TableHandlePopoverItem
           class="relative min-w-[8rem] scroll-my-1 rounded px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-gray-100 dark:data-[focused]:bg-gray-800"
-          on:select={$editor.commands.deleteCellSelection}
+          onSelect={$editor.commands.deleteCellSelection}
         >
           <span>Clear Contents</span>
           <span class="text-xs tracking-widest text-gray-500 dark:text-gray-500">Del</span>
@@ -88,7 +88,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       {#if $editor.commands.deleteTableRow.canExec()}
         <TableHandlePopoverItem
           class="relative min-w-[8rem] scroll-my-1 rounded px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-gray-100 dark:data-[focused]:bg-gray-800"
-          on:select={$editor.commands.deleteTableRow}
+          onSelect={$editor.commands.deleteTableRow}
         >
           <span>Delete Row</span>
         </TableHandlePopoverItem>
