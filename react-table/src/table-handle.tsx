@@ -3,6 +3,8 @@ import { useEditorDerivedValue } from 'prosekit/react'
 import {
   TableHandleColumnRoot,
   TableHandleColumnTrigger,
+  TableHandleDragPreview,
+  TableHandleDropIndicator,
   TableHandlePopoverContent,
   TableHandlePopoverItem,
   TableHandleRoot,
@@ -50,6 +52,8 @@ export function TableHandle() {
 
   return (
     <TableHandleRoot className="contents">
+      <TableHandleDragPreview />
+      <TableHandleDropIndicator />
       <TableHandleColumnRoot className="flex items-center box-border justify-center h-[1.2em] w-[1.5em] bg-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded text-gray-500/50 dark:text-gray-500/50 translate-y-3 border border-gray-200 dark:border-gray-800 border-solid [&:not([data-state])]:hidden will-change-transform data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0 data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95 data-[state=open]:animate-duration-150 data-[state=closed]:animate-duration-200">
         <TableHandleColumnTrigger>
           <div className="i-lucide-grip-horizontal h-5 w-5"></div>
