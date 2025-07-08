@@ -7,14 +7,19 @@ import { ProseKit } from 'prosekit/vue'
 import { ref, watchPostEffect } from 'vue'
 
 import BlockHandle from './block-handle.vue'
+import { DEFAULT_CONTENT } from './default-content-full'
 import { defineExtension } from './extension'
 import InlineMenu from './inline-menu.vue'
 import SlashMenu from './slash-menu.vue'
+import TableHandle from './table-handle.vue'
 import TagMenu from './tag-menu.vue'
 import Toolbar from './toolbar.vue'
 import UserMenu from './user-menu.vue'
 
-const editor = createEditor({ extension: defineExtension() })
+const editor = createEditor({
+  extension: defineExtension(),
+  defaultContent: DEFAULT_CONTENT,
+})
 const editorRef = ref<HTMLDivElement | null>(null)
 watchPostEffect((onCleanup) => {
   editor.mount(editorRef.value)
@@ -38,6 +43,7 @@ watchPostEffect((onCleanup) => {
         <UserMenu />
         <TagMenu />
         <BlockHandle />
+        <TableHandle />
       </div>
     </div>
   </ProseKit>
