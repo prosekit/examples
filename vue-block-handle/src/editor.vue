@@ -73,8 +73,8 @@ watchPostEffect((onCleanup) => {
           spellcheck="false"
           class="ProseMirror box-border min-h-full px-[max(4rem,_calc(50%-20rem))] py-8 outline-none outline-0 [&_span[data-mention=user]]:text-blue-500 [&_span[data-mention=tag]]:text-violet-500"
         />
+        <BlockHandle />
       </div>
-      <BlockHandle></BlockHandle>
     </div>
   </ProseKit>
 </template>
