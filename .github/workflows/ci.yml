@@ -16,7 +16,7 @@ env:
 
 jobs:
   collect_dirs:
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     outputs:
       test_matrix: ${{ steps.run_collect_dirs.outputs.test_matrix }}
     steps:
