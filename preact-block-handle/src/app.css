@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  height: 100svh;
+  display: grid;
+  max-width: 900px;
+  padding: 16px;
+  margin-left: auto;
+  margin-right: auto;
+}
