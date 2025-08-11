@@ -86,7 +86,7 @@ function handleImageLoad(event: Event) {
     :height="attrs.height ?? undefined"
     :aspect-ratio="aspectRatio"
     :data-selected="props.selected.value ? '' : undefined"
-    class="relative flex items-center justify-center box-border overflow-hidden my-2 group max-h-[600px] max-w-full min-h-[64px] min-w-[64px] outline-2 outline-transparent data-[selected]:outline-blue-500 outline-solid"
+    class="relative flex items-center justify-center box-border overflow-hidden my-2 group max-h-[600px] max-w-full min-h-[64px] min-w-[64px] outline-2 outline-transparent data-selected:outline-blue-500 outline-solid"
     @resize-end="(event) => setAttrs(event.detail)"
   >
     <img
@@ -98,7 +98,7 @@ function handleImageLoad(event: Event) {
 
     <div
       v-if="uploading && !error"
-      class="absolute bottom-0 left-0 m-1 flex content-center items-center gap-2 rounded bg-gray-800/60 p-1.5 text-xs text-white/80 transition"
+      class="absolute bottom-0 left-0 m-1 flex content-center items-center gap-2 rounded-sm bg-gray-800/60 p-1.5 text-xs text-white/80 transition"
     >
       <div class="i-lucide-loader-circle h-4 w-4 animate-spin"></div>
       <div>{{ Math.round(progress * 100) }}%</div>
@@ -112,7 +112,7 @@ function handleImageLoad(event: Event) {
     </div>
 
     <ResizableHandle
-      class="absolute bottom-0 right-0 rounded m-1.5 p-1 transition bg-gray-900/30 active:bg-gray-800/60 hover:bg-gray-800/60 text-white/50 active:text-white/80 active:translate-x-0.5 active:translate-y-0.5 opacity-0 hover:opacity-100 group-hover:opacity-100 group-[[data-resizing]]:opacity-100"
+      class="absolute bottom-0 right-0 rounded-sm m-1.5 p-1 transition bg-gray-900/30 active:bg-gray-800/60 hover:bg-gray-800/60 text-white/50 active:text-white/80 active:translate-x-0.5 active:translate-y-0.5 opacity-0 hover:opacity-100 group-hover:opacity-100 group-data-resizing:opacity-100"
       position="bottom-right"
     >
       <div class="i-lucide-arrow-down-right h-4 w-4"></div>

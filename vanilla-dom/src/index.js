@@ -37,7 +37,7 @@ function createList() {
     createItem('Turn into Heading 2', () => handleHeadingConvert(2)),
   )
   list.className =
-    'relative block max-h-[25rem] min-w-[15rem] select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg [&:not([data-state])]:hidden'
+    'relative block max-h-100 min-w-60 select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg [&:not([data-state])]:hidden'
   return list
 }
 
@@ -50,7 +50,7 @@ function createItem(text, callback) {
   item.append(text)
   item.onSelect = callback
   item.className =
-    'relative flex items-center justify-between min-w-[8rem] scroll-my-1 rounded px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-none data-[focused]:bg-gray-100 dark:data-[focused]:bg-gray-800'
+    'relative flex items-center justify-between min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-hidden data-[focused]:bg-gray-100 dark:data-[focused]:bg-gray-800'
   return item
 }
 
@@ -77,14 +77,14 @@ function main() {
 
   const viewport = root.appendChild(document.createElement('div'))
   viewport.className =
-    'box-border h-full w-full min-h-36 overflow-y-hidden overflow-x-hidden rounded-md border border-solid border-gray-200 dark:border-gray-700 shadow flex flex-col bg-white dark:bg-gray-950 color-black dark:color-white'
+    'box-border h-full w-full min-h-36 overflow-y-hidden overflow-x-hidden rounded-md border border-solid border-gray-200 dark:border-gray-700 shadow-sm flex flex-col bg-white dark:bg-gray-950 color-black dark:color-white'
 
   const scrolling = viewport.appendChild(document.createElement('div'))
   scrolling.className = 'relative w-full flex-1 box-border overflow-y-scroll'
 
   const content = scrolling.appendChild(document.createElement('div'))
   content.className =
-    'ProseMirror box-border min-h-full px-[max(4rem,_calc(50%-20rem))] py-8 outline-none outline-0 [&_span[data-mention=user]]:text-blue-500 [&_span[data-mention=tag]]:text-violet-500'
+    'ProseMirror box-border min-h-full px-[max(4rem,calc(50%-20rem))] py-8 outline-hidden outline-0 [&_span[data-mention=user]]:text-blue-500 [&_span[data-mention=tag]]:text-violet-500'
 
   editor.mount(content)
 
