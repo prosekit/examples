@@ -8,6 +8,7 @@ import { ref, watchPostEffect } from 'vue'
 
 import BlockHandle from './block-handle.vue'
 import { DEFAULT_DRAG_AND_DROP_CONTENT } from './default-content-drag-and-drop'
+import DropIndicator from './drop-indicator.vue'
 import { defineExtension } from './extension'
 
 const editor = createEditor({
@@ -34,6 +35,7 @@ watchPostEffect((onCleanup) => {
           class="ProseMirror box-border min-h-full px-[max(4rem,_calc(50%-20rem))] py-8 outline-none outline-0 [&_span[data-mention=user]]:text-blue-500 [&_span[data-mention=tag]]:text-violet-500"
         />
         <BlockHandle />
+        <DropIndicator />
       </div>
     </div>
   </ProseKit>
