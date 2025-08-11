@@ -70,7 +70,7 @@ export default function Search({ onClose }: { onClose?: VoidFunction }) {
       <Button tooltip="Toggle Replace" onClick={toggleReplace}>
         <span
           data-rotate={showReplace ? '' : undefined}
-          className="i-lucide-chevron-right h-5 w-5 transition-transform data-[rotate]:rotate-90"
+          className="i-lucide-chevron-right h-5 w-5 transition-transform data-rotate:rotate-90"
         />
       </Button>
       <input
@@ -79,7 +79,7 @@ export default function Search({ onClose }: { onClose?: VoidFunction }) {
         value={searchText}
         onChange={(event) => setSearchText(event.target.value)}
         onKeyDown={handleSearchKeyDown}
-        className="flex h-9 rounded-md w-full bg-white dark:bg-gray-950 px-3 py-2 text-sm placeholder:text-gray-500 dark:placeholder:text-gray-500 transition border box-border border-gray-200 dark:border-gray-800 border-solid ring-0 ring-transparent focus-visible:ring-2 focus-visible:ring-gray-900 dark:focus-visible:ring-gray-300 focus-visible:ring-offset-0 outline-none focus-visible:outline-none file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:cursor-not-allowed disabled:opacity-50 col-start-2"
+        className="flex h-9 rounded-md w-full bg-white dark:bg-gray-950 px-3 py-2 text-sm placeholder:text-gray-500 dark:placeholder:text-gray-500 transition border box-border border-gray-200 dark:border-gray-800 border-solid ring-0 ring-transparent focus-visible:ring-2 focus-visible:ring-gray-900 dark:focus-visible:ring-gray-300 focus-visible:ring-offset-0 outline-hidden focus-visible:outline-hidden file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:cursor-not-allowed disabled:opacity-50 col-start-2"
       />
       <div className="flex items-center justify-between gap-1">
         <Button
@@ -102,7 +102,7 @@ export default function Search({ onClose }: { onClose?: VoidFunction }) {
           value={replaceText}
           onChange={(event) => setReplaceText(event.target.value)}
           onKeyDown={handleReplaceKeyDown}
-          className="flex h-9 rounded-md w-full bg-white dark:bg-gray-950 px-3 py-2 text-sm placeholder:text-gray-500 dark:placeholder:text-gray-500 transition border box-border border-gray-200 dark:border-gray-800 border-solid ring-0 ring-transparent focus-visible:ring-2 focus-visible:ring-gray-900 dark:focus-visible:ring-gray-300 focus-visible:ring-offset-0 outline-none focus-visible:outline-none file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:cursor-not-allowed disabled:opacity-50 col-start-2"
+          className="flex h-9 rounded-md w-full bg-white dark:bg-gray-950 px-3 py-2 text-sm placeholder:text-gray-500 dark:placeholder:text-gray-500 transition border box-border border-gray-200 dark:border-gray-800 border-solid ring-0 ring-transparent focus-visible:ring-2 focus-visible:ring-gray-900 dark:focus-visible:ring-gray-300 focus-visible:ring-offset-0 outline-hidden focus-visible:outline-hidden file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:cursor-not-allowed disabled:opacity-50 col-start-2"
         />
       )}
       {showReplace && (

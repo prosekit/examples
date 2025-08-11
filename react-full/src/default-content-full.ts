@@ -6,6 +6,7 @@ export const DEFAULT_CONTENT = `
 
 <h2>Text that shines.</h2>
 
+<p>Make your words <strong>bold</strong>, <em>italic</em>, <u>underlined</u>, or <s>crossed out</s>. Add <code>inline code</code> that stands out. Create <a href="https://prosekit.dev">links</a> that connect.</p>
 
 <p>Select any text to format it. Type <code>@</code> to mention <span data-id="39" data-mention="user" contenteditable="false">@someone</span> or <code>#</code> for <span data-id="1" data-mention="tag" contenteditable="false">#topics</span>. Press <code>/</code> and discover what's possible.</p>
 

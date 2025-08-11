@@ -80,7 +80,7 @@ export default function ImageView(props: ReactNodeViewProps) {
       aspectRatio={aspectRatio}
       onResizeEnd={(event) => setAttrs(event.detail)}
       data-selected={props.selected ? '' : undefined}
-      className="relative flex items-center justify-center box-border overflow-hidden my-2 group max-h-[600px] max-w-full min-h-[64px] min-w-[64px] outline-2 outline-transparent data-[selected]:outline-blue-500 outline-solid"
+      className="relative flex items-center justify-center box-border overflow-hidden my-2 group max-h-[600px] max-w-full min-h-[64px] min-w-[64px] outline-2 outline-transparent data-selected:outline-blue-500 outline-solid"
     >
       {url && !error && (
         <img
@@ -90,7 +90,7 @@ export default function ImageView(props: ReactNodeViewProps) {
         />
       )}
       {uploading && !error && (
-        <div className="absolute bottom-0 left-0 m-1 flex content-center items-center gap-2 rounded bg-gray-800/60 p-1.5 text-xs text-white/80 transition">
+        <div className="absolute bottom-0 left-0 m-1 flex content-center items-center gap-2 rounded-sm bg-gray-800/60 p-1.5 text-xs text-white/80 transition">
           <div className="i-lucide-loader-circle h-4 w-4 animate-spin"></div>
           <div>{Math.round(progress * 100)}%</div>
         </div>
@@ -104,7 +104,7 @@ export default function ImageView(props: ReactNodeViewProps) {
         </div>
       )}
       <ResizableHandle
-        className="absolute bottom-0 right-0 rounded m-1.5 p-1 transition bg-gray-900/30 active:bg-gray-800/60 hover:bg-gray-800/60 text-white/50 active:text-white/80 active:translate-x-0.5 active:translate-y-0.5 opacity-0 hover:opacity-100 group-hover:opacity-100 group-[[data-resizing]]:opacity-100"
+        className="absolute bottom-0 right-0 rounded-sm m-1.5 p-1 transition bg-gray-900/30 active:bg-gray-800/60 hover:bg-gray-800/60 text-white/50 active:text-white/80 active:translate-x-0.5 active:translate-y-0.5 opacity-0 hover:opacity-100 group-hover:opacity-100 group-data-resizing:opacity-100"
         position="bottom-right"
       >
         <div className="i-lucide-arrow-down-right h-4 w-4"></div>
