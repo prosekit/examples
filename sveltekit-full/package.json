@@ -15,7 +15,7 @@
     "@iconify-json/lucide": "^1.2.55",
     "@sveltejs/adapter-auto": "^6.0.2",
     "@sveltejs/kit": "^2.28.0",
-    "@sveltejs/vite-plugin-svelte": "^6.1.1",
+    "@sveltejs/vite-plugin-svelte": "^6.1.2",
     "@tailwindcss/vite": "^4.1.11",
     "postcss": "^8.5.6",
     "prosekit": "^0.15.2",
