@@ -53,7 +53,7 @@ function handleLinkUpdate(href?: string) {
       tooltip="Bold"
       @click="() => editor.commands.toggleBold()"
     >
-      <div class="i-lucide-bold h-5 w-5" />
+      <div class="i-lucide-bold size-5 block" />
     </Button>
 
     <Button
@@ -62,7 +62,7 @@ function handleLinkUpdate(href?: string) {
       tooltip="Italic"
       @click="() => editor.commands.toggleItalic()"
     >
-      <div class="i-lucide-italic h-5 w-5" />
+      <div class="i-lucide-italic size-5 block" />
     </Button>
 
     <Button
@@ -71,7 +71,7 @@ function handleLinkUpdate(href?: string) {
       tooltip="Underline"
       @click="() => editor.commands.toggleUnderline()"
     >
-      <div class="i-lucide-underline h-5 w-5" />
+      <div class="i-lucide-underline size-5 block" />
     </Button>
 
     <Button
@@ -80,7 +80,7 @@ function handleLinkUpdate(href?: string) {
       tooltip="Strike"
       @click="() => editor.commands.toggleStrike()"
     >
-      <div class="i-lucide-strikethrough h-5 w-5" />
+      <div class="i-lucide-strikethrough size-5 block" />
     </Button>
 
     <Button
@@ -89,7 +89,7 @@ function handleLinkUpdate(href?: string) {
       tooltip="Code"
       @click="() => editor.commands.toggleCode()"
     >
-      <div class="i-lucide-code h-5 w-5" />
+      <div class="i-lucide-code size-5 block" />
     </Button>
 
     <Button
@@ -103,7 +103,7 @@ function handleLinkUpdate(href?: string) {
         }
       "
     >
-      <div class="i-lucide-link h-5 w-5" />
+      <div class="i-lucide-link size-5 block" />
     </Button>
   </InlinePopover>
 

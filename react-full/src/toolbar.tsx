@@ -118,7 +118,7 @@ export default function Toolbar() {
         onClick={items.undo.command}
         tooltip="Undo"
       >
-        <div className="i-lucide-undo-2 h-5 w-5" />
+        <div className="i-lucide-undo-2 size-5 block" />
       </Button>
 
       <Button
@@ -127,7 +127,7 @@ export default function Toolbar() {
         onClick={items.redo.command}
         tooltip="Redo"
       >
-        <div className="i-lucide-redo-2 h-5 w-5" />
+        <div className="i-lucide-redo-2 size-5 block" />
       </Button>
 
       <Button
@@ -136,7 +136,7 @@ export default function Toolbar() {
         onClick={items.bold.command}
         tooltip="Bold"
       >
-        <div className="i-lucide-bold h-5 w-5" />
+        <div className="i-lucide-bold size-5 block" />
       </Button>
 
       <Button
@@ -145,7 +145,7 @@ export default function Toolbar() {
         onClick={items.italic.command}
         tooltip="Italic"
       >
-        <div className="i-lucide-italic h-5 w-5" />
+        <div className="i-lucide-italic size-5 block" />
       </Button>
 
       <Button
@@ -154,7 +154,7 @@ export default function Toolbar() {
         onClick={items.underline.command}
         tooltip="Underline"
       >
-        <div className="i-lucide-underline h-5 w-5" />
+        <div className="i-lucide-underline size-5 block" />
       </Button>
 
       <Button
@@ -163,7 +163,7 @@ export default function Toolbar() {
         onClick={items.strike.command}
         tooltip="Strike"
       >
-        <div className="i-lucide-strikethrough h-5 w-5" />
+        <div className="i-lucide-strikethrough size-5 block" />
       </Button>
 
       <Button
@@ -172,7 +172,7 @@ export default function Toolbar() {
         onClick={items.code.command}
         tooltip="Code"
       >
-        <div className="i-lucide-code h-5 w-5" />
+        <div className="i-lucide-code size-5 block" />
       </Button>
 
       <Button
@@ -181,7 +181,7 @@ export default function Toolbar() {
         onClick={items.codeBlock.command}
         tooltip="Code Block"
       >
-        <div className="i-lucide-square-code h-5 w-5" />
+        <div className="i-lucide-square-code size-5 block" />
       </Button>
 
       <Button
@@ -190,7 +190,7 @@ export default function Toolbar() {
         onClick={items.heading1.command}
         tooltip="Heading 1"
       >
-        <div className="i-lucide-heading-1 h-5 w-5" />
+        <div className="i-lucide-heading-1 size-5 block" />
       </Button>
 
       <Button
@@ -199,7 +199,7 @@ export default function Toolbar() {
         onClick={items.heading2.command}
         tooltip="Heading 2"
       >
-        <div className="i-lucide-heading-2 h-5 w-5" />
+        <div className="i-lucide-heading-2 size-5 block" />
       </Button>
 
       <Button
@@ -208,7 +208,7 @@ export default function Toolbar() {
         onClick={items.heading3.command}
         tooltip="Heading 3"
       >
-        <div className="i-lucide-heading-3 h-5 w-5" />
+        <div className="i-lucide-heading-3 size-5 block" />
       </Button>
 
       <Button
@@ -217,7 +217,7 @@ export default function Toolbar() {
         onClick={items.horizontalRule.command}
         tooltip="Divider"
       >
-        <div className="i-lucide-minus h-5 w-5"></div>
+        <div className="i-lucide-minus size-5 block"></div>
       </Button>
 
       <Button
@@ -226,7 +226,7 @@ export default function Toolbar() {
         onClick={items.bulletList.command}
         tooltip="Bullet List"
       >
-        <div className="i-lucide-list h-5 w-5" />
+        <div className="i-lucide-list size-5 block" />
       </Button>
 
       <Button
@@ -235,7 +235,7 @@ export default function Toolbar() {
         onClick={items.orderedList.command}
         tooltip="Ordered List"
       >
-        <div className="i-lucide-list-ordered h-5 w-5" />
+        <div className="i-lucide-list-ordered size-5 block" />
       </Button>
 
       <Button
@@ -244,7 +244,7 @@ export default function Toolbar() {
         onClick={items.taskList.command}
         tooltip="Task List"
       >
-        <div className="i-lucide-list-checks h-5 w-5" />
+        <div className="i-lucide-list-checks size-5 block" />
       </Button>
 
       <Button
@@ -253,7 +253,7 @@ export default function Toolbar() {
         onClick={items.toggleList.command}
         tooltip="Toggle List"
       >
-        <div className="i-lucide-list-collapse h-5 w-5" />
+        <div className="i-lucide-list-collapse size-5 block" />
       </Button>
 
       <Button
@@ -262,7 +262,7 @@ export default function Toolbar() {
         onClick={items.indentList.command}
         tooltip="Increase indentation"
       >
-        <div className="i-lucide-indent-increase h-5 w-5" />
+        <div className="i-lucide-indent-increase size-5 block" />
       </Button>
 
       <Button
@@ -271,14 +271,14 @@ export default function Toolbar() {
         onClick={items.dedentList.command}
         tooltip="Decrease indentation"
       >
-        <div className="i-lucide-indent-decrease h-5 w-5" />
+        <div className="i-lucide-indent-decrease size-5 block" />
       </Button>
 
       <ImageUploadPopover
         disabled={!items.insertImage.canExec}
         tooltip="Insert Image"
       >
-        <div className="i-lucide-image h-5 w-5" />
+        <div className="i-lucide-image size-5 block" />
       </ImageUploadPopover>
     </div>
   )

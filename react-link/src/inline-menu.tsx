@@ -70,7 +70,7 @@ export default function InlineMenu() {
             }}
             tooltip="Link"
           >
-            <div className="i-lucide-link h-5 w-5"></div>
+            <div className="i-lucide-link size-5 block"></div>
           </Button>
         )}
       </InlinePopover>

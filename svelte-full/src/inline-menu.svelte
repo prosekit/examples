@@ -53,7 +53,7 @@ const handleSubmit = (event: Event) => {
     tooltip="Bold"
     onClick={() => $editor.commands.toggleBold()}
   >
-    <div class="i-lucide-bold h-5 w-5"></div>
+    <div class="i-lucide-bold size-5 block"></div>
   </Button>
 
   <Button
@@ -62,7 +62,7 @@ const handleSubmit = (event: Event) => {
     onClick={() => $editor.commands.toggleItalic()}
     tooltip="Italic"
   >
-    <div class="i-lucide-italic h-5 w-5"></div>
+    <div class="i-lucide-italic size-5 block"></div>
   </Button>
 
   <Button
@@ -71,7 +71,7 @@ const handleSubmit = (event: Event) => {
     onClick={() => $editor.commands.toggleUnderline()}
     tooltip="Underline"
   >
-    <div class="i-lucide-underline h-5 w-5"></div>
+    <div class="i-lucide-underline size-5 block"></div>
   </Button>
 
   <Button
@@ -80,7 +80,7 @@ const handleSubmit = (event: Event) => {
     onClick={() => $editor.commands.toggleStrike()}
     tooltip="Strike"
   >
-    <div class="i-lucide-strikethrough h-5 w-5"></div>
+    <div class="i-lucide-strikethrough size-5 block"></div>
   </Button>
 
   <Button
@@ -89,7 +89,7 @@ const handleSubmit = (event: Event) => {
     onClick={() => $editor.commands.toggleCode()}
     tooltip="Code"
   >
-    <div class="i-lucide-code h-5 w-5"></div>
+    <div class="i-lucide-code size-5 block"></div>
   </Button>
 
   {#if $editor.commands.addLink.canExec({ href: '' })}
@@ -101,7 +101,7 @@ const handleSubmit = (event: Event) => {
       }}
       tooltip="Link"
     >
-      <div class="i-lucide-link h-5 w-5"></div>
+      <div class="i-lucide-link size-5 block"></div>
     </Button>
   {/if}
 </InlinePopover>

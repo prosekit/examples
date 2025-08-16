@@ -25,7 +25,7 @@ export default function Toolbar() {
         onClick={items.blockquote.command}
         tooltip="Blockquote"
       >
-        <div className="i-lucide-text-quote h-5 w-5" />
+        <div className="i-lucide-text-quote size-5 block" />
       </Button>
     </div>
   )

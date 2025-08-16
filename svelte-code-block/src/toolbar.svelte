@@ -13,6 +13,6 @@ const editor = useEditor<EditorExtension>({ update: true })
     onClick={() => $editor.commands.setCodeBlock()}
     tooltip="Heading 1"
   >
-    <div class="i-lucide-square-code h-5 w-5"></div>
+    <div class="i-lucide-square-code size-5 block"></div>
   </Button>
 </div>

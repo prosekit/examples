@@ -92,7 +92,7 @@ export default function InlineMenu() {
           onClick={items.bold.command}
           tooltip="Bold"
         >
-          <div className="i-lucide-bold h-5 w-5"></div>
+          <div className="i-lucide-bold size-5 block"></div>
         </Button>
 
         <Button
@@ -101,7 +101,7 @@ export default function InlineMenu() {
           onClick={items.italic.command}
           tooltip="Italic"
         >
-          <div className="i-lucide-italic h-5 w-5"></div>
+          <div className="i-lucide-italic size-5 block"></div>
         </Button>
 
         <Button
@@ -110,7 +110,7 @@ export default function InlineMenu() {
           onClick={items.underline.command}
           tooltip="Underline"
         >
-          <div className="i-lucide-underline h-5 w-5"></div>
+          <div className="i-lucide-underline size-5 block"></div>
         </Button>
 
         <Button
@@ -119,7 +119,7 @@ export default function InlineMenu() {
           onClick={items.strike.command}
           tooltip="Strikethrough"
         >
-          <div className="i-lucide-strikethrough h-5 w-5"></div>
+          <div className="i-lucide-strikethrough size-5 block"></div>
         </Button>
 
         <Button
@@ -128,7 +128,7 @@ export default function InlineMenu() {
           onClick={items.code.command}
           tooltip="Code"
         >
-          <div className="i-lucide-code h-5 w-5"></div>
+          <div className="i-lucide-code size-5 block"></div>
         </Button>
 
         {items.link.canExec && (
@@ -140,7 +140,7 @@ export default function InlineMenu() {
             }}
             tooltip="Link"
           >
-            <div className="i-lucide-link h-5 w-5"></div>
+            <div className="i-lucide-link size-5 block"></div>
           </Button>
         )}
       </InlinePopover>

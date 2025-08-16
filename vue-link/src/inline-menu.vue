@@ -58,7 +58,7 @@ function handleLinkUpdate(href?: string) {
         }
       "
     >
-      <div class="i-lucide-link h-5 w-5" />
+      <div class="i-lucide-link size-5 block" />
     </Button>
   </InlinePopover>
 

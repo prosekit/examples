@@ -25,7 +25,7 @@ export default function Toolbar() {
         onClick={items.horizontalRule.command}
         tooltip="Divider"
       >
-        <div className="i-lucide-minus h-5 w-5"></div>
+        <div className="i-lucide-minus size-5 block"></div>
       </Button>
     </div>
   )

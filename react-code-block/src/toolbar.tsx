@@ -24,7 +24,7 @@ export default function Toolbar() {
         disabled={!items.codeBlock.canExec}
         onClick={items.codeBlock.command}
       >
-        <div className="i-lucide-square-code h-5 w-5" />
+        <div className="i-lucide-square-code size-5 block" />
       </Button>
     </div>
   )

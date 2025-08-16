@@ -39,7 +39,7 @@ export default function Toolbar() {
         disabled={!items.bullet.canExec}
         onClick={items.bullet.command}
       >
-        <div className="i-lucide-list h-5 w-5" />
+        <div className="i-lucide-list size-5 block" />
       </Button>
 
       <Button
@@ -47,7 +47,7 @@ export default function Toolbar() {
         disabled={!items.ordered.canExec}
         onClick={items.ordered.command}
       >
-        <div className="i-lucide-list-ordered h-5 w-5" />
+        <div className="i-lucide-list-ordered size-5 block" />
       </Button>
 
       <Button
@@ -55,7 +55,7 @@ export default function Toolbar() {
         disabled={!items.task.canExec}
         onClick={items.task.command}
       >
-        <div className="i-lucide-list-checks h-5 w-5" />
+        <div className="i-lucide-list-checks size-5 block" />
       </Button>
 
       <Button
@@ -63,7 +63,7 @@ export default function Toolbar() {
         disabled={!items.toggle.canExec}
         onClick={items.toggle.command}
       >
-        <div className="i-lucide-list-collapse h-5 w-5" />
+        <div className="i-lucide-list-collapse size-5 block" />
       </Button>
     </div>
   )

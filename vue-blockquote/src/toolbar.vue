@@ -17,7 +17,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       tooltip="Blockquote"
       @click="() => editor.commands.toggleBlockquote()"
     >
-      <div class="i-lucide-text-quote h-5 w-5" />
+      <div class="i-lucide-text-quote size-5 block" />
     </Button>
   </div>
 </template>

@@ -13,7 +13,7 @@ export default function Toolbar() {
         disabled={() => !editor().commands.setCodeBlock.canExec()}
         onClick={editor().commands.setCodeBlock}
       >
-        <div class="i-lucide-square-code h-5 w-5" />
+        <div class="i-lucide-square-code size-5 block" />
       </Button>
     </div>
   )
