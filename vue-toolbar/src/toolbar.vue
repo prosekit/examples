@@ -16,7 +16,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       :disabled="!editor.commands.undo.canExec()"
       @click="() => editor.commands.undo()"
     >
-      <div class="i-lucide-undo-2 h-5 w-5" />
+      <div class="i-lucide-undo-2 size-5 block" />
     </Button>
 
     <Button
@@ -24,7 +24,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       :disabled="!editor.commands.redo.canExec()"
       @click="() => editor.commands.redo()"
     >
-      <div class="i-lucide-redo-2 h-5 w-5" />
+      <div class="i-lucide-redo-2 size-5 block" />
     </Button>
 
     <Button
@@ -32,7 +32,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       :disabled="!editor.commands.toggleBold.canExec()"
       @click="() => editor.commands.toggleBold()"
     >
-      <div class="i-lucide-bold h-5 w-5" />
+      <div class="i-lucide-bold size-5 block" />
     </Button>
 
     <Button
@@ -40,7 +40,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       :disabled="!editor.commands.toggleItalic.canExec()"
       @click="() => editor.commands.toggleItalic()"
     >
-      <div class="i-lucide-italic h-5 w-5" />
+      <div class="i-lucide-italic size-5 block" />
     </Button>
 
     <Button
@@ -48,7 +48,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       :disabled="!editor.commands.toggleHeading.canExec({ level: 1 })"
       @click="() => editor.commands.toggleHeading({ level: 1 })"
     >
-      <div class="i-lucide-heading-1 h-5 w-5" />
+      <div class="i-lucide-heading-1 size-5 block" />
     </Button>
 
     <Button
@@ -56,7 +56,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       :disabled="!editor.commands.toggleHeading.canExec({ level: 2 })"
       @click="() => editor.commands.toggleHeading({ level: 2 })"
     >
-      <div class="i-lucide-heading-2 h-5 w-5" />
+      <div class="i-lucide-heading-2 size-5 block" />
     </Button>
 
     <Button
@@ -64,7 +64,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       :disabled="!editor.commands.toggleHeading.canExec({ level: 3 })"
       @click="() => editor.commands.toggleHeading({ level: 3 })"
     >
-      <div class="i-lucide-heading-3 h-5 w-5" />
+      <div class="i-lucide-heading-3 size-5 block" />
     </Button>
   </div>
 </template>

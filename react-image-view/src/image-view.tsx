@@ -91,13 +91,13 @@ export default function ImageView(props: ReactNodeViewProps) {
       )}
       {uploading && !error && (
         <div className="absolute bottom-0 left-0 m-1 flex content-center items-center gap-2 rounded-sm bg-gray-800/60 p-1.5 text-xs text-white/80 transition">
-          <div className="i-lucide-loader-circle h-4 w-4 animate-spin"></div>
+          <div className="i-lucide-loader-circle size-4 animate-spin block"></div>
           <div>{Math.round(progress * 100)}%</div>
         </div>
       )}
       {error && (
         <div className="absolute bottom-0 left-0 right-0 top-0 flex flex-col items-center justify-center gap-4 bg-gray-200 p-2 text-sm dark:bg-gray-800 @container">
-          <div className="i-lucide-image-off h-8 w-8"></div>
+          <div className="i-lucide-image-off size-8 block"></div>
           <div className="hidden opacity-80 @xs:block">
             Failed to upload image
           </div>
@@ -107,7 +107,7 @@ export default function ImageView(props: ReactNodeViewProps) {
         className="absolute bottom-0 right-0 rounded-sm m-1.5 p-1 transition bg-gray-900/30 active:bg-gray-800/60 hover:bg-gray-800/60 text-white/50 active:text-white/80 active:translate-x-0.5 active:translate-y-0.5 opacity-0 hover:opacity-100 group-hover:opacity-100 group-data-resizing:opacity-100"
         position="bottom-right"
       >
-        <div className="i-lucide-arrow-down-right h-4 w-4"></div>
+        <div className="i-lucide-arrow-down-right size-4 block"></div>
       </ResizableHandle>
     </ResizableRoot>
   )

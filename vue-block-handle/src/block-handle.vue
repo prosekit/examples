@@ -13,12 +13,12 @@ import {
     <BlockHandleAdd
       class="flex items-center box-border justify-center h-[1.5em] w-[1.5em] hover:bg-gray-100 dark:hover:bg-gray-800 rounded-sm text-gray-500/50 dark:text-gray-500/50 cursor-pointer"
     >
-      <div class="i-lucide-plus h-5 w-5" />
+      <div class="i-lucide-plus size-5 block" />
     </BlockHandleAdd>
     <BlockHandleDraggable
       class="flex items-center box-border justify-center h-[1.5em] w-[1.2em] hover:bg-gray-100 dark:hover:bg-gray-800 rounded-sm text-gray-500/50 dark:text-gray-500/50 cursor-grab"
     >
-      <div class="i-lucide-grip-vertical h-5 w-5" />
+      <div class="i-lucide-grip-vertical size-5 block" />
     </BlockHandleDraggable>
   </BlockHandlePopover>
 </template>

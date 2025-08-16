@@ -70,7 +70,7 @@ export default function Search({ onClose }: { onClose?: VoidFunction }) {
       <Button tooltip="Toggle Replace" onClick={toggleReplace}>
         <span
           data-rotate={showReplace ? '' : undefined}
-          className="i-lucide-chevron-right h-5 w-5 transition-transform data-rotate:rotate-90"
+          className="i-lucide-chevron-right size-5 block transition-transform data-rotate:rotate-90"
         />
       </Button>
       <input
@@ -86,13 +86,13 @@ export default function Search({ onClose }: { onClose?: VoidFunction }) {
           tooltip="Previous (Shift Enter)"
           onClick={editor.commands.findPrev}
         >
-          <span className="i-lucide-arrow-left h-5 w-5" />
+          <span className="i-lucide-arrow-left size-5 block" />
         </Button>
         <Button tooltip="Next (Enter)" onClick={editor.commands.findNext}>
-          <span className="i-lucide-arrow-right h-5 w-5" />
+          <span className="i-lucide-arrow-right size-5 block" />
         </Button>
         <Button tooltip="Close" onClick={onClose}>
-          <span className="i-lucide-x h-5 w-5" />
+          <span className="i-lucide-x size-5 block" />
         </Button>
       </div>
       {showReplace && (

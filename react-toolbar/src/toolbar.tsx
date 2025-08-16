@@ -60,7 +60,7 @@ export default function Toolbar() {
         onClick={items.undo.command}
         tooltip="Undo"
       >
-        <div className="i-lucide-undo-2 h-5 w-5" />
+        <div className="i-lucide-undo-2 size-5 block" />
       </Button>
 
       <Button
@@ -69,7 +69,7 @@ export default function Toolbar() {
         onClick={items.redo.command}
         tooltip="Redo"
       >
-        <div className="i-lucide-redo-2 h-5 w-5" />
+        <div className="i-lucide-redo-2 size-5 block" />
       </Button>
 
       <Button
@@ -78,7 +78,7 @@ export default function Toolbar() {
         onClick={items.bold.command}
         tooltip="Bold"
       >
-        <div className="i-lucide-bold h-5 w-5" />
+        <div className="i-lucide-bold size-5 block" />
       </Button>
 
       <Button
@@ -87,7 +87,7 @@ export default function Toolbar() {
         onClick={items.italic.command}
         tooltip="Italic"
       >
-        <div className="i-lucide-italic h-5 w-5" />
+        <div className="i-lucide-italic size-5 block" />
       </Button>
 
       <Button
@@ -96,7 +96,7 @@ export default function Toolbar() {
         onClick={items.heading1.command}
         tooltip="Heading 1"
       >
-        <div className="i-lucide-heading-1 h-5 w-5" />
+        <div className="i-lucide-heading-1 size-5 block" />
       </Button>
 
       <Button
@@ -105,7 +105,7 @@ export default function Toolbar() {
         onClick={items.heading2.command}
         tooltip="Heading 2"
       >
-        <div className="i-lucide-heading-2 h-5 w-5" />
+        <div className="i-lucide-heading-2 size-5 block" />
       </Button>
 
       <Button
@@ -114,14 +114,14 @@ export default function Toolbar() {
         onClick={items.heading3.command}
         tooltip="Heading 3"
       >
-        <div className="i-lucide-heading-3 h-5 w-5" />
+        <div className="i-lucide-heading-3 size-5 block" />
       </Button>
 
       <ImageUploadPopover
         disabled={!items.insertImage.canExec}
         tooltip="Insert Image"
       >
-        <div className="i-lucide-image h-5 w-5" />
+        <div className="i-lucide-image size-5 block" />
       </ImageUploadPopover>
     </div>
   )

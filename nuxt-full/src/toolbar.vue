@@ -18,7 +18,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       tooltip="Undo"
       @click="() => editor.commands.undo()"
     >
-      <div class="i-lucide-undo-2 h-5 w-5" />
+      <div class="i-lucide-undo-2 size-5 block" />
     </Button>
 
     <Button
@@ -27,7 +27,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       tooltip="Redo"
       @click="() => editor.commands.redo()"
     >
-      <div class="i-lucide-redo-2 h-5 w-5" />
+      <div class="i-lucide-redo-2 size-5 block" />
     </Button>
 
     <Button
@@ -36,7 +36,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       tooltip="Bold"
       @click="() => editor.commands.toggleBold()"
     >
-      <div class="i-lucide-bold h-5 w-5" />
+      <div class="i-lucide-bold size-5 block" />
     </Button>
 
     <Button
@@ -45,7 +45,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       tooltip="Italic"
       @click="() => editor.commands.toggleItalic()"
     >
-      <div class="i-lucide-italic h-5 w-5" />
+      <div class="i-lucide-italic size-5 block" />
     </Button>
 
     <Button
@@ -54,7 +54,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       tooltip="Underline"
       @click="() => editor.commands.toggleUnderline()"
     >
-      <div class="i-lucide-underline h-5 w-5" />
+      <div class="i-lucide-underline size-5 block" />
     </Button>
 
     <Button
@@ -63,7 +63,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       tooltip="Strike"
       @click="() => editor.commands.toggleStrike()"
     >
-      <div class="i-lucide-strikethrough h-5 w-5" />
+      <div class="i-lucide-strikethrough size-5 block" />
     </Button>
 
     <Button
@@ -72,7 +72,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       tooltip="Code"
       @click="() => editor.commands.toggleCode()"
     >
-      <div class="i-lucide-code h-5 w-5" />
+      <div class="i-lucide-code size-5 block" />
     </Button>
 
     <Button
@@ -86,7 +86,7 @@ const editor = useEditor<EditorExtension>({ update: true })
           editor.commands.toggleCodeBlock.canExec({ language: 'javascript' })
       "
     >
-      <div class="i-lucide-square-code h-5 w-5" />
+      <div class="i-lucide-square-code size-5 block" />
     </Button>
 
     <Button
@@ -95,7 +95,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       tooltip="Heading 1"
       @click="() => editor.commands.toggleHeading({ level: 1 })"
     >
-      <div class="i-lucide-heading-1 h-5 w-5" />
+      <div class="i-lucide-heading-1 size-5 block" />
     </Button>
 
     <Button
@@ -104,7 +104,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       tooltip="Heading 2"
       @click="() => editor.commands.toggleHeading({ level: 2 })"
     >
-      <div class="i-lucide-heading-2 h-5 w-5" />
+      <div class="i-lucide-heading-2 size-5 block" />
     </Button>
 
     <Button
@@ -113,7 +113,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       tooltip="Heading 3"
       @click="() => editor.commands.toggleHeading({ level: 3 })"
     >
-      <div class="i-lucide-heading-3 h-5 w-5" />
+      <div class="i-lucide-heading-3 size-5 block" />
     </Button>
 
     <Button
@@ -122,7 +122,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       tooltip="Divider"
       @click="() => editor.commands.insertHorizontalRule()"
     >
-      <div class="i-lucide-minus h-5 w-5"></div>
+      <div class="i-lucide-minus size-5 block"></div>
     </Button>
 
     <Button
@@ -131,7 +131,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       tooltip="Bullet List"
       @click="() => editor.commands.toggleList({ kind: 'bullet' })"
     >
-      <div class="i-lucide-list h-5 w-5" />
+      <div class="i-lucide-list size-5 block" />
     </Button>
 
     <Button
@@ -140,7 +140,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       tooltip="Ordered List"
       @click="() => editor.commands.toggleList({ kind: 'ordered' })"
     >
-      <div class="i-lucide-list-ordered h-5 w-5" />
+      <div class="i-lucide-list-ordered size-5 block" />
     </Button>
 
     <Button
@@ -149,7 +149,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       tooltip="Task List"
       @click="() => editor.commands.toggleList({ kind: 'task' })"
     >
-      <div class="i-lucide-list-checks h-5 w-5" />
+      <div class="i-lucide-list-checks size-5 block" />
     </Button>
 
     <Button
@@ -158,7 +158,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       tooltip="Toggle List"
       @click="() => editor.commands.toggleList({ kind: 'toggle' })"
     >
-      <div class="i-lucide-list-collapse h-5 w-5" />
+      <div class="i-lucide-list-collapse size-5 block" />
     </Button>
 
     <Button
@@ -167,7 +167,7 @@ const editor = useEditor<EditorExtension>({ update: true })
       tooltip="Increase indentation"
       @click="() => editor.commands.indentList()"
     >
-      <div class="i-lucide-indent-increase h-5 w-5" />
+      <div class="i-lucide-indent-increase size-5 block" />
     </Button>
 
     <Button
@@ -176,14 +176,14 @@ const editor = useEditor<EditorExtension>({ update: true })
       tooltip="Decrease indentation"
       @click="() => editor.commands.dedentList()"
     >
-      <div class="i-lucide-indent-decrease h-5 w-5" />
+      <div class="i-lucide-indent-decrease size-5 block" />
     </Button>
 
     <ImageUploadPopover
       :disabled="!editor.commands.insertImage.canExec()"
       tooltip="Insert Image"
     >
-      <div class="i-lucide-image h-5 w-5" />
+      <div class="i-lucide-image size-5 block" />
     </ImageUploadPopover>
   </div>
 </template>
