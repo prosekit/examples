@@ -1,3 +1,4 @@
+import { UploadTask } from 'prosekit/extensions/file'
 import { useEditor } from 'prosekit/react'
 import {
   PopoverContent,
@@ -8,6 +9,7 @@ import { useState, type FC, type ReactNode } from 'react'
 
 import Button from './button'
 import type { EditorExtension } from './extension'
+import { tmpfilesUploader } from './upload-file'
 
 export const ImageUploadPopover: FC<{
   tooltip: string
@@ -27,7 +29,11 @@ export const ImageUploadPopover: FC<{
     const file = event.target.files?.[0]
 
     if (file) {
-      setObjectUrl(URL.createObjectURL(file))
+      const uploadTask = new UploadTask({
+        file,
+        uploader: tmpfilesUploader,
+      })
+      setObjectUrl(uploadTask.objectURL)
       setWebUrl('')
     } else {
       setObjectUrl('')
