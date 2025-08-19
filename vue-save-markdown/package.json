@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "^1.9.0",
-    "@iconify-json/lucide": "^1.2.62",
+    "@iconify-json/lucide": "^1.2.63",
     "@tailwindcss/vite": "^4.1.12",
     "@vitejs/plugin-vue": "^6.0.1",
     "postcss": "^8.5.6",
