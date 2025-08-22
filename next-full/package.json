@@ -19,7 +19,7 @@
     "@iconify-json/lucide": "^1.2.63",
     "@tailwindcss/postcss": "^4.1.12",
     "@types/node": "^22.17.2",
-    "@types/react": "^19.1.10",
+    "@types/react": "^19.1.11",
     "@types/react-dom": "^19.1.7",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.12",
