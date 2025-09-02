@@ -1,4 +1,4 @@
-import classes from '../.temp/prosekit/packages/config-unocss/lib/classes.gen.json' with { type: 'json' }
+import classes from '../.temp/prosekit/website/build/classes.gen.json' with { type: 'json' }
 
 if (!classes || typeof classes !== 'object') {
   throw new TypeError('Unable to import classes.gen.json')
