@@ -14,7 +14,7 @@
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "^1.9.0",
-    "@iconify-json/lucide": "^1.2.66",
+    "@iconify-json/lucide": "^1.2.67",
     "@preact/preset-vite": "^2.10.2",
     "@tailwindcss/vite": "^4.1.13",
     "postcss": "^8.5.6",
