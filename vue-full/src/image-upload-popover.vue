@@ -10,7 +10,7 @@ import { computed, ref } from 'vue'
 
 import Button from './button.vue'
 import type { EditorExtension } from './extension'
-import { tmpfilesUploader } from './upload-file'
+import { sampleUploader } from './sample-uploader'
 
 const props = defineProps<{
   disabled: Boolean
@@ -29,7 +29,7 @@ function handleFileChange(event: Event) {
   if (file) {
     const uploadTask = new UploadTask({
       file,
-      uploader: tmpfilesUploader,
+      uploader: sampleUploader,
     })
     objectUrl.value = uploadTask.objectURL
     webUrl.value = ''
