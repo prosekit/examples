@@ -18,7 +18,7 @@
     "@sveltejs/vite-plugin-svelte": "^6.2.1",
     "@tailwindcss/vite": "^4.1.13",
     "postcss": "^8.5.6",
-    "prosekit": "^0.15.5",
+    "prosekit": "^0.15.6",
     "svelte": "5.39.6",
     "svelte-check": "^4.3.2",
     "tailwindcss": "^4.1.13",

@@ -17,49 +17,27 @@ const error = ref<string | undefined>()
 const progress = ref(0)
 
 watchEffect((onCleanup) => {
-  if (!url.value.startsWith('blob:')) {
-    return
-  }
+  if (!uploading.value) return
 
   const uploadTask = UploadTask.get<string>(url.value)
-  if (!uploadTask) {
-    return
-  }
+  if (!uploadTask) return
 
-  const abortController = new AbortController()
-  void uploadTask.finished
-    .then((resultUrl) => {
-      if (resultUrl && typeof resultUrl === 'string') {
-        if (abortController.signal.aborted) {
-          return
-        }
-        setAttrs({ src: resultUrl })
-      } else {
-        if (abortController.signal.aborted) {
-          return
-        }
-        error.value = 'Unexpected upload result'
-      }
-      UploadTask.delete(uploadTask.objectURL)
-    })
-    .catch((error) => {
-      if (abortController.signal.aborted) {
-        return
-      }
-      error.value = String(error)
-      UploadTask.delete(uploadTask.objectURL)
-    })
-  const unsubscribe = uploadTask.subscribeProgress(({ loaded, total }) => {
-    if (abortController.signal.aborted) {
-      return
-    }
-    if (total > 0) {
-      progress.value = loaded / total
-    }
+  let canceled = false
+
+  uploadTask.finished.catch((error) => {
+    if (canceled) return
+    error.value = String(error)
   })
+  const unsubscribeProgress = uploadTask.subscribeProgress(
+    ({ loaded, total }) => {
+      if (canceled) return
+      progress.value = total ? loaded / total : 0
+    },
+  )
+
   onCleanup(() => {
-    unsubscribe()
-    abortController.abort()
+    canceled = true
+    unsubscribeProgress()
   })
 })
 
