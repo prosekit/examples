@@ -1,15 +1,17 @@
 import 'prosekit/basic/style.css'
 import 'prosekit/basic/typography.css'
 
+import { useMemo } from 'preact/hooks'
 import { createEditor } from 'prosekit/core'
-import { ProseKit } from 'prosekit/react'
-import { useMemo } from 'react'
+import { ProseKit } from 'prosekit/preact'
 
 import { defineExtension } from './extension'
+import { defaultContent } from './sample-doc-image'
 
 export default function Editor() {
   const editor = useMemo(() => {
-    return createEditor({ extension: defineExtension(), defaultContent })
+    const extension = defineExtension()
+    return createEditor({ extension, defaultContent })
   }, [])
 
   return (
@@ -25,9 +27,3 @@ export default function Editor() {
     </ProseKit>
   )
 }
-
-const defaultContent = `
-<p>Click the gap between two images or press arrow keys to see the gap cursor between two images</p>
-<img src="https://static.photos/minimal/640x360/42" />
-<img src="https://static.photos/minimal/640x360/42" />
-`
