@@ -6,8 +6,8 @@ import { createEditor } from 'prosekit/core'
 import { ProseKit } from 'prosekit/vue'
 import { ref, watchPostEffect } from 'vue'
 
-import { defaultContent } from './default-doc'
 import { defineExtension } from './extension'
+import { defaultContent } from './sample-doc-drop-cursor'
 
 const editor = createEditor({ extension: defineExtension(), defaultContent })
 const editorRef = ref<HTMLDivElement | null>(null)
