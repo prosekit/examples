@@ -11,6 +11,7 @@ const editor = useEditor<EditorExtension>({ update: true })
     pressed={false}
     disabled={!$editor.commands.undo.canExec()}
     onClick={() => $editor.commands.undo()}
+    tooltip="Undo"
   >
     <div class="i-lucide-undo-2 size-5 block"></div>
   </Button>
@@ -19,6 +20,7 @@ const editor = useEditor<EditorExtension>({ update: true })
     pressed={false}
     disabled={!$editor.commands.redo.canExec()}
     onClick={() => $editor.commands.redo()}
+    tooltip="Redo"
   >
     <div class="i-lucide-redo-2 size-5 block"></div>
   </Button>
@@ -27,6 +29,7 @@ const editor = useEditor<EditorExtension>({ update: true })
     pressed={$editor.marks.bold.isActive()}
     disabled={!$editor.commands.toggleBold.canExec()}
     onClick={() => $editor.commands.toggleBold()}
+    tooltip="Bold"
   >
     <div class="i-lucide-bold size-5 block"></div>
   </Button>
@@ -35,6 +38,7 @@ const editor = useEditor<EditorExtension>({ update: true })
     pressed={$editor.marks.italic.isActive()}
     disabled={!$editor.commands.toggleItalic.canExec()}
     onClick={() => $editor.commands.toggleItalic()}
+    tooltip="Italic"
   >
     <div class="i-lucide-italic size-5 block"></div>
   </Button>
@@ -43,6 +47,7 @@ const editor = useEditor<EditorExtension>({ update: true })
     pressed={$editor.nodes.heading.isActive({ level: 1 })}
     disabled={!$editor.commands.toggleHeading.canExec({ level: 1 })}
     onClick={() => $editor.commands.toggleHeading({ level: 1 })}
+    tooltip="Heading 1"
   >
     <div class="i-lucide-heading-1 size-5 block"></div>
   </Button>
@@ -51,6 +56,7 @@ const editor = useEditor<EditorExtension>({ update: true })
     pressed={$editor.nodes.heading.isActive({ level: 2 })}
     disabled={!$editor.commands.toggleHeading.canExec({ level: 2 })}
     onClick={() => $editor.commands.toggleHeading({ level: 2 })}
+    tooltip="Heading 2"
   >
     <div class="i-lucide-heading-2 size-5 block"></div>
   </Button>
@@ -59,6 +65,7 @@ const editor = useEditor<EditorExtension>({ update: true })
     pressed={$editor.nodes.heading.isActive({ level: 3 })}
     disabled={!$editor.commands.toggleHeading.canExec({ level: 3 })}
     onClick={() => $editor.commands.toggleHeading({ level: 3 })}
+    tooltip="Heading 3"
   >
     <div class="i-lucide-heading-3 size-5 block"></div>
   </Button>
