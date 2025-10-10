@@ -38,6 +38,7 @@ export default function Toolbar() {
         pressed={items.bullet.isActive}
         disabled={!items.bullet.canExec}
         onClick={items.bullet.command}
+        tooltip="Bullet"
       >
         <div className="i-lucide-list size-5 block" />
       </Button>
@@ -46,6 +47,7 @@ export default function Toolbar() {
         pressed={items.ordered.isActive}
         disabled={!items.ordered.canExec}
         onClick={items.ordered.command}
+        tooltip="Ordered"
       >
         <div className="i-lucide-list-ordered size-5 block" />
       </Button>
@@ -54,6 +56,7 @@ export default function Toolbar() {
         pressed={items.task.isActive}
         disabled={!items.task.canExec}
         onClick={items.task.command}
+        tooltip="Task"
       >
         <div className="i-lucide-list-checks size-5 block" />
       </Button>
@@ -62,6 +65,7 @@ export default function Toolbar() {
         pressed={items.toggle.isActive}
         disabled={!items.toggle.canExec}
         onClick={items.toggle.command}
+        tooltip="Toggle"
       >
         <div className="i-lucide-list-collapse size-5 block" />
       </Button>
