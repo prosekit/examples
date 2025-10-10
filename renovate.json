@@ -4,7 +4,7 @@
   "rangeStrategy": "bump",
   "automerge": true,
   "gitIgnoredAuthors": [
-    "autofix-ci[bot] <114827586+autofix-ci[bot]@users.noreply.github.com>"
+    "114827586+autofix-ci[bot]@users.noreply.github.com"
   ],
   "extends": [
     "config:recommended",
