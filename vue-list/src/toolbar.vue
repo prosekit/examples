@@ -14,6 +14,7 @@ const editor = useEditor<EditorExtension>({ update: true })
     <Button
       :pressed="editor.nodes.list.isActive({ kind: 'bullet' })"
       :disabled="!editor.commands.toggleList.canExec({ kind: 'bullet' })"
+      tooltip="Bullet"
       @click="() => editor.commands.toggleList({ kind: 'bullet' })"
     >
       <div class="i-lucide-list size-5 block" />
@@ -22,6 +23,7 @@ const editor = useEditor<EditorExtension>({ update: true })
     <Button
       :pressed="editor.nodes.list.isActive({ kind: 'ordered' })"
       :disabled="!editor.commands.toggleList.canExec({ kind: 'ordered' })"
+      tooltip="Ordered"
       @click="() => editor.commands.toggleList({ kind: 'ordered' })"
     >
       <div class="i-lucide-list-ordered size-5 block" />
@@ -30,6 +32,7 @@ const editor = useEditor<EditorExtension>({ update: true })
     <Button
       :pressed="editor.nodes.list.isActive({ kind: 'task' })"
       :disabled="!editor.commands.toggleList.canExec({ kind: 'task' })"
+      tooltip="Task"
       @click="() => editor.commands.toggleList({ kind: 'task' })"
     >
       <div class="i-lucide-list-checks size-5 block" />
@@ -38,6 +41,7 @@ const editor = useEditor<EditorExtension>({ update: true })
     <Button
       :pressed="editor.nodes.list.isActive({ kind: 'toggle' })"
       :disabled="!editor.commands.toggleList.canExec({ kind: 'toggle' })"
+      tooltip="Toggle"
       @click="() => editor.commands.toggleList({ kind: 'toggle' })"
     >
       <div class="i-lucide-list-collapse size-5 block" />
