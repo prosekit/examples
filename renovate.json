@@ -3,9 +3,7 @@
   "branchNameStrict": true,
   "rangeStrategy": "bump",
   "automerge": true,
-  "gitIgnoredAuthors": [
-    "114827586+autofix-ci[bot]@users.noreply.github.com"
-  ],
+  "gitIgnoredAuthors": ["114827586+autofix-ci[bot]@users.noreply.github.com"],
   "extends": [
     "config:recommended",
     ":semanticCommitTypeAll(chore)",
