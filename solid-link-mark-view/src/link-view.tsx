@@ -26,8 +26,7 @@ function pickRandomColor() {
 
 export default function Link(props: SolidMarkViewProps) {
   const [color, setColor] = createSignal(colors[0])
-  const { mark, contentRef } = props
-  const href = mark.attrs.href as string
+  const href = () => props.mark.attrs.href as string
 
   onMount(() => {
     const interval = setInterval(() => {
@@ -38,8 +37,8 @@ export default function Link(props: SolidMarkViewProps) {
 
   return (
     <a
-      href={href}
-      ref={contentRef}
+      href={href()}
+      ref={props.contentRef}
       style={{ color: color(), transition: 'color 1s ease-in-out' }}
     ></a>
   )
