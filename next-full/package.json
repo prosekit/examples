@@ -9,7 +9,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "next": "^15.5.4",
+    "next": "^15.5.5",
     "prosekit": "^0.15.8",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
