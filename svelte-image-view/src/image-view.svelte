@@ -81,7 +81,8 @@ function handleResizeEnd(event: CustomEvent<{ width: number; height: number }>) 
     <img
       src={url}
       class="h-full w-full max-w-full max-h-full object-contain"
-      on:load={handleImageLoad}
+      onload={handleImageLoad}
+      alt="upload preview"
     />
   {/if}
 

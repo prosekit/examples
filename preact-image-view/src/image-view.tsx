@@ -65,6 +65,7 @@ export default function ImageView(props: PreactNodeViewProps) {
         <img
           src={url}
           onLoad={handleImageLoad}
+          alt="upload preview"
           className="h-full w-full max-w-full max-h-full object-contain"
         />
       )}
