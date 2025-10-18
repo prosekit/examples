@@ -74,6 +74,7 @@ export default function ImageView(props: SolidNodeViewProps) {
         <img
           src={url()}
           onLoad={handleImageLoad}
+          alt="upload preview"
           class="h-full w-full max-w-full max-h-full object-contain"
         />
       </Show>

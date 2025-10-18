@@ -71,6 +71,7 @@ function handleImageLoad(event: Event) {
       v-if="url && !error"
       :src="url"
       class="h-full w-full max-w-full max-h-full object-contain"
+      alt="upload preview"
       @load="handleImageLoad"
     />
 
