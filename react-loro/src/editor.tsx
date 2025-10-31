@@ -31,6 +31,8 @@ function useLoroDocs() {
 
   useEffect(() => {
     const { loroA, loroB, idA, idB, awarenessA, awarenessB } = loroState
+    loroA.import(loroB.export({ mode: 'update' }))
+    loroB.import(loroA.export({ mode: 'update' }))
     const unsubscribeA = loroA.subscribeLocalUpdates((updates) => {
       loroB.import(updates)
     })
