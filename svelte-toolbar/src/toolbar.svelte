@@ -2,6 +2,7 @@
 import { useEditor } from 'prosekit/svelte'
 import Button from './button.svelte'
 import type { EditorExtension } from './extension'
+import ImageUploadPopover from './image-upload-popover.svelte'
 
 const editor = useEditor<EditorExtension>({ update: true })
 </script>
@@ -69,4 +70,11 @@ const editor = useEditor<EditorExtension>({ update: true })
   >
     <div class="i-lucide-heading-3 size-5 block"></div>
   </Button>
+
+  <ImageUploadPopover
+    disabled={!$editor.commands.insertImage.canExec()}
+    tooltip="Insert Image"
+  >
+    <div class="i-lucide-image size-5 block"></div>
+  </ImageUploadPopover>
 </div>

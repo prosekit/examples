@@ -3,6 +3,7 @@ import { useEditor } from 'prosekit/vue'
 
 import Button from './button.vue'
 import type { EditorExtension } from './extension'
+import ImageUploadPopover from './image-upload-popover.vue'
 
 const editor = useEditor<EditorExtension>({ update: true })
 </script>
@@ -73,5 +74,12 @@ const editor = useEditor<EditorExtension>({ update: true })
     >
       <div class="i-lucide-heading-3 size-5 block" />
     </Button>
+
+    <ImageUploadPopover
+      :disabled="!editor.commands.insertImage.canExec()"
+      tooltip="Insert Image"
+    >
+      <div class="i-lucide-image size-5 block" />
+    </ImageUploadPopover>
   </div>
 </template>
