@@ -84,9 +84,7 @@ export default function TableHandle() {
               onSelect={state.deleteCellSelection.command}
             >
               <span>Clear Contents</span>
-              <span className="text-xs tracking-widest text-gray-500 dark:text-gray-500">
-                Del
-              </span>
+              <span className="text-xs tracking-widest text-gray-500 dark:text-gray-500">Del</span>
             </TableHandlePopoverItem>
           )}
           {state.deleteTableColumn.canExec && (
@@ -135,9 +133,7 @@ export default function TableHandle() {
               onSelect={state.deleteCellSelection.command}
             >
               <span>Clear Contents</span>
-              <span className="text-xs tracking-widest text-gray-500 dark:text-gray-500">
-                Del
-              </span>
+              <span className="text-xs tracking-widest text-gray-500 dark:text-gray-500">Del</span>
             </TableHandlePopoverItem>
           )}
           {state.deleteTableRow.canExec && (

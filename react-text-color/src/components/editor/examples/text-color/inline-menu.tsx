@@ -1,5 +1,9 @@
 import type { Editor } from 'prosekit/core'
-import { useEditor, useEditorDerivedValue, useKeymap } from 'prosekit/react'
+import {
+  useEditor,
+  useEditorDerivedValue,
+  useKeymap,
+} from 'prosekit/react'
 import { InlinePopover } from 'prosekit/react/inline-popover'
 import { useState } from 'react'
 

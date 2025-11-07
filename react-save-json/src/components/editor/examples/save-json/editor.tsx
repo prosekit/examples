@@ -2,9 +2,19 @@ import 'prosekit/basic/style.css'
 import 'prosekit/basic/typography.css'
 
 import { defineBasicExtension } from 'prosekit/basic'
-import { createEditor, type NodeJSON } from 'prosekit/core'
-import { ProseKit, useDocChange } from 'prosekit/react'
-import { useCallback, useMemo, useState } from 'react'
+import {
+  createEditor,
+  type NodeJSON,
+} from 'prosekit/core'
+import {
+  ProseKit,
+  useDocChange,
+} from 'prosekit/react'
+import {
+  useCallback,
+  useMemo,
+  useState,
+} from 'react'
 
 export default function Editor() {
   const [defaultContent, setDefaultContent] = useState<NodeJSON | undefined>()
@@ -59,10 +69,7 @@ export default function Editor() {
       </ul>
       <ProseKit editor={editor} key={key}>
         <div className="relative w-full flex-1 box-border overflow-y-auto">
-          <div
-            ref={editor.mount}
-            className="ProseMirror box-border min-h-full px-[max(4rem,calc(50%-20rem))] py-8 outline-hidden outline-0 [&_span[data-mention=user]]:text-blue-500 [&_span[data-mention=tag]]:text-violet-500"
-          ></div>
+          <div ref={editor.mount} className="ProseMirror box-border min-h-full px-[max(4rem,calc(50%-20rem))] py-8 outline-hidden outline-0 [&_span[data-mention=user]]:text-blue-500 [&_span[data-mention=tag]]:text-violet-500"></div>
         </div>
       </ProseKit>
     </div>

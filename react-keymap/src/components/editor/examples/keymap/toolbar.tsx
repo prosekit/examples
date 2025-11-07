@@ -4,7 +4,9 @@ import { Button } from '../../ui/button'
 
 import { useSubmitKeymap } from './use-submit-keymap'
 
-export default function Toolbar(props: { onSubmit: (hotkey: string) => void }) {
+export default function Toolbar(props: {
+  onSubmit: (hotkey: string) => void
+}) {
   const [hotkey, setHotkey] = useState<'Shift-Enter' | 'Enter'>('Shift-Enter')
   useSubmitKeymap(hotkey, props.onSubmit)
 

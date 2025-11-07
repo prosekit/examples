@@ -58,6 +58,45 @@ export default function Editor() {
   return <ExampleEditor />
 }
 `
+const createSvelteEntry = (componentsPath: string) =>
+  (story: string) => `<script lang=\"ts\">
+import { ExampleEditor } from '${componentsPath}/${story}'
+</script>
+
+<ExampleEditor />
+`
+
+const createVueEntry = (componentsPath: string) =>
+  (story: string) => `<script setup lang=\"ts\">
+import { ExampleEditor } from '${componentsPath}/${story}'
+</script>
+
+<template>
+  <ExampleEditor />
+</template>
+`
+
+const svelteEntry = createSvelteEntry('./components/editor/examples')
+const svelteKitEntry = createSvelteEntry('../components/editor/examples')
+const vueEntry = createVueEntry('./components/editor/examples')
+
+const NEXT_FRAMEWORK_CONFIG: FrameworkConfig = {
+  template: 'next',
+  entryFile: path.join('src', 'editor.tsx'),
+  createEntryContent: nextEntry,
+}
+
+const NUXT_FRAMEWORK_CONFIG: FrameworkConfig = {
+  template: 'nuxt',
+  entryFile: path.join('src', 'editor.vue'),
+  createEntryContent: vueEntry,
+}
+
+const SVELTEKIT_FRAMEWORK_CONFIG: FrameworkConfig = {
+  template: 'sveltekit',
+  entryFile: path.join('src', 'lib', 'editor.svelte'),
+  createEntryContent: svelteKitEntry,
+}
 
 const FRAMEWORK_CONFIG: Record<string, FrameworkConfig> = {
   react: {
@@ -78,32 +117,41 @@ const FRAMEWORK_CONFIG: Record<string, FrameworkConfig> = {
   svelte: {
     template: 'svelte',
     entryFile: path.join('src', 'editor.svelte'),
-    createEntryContent: (story) => `<script lang=\"ts\">
-import { ExampleEditor } from './components/editor/examples/${story}'
-</script>
-
-<ExampleEditor />
-`,
+    createEntryContent: svelteEntry,
   },
   vue: {
     template: 'vue',
     entryFile: path.join('src', 'editor.vue'),
-    createEntryContent: (story) => `<script setup lang=\"ts\">
-import { ExampleEditor } from './components/editor/examples/${story}'
-</script>
-
-<template>
-  <ExampleEditor />
-</template>
-`,
+    createEntryContent: vueEntry,
   },
+  next: NEXT_FRAMEWORK_CONFIG,
+  nuxt: NUXT_FRAMEWORK_CONFIG,
+  sveltekit: SVELTEKIT_FRAMEWORK_CONFIG,
 }
 
-const NEXT_FRAMEWORK_CONFIG: FrameworkConfig = {
-  template: 'next',
-  entryFile: path.join('src', 'editor.tsx'),
-  createEntryContent: nextEntry,
+type DerivedExampleConfig = {
+  sourceName: string
+  destName: string
+  config: FrameworkConfig
 }
+
+const DERIVED_EXAMPLES: DerivedExampleConfig[] = [
+  {
+    sourceName: 'react-example-full',
+    destName: 'next-full',
+    config: NEXT_FRAMEWORK_CONFIG,
+  },
+  {
+    sourceName: 'vue-example-full',
+    destName: 'nuxt-full',
+    config: NUXT_FRAMEWORK_CONFIG,
+  },
+  {
+    sourceName: 'svelte-example-full',
+    destName: 'sveltekit-full',
+    config: SVELTEKIT_FRAMEWORK_CONFIG,
+  },
+]
 
 function info(message: string) {
   console.log(`${LOG_PREFIX} ${message}`)
@@ -541,24 +589,26 @@ async function buildExample(
   await writeGitignore(destDir)
 }
 
-async function buildNextFullExample(registry: RegistryIndex) {
-  const reactFull = registry.items.find(
-    (item) => item.name === 'react-example-full',
-  )
-  assert(
-    reactFull,
-    'Cannot build next-full example: react-example-full not found in registry.',
-  )
+async function buildDerivedExamples(registry: RegistryIndex) {
+  for (const derived of DERIVED_EXAMPLES) {
+    const source = registry.items.find(
+      (item) => item.name === derived.sourceName,
+    )
+    assert(
+      source,
+      `Cannot build ${derived.destName} example: ${derived.sourceName} not found in registry.`,
+    )
 
-  assert(
-    shouldBuild(reactFull),
-    'Cannot build next-full example: react full entry missing story/framework metadata.',
-  )
+    assert(
+      shouldBuild(source),
+      `Cannot build ${derived.destName} example: ${derived.sourceName} missing story/framework metadata.`,
+    )
 
-  await buildExample(reactFull, {
-    destName: 'next-full',
-    config: NEXT_FRAMEWORK_CONFIG,
-  })
+    await buildExample(source, {
+      destName: derived.destName,
+      config: derived.config,
+    })
+  }
 }
 
 async function main() {
@@ -587,7 +637,7 @@ async function main() {
     )
   }
 
-  await buildNextFullExample(registry)
+  await buildDerivedExamples(registry)
 }
 
 main().catch((error) => {
