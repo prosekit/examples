@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic'
 
 const EditorLazy = dynamic(
   async () => {
-    const { ExampleEditor } = await import('./components/editor/examples/full')
+    const { ExampleEditor } = await import('./editor/examples/full')
     return { default: ExampleEditor }
   },
   { ssr: false },
