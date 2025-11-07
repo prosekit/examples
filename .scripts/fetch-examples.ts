@@ -50,14 +50,7 @@ export default function App() {
 }
 `
 
-const reactEntry = (
-  story: string,
-) => `import { ExampleEditor } from './components/editor/examples/${story}'
-
-export default function App() {
-  return <ExampleEditor />
-}
-`
+const reactEntry = jsxEntry
 
 const nextEntry = (story: string) => `'use client'
 
@@ -89,54 +82,34 @@ const svelteEntry = createSvelteEntry('./components/editor/examples')
 const svelteKitEntry = createSvelteEntry('../components/editor/examples')
 const vueEntry = createVueEntry('./components/editor/examples')
 
-const NEXT_FRAMEWORK_CONFIG: FrameworkConfig = {
-  template: 'next',
-  entryFile: path.join('src', 'editor.tsx'),
-  createEntryContent: nextEntry,
+function createFrameworkConfig(
+  template: string,
+  entrySegments: string[],
+  createEntryContent: (story: string) => string,
+): FrameworkConfig {
+  return {
+    template,
+    entryFile: path.join(...entrySegments),
+    createEntryContent,
+  }
 }
 
-const NUXT_FRAMEWORK_CONFIG: FrameworkConfig = {
-  template: 'nuxt',
-  entryFile: path.join('src', 'editor.vue'),
-  createEntryContent: vueEntry,
-}
+const FRAMEWORK_CONFIG = {
+  react: createFrameworkConfig('react', ['src', 'app.tsx'], reactEntry),
+  preact: createFrameworkConfig('preact', ['src', 'App.tsx'], jsxEntry),
+  solid: createFrameworkConfig('solid', ['src', 'App.tsx'], jsxEntry),
+  svelte: createFrameworkConfig('svelte', ['src', 'App.svelte'], svelteEntry),
+  vue: createFrameworkConfig('vue', ['src', 'App.vue'], vueEntry),
+  next: createFrameworkConfig('next', ['src', 'editor.tsx'], nextEntry),
+  nuxt: createFrameworkConfig('nuxt', ['src', 'editor.vue'], vueEntry),
+  sveltekit: createFrameworkConfig(
+    'sveltekit',
+    ['src', 'lib', 'editor.svelte'],
+    svelteKitEntry,
+  ),
+} as const satisfies Record<string, FrameworkConfig>
 
-const SVELTEKIT_FRAMEWORK_CONFIG: FrameworkConfig = {
-  template: 'sveltekit',
-  entryFile: path.join('src', 'lib', 'editor.svelte'),
-  createEntryContent: svelteKitEntry,
-}
-
-const FRAMEWORK_CONFIG: Record<string, FrameworkConfig> = {
-  react: {
-    template: 'react',
-    entryFile: path.join('src', 'app.tsx'),
-    createEntryContent: reactEntry,
-  },
-  preact: {
-    template: 'preact',
-    entryFile: path.join('src', 'App.tsx'),
-    createEntryContent: jsxEntry,
-  },
-  solid: {
-    template: 'solid',
-    entryFile: path.join('src', 'App.tsx'),
-    createEntryContent: jsxEntry,
-  },
-  svelte: {
-    template: 'svelte',
-    entryFile: path.join('src', 'App.svelte'),
-    createEntryContent: svelteEntry,
-  },
-  vue: {
-    template: 'vue',
-    entryFile: path.join('src', 'App.vue'),
-    createEntryContent: vueEntry,
-  },
-  next: NEXT_FRAMEWORK_CONFIG,
-  nuxt: NUXT_FRAMEWORK_CONFIG,
-  sveltekit: SVELTEKIT_FRAMEWORK_CONFIG,
-}
+type FrameworkName = keyof typeof FRAMEWORK_CONFIG
 
 type DerivedExampleConfig = {
   sourceName: string
@@ -144,23 +117,35 @@ type DerivedExampleConfig = {
   config: FrameworkConfig
 }
 
+type DependencySpecifier = {
+  name: string
+  version?: string
+}
+
 const DERIVED_EXAMPLES: DerivedExampleConfig[] = [
-  {
-    sourceName: 'react-example-full',
-    destName: 'next-full',
-    config: NEXT_FRAMEWORK_CONFIG,
-  },
-  {
-    sourceName: 'vue-example-full',
-    destName: 'nuxt-full',
-    config: NUXT_FRAMEWORK_CONFIG,
-  },
-  {
-    sourceName: 'svelte-example-full',
-    destName: 'sveltekit-full',
-    config: SVELTEKIT_FRAMEWORK_CONFIG,
-  },
+  deriveExample('react-example-full', 'next-full', 'next'),
+  deriveExample('vue-example-full', 'nuxt-full', 'nuxt'),
+  deriveExample('svelte-example-full', 'sveltekit-full', 'sveltekit'),
 ]
+
+function deriveExample(
+  sourceName: string,
+  destName: string,
+  framework: FrameworkName,
+): DerivedExampleConfig {
+  return {
+    sourceName,
+    destName,
+    config: FRAMEWORK_CONFIG[framework],
+  }
+}
+
+function hasFrameworkConfig(
+  framework?: string,
+): framework is FrameworkName {
+  return !!framework && framework in FRAMEWORK_CONFIG
+}
+
 
 function info(message: string) {
   console.log(`${LOG_PREFIX} ${message}`)
@@ -227,58 +212,60 @@ const fetchRegistryItem = memoize(async function fetchRegistryItem(
 async function collectRegistryFiles(
   item: RegistryItem,
 ): Promise<RegistryFile[]> {
-  const queue: RegistryItem[] = [item]
-  const visited = new Set<string>()
   const files = new Map<string, RegistryFile>()
+  const visited = new Set<string>()
 
-  while (queue.length > 0) {
-    const current = queue.shift()!
-    assert(current.name, 'Encountered registry item without a name')
-    if (visited.has(current.name)) {
-      continue
-    }
-    visited.add(current.name)
+  await collectFilesRecursively(item, files, visited)
 
-    if (!current.files?.length) {
-      warn(`Registry item ${current.name} provides no files.`)
-    }
+  return Array.from(files.values())
+}
 
-    for (const file of current.files || []) {
-      const target = file.target
-      assert(
-        target,
-        `File ${file.path ?? '(unknown)'} in ${current.name} is missing a target path`,
+async function collectFilesRecursively(
+  item: RegistryItem,
+  files: Map<string, RegistryFile>,
+  visited: Set<string>,
+) {
+  assert(item.name, 'Encountered registry item without a name')
+  if (visited.has(item.name)) {
+    return
+  }
+  visited.add(item.name)
+
+  for (const dep of item.registryDependencies || []) {
+    try {
+      const depItem = await fetchRegistryItem(dep)
+      await collectFilesRecursively(depItem, files, visited)
+    } catch (error) {
+      warn(
+        `Failed to fetch dependency ${dep} for ${item.name}: ${formatError(error)}`,
       )
-      assert(
-        !files.has(target),
-        `Duplicate target detected for ${target} while processing ${current.name}`,
-      )
-      if (typeof file.content !== 'string') {
-        warn(`Missing inline content for ${file.path || target}`)
-        assert(
-          typeof file.content === 'string',
-          `Missing inline content for ${file.path || target}`,
-        )
-      }
-      files.set(target, file)
-    }
-
-    for (const dep of current.registryDependencies || []) {
-      try {
-        const depItem = await fetchRegistryItem(dep)
-        if (depItem) {
-          queue.push(depItem)
-        }
-      } catch (error) {
-        warn(
-          `Failed to fetch dependency ${dep} for ${current.name}: ${formatError(error)}`,
-        )
-        throw error
-      }
+      throw error
     }
   }
 
-  return Array.from(files.values())
+  if (!item.files?.length) {
+    warn(`Registry item ${item.name} provides no files.`)
+    return
+  }
+
+  for (const file of item.files) {
+    const target = file.target
+    assert(
+      target,
+      `File ${file.path ?? '(unknown)'} in ${item.name} is missing a target path`,
+    )
+    if (typeof file.content !== 'string') {
+      warn(`Missing inline content for ${file.path || target}`)
+      assert(
+        typeof file.content === 'string',
+        `Missing inline content for ${file.path || target}`,
+      )
+    }
+    if (files.has(target)) {
+      info(`Overriding ${target} with definition from ${item.name}`)
+    }
+    files.set(target, file)
+  }
 }
 
 async function writeRegistryFiles(destDir: string, files: RegistryFile[]) {
@@ -339,7 +326,7 @@ function mergePackageSections(
   if (!source) return
   for (const key of ['dependencies', 'devDependencies', 'peerDependencies']) {
     if (!source[key]) continue
-    target[key] = { ...(source[key] || {}), ...(target[key] || {}) }
+    target[key] = { ...(target[key] || {}), ...(source[key] || {}) }
   }
 }
 
@@ -355,31 +342,103 @@ async function preservePackageDependencies(
   await fs.writeFile(pkgPath, JSON.stringify(pkg, null, 2) + '\n')
 }
 
+function parseDependencySpecifier(
+  input: string,
+): DependencySpecifier | undefined {
+  const trimmed = input?.trim()
+  if (!trimmed) return undefined
+  const atIndex = trimmed.lastIndexOf('@')
+
+  if (atIndex <= 0) {
+    return { name: trimmed }
+  }
+
+  const name = trimmed.slice(0, atIndex)
+  const version = trimmed.slice(atIndex + 1).trim()
+
+  if (!version) {
+    return { name }
+  }
+
+  return { name, version }
+}
+
+function isDependencySpecifier(
+  spec: DependencySpecifier | undefined,
+): spec is DependencySpecifier {
+  return !!spec?.name
+}
+
+function normalizeVersionSpecifier(version: string) {
+  const trimmed = version.trim()
+  if (!trimmed) return trimmed
+
+  if (
+    trimmed === 'latest' ||
+    /^[~^<>=*]/.test(trimmed) ||
+    /^(file:|git\+|https?:|link:|workspace:)/.test(trimmed)
+  ) {
+    return trimmed
+  }
+
+  return `^${trimmed}`
+}
+
+async function ensureDependencies(
+  dir: string,
+  specs: DependencySpecifier[],
+  section: 'dependencies' | 'devDependencies' = 'dependencies',
+) {
+  if (!specs.length) return
+
+  const pkgPath = path.join(dir, 'package.json')
+  const pkg = await readPackageJson(pkgPath)
+  if (!pkg) return
+
+  let changed = false
+
+  for (const spec of specs) {
+    const name = spec.name?.trim()
+    if (!name) continue
+    if (pkg[section]?.[name]) {
+      continue
+    }
+
+    let version = spec.version?.trim()
+    if (!version) {
+      try {
+        version = await resolveLatestPackageVersion(name)
+      } catch (error) {
+        warn(
+          `Failed to resolve version for ${name} in ${path.relative(ROOT, dir)}: ${formatError(error)}`,
+        )
+        throw error
+      }
+    }
+
+    const versionSpec = normalizeVersionSpecifier(version)
+    info(
+      `Recording missing ${section} dependency ${name}@${versionSpec} in ${path.relative(ROOT, dir)}`,
+    )
+
+    pkg[section] = {
+      ...(pkg[section] || {}),
+      [name]: versionSpec,
+    }
+    changed = true
+  }
+
+  if (changed) {
+    await fs.writeFile(pkgPath, JSON.stringify(pkg, null, 2) + '\n')
+  }
+}
+
 async function ensurePackageDependency(
   dir: string,
   name: string,
   section: 'dependencies' | 'devDependencies' = 'dependencies',
 ) {
-  const pkgPath = path.join(dir, 'package.json')
-  const pkg = await readPackageJson(pkgPath)
-  if (!pkg) return
-  const deps = { ...(pkg[section] || {}) }
-  if (deps[name]) {
-    return
-  }
-
-  info(
-    `Installing missing ${section.slice(0, -3)} dependency ${name} in ${path.relative(ROOT, dir)}`,
-  )
-  try {
-    await runCommand('bun', ['add', name], { cwd: dir })
-  } catch (error) {
-    warn(
-      `Failed to add ${name} in ${path.relative(ROOT, dir)}: ${formatError(error)}`,
-    )
-    throw error
-  }
-  await cleanupInstallArtifacts(dir)
+  await ensureDependencies(dir, [{ name }], section)
 }
 
 async function patchLoroExample(destDir: string) {
@@ -440,36 +499,92 @@ type RunCommandOptions = {
   cwd?: string
 }
 
-async function runCommand(
+async function runCommandCapture(
   command: string,
   args: string[],
   options: RunCommandOptions = {},
 ) {
-  await new Promise<void>((resolve, reject) => {
+  return await new Promise<string>((resolve, reject) => {
     const child = spawn(command, args, {
       cwd: options.cwd ?? ROOT,
-      stdio: 'inherit',
       env: process.env,
+      stdio: ['ignore', 'pipe', 'pipe'],
     })
+
+    let stdout = ''
+    let stderr = ''
+
+    child.stdout?.on('data', (chunk) => {
+      stdout += chunk.toString()
+    })
+
+    child.stderr?.on('data', (chunk) => {
+      stderr += chunk.toString()
+    })
+
     child.on('error', reject)
     child.on('exit', (code) => {
       if (code === 0) {
-        resolve()
+        resolve(stdout.trim())
       } else {
-        reject(
-          new Error(
-            `Command failed: ${command} ${args.join(' ')} (code ${code})`,
-          ),
-        )
+        const message = stderr.trim()
+          ? `${command} ${args.join(' ')} failed: ${message}`
+          : `Command failed: ${command} ${args.join(' ')} (code ${code})`
+        reject(new Error(message))
       }
     })
   })
 }
 
-async function cleanupInstallArtifacts(dir: string) {
-  await fs.rm(path.join(dir, 'node_modules'), { recursive: true, force: true })
-  await fs.rm(path.join(dir, 'bun.lockb'), { force: true })
-}
+const resolveLatestPackageVersion = memoize(async function resolveLatestPackageVersion(
+  name: string,
+) {
+  const raw = await runCommandCapture('npm', [
+    'info',
+    name,
+    'version',
+    '--json',
+  ])
+
+  if (!raw) {
+    throw new Error(`npm info returned empty response for ${name}`)
+  }
+
+  let parsed: unknown
+  try {
+    parsed = JSON.parse(raw)
+  } catch (error) {
+    throw new Error(
+      `Unable to parse npm info response for ${name}: ${formatError(error)}`,
+    )
+  }
+
+  const toVersionString = (value: unknown) =>
+    typeof value === 'string' && value.trim() ? value.trim() : undefined
+
+  const direct = toVersionString(parsed)
+  if (direct) {
+    return direct
+  }
+
+  if (Array.isArray(parsed) && parsed.length > 0) {
+    for (let i = parsed.length - 1; i >= 0; i -= 1) {
+      const fromArray = toVersionString(parsed[i])
+      if (fromArray) {
+        return fromArray
+      }
+    }
+  }
+
+  if (typeof parsed === 'object' && parsed !== null) {
+    const version = toVersionString((parsed as { version?: unknown }).version)
+    if (version) {
+      return version
+    }
+  }
+
+  throw new Error(`npm info response for ${name} did not include a version`)
+})
 
 async function writeReadme(dir: string) {
   const name = path.basename(dir)
@@ -512,29 +627,11 @@ async function updatePackageJsonName(dir: string, name: string) {
 async function installMissingDependencies(dir: string, deps?: string[]) {
   if (!deps?.length) return
 
-  const pkgPath = path.join(dir, 'package.json')
-  const pkgRaw = await fs.readFile(pkgPath, 'utf-8')
-  const pkg = JSON.parse(pkgRaw)
-  const existing = new Set([
-    ...Object.keys(pkg.dependencies || {}),
-    ...Object.keys(pkg.devDependencies || {}),
-    ...Object.keys(pkg.peerDependencies || {}),
-  ])
+  const specs = deps
+    .map((dep) => parseDependencySpecifier(dep))
+    .filter(isDependencySpecifier)
 
-  const missing = deps.filter((dep) => !existing.has(dep))
-  if (missing.length === 0) return
-
-  info(
-    `Installing missing dependencies for ${path.relative(ROOT, dir)}: ${missing.join(', ')}`,
-  )
-
-  try {
-    await runCommand('bun', ['add', ...missing], { cwd: dir })
-  } catch (error) {
-    warn(`bun add failed in ${path.relative(ROOT, dir)}: ${formatError(error)}`)
-    throw error
-  }
-  await cleanupInstallArtifacts(dir)
+  await ensureDependencies(dir, specs)
 }
 
 function shouldBuild(item: RegistryIndexItem): boolean {
@@ -548,7 +645,7 @@ function shouldBuild(item: RegistryIndexItem): boolean {
     warn(`Skipping ${item.name}: missing meta.framework`)
     return false
   }
-  if (!FRAMEWORK_CONFIG[framework]) {
+  if (!hasFrameworkConfig(framework)) {
     warn(`Skipping ${item.name}: unsupported framework "${framework}"`)
     return false
   }
@@ -564,28 +661,29 @@ async function buildExample(
   item: RegistryIndexItem,
   overrides?: BuildOverrides,
 ) {
-  const framework = item.meta?.framework!
-  const story = item.meta?.story!
+  const framework = item.meta?.framework?.trim()
+  const story = item.meta?.story?.trim()
+  assert(story, `Registry item ${item.name} is missing a story`)
+  if (!hasFrameworkConfig(framework)) {
+    throw new Error(
+      `No framework configuration for ${framework || '(unknown)'}; cannot build ${item.name}`,
+    )
+  }
   const config = overrides?.config ?? FRAMEWORK_CONFIG[framework]
-  assert(
-    config,
-    `No framework configuration for ${framework}; cannot build ${item.name}`,
-  )
   const destName = overrides?.destName ?? `${framework}-${story}`
   const destDir = path.join(ROOT, destName)
 
   info(`Building ${destName} (${item.name})`)
 
-  const destSrcDir = path.join(destDir, 'src')
-  await fs.rm(destSrcDir, { recursive: true, force: true })
+  const previousPackage = await readPackageJson(
+    path.join(destDir, 'package.json'),
+  )
+  await fs.rm(destDir, { recursive: true, force: true })
 
   const templateDir = path.join(
     ROOT,
     '.templates',
     `template-${config.template}`,
-  )
-  const previousPackage = await readPackageJson(
-    path.join(destDir, 'package.json'),
   )
   await copyDir(templateDir, destDir)
   await preservePackageDependencies(destDir, previousPackage)
