@@ -45,7 +45,7 @@ const jsxEntry = (
   story: string,
 ) => `import { ExampleEditor } from './components/editor/examples/${story}'
 
-export default function Editor() {
+export default function App() {
   return <ExampleEditor />
 }
 `
@@ -115,17 +115,17 @@ const FRAMEWORK_CONFIG: Record<string, FrameworkConfig> = {
   },
   preact: {
     template: 'preact',
-    entryFile: path.join('src', 'editor.tsx'),
+    entryFile: path.join('src', 'App.tsx'),
     createEntryContent: jsxEntry,
   },
   solid: {
     template: 'solid',
-    entryFile: path.join('src', 'editor.tsx'),
+    entryFile: path.join('src', 'App.tsx'),
     createEntryContent: jsxEntry,
   },
   svelte: {
     template: 'svelte',
-    entryFile: path.join('src', 'editor.svelte'),
+    entryFile: path.join('src', 'App.svelte'),
     createEntryContent: svelteEntry,
   },
   vue: {

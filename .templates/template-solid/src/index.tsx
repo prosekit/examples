@@ -1,8 +1,8 @@
 /* @refresh reload */
 import './app.css'
 import { render } from 'solid-js/web'
-import Editor from './editor'
+import App from './App'
 
 const root = document.getElementById('root')
 
-render(() => <Editor />, root!)
+render(() => <App />, root!)
