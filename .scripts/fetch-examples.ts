@@ -50,7 +50,9 @@ export default function Editor() {
 }
 `
 
-const reactEntry = (story: string) => `import { ExampleEditor } from './components/editor/examples/${story}'
+const reactEntry = (
+  story: string,
+) => `import { ExampleEditor } from './components/editor/examples/${story}'
 
 export default function App() {
   return <ExampleEditor />
@@ -109,7 +111,7 @@ const FRAMEWORK_CONFIG: Record<string, FrameworkConfig> = {
   react: {
     template: 'react',
     entryFile: path.join('src', 'app.tsx'),
-    createEntryContent: reactEntry
+    createEntryContent: reactEntry,
   },
   preact: {
     template: 'preact',
