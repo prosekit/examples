@@ -1,6 +1,5 @@
 import fs from 'node:fs/promises'
 import path from 'node:path'
-import { replaceThemes } from './replace-themes'
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname)
 const ROOT = path.resolve(__dirname, '..')
