@@ -50,6 +50,13 @@ export default function Editor() {
 }
 `
 
+const reactEntry = (story: string) => `import { ExampleEditor } from './components/editor/examples/${story}'
+
+export default function App() {
+  return <ExampleEditor />
+}
+`
+
 const nextEntry = (story: string) => `'use client'
 
 import { ExampleEditor } from './components/editor/examples/${story}'
@@ -101,8 +108,8 @@ const SVELTEKIT_FRAMEWORK_CONFIG: FrameworkConfig = {
 const FRAMEWORK_CONFIG: Record<string, FrameworkConfig> = {
   react: {
     template: 'react',
-    entryFile: path.join('src', 'editor.tsx'),
-    createEntryContent: jsxEntry,
+    entryFile: path.join('src', 'app.tsx'),
+    createEntryContent: reactEntry
   },
   preact: {
     template: 'preact',
