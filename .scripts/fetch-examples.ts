@@ -195,6 +195,9 @@ async function copyDirWithTransform(
   relativePrefix = '',
 ) {
   if (!(await isDirectory(src))) {
+    console.warn(
+      `[fetch-examples] Expected directory not found: ${path.relative(ROOT, src) || src}`,
+    )
     return
   }
 
