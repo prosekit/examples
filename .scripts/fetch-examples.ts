@@ -412,10 +412,18 @@ async function patchLoroExample(destDir: string) {
   }
 }
 
+async function patchYjsExample(destDir: string) {
+  for (const dep of ['y-prosemirror', 'yjs']) {
+    await ensurePackageDependency(destDir, dep)
+  }
+}
+
 async function applyExamplePatches(item: RegistryIndexItem, destDir: string) {
   const story = item.meta?.story
   if (story === 'loro') {
     await patchLoroExample(destDir)
+  } else if (story === 'yjs') {
+    await patchYjsExample(destDir)
   }
 }
 
