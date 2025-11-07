@@ -12,7 +12,10 @@ import {
   TableHandleRowRoot,
   TableHandleRowTrigger,
 } from 'prosekit/solid/table-handle'
-import { Show, type JSX } from 'solid-js'
+import {
+  Show,
+  type JSX,
+} from 'solid-js'
 
 function getTableHandleState(editor: Editor<TableExtension>) {
   return {
@@ -85,9 +88,7 @@ export default function TableHandle(): JSX.Element {
               onSelect={() => state().deleteCellSelection.command()}
             >
               <span>Clear Contents</span>
-              <span class="text-xs tracking-widest text-gray-500 dark:text-gray-500">
-                Del
-              </span>
+              <span class="text-xs tracking-widest text-gray-500 dark:text-gray-500">Del</span>
             </TableHandlePopoverItem>
           </Show>
           <Show when={state().deleteTableColumn.canExec}>
@@ -136,9 +137,7 @@ export default function TableHandle(): JSX.Element {
               onSelect={() => state().deleteCellSelection.command()}
             >
               <span>Clear Contents</span>
-              <span class="text-xs tracking-widest text-gray-500 dark:text-gray-500">
-                Del
-              </span>
+              <span class="text-xs tracking-widest text-gray-500 dark:text-gray-500">Del</span>
             </TableHandlePopoverItem>
           </Show>
           <Show when={state().deleteTableRow.canExec}>

@@ -8,11 +8,12 @@ import {
   AutocompleteList,
   AutocompletePopover,
 } from 'prosekit/solid/autocomplete'
-import { For, type JSX } from 'solid-js'
+import {
+  For,
+  type JSX,
+} from 'solid-js'
 
-export default function TagMenu(props: {
-  tags: { id: number; label: string }[]
-}): JSX.Element {
+export default function TagMenu(props: { tags: { id: number; label: string }[] }): JSX.Element {
   const editor = useEditor<Union<[MentionExtension, BasicExtension]>>()
 
   const handleTagInsert = (id: number, label: string) => {

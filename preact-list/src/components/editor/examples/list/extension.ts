@@ -1,4 +1,7 @@
-import { defineBaseKeymap, union } from 'prosekit/core'
+import {
+  defineBaseKeymap,
+  union,
+} from 'prosekit/core'
 import { defineDoc } from 'prosekit/extensions/doc'
 import { defineList } from 'prosekit/extensions/list'
 import { defineParagraph } from 'prosekit/extensions/paragraph'

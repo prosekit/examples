@@ -8,7 +8,10 @@ import {
   AutocompleteList,
   AutocompletePopover,
 } from 'prosekit/solid/autocomplete'
-import { For, type JSX } from 'solid-js'
+import {
+  For,
+  type JSX,
+} from 'solid-js'
 
 export default function UserMenu(props: {
   users: { id: number; name: string }[]

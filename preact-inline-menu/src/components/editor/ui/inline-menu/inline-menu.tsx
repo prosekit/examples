@@ -4,7 +4,10 @@ import type { BasicExtension } from 'prosekit/basic'
 import type { Editor } from 'prosekit/core'
 import type { LinkAttrs } from 'prosekit/extensions/link'
 import type { EditorState } from 'prosekit/pm/state'
-import { useEditor, useEditorDerivedValue } from 'prosekit/preact'
+import {
+  useEditor,
+  useEditorDerivedValue,
+} from 'prosekit/preact'
 import { InlinePopover } from 'prosekit/preact/inline-popover'
 
 import { Button } from '../button'
@@ -13,46 +16,46 @@ function getInlineMenuItems(editor: Editor<BasicExtension>) {
   return {
     bold: editor.commands.toggleBold
       ? {
-          isActive: editor.marks.bold.isActive(),
-          canExec: editor.commands.toggleBold.canExec(),
-          command: () => editor.commands.toggleBold(),
-        }
+        isActive: editor.marks.bold.isActive(),
+        canExec: editor.commands.toggleBold.canExec(),
+        command: () => editor.commands.toggleBold(),
+      }
       : undefined,
     italic: editor.commands.toggleItalic
       ? {
-          isActive: editor.marks.italic.isActive(),
-          canExec: editor.commands.toggleItalic.canExec(),
-          command: () => editor.commands.toggleItalic(),
-        }
+        isActive: editor.marks.italic.isActive(),
+        canExec: editor.commands.toggleItalic.canExec(),
+        command: () => editor.commands.toggleItalic(),
+      }
       : undefined,
     underline: editor.commands.toggleUnderline
       ? {
-          isActive: editor.marks.underline.isActive(),
-          canExec: editor.commands.toggleUnderline.canExec(),
-          command: () => editor.commands.toggleUnderline(),
-        }
+        isActive: editor.marks.underline.isActive(),
+        canExec: editor.commands.toggleUnderline.canExec(),
+        command: () => editor.commands.toggleUnderline(),
+      }
       : undefined,
     strike: editor.commands.toggleStrike
       ? {
-          isActive: editor.marks.strike.isActive(),
-          canExec: editor.commands.toggleStrike.canExec(),
-          command: () => editor.commands.toggleStrike(),
-        }
+        isActive: editor.marks.strike.isActive(),
+        canExec: editor.commands.toggleStrike.canExec(),
+        command: () => editor.commands.toggleStrike(),
+      }
       : undefined,
     code: editor.commands.toggleCode
       ? {
-          isActive: editor.marks.code.isActive(),
-          canExec: editor.commands.toggleCode.canExec(),
-          command: () => editor.commands.toggleCode(),
-        }
+        isActive: editor.marks.code.isActive(),
+        canExec: editor.commands.toggleCode.canExec(),
+        command: () => editor.commands.toggleCode(),
+      }
       : undefined,
     link: editor.commands.addLink
       ? {
-          isActive: editor.marks.link.isActive(),
-          canExec: editor.commands.addLink.canExec({ href: '' }),
-          command: () => editor.commands.expandLink(),
-          currentLink: getCurrentLink(editor.state) || '',
-        }
+        isActive: editor.marks.link.isActive(),
+        canExec: editor.commands.addLink.canExec({ href: '' }),
+        command: () => editor.commands.expandLink(),
+        currentLink: getCurrentLink(editor.state) || '',
+      }
       : undefined,
   }
 }
