@@ -18,7 +18,6 @@ jobs:
         uses: oven-sh/setup-bun@v2
 
       - run: bun install
-      - run: bun run clone
       - run: bun run copy
       - run: bun run fix
 
