@@ -3,6 +3,7 @@ next-env.d.ts
 package-lock.json
 bun.lockb
 bun.lock
+yarn.lock
 
 # Logs
 logs
