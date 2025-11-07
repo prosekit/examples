@@ -130,7 +130,7 @@ const FRAMEWORK_CONFIG: Record<string, FrameworkConfig> = {
   },
   vue: {
     template: 'vue',
-    entryFile: path.join('src', 'editor.vue'),
+    entryFile: path.join('src', 'App.vue'),
     createEntryContent: vueEntry,
   },
   next: NEXT_FRAMEWORK_CONFIG,
