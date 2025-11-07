@@ -45,7 +45,16 @@ const jsxEntry = (
   story: string,
 ) => `import { ExampleEditor } from './components/editor/examples/${story}'
 
-export default function Editor() {
+export default function App() {
+  return <ExampleEditor />
+}
+`
+
+const reactEntry = (
+  story: string,
+) => `import { ExampleEditor } from './components/editor/examples/${story}'
+
+export default function App() {
   return <ExampleEditor />
 }
 `
@@ -101,27 +110,27 @@ const SVELTEKIT_FRAMEWORK_CONFIG: FrameworkConfig = {
 const FRAMEWORK_CONFIG: Record<string, FrameworkConfig> = {
   react: {
     template: 'react',
-    entryFile: path.join('src', 'editor.tsx'),
-    createEntryContent: jsxEntry,
+    entryFile: path.join('src', 'app.tsx'),
+    createEntryContent: reactEntry,
   },
   preact: {
     template: 'preact',
-    entryFile: path.join('src', 'editor.tsx'),
+    entryFile: path.join('src', 'App.tsx'),
     createEntryContent: jsxEntry,
   },
   solid: {
     template: 'solid',
-    entryFile: path.join('src', 'editor.tsx'),
+    entryFile: path.join('src', 'App.tsx'),
     createEntryContent: jsxEntry,
   },
   svelte: {
     template: 'svelte',
-    entryFile: path.join('src', 'editor.svelte'),
+    entryFile: path.join('src', 'App.svelte'),
     createEntryContent: svelteEntry,
   },
   vue: {
     template: 'vue',
-    entryFile: path.join('src', 'editor.vue'),
+    entryFile: path.join('src', 'App.vue'),
     createEntryContent: vueEntry,
   },
   next: NEXT_FRAMEWORK_CONFIG,
