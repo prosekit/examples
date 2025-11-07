@@ -57,7 +57,10 @@ const nextEntry = (story: string) => `'use client'
 
 import dynamic from 'next/dynamic'
 
-const EditorLazy = dynamic(() => import('./components/editor/examples/${story}').then(mod => ({ default: mod.ExampleEditor })), { ssr: false })
+const EditorLazy = dynamic(async () => {
+  const { ExampleEditor} = await import('./components/editor/examples/${story}')
+  return { default: ExampleEditor }
+}, { ssr: false })
 
 export default function Editor() {
   return <EditorLazy />

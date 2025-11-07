@@ -3,10 +3,10 @@
 import dynamic from 'next/dynamic'
 
 const EditorLazy = dynamic(
-  () =>
-    import('./components/editor/examples/full').then((mod) => ({
-      default: mod.ExampleEditor,
-    })),
+  async () => {
+    const { ExampleEditor } = await import('./components/editor/examples/full')
+    return { default: ExampleEditor }
+  },
   { ssr: false },
 )
 
