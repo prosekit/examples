@@ -32,6 +32,7 @@ const REGISTRY_INDEX_URL = `${REGISTRY_URL}/registry.json`
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname)
 const ROOT = path.resolve(__dirname, '..')
+const LOG_PREFIX = '[fetch-examples]'
 
 const TEXT_FILE_EXTENSIONS = new Set([
   '.ts',
@@ -104,6 +105,21 @@ import { ExampleEditor } from './components/editor/examples/${story}'
 
 const registryCache = new Map<string, RegistryItem>()
 
+function info(message: string) {
+  console.log(`${LOG_PREFIX} ${message}`)
+}
+
+function warn(message: string) {
+  console.warn(`${LOG_PREFIX} ${message}`)
+}
+
+function formatError(error: unknown): string {
+  if (error instanceof Error) {
+    return error.message
+  }
+  return String(error)
+}
+
 type FileTransform = (
   relativePath: string,
   srcContent: string,
@@ -132,7 +148,13 @@ async function fetchRegistryItem(identifier: string): Promise<RegistryItem> {
     return registryCache.get(url)!
   }
 
-  const item = await fetchJson<RegistryItem>(url)
+  let item: RegistryItem
+  try {
+    item = await fetchJson<RegistryItem>(url)
+  } catch (error) {
+    warn(`Failed to fetch registry item ${identifier}: ${formatError(error)}`)
+    throw error
+  }
   registryCache.set(url, item)
   if (item.name) {
     registryCache.set(item.name, item)
@@ -147,24 +169,44 @@ async function collectRegistryFiles(item: RegistryItem): Promise<RegistryFile[]>
 
   while (queue.length > 0) {
     const current = queue.shift()!
-    if (!current.name || visited.has(current.name)) {
+    if (!current.name) {
+      warn('Encountered registry item without a name; skipping')
+      continue
+    }
+    if (visited.has(current.name)) {
       continue
     }
     visited.add(current.name)
 
+    if (!current.files?.length) {
+      warn(`Registry item ${current.name} provides no files.`)
+    }
+
     for (const file of current.files || []) {
-      if (!file.target) continue
-      if (files.has(file.target)) continue
+      if (!file.target) {
+        warn(`Skipping file ${file.path ?? '(unknown)'} in ${current.name}: missing target path`)
+        continue
+      }
+      if (files.has(file.target)) {
+        warn(`Duplicate target detected for ${file.target}; keeping the first copy`)
+        continue
+      }
       if (typeof file.content !== 'string') {
+        warn(`Missing inline content for ${file.path || file.target}`)
         throw new Error(`Missing inline content for ${file.path || file.target}`)
       }
       files.set(file.target, file)
     }
 
     for (const dep of current.registryDependencies || []) {
-      const depItem = await fetchRegistryItem(dep)
-      if (depItem) {
-        queue.push(depItem)
+      try {
+        const depItem = await fetchRegistryItem(dep)
+        if (depItem) {
+          queue.push(depItem)
+        }
+      } catch (error) {
+        warn(`Failed to fetch dependency ${dep} for ${current.name}: ${formatError(error)}`)
+        throw error
       }
     }
   }
@@ -176,7 +218,11 @@ async function writeRegistryFiles(destDir: string, files: RegistryFile[]) {
   for (const file of files) {
     const destFile = path.join(destDir, 'src', file.target)
     await fs.mkdir(path.dirname(destFile), { recursive: true })
-    await fs.writeFile(destFile, file.content!, 'utf-8')
+    if (typeof file.content !== 'string') {
+      warn(`Cannot write ${file.target}: missing file content`)
+      continue
+    }
+    await fs.writeFile(destFile, file.content, 'utf-8')
   }
 }
 
@@ -195,9 +241,7 @@ async function copyDirWithTransform(
   relativePrefix = '',
 ) {
   if (!(await isDirectory(src))) {
-    console.warn(
-      `[fetch-examples] Expected directory not found: ${path.relative(ROOT, src) || src}`,
-    )
+    warn(`Expected directory not found: ${path.relative(ROOT, src) || src}`)
     return
   }
 
@@ -347,19 +391,32 @@ async function installMissingDependencies(dir: string, deps?: string[]) {
   const missing = deps.filter((dep) => !existing.has(dep))
   if (missing.length === 0) return
 
-  console.log(
-    `Installing missing dependencies for ${path.relative(ROOT, dir)}: ${missing.join(', ')}`,
-  )
+  info(`Installing missing dependencies for ${path.relative(ROOT, dir)}: ${missing.join(', ')}`)
 
-  await runCommand('bun', ['add', ...missing], { cwd: dir })
+  try {
+    await runCommand('bun', ['add', ...missing], { cwd: dir })
+  } catch (error) {
+    warn(`bun add failed in ${path.relative(ROOT, dir)}: ${formatError(error)}`)
+    throw error
+  }
   await cleanupInstallArtifacts(dir)
 }
 
 function shouldBuild(item: RegistryIndexItem): boolean {
   const story = item.meta?.story?.trim()
   const framework = item.meta?.framework?.trim()
-  if (!story || !framework) return false
-  if (!FRAMEWORK_CONFIG[framework]) return false
+  if (!story) {
+    warn(`Skipping ${item.name}: missing meta.story`)
+    return false
+  }
+  if (!framework) {
+    warn(`Skipping ${item.name}: missing meta.framework`)
+    return false
+  }
+  if (!FRAMEWORK_CONFIG[framework]) {
+    warn(`Skipping ${item.name}: unsupported framework "${framework}"`)
+    return false
+  }
   return true
 }
 
@@ -367,10 +424,14 @@ async function buildExample(item: RegistryIndexItem) {
   const framework = item.meta?.framework!
   const story = item.meta?.story!
   const config = FRAMEWORK_CONFIG[framework]
+  if (!config) {
+    warn(`No framework configuration for ${framework}; skipping ${item.name}`)
+    return
+  }
   const destName = `${framework}-${story}`
   const destDir = path.join(ROOT, destName)
 
-  console.log(`\nBuilding ${destName} (${item.name})`)
+  info(`Building ${destName} (${item.name})`)
 
   await fs.rm(destDir, { recursive: true, force: true })
 
@@ -380,6 +441,9 @@ async function buildExample(item: RegistryIndexItem) {
   const registryItem = await fetchRegistryItem(item.name)
   const files = await collectRegistryFiles(registryItem)
   await writeRegistryFiles(destDir, files)
+  if (files.length === 0) {
+    warn(`Registry item ${item.name} returned no files to write`)
+  }
 
   const entryPath = path.join(destDir, config.entryFile)
   await fs.mkdir(path.dirname(entryPath), { recursive: true })
@@ -399,12 +463,23 @@ async function main() {
   const items = registry.items.filter((item) => shouldBuild(item))
 
   if (items.length === 0) {
-    console.log('No matching examples found.')
+    warn('No examples with valid story/framework metadata were found in the registry.')
     return
   }
 
+  info(`Building ${items.length} examples from the registry`)
+  let hasErrors = false
   for (const item of items) {
-    await buildExample(item)
+    try {
+      await buildExample(item)
+    } catch (error) {
+      hasErrors = true
+      warn(`Failed to build ${item.name}: ${formatError(error)}`)
+    }
+  }
+
+  if (hasErrors) {
+    throw new Error('One or more examples failed. Check warnings above for details.')
   }
 }
 
