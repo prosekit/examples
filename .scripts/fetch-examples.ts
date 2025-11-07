@@ -360,7 +360,8 @@ async function buildExample(item: RegistryIndexItem) {
 
   info(`Building ${destName} (${item.name})`)
 
-  await fs.rm(destDir, { recursive: true, force: true })
+  const destSrcDir = path.join(destDir, 'src')
+  await fs.rm(destSrcDir, { recursive: true, force: true })
 
   const templateDir = path.join(ROOT, '.templates', `template-${config.template}`)
   await copyDir(templateDir, destDir)
