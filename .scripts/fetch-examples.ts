@@ -55,10 +55,12 @@ export default function App() {
 
 const nextEntry = (story: string) => `'use client'
 
-import { ExampleEditor } from './components/editor/examples/${story}'
+import dynamic from 'next/dynamic'
+
+const EditorLazy = dynamic(() => import('./components/editor/examples/${story}').then(mod => { default: mod.ExampleEditor }), { ssr: false })
 
 export default function Editor() {
-  return <ExampleEditor />
+  return <EditorLazy />
 }
 `
 const createSvelteEntry =
@@ -116,8 +118,8 @@ const FRAMEWORK_CONFIG = {
   },
   next: {
     template: 'next',
-    destDir: 'src',
-    entryFile: 'src/editor.tsx',
+    destDir: '.',
+    entryFile: 'components/editor-dynamic.tsx',
     createEntryContent: nextEntry,
   },
   nuxt: {
