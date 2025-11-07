@@ -37,6 +37,9 @@ const LOG_PREFIX = '[fetch-examples]'
 
 type FrameworkConfig = {
   template: string
+  // Relative to example directory root
+  destDir: string
+  // Relative to example directory root
   entryFile: string
   createEntryContent: (story: string) => string
 }
@@ -49,7 +52,6 @@ export default function App() {
   return <ExampleEditor />
 }
 `
-
 
 const nextEntry = (story: string) => `'use client'
 
@@ -81,31 +83,55 @@ const svelteEntry = createSvelteEntry('./components/editor/examples')
 const svelteKitEntry = createSvelteEntry('../components/editor/examples')
 const vueEntry = createVueEntry('./components/editor/examples')
 
-function createFrameworkConfig(
-  template: string,
-  entrySegments: string[],
-  createEntryContent: (story: string) => string,
-): FrameworkConfig {
-  return {
-    template,
-    entryFile: path.join(...entrySegments),
-    createEntryContent,
-  }
-}
-
 const FRAMEWORK_CONFIG = {
-  react: createFrameworkConfig('react', ['src', 'App.tsx'], jsxEntry),
-  preact: createFrameworkConfig('preact', ['src', 'App.tsx'], jsxEntry),
-  solid: createFrameworkConfig('solid', ['src', 'App.tsx'], jsxEntry),
-  svelte: createFrameworkConfig('svelte', ['src', 'App.svelte'], svelteEntry),
-  vue: createFrameworkConfig('vue', ['src', 'App.vue'], vueEntry),
-  next: createFrameworkConfig('next', ['src', 'editor.tsx'], nextEntry),
-  nuxt: createFrameworkConfig('nuxt', ['src', 'editor.vue'], vueEntry),
-  sveltekit: createFrameworkConfig(
-    'sveltekit',
-    ['src', 'lib', 'editor.svelte'],
-    svelteKitEntry,
-  ),
+  react: {
+    template: 'react',
+    destDir: 'src',
+    entryFile: 'src/App.tsx',
+    createEntryContent: jsxEntry,
+  },
+  preact: {
+    template: 'preact',
+    destDir: 'src',
+    entryFile: 'src/App.tsx',
+    createEntryContent: jsxEntry,
+  },
+  solid: {
+    template: 'solid',
+    destDir: 'src',
+    entryFile: 'src/App.tsx',
+    createEntryContent: jsxEntry,
+  },
+  svelte: {
+    template: 'svelte',
+    destDir: 'src',
+    entryFile: 'src/App.svelte',
+    createEntryContent: svelteEntry,
+  },
+  vue: {
+    template: 'vue',
+    destDir: 'src',
+    entryFile: 'src/App.vue',
+    createEntryContent: vueEntry,
+  },
+  next: {
+    template: 'next',
+    destDir: 'src',
+    entryFile: 'src/editor.tsx',
+    createEntryContent: nextEntry,
+  },
+  nuxt: {
+    template: 'nuxt',
+    destDir: 'src',
+    entryFile: 'src/editor.vue',
+    createEntryContent: vueEntry,
+  },
+  sveltekit: {
+    template: 'sveltekit',
+    destDir: 'src',
+    entryFile: 'src/lib/App.svelte',
+    createEntryContent: svelteKitEntry,
+  },
 } as const satisfies Record<string, FrameworkConfig>
 
 type FrameworkName = keyof typeof FRAMEWORK_CONFIG
@@ -266,7 +292,7 @@ async function collectFilesRecursively(
 
 async function writeRegistryFiles(destDir: string, files: RegistryFile[]) {
   for (const file of files) {
-    const destFile = path.join(destDir, 'src', file.target)
+    const destFile = path.join(destDir, file.target)
     await fs.mkdir(path.dirname(destFile), { recursive: true })
     assert(
       typeof file.content === 'string',
@@ -684,7 +710,7 @@ async function buildExample(
 
   const registryItem = await fetchRegistryItem(item.name)
   const files = await collectRegistryFiles(registryItem)
-  await writeRegistryFiles(destDir, files)
+  await writeRegistryFiles(path.join(destDir, config.destDir), files)
   assert(
     files.length > 0,
     `Registry item ${item.name} returned no files to write`,
