@@ -1,4 +1,4 @@
-import Editor from '@/src/editor-dynamic'
+import Editor from '@/components/editor-dynamic'
 
 export default function Home() {
   return (
