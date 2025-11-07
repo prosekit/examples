@@ -47,6 +47,15 @@ export default function Editor() {
 }
 `
 
+const nextEntry = (story: string) => `'use client'
+
+import { ExampleEditor } from './components/editor/examples/${story}'
+
+export default function Editor() {
+  return <ExampleEditor />
+}
+`
+
 const FRAMEWORK_CONFIG: Record<string, FrameworkConfig> = {
   react: {
     template: 'react',
@@ -85,6 +94,12 @@ import { ExampleEditor } from './components/editor/examples/${story}'
 </template>
 `,
   },
+}
+
+const NEXT_FRAMEWORK_CONFIG: FrameworkConfig = {
+  template: 'next',
+  entryFile: path.join('src', 'editor.tsx'),
+  createEntryContent: nextEntry,
 }
 
 function info(message: string) {
@@ -264,6 +279,68 @@ async function preservePackageDependencies(destDir: string, previousPackage?: an
   await fs.writeFile(pkgPath, JSON.stringify(pkg, null, 2) + '\n')
 }
 
+async function ensurePackageDependency(
+  dir: string,
+  name: string,
+  section: 'dependencies' | 'devDependencies' = 'dependencies',
+) {
+  const pkgPath = path.join(dir, 'package.json')
+  const pkg = await readPackageJson(pkgPath)
+  if (!pkg) return
+  const deps = { ...(pkg[section] || {}) }
+  if (deps[name]) {
+    return
+  }
+
+  info(`Installing missing ${section.slice(0, -3)} dependency ${name} in ${path.relative(ROOT, dir)}`)
+  try {
+    await runCommand('bun', ['add', name], { cwd: dir })
+  } catch (error) {
+    warn(`Failed to add ${name} in ${path.relative(ROOT, dir)}: ${formatError(error)}`)
+    throw error
+  }
+  await cleanupInstallArtifacts(dir)
+}
+
+async function patchLoroExample(destDir: string) {
+  await ensurePackageDependency(destDir, 'vite-plugin-wasm', 'devDependencies')
+
+  const viteConfigPath = path.join(destDir, 'vite.config.ts')
+  let viteConfig: string
+  try {
+    viteConfig = await fs.readFile(viteConfigPath, 'utf-8')
+  } catch {
+    warn(`vite.config.ts not found for ${path.relative(ROOT, destDir)}; cannot apply wasm plugin patch`)
+    return
+  }
+
+  let updated = false
+  if (!viteConfig.includes("'vite-plugin-wasm'")) {
+    viteConfig = `import wasm from 'vite-plugin-wasm'\n` + viteConfig
+    updated = true
+  }
+
+  if (!viteConfig.includes('wasm()')) {
+    if (viteConfig.includes('react(), tailwindcss()')) {
+      viteConfig = viteConfig.replace('react(), tailwindcss()', 'react(), wasm(), tailwindcss()')
+      updated = true
+    } else {
+      warn(`Unable to inject wasm plugin into vite.config.ts for ${path.relative(ROOT, destDir)}`)
+    }
+  }
+
+  if (updated) {
+    await fs.writeFile(viteConfigPath, viteConfig)
+  }
+}
+
+async function applyExamplePatches(item: RegistryIndexItem, destDir: string) {
+  const story = item.meta?.story
+  if (story === 'loro') {
+    await patchLoroExample(destDir)
+  }
+}
+
 type RunCommandOptions = {
   cwd?: string
 }
@@ -373,15 +450,20 @@ function shouldBuild(item: RegistryIndexItem): boolean {
   return true
 }
 
-async function buildExample(item: RegistryIndexItem) {
+type BuildOverrides = {
+  destName?: string
+  config?: FrameworkConfig
+}
+
+async function buildExample(item: RegistryIndexItem, overrides?: BuildOverrides) {
   const framework = item.meta?.framework!
   const story = item.meta?.story!
-  const config = FRAMEWORK_CONFIG[framework]
+  const config = overrides?.config ?? FRAMEWORK_CONFIG[framework]
   if (!config) {
     warn(`No framework configuration for ${framework}; skipping ${item.name}`)
     return
   }
-  const destName = `${framework}-${story}`
+  const destName = overrides?.destName ?? `${framework}-${story}`
   const destDir = path.join(ROOT, destName)
 
   info(`Building ${destName} (${item.name})`)
@@ -405,10 +487,29 @@ async function buildExample(item: RegistryIndexItem) {
   await fs.mkdir(path.dirname(entryPath), { recursive: true })
   await fs.writeFile(entryPath, config.createEntryContent(story))
 
+  await applyExamplePatches(item, destDir)
   await installMissingDependencies(destDir, registryItem.dependencies)
   await updatePackageJsonName(destDir, `example-${destName}`)
   await writeReadme(destDir)
   await writeGitignore(destDir)
+}
+
+async function buildNextFullExample(registry: RegistryIndex) {
+  const reactFull = registry.items.find((item) => item.name === 'react-example-full')
+  if (!reactFull) {
+    warn('Skipping next-full build: react-example-full not found in registry.')
+    return
+  }
+
+  if (!shouldBuild(reactFull)) {
+    warn('Skipping next-full build: react full example missing story/framework metadata.')
+    return
+  }
+
+  await buildExample(reactFull, {
+    destName: 'next-full',
+    config: NEXT_FRAMEWORK_CONFIG,
+  })
 }
 
 async function main() {
@@ -434,6 +535,8 @@ async function main() {
   if (hasErrors) {
     throw new Error('One or more examples failed. Check warnings above for details.')
   }
+
+  await buildNextFullExample(registry)
 }
 
 main().catch((error) => {
