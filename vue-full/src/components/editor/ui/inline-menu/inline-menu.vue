@@ -3,10 +3,7 @@ import type { BasicExtension } from 'prosekit/basic'
 import type { Editor } from 'prosekit/core'
 import type { LinkAttrs } from 'prosekit/extensions/link'
 import type { EditorState } from 'prosekit/pm/state'
-import {
-  useEditor,
-  useEditorDerivedValue,
-} from 'prosekit/vue'
+import { useEditor, useEditorDerivedValue } from 'prosekit/vue'
 import { InlinePopover } from 'prosekit/vue/inline-popover'
 import { ref } from 'vue'
 
@@ -16,46 +13,46 @@ function getInlineMenuItems(editor: Editor<BasicExtension>) {
   return {
     bold: editor.commands.toggleBold
       ? {
-        isActive: editor.marks.bold.isActive(),
-        canExec: editor.commands.toggleBold.canExec(),
-        command: () => editor.commands.toggleBold(),
-      }
+          isActive: editor.marks.bold.isActive(),
+          canExec: editor.commands.toggleBold.canExec(),
+          command: () => editor.commands.toggleBold(),
+        }
       : undefined,
     italic: editor.commands.toggleItalic
       ? {
-        isActive: editor.marks.italic.isActive(),
-        canExec: editor.commands.toggleItalic.canExec(),
-        command: () => editor.commands.toggleItalic(),
-      }
+          isActive: editor.marks.italic.isActive(),
+          canExec: editor.commands.toggleItalic.canExec(),
+          command: () => editor.commands.toggleItalic(),
+        }
       : undefined,
     underline: editor.commands.toggleUnderline
       ? {
-        isActive: editor.marks.underline.isActive(),
-        canExec: editor.commands.toggleUnderline.canExec(),
-        command: () => editor.commands.toggleUnderline(),
-      }
+          isActive: editor.marks.underline.isActive(),
+          canExec: editor.commands.toggleUnderline.canExec(),
+          command: () => editor.commands.toggleUnderline(),
+        }
       : undefined,
     strike: editor.commands.toggleStrike
       ? {
-        isActive: editor.marks.strike.isActive(),
-        canExec: editor.commands.toggleStrike.canExec(),
-        command: () => editor.commands.toggleStrike(),
-      }
+          isActive: editor.marks.strike.isActive(),
+          canExec: editor.commands.toggleStrike.canExec(),
+          command: () => editor.commands.toggleStrike(),
+        }
       : undefined,
     code: editor.commands.toggleCode
       ? {
-        isActive: editor.marks.code.isActive(),
-        canExec: editor.commands.toggleCode.canExec(),
-        command: () => editor.commands.toggleCode(),
-      }
+          isActive: editor.marks.code.isActive(),
+          canExec: editor.commands.toggleCode.canExec(),
+          command: () => editor.commands.toggleCode(),
+        }
       : undefined,
     link: editor.commands.addLink
       ? {
-        isActive: editor.marks.link.isActive(),
-        canExec: editor.commands.addLink.canExec({ href: '' }),
-        command: () => editor.commands.expandLink(),
-        currentLink: getCurrentLink(editor.state) || '',
-      }
+          isActive: editor.marks.link.isActive(),
+          canExec: editor.commands.addLink.canExec({ href: '' }),
+          command: () => editor.commands.expandLink(),
+          currentLink: getCurrentLink(editor.state) || '',
+        }
       : undefined,
   }
 }
@@ -97,9 +94,11 @@ function handleLinkUpdate(href?: string) {
   <InlinePopover
     data-testid="inline-menu-main"
     class="z-10 box-border border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg [&:not([data-state])]:hidden relative flex min-w-32 space-x-1 overflow-auto whitespace-nowrap rounded-md p-1"
-    @open-change="(open) => {
-      if (!open) linkMenuOpen = false
-    }"
+    @open-change="
+      (open) => {
+        if (!open) linkMenuOpen = false
+      }
+    "
   >
     <Button
       v-if="items.bold"
@@ -149,10 +148,12 @@ function handleLinkUpdate(href?: string) {
     <Button
       v-if="items.link?.canExec && items.link"
       :pressed="items.link.isActive"
-      :on-click="() => {
-        items.link!.command()
-        toggleLinkMenuOpen()
-      }"
+      :on-click="
+        () => {
+          items.link!.command()
+          toggleLinkMenuOpen()
+        }
+      "
       tooltip="Link"
     >
       <div class="i-lucide-link size-5 block"></div>
@@ -166,23 +167,27 @@ function handleLinkUpdate(href?: string) {
     :open="linkMenuOpen"
     data-testid="inline-menu-link"
     class="z-10 box-border border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg [&:not([data-state])]:hidden relative flex flex-col w-xs rounded-lg p-4 gap-y-2 items-stretch"
-    @open-change="(open) => {
-      linkMenuOpen = open
-    }"
+    @open-change="
+      (open) => {
+        linkMenuOpen = open
+      }
+    "
   >
     <form
       v-if="linkMenuOpen"
-      @submit.prevent="(event) => {
-        const target = event.target as HTMLFormElement | null
-        const href = target?.querySelector('input')?.value?.trim()
-        handleLinkUpdate(href)
-      }"
+      @submit.prevent="
+        (event) => {
+          const target = event.target as HTMLFormElement | null
+          const href = target?.querySelector('input')?.value?.trim()
+          handleLinkUpdate(href)
+        }
+      "
     >
       <input
         placeholder="Paste the link..."
         :value="items.link.currentLink || ''"
         class="flex h-9 rounded-md w-full bg-white dark:bg-gray-950 px-3 py-2 text-sm placeholder:text-gray-500 dark:placeholder:text-gray-500 transition border box-border border-gray-200 dark:border-gray-800 border-solid ring-0 ring-transparent focus-visible:ring-2 focus-visible:ring-gray-900 dark:focus-visible:ring-gray-300 focus-visible:ring-offset-0 outline-hidden focus-visible:outline-hidden file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:cursor-not-allowed disabled:opacity-50"
-      >
+      />
     </form>
     <button
       v-if="items.link.isActive"

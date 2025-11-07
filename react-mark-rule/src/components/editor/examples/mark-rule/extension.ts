@@ -5,10 +5,7 @@ import {
   union,
 } from 'prosekit/core'
 import { defineDoc } from 'prosekit/extensions/doc'
-import {
-  defineLinkMarkRule,
-  defineLinkSpec,
-} from 'prosekit/extensions/link'
+import { defineLinkMarkRule, defineLinkSpec } from 'prosekit/extensions/link'
 import { defineParagraph } from 'prosekit/extensions/paragraph'
 import { definePlaceholder } from 'prosekit/extensions/placeholder'
 import { defineText } from 'prosekit/extensions/text'

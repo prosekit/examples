@@ -58,16 +58,16 @@ export default function Editor() {
   return <ExampleEditor />
 }
 `
-const createSvelteEntry = (componentsPath: string) =>
-  (story: string) => `<script lang=\"ts\">
+const createSvelteEntry =
+  (componentsPath: string) => (story: string) => `<script lang=\"ts\">
 import { ExampleEditor } from '${componentsPath}/${story}'
 </script>
 
 <ExampleEditor />
 `
 
-const createVueEntry = (componentsPath: string) =>
-  (story: string) => `<script setup lang=\"ts\">
+const createVueEntry =
+  (componentsPath: string) => (story: string) => `<script setup lang=\"ts\">
 import { ExampleEditor } from '${componentsPath}/${story}'
 </script>
 
@@ -576,7 +576,10 @@ async function buildExample(
   const registryItem = await fetchRegistryItem(item.name)
   const files = await collectRegistryFiles(registryItem)
   await writeRegistryFiles(destDir, files)
-  assert(files.length > 0, `Registry item ${item.name} returned no files to write`)
+  assert(
+    files.length > 0,
+    `Registry item ${item.name} returned no files to write`,
+  )
 
   const entryPath = path.join(destDir, config.entryFile)
   await fs.mkdir(path.dirname(entryPath), { recursive: true })

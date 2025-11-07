@@ -1,7 +1,4 @@
-import {
-  useEffect,
-  useState,
-} from 'preact/hooks'
+import { useEffect, useState } from 'preact/hooks'
 import type { PreactMarkViewProps } from 'prosekit/preact'
 
 const colors = [
@@ -43,7 +40,6 @@ export default function Link(props: PreactMarkViewProps) {
       href={href}
       ref={props.contentRef}
       style={{ color, transition: 'color 1s ease-in-out' }}
-    >
-    </a>
+    ></a>
   )
 }

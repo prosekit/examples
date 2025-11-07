@@ -9,7 +9,9 @@ import {
   AutocompletePopover,
 } from 'prosekit/react/autocomplete'
 
-export default function TagMenu(props: { tags: { id: number; label: string }[] }) {
+export default function TagMenu(props: {
+  tags: { id: number; label: string }[]
+}) {
   const editor = useEditor<Union<[MentionExtension, BasicExtension]>>()
 
   const handleTagInsert = (id: number, label: string) => {
