@@ -140,12 +140,9 @@ function deriveExample(
   }
 }
 
-function hasFrameworkConfig(
-  framework?: string,
-): framework is FrameworkName {
+function hasFrameworkConfig(framework?: string): framework is FrameworkName {
   return !!framework && framework in FRAMEWORK_CONFIG
 }
-
 
 function info(message: string) {
   console.log(`${LOG_PREFIX} ${message}`)
@@ -527,64 +524,62 @@ async function runCommandCapture(
       if (code === 0) {
         resolve(stdout.trim())
       } else {
-        const message = stderr.trim()
-          ? `${command} ${args.join(' ')} failed: ${message}`
-          : `Command failed: ${command} ${args.join(' ')} (code ${code})`
+        const message = `Command failed: ${command} ${args.join(' ')} (code ${code}) ${stderr.trim()}`
         reject(new Error(message))
       }
     })
   })
 }
 
-const resolveLatestPackageVersion = memoize(async function resolveLatestPackageVersion(
-  name: string,
-) {
-  const raw = await runCommandCapture('npm', [
-    'info',
-    name,
-    'version',
-    '--json',
-  ])
+const resolveLatestPackageVersion = memoize(
+  async function resolveLatestPackageVersion(name: string): Promise<string> {
+    const raw = await runCommandCapture('npm', [
+      'info',
+      name,
+      'version',
+      '--json',
+    ])
 
-  if (!raw) {
-    throw new Error(`npm info returned empty response for ${name}`)
-  }
+    if (!raw) {
+      throw new Error(`npm info returned empty response for ${name}`)
+    }
 
-  let parsed: unknown
-  try {
-    parsed = JSON.parse(raw)
-  } catch (error) {
-    throw new Error(
-      `Unable to parse npm info response for ${name}: ${formatError(error)}`,
-    )
-  }
+    let parsed: unknown
+    try {
+      parsed = JSON.parse(raw)
+    } catch (error) {
+      throw new Error(
+        `Unable to parse npm info response for ${name}: ${formatError(error)}`,
+      )
+    }
 
-  const toVersionString = (value: unknown) =>
-    typeof value === 'string' && value.trim() ? value.trim() : undefined
+    const toVersionString = (value: unknown) =>
+      typeof value === 'string' && value.trim() ? value.trim() : undefined
 
-  const direct = toVersionString(parsed)
-  if (direct) {
-    return direct
-  }
+    const direct = toVersionString(parsed)
+    if (direct) {
+      return direct
+    }
 
-  if (Array.isArray(parsed) && parsed.length > 0) {
-    for (let i = parsed.length - 1; i >= 0; i -= 1) {
-      const fromArray = toVersionString(parsed[i])
-      if (fromArray) {
-        return fromArray
+    if (Array.isArray(parsed) && parsed.length > 0) {
+      for (let i = parsed.length - 1; i >= 0; i -= 1) {
+        const fromArray = toVersionString(parsed[i])
+        if (fromArray) {
+          return fromArray
+        }
       }
     }
-  }
 
-  if (typeof parsed === 'object' && parsed !== null) {
-    const version = toVersionString((parsed as { version?: unknown }).version)
-    if (version) {
-      return version
+    if (typeof parsed === 'object' && parsed !== null) {
+      const version = toVersionString((parsed as { version?: unknown }).version)
+      if (version) {
+        return version
+      }
     }
-  }
 
-  throw new Error(`npm info response for ${name} did not include a version`)
-})
+    throw new Error(`npm info response for ${name} did not include a version`)
+  },
+)
 
 async function writeReadme(dir: string) {
   const name = path.basename(dir)
