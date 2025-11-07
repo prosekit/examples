@@ -300,16 +300,12 @@ const PACKAGE_JSON_TRANSFORM: FileTransform = (relativePath, srcContent, destCon
   return srcContent
 }
 
-function shouldBuild(item: RegistryIndexItem, filters: string[]): boolean {
+function shouldBuild(item: RegistryIndexItem): boolean {
   const story = item.meta?.story?.trim()
   const framework = item.meta?.framework?.trim()
   if (!story || !framework) return false
   if (!FRAMEWORK_CONFIG[framework]) return false
-
-  if (filters.length === 0) return true
-
-  const slug = `${framework}-${story}`
-  return filters.includes(item.name) || filters.includes(slug) || filters.includes(story)
+  return true
 }
 
 async function buildExample(item: RegistryIndexItem) {
@@ -343,9 +339,8 @@ async function buildExample(item: RegistryIndexItem) {
 }
 
 async function main() {
-  const filters = process.argv.slice(2)
   const registry = await fetchJson<RegistryIndex>(REGISTRY_INDEX_URL)
-  const items = registry.items.filter((item) => shouldBuild(item, filters))
+  const items = registry.items.filter((item) => shouldBuild(item))
 
   if (items.length === 0) {
     console.log('No matching examples found.')
