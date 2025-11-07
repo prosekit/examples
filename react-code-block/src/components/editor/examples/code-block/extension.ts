@@ -1,7 +1,4 @@
-import {
-  defineBaseKeymap,
-  union,
-} from 'prosekit/core'
+import { defineBaseKeymap, union } from 'prosekit/core'
 import {
   defineCodeBlock,
   defineCodeBlockShiki,

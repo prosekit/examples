@@ -6,7 +6,7 @@
   "scripts": {
     "build": "echo 'noop'",
     "copy": "bun .scripts/build.ts",
-    "fetch": "bun .scripts/fetch-examples.ts && prettier --write .",
+    "fetch": "bun .scripts/fetch-examples.ts && prettier --cache --write .",
     "fix": "prettier --cache --write ."
   },
   "dependencies": {
