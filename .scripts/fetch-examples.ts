@@ -50,7 +50,6 @@ export default function App() {
 }
 `
 
-
 const nextEntry = (story: string) => `'use client'
 
 import { ExampleEditor } from './components/editor/examples/${story}'
