@@ -1,3 +1,4 @@
+import assert from 'node:assert/strict'
 import { spawn } from 'node:child_process'
 import fs from 'node:fs/promises'
 import path from 'node:path'
@@ -175,10 +176,7 @@ async function collectRegistryFiles(
 
   while (queue.length > 0) {
     const current = queue.shift()!
-    if (!current.name) {
-      warn('Encountered registry item without a name; skipping')
-      continue
-    }
+    assert(current.name, 'Encountered registry item without a name')
     if (visited.has(current.name)) {
       continue
     }
@@ -189,25 +187,23 @@ async function collectRegistryFiles(
     }
 
     for (const file of current.files || []) {
-      if (!file.target) {
-        warn(
-          `Skipping file ${file.path ?? '(unknown)'} in ${current.name}: missing target path`,
-        )
-        continue
-      }
-      if (files.has(file.target)) {
-        warn(
-          `Duplicate target detected for ${file.target}; keeping the first copy`,
-        )
-        continue
-      }
+      const target = file.target
+      assert(
+        target,
+        `File ${file.path ?? '(unknown)'} in ${current.name} is missing a target path`,
+      )
+      assert(
+        !files.has(target),
+        `Duplicate target detected for ${target} while processing ${current.name}`,
+      )
       if (typeof file.content !== 'string') {
-        warn(`Missing inline content for ${file.path || file.target}`)
-        throw new Error(
-          `Missing inline content for ${file.path || file.target}`,
+        warn(`Missing inline content for ${file.path || target}`)
+        assert(
+          typeof file.content === 'string',
+          `Missing inline content for ${file.path || target}`,
         )
       }
-      files.set(file.target, file)
+      files.set(target, file)
     }
 
     for (const dep of current.registryDependencies || []) {
@@ -232,11 +228,11 @@ async function writeRegistryFiles(destDir: string, files: RegistryFile[]) {
   for (const file of files) {
     const destFile = path.join(destDir, 'src', file.target)
     await fs.mkdir(path.dirname(destFile), { recursive: true })
-    if (typeof file.content !== 'string') {
-      warn(`Cannot write ${file.target}: missing file content`)
-      continue
-    }
-    await fs.writeFile(destFile, file.content, 'utf-8')
+    assert(
+      typeof file.content === 'string',
+      `Cannot write ${file.target}: missing file content`,
+    )
+    await fs.writeFile(destFile, file.content as string, 'utf-8')
   }
 }
 
@@ -249,10 +245,11 @@ async function isDirectory(dir: string) {
 }
 
 async function copyDir(src: string, dest: string) {
-  if (!(await isDirectory(src))) {
-    warn(`Expected directory not found: ${path.relative(ROOT, src) || src}`)
-    return
-  }
+  const exists = await isDirectory(src)
+  assert(
+    exists,
+    `Expected directory not found: ${path.relative(ROOT, src) || src}`,
+  )
 
   await fs.mkdir(dest, { recursive: true })
   const entries = await fs.readdir(src, { withFileTypes: true })
@@ -505,10 +502,10 @@ async function buildExample(
   const framework = item.meta?.framework!
   const story = item.meta?.story!
   const config = overrides?.config ?? FRAMEWORK_CONFIG[framework]
-  if (!config) {
-    warn(`No framework configuration for ${framework}; skipping ${item.name}`)
-    return
-  }
+  assert(
+    config,
+    `No framework configuration for ${framework}; cannot build ${item.name}`,
+  )
   const destName = overrides?.destName ?? `${framework}-${story}`
   const destDir = path.join(ROOT, destName)
 
@@ -531,9 +528,7 @@ async function buildExample(
   const registryItem = await fetchRegistryItem(item.name)
   const files = await collectRegistryFiles(registryItem)
   await writeRegistryFiles(destDir, files)
-  if (files.length === 0) {
-    warn(`Registry item ${item.name} returned no files to write`)
-  }
+  assert(files.length > 0, `Registry item ${item.name} returned no files to write`)
 
   const entryPath = path.join(destDir, config.entryFile)
   await fs.mkdir(path.dirname(entryPath), { recursive: true })
@@ -550,17 +545,15 @@ async function buildNextFullExample(registry: RegistryIndex) {
   const reactFull = registry.items.find(
     (item) => item.name === 'react-example-full',
   )
-  if (!reactFull) {
-    warn('Skipping next-full build: react-example-full not found in registry.')
-    return
-  }
+  assert(
+    reactFull,
+    'Cannot build next-full example: react-example-full not found in registry.',
+  )
 
-  if (!shouldBuild(reactFull)) {
-    warn(
-      'Skipping next-full build: react full example missing story/framework metadata.',
-    )
-    return
-  }
+  assert(
+    shouldBuild(reactFull),
+    'Cannot build next-full example: react full entry missing story/framework metadata.',
+  )
 
   await buildExample(reactFull, {
     destName: 'next-full',
@@ -572,12 +565,10 @@ async function main() {
   const registry = await fetchJson<RegistryIndex>(REGISTRY_INDEX_URL)
   const items = registry.items.filter((item) => shouldBuild(item))
 
-  if (items.length === 0) {
-    warn(
-      'No examples with valid story/framework metadata were found in the registry.',
-    )
-    return
-  }
+  assert(
+    items.length > 0,
+    'No examples with valid story/framework metadata were found in the registry.',
+  )
 
   info(`Building ${items.length} examples from the registry`)
   let hasErrors = false
