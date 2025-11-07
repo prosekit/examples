@@ -238,6 +238,32 @@ async function copyDir(src: string, dest: string) {
   }
 }
 
+async function readPackageJson(filePath: string) {
+  try {
+    const text = await fs.readFile(filePath, 'utf-8')
+    return JSON.parse(text)
+  } catch {
+    return undefined
+  }
+}
+
+function mergePackageSections(target: Record<string, any>, source?: Record<string, any>) {
+  if (!source) return
+  for (const key of ['dependencies', 'devDependencies', 'peerDependencies']) {
+    if (!source[key]) continue
+    target[key] = { ...(source[key] || {}), ...(target[key] || {}) }
+  }
+}
+
+async function preservePackageDependencies(destDir: string, previousPackage?: any) {
+  if (!previousPackage) return
+  const pkgPath = path.join(destDir, 'package.json')
+  const pkg = await readPackageJson(pkgPath)
+  if (!pkg) return
+  mergePackageSections(pkg, previousPackage)
+  await fs.writeFile(pkgPath, JSON.stringify(pkg, null, 2) + '\n')
+}
+
 type RunCommandOptions = {
   cwd?: string
 }
@@ -364,7 +390,9 @@ async function buildExample(item: RegistryIndexItem) {
   await fs.rm(destSrcDir, { recursive: true, force: true })
 
   const templateDir = path.join(ROOT, '.templates', `template-${config.template}`)
+  const previousPackage = await readPackageJson(path.join(destDir, 'package.json'))
   await copyDir(templateDir, destDir)
+  await preservePackageDependencies(destDir, previousPackage)
 
   const registryItem = await fetchRegistryItem(item.name)
   const files = await collectRegistryFiles(registryItem)
