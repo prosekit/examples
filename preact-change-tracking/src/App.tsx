@@ -1,5 +1,5 @@
 import { ExampleEditor } from './components/editor/examples/change-tracking'
 
-export default function Editor() {
+export default function App() {
   return <ExampleEditor />
 }

@@ -1,5 +1,5 @@
 import { ExampleEditor } from './components/editor/examples/link'
 
-export default function Editor() {
+export default function App() {
   return <ExampleEditor />
 }

@@ -1,5 +1,5 @@
 import { ExampleEditor } from './components/editor/examples/blockquote'
 
-export default function Editor() {
+export default function App() {
   return <ExampleEditor />
 }
