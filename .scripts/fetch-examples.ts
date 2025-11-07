@@ -34,22 +34,6 @@ const __dirname = path.dirname(new URL(import.meta.url).pathname)
 const ROOT = path.resolve(__dirname, '..')
 const LOG_PREFIX = '[fetch-examples]'
 
-const TEXT_FILE_EXTENSIONS = new Set([
-  '.ts',
-  '.tsx',
-  '.js',
-  '.jsx',
-  '.vue',
-  '.svelte',
-  '.json',
-  '.txt',
-  '.md',
-  '.css',
-  '.html',
-  '.yaml',
-  '.yml',
-])
-
 type FrameworkConfig = {
   template: string
   entryFile: string
@@ -118,17 +102,6 @@ function formatError(error: unknown): string {
     return error.message
   }
   return String(error)
-}
-
-type FileTransform = (
-  relativePath: string,
-  srcContent: string,
-  destContent?: string,
-) => string
-
-function isTextFilePath(filePath: string) {
-  const ext = path.extname(filePath).toLowerCase()
-  return TEXT_FILE_EXTENSIONS.has(ext)
 }
 
 async function fetchJson<T>(url: string): Promise<T> {
@@ -234,12 +207,7 @@ async function isDirectory(dir: string) {
   }
 }
 
-async function copyDirWithTransform(
-  src: string,
-  dest: string,
-  transform?: FileTransform,
-  relativePrefix = '',
-) {
+async function copyDir(src: string, dest: string) {
   if (!(await isDirectory(src))) {
     warn(`Expected directory not found: ${path.relative(ROOT, src) || src}`)
     return
@@ -251,34 +219,12 @@ async function copyDirWithTransform(
   for (const entry of entries) {
     const srcPath = path.join(src, entry.name)
     const destPath = path.join(dest, entry.name)
-    const relativePath = relativePrefix ? path.join(relativePrefix, entry.name) : entry.name
 
     if (entry.isDirectory()) {
-      await copyDirWithTransform(srcPath, destPath, transform, relativePath)
-      continue
-    }
-
-    if (!entry.isFile()) {
-      continue
-    }
-
-    await fs.mkdir(path.dirname(destPath), { recursive: true })
-
-    if (!isTextFilePath(srcPath)) {
+      await copyDir(srcPath, destPath)
+    } else if (entry.isFile()) {
       await fs.copyFile(srcPath, destPath)
-      continue
     }
-
-    const srcContent = await fs.readFile(srcPath, 'utf-8')
-    let destContent: string | undefined
-    try {
-      destContent = await fs.readFile(destPath, 'utf-8')
-    } catch {
-      // Ignore missing file
-    }
-
-    const finalContent = transform?.(relativePath, srcContent, destContent) ?? srcContent
-    await fs.writeFile(destPath, finalContent, 'utf-8')
   }
 }
 
@@ -347,35 +293,6 @@ async function updatePackageJsonName(dir: string, name: string) {
   await fs.writeFile(pkgPath, JSON.stringify(pkg, null, 2) + '\n')
 }
 
-function mergeJsonRecursive(a: any, b: any): any {
-  if (a === undefined) return b
-  if (b === undefined) return a
-
-  if (a && b && typeof a === 'object' && typeof b === 'object') {
-    const keys = new Set([...Object.keys(a), ...Object.keys(b)])
-    const result: Record<string, any> = {}
-    for (const key of keys) {
-      result[key] = mergeJsonRecursive(a[key], b[key])
-    }
-    return result
-  }
-
-  return b
-}
-
-function mergePackageJson(destContent: string | undefined, srcContent: string) {
-  const destJson = destContent ? JSON.parse(destContent) : {}
-  const srcJson = JSON.parse(srcContent)
-  return JSON.stringify(mergeJsonRecursive(destJson, srcJson), null, 2) + '\n'
-}
-
-const PACKAGE_JSON_TRANSFORM: FileTransform = (relativePath, srcContent, destContent) => {
-  if (relativePath.endsWith('package.json') && destContent) {
-    return mergePackageJson(destContent, srcContent)
-  }
-  return srcContent
-}
-
 async function installMissingDependencies(dir: string, deps?: string[]) {
   if (!deps?.length) return
 
@@ -436,7 +353,7 @@ async function buildExample(item: RegistryIndexItem) {
   await fs.rm(destDir, { recursive: true, force: true })
 
   const templateDir = path.join(ROOT, '.templates', `template-${config.template}`)
-  await copyDirWithTransform(templateDir, destDir)
+  await copyDir(templateDir, destDir)
 
   const registryItem = await fetchRegistryItem(item.name)
   const files = await collectRegistryFiles(registryItem)
@@ -448,9 +365,6 @@ async function buildExample(item: RegistryIndexItem) {
   const entryPath = path.join(destDir, config.entryFile)
   await fs.mkdir(path.dirname(entryPath), { recursive: true })
   await fs.writeFile(entryPath, config.createEntryContent(story))
-
-  const overrideDir = path.join(ROOT, '.overrides', destName)
-  await copyDirWithTransform(overrideDir, destDir, PACKAGE_JSON_TRANSFORM)
 
   await installMissingDependencies(destDir, registryItem.dependencies)
   await updatePackageJsonName(destDir, `example-${destName}`)
