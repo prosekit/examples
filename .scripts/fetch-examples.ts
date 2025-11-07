@@ -87,8 +87,6 @@ import { ExampleEditor } from './components/editor/examples/${story}'
   },
 }
 
-const registryCache = new Map<string, RegistryItem>()
-
 function info(message: string) {
   console.log(`${LOG_PREFIX} ${message}`)
 }
@@ -104,6 +102,24 @@ function formatError(error: unknown): string {
   return String(error)
 }
 
+function memoize<Args extends any[], Result>(fn: (...args: Args) => Promise<Result>) {
+  const cache = new Map<string, Promise<Result>>()
+
+  return async (...args: Args): Promise<Result> => {
+    const key = JSON.stringify(args)
+    if (!cache.has(key)) {
+      cache.set(
+        key,
+        fn(...args).catch((error) => {
+          cache.delete(key)
+          throw error
+        }),
+      )
+    }
+    return cache.get(key)!
+  }
+}
+
 async function fetchJson<T>(url: string): Promise<T> {
   const response = await fetch(url)
   if (!response.ok) {
@@ -112,14 +128,12 @@ async function fetchJson<T>(url: string): Promise<T> {
   return (await response.json()) as T
 }
 
-async function fetchRegistryItem(identifier: string): Promise<RegistryItem> {
+const fetchRegistryItem = memoize(async function fetchRegistryItem(
+  identifier: string,
+): Promise<RegistryItem> {
   const url = identifier.startsWith('http')
     ? identifier
     : `${REGISTRY_URL}/${identifier.replace(/^https?:\/\//, '').replace(/\.json$/, '')}.json`
-
-  if (registryCache.has(url)) {
-    return registryCache.get(url)!
-  }
 
   let item: RegistryItem
   try {
@@ -128,12 +142,8 @@ async function fetchRegistryItem(identifier: string): Promise<RegistryItem> {
     warn(`Failed to fetch registry item ${identifier}: ${formatError(error)}`)
     throw error
   }
-  registryCache.set(url, item)
-  if (item.name) {
-    registryCache.set(item.name, item)
-  }
   return item
-}
+})
 
 async function collectRegistryFiles(item: RegistryItem): Promise<RegistryFile[]> {
   const queue: RegistryItem[] = [item]
