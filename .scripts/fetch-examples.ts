@@ -1,3 +1,4 @@
+import { spawn } from 'node:child_process'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 
@@ -8,6 +9,7 @@ type RegistryIndex = {
 type RegistryIndexItem = {
   name: string
   title?: string
+  dependencies?: string[]
   meta?: {
     story?: string
     framework?: string
@@ -233,6 +235,33 @@ async function copyDirWithTransform(
   }
 }
 
+type RunCommandOptions = {
+  cwd?: string
+}
+
+async function runCommand(command: string, args: string[], options: RunCommandOptions = {}) {
+  await new Promise<void>((resolve, reject) => {
+    const child = spawn(command, args, {
+      cwd: options.cwd ?? ROOT,
+      stdio: 'inherit',
+      env: process.env,
+    })
+    child.on('error', reject)
+    child.on('exit', (code) => {
+      if (code === 0) {
+        resolve()
+      } else {
+        reject(new Error(`Command failed: ${command} ${args.join(' ')} (code ${code})`))
+      }
+    })
+  })
+}
+
+async function cleanupInstallArtifacts(dir: string) {
+  await fs.rm(path.join(dir, 'node_modules'), { recursive: true, force: true })
+  await fs.rm(path.join(dir, 'bun.lockb'), { force: true })
+}
+
 async function writeReadme(dir: string) {
   const name = path.basename(dir)
   const readme = `# ${name}
@@ -300,6 +329,29 @@ const PACKAGE_JSON_TRANSFORM: FileTransform = (relativePath, srcContent, destCon
   return srcContent
 }
 
+async function installMissingDependencies(dir: string, deps?: string[]) {
+  if (!deps?.length) return
+
+  const pkgPath = path.join(dir, 'package.json')
+  const pkgRaw = await fs.readFile(pkgPath, 'utf-8')
+  const pkg = JSON.parse(pkgRaw)
+  const existing = new Set([
+    ...Object.keys(pkg.dependencies || {}),
+    ...Object.keys(pkg.devDependencies || {}),
+    ...Object.keys(pkg.peerDependencies || {}),
+  ])
+
+  const missing = deps.filter((dep) => !existing.has(dep))
+  if (missing.length === 0) return
+
+  console.log(
+    `Installing missing dependencies for ${path.relative(ROOT, dir)}: ${missing.join(', ')}`,
+  )
+
+  await runCommand('bun', ['add', ...missing], { cwd: dir })
+  await cleanupInstallArtifacts(dir)
+}
+
 function shouldBuild(item: RegistryIndexItem): boolean {
   const story = item.meta?.story?.trim()
   const framework = item.meta?.framework?.trim()
@@ -333,6 +385,7 @@ async function buildExample(item: RegistryIndexItem) {
   const overrideDir = path.join(ROOT, '.overrides', destName)
   await copyDirWithTransform(overrideDir, destDir, PACKAGE_JSON_TRANSFORM)
 
+  await installMissingDependencies(destDir, registryItem.dependencies)
   await updatePackageJsonName(destDir, `example-${destName}`)
   await writeReadme(destDir)
   await writeGitignore(destDir)
