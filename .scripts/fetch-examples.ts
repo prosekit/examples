@@ -40,7 +40,9 @@ type FrameworkConfig = {
   createEntryContent: (story: string) => string
 }
 
-const jsxEntry = (story: string) => `import { ExampleEditor } from './components/editor/examples/${story}'
+const jsxEntry = (
+  story: string,
+) => `import { ExampleEditor } from './components/editor/examples/${story}'
 
 export default function Editor() {
   return <ExampleEditor />
@@ -117,7 +119,9 @@ function formatError(error: unknown): string {
   return String(error)
 }
 
-function memoize<Args extends any[], Result>(fn: (...args: Args) => Promise<Result>) {
+function memoize<Args extends any[], Result>(
+  fn: (...args: Args) => Promise<Result>,
+) {
   const cache = new Map<string, Promise<Result>>()
 
   return async (...args: Args): Promise<Result> => {
@@ -138,7 +142,9 @@ function memoize<Args extends any[], Result>(fn: (...args: Args) => Promise<Resu
 async function fetchJson<T>(url: string): Promise<T> {
   const response = await fetch(url)
   if (!response.ok) {
-    throw new Error(`Failed to fetch ${url}: ${response.status} ${response.statusText}`)
+    throw new Error(
+      `Failed to fetch ${url}: ${response.status} ${response.statusText}`,
+    )
   }
   return (await response.json()) as T
 }
@@ -160,7 +166,9 @@ const fetchRegistryItem = memoize(async function fetchRegistryItem(
   return item
 })
 
-async function collectRegistryFiles(item: RegistryItem): Promise<RegistryFile[]> {
+async function collectRegistryFiles(
+  item: RegistryItem,
+): Promise<RegistryFile[]> {
   const queue: RegistryItem[] = [item]
   const visited = new Set<string>()
   const files = new Map<string, RegistryFile>()
@@ -182,16 +190,22 @@ async function collectRegistryFiles(item: RegistryItem): Promise<RegistryFile[]>
 
     for (const file of current.files || []) {
       if (!file.target) {
-        warn(`Skipping file ${file.path ?? '(unknown)'} in ${current.name}: missing target path`)
+        warn(
+          `Skipping file ${file.path ?? '(unknown)'} in ${current.name}: missing target path`,
+        )
         continue
       }
       if (files.has(file.target)) {
-        warn(`Duplicate target detected for ${file.target}; keeping the first copy`)
+        warn(
+          `Duplicate target detected for ${file.target}; keeping the first copy`,
+        )
         continue
       }
       if (typeof file.content !== 'string') {
         warn(`Missing inline content for ${file.path || file.target}`)
-        throw new Error(`Missing inline content for ${file.path || file.target}`)
+        throw new Error(
+          `Missing inline content for ${file.path || file.target}`,
+        )
       }
       files.set(file.target, file)
     }
@@ -203,7 +217,9 @@ async function collectRegistryFiles(item: RegistryItem): Promise<RegistryFile[]>
           queue.push(depItem)
         }
       } catch (error) {
-        warn(`Failed to fetch dependency ${dep} for ${current.name}: ${formatError(error)}`)
+        warn(
+          `Failed to fetch dependency ${dep} for ${current.name}: ${formatError(error)}`,
+        )
         throw error
       }
     }
@@ -262,7 +278,10 @@ async function readPackageJson(filePath: string) {
   }
 }
 
-function mergePackageSections(target: Record<string, any>, source?: Record<string, any>) {
+function mergePackageSections(
+  target: Record<string, any>,
+  source?: Record<string, any>,
+) {
   if (!source) return
   for (const key of ['dependencies', 'devDependencies', 'peerDependencies']) {
     if (!source[key]) continue
@@ -270,7 +289,10 @@ function mergePackageSections(target: Record<string, any>, source?: Record<strin
   }
 }
 
-async function preservePackageDependencies(destDir: string, previousPackage?: any) {
+async function preservePackageDependencies(
+  destDir: string,
+  previousPackage?: any,
+) {
   if (!previousPackage) return
   const pkgPath = path.join(destDir, 'package.json')
   const pkg = await readPackageJson(pkgPath)
@@ -292,11 +314,15 @@ async function ensurePackageDependency(
     return
   }
 
-  info(`Installing missing ${section.slice(0, -3)} dependency ${name} in ${path.relative(ROOT, dir)}`)
+  info(
+    `Installing missing ${section.slice(0, -3)} dependency ${name} in ${path.relative(ROOT, dir)}`,
+  )
   try {
     await runCommand('bun', ['add', name], { cwd: dir })
   } catch (error) {
-    warn(`Failed to add ${name} in ${path.relative(ROOT, dir)}: ${formatError(error)}`)
+    warn(
+      `Failed to add ${name} in ${path.relative(ROOT, dir)}: ${formatError(error)}`,
+    )
     throw error
   }
   await cleanupInstallArtifacts(dir)
@@ -310,7 +336,9 @@ async function patchLoroExample(destDir: string) {
   try {
     viteConfig = await fs.readFile(viteConfigPath, 'utf-8')
   } catch {
-    warn(`vite.config.ts not found for ${path.relative(ROOT, destDir)}; cannot apply wasm plugin patch`)
+    warn(
+      `vite.config.ts not found for ${path.relative(ROOT, destDir)}; cannot apply wasm plugin patch`,
+    )
     return
   }
 
@@ -322,10 +350,15 @@ async function patchLoroExample(destDir: string) {
 
   if (!viteConfig.includes('wasm()')) {
     if (viteConfig.includes('react(), tailwindcss()')) {
-      viteConfig = viteConfig.replace('react(), tailwindcss()', 'react(), wasm(), tailwindcss()')
+      viteConfig = viteConfig.replace(
+        'react(), tailwindcss()',
+        'react(), wasm(), tailwindcss()',
+      )
       updated = true
     } else {
-      warn(`Unable to inject wasm plugin into vite.config.ts for ${path.relative(ROOT, destDir)}`)
+      warn(
+        `Unable to inject wasm plugin into vite.config.ts for ${path.relative(ROOT, destDir)}`,
+      )
     }
   }
 
@@ -345,7 +378,11 @@ type RunCommandOptions = {
   cwd?: string
 }
 
-async function runCommand(command: string, args: string[], options: RunCommandOptions = {}) {
+async function runCommand(
+  command: string,
+  args: string[],
+  options: RunCommandOptions = {},
+) {
   await new Promise<void>((resolve, reject) => {
     const child = spawn(command, args, {
       cwd: options.cwd ?? ROOT,
@@ -357,7 +394,11 @@ async function runCommand(command: string, args: string[], options: RunCommandOp
       if (code === 0) {
         resolve()
       } else {
-        reject(new Error(`Command failed: ${command} ${args.join(' ')} (code ${code})`))
+        reject(
+          new Error(
+            `Command failed: ${command} ${args.join(' ')} (code ${code})`,
+          ),
+        )
       }
     })
   })
@@ -421,7 +462,9 @@ async function installMissingDependencies(dir: string, deps?: string[]) {
   const missing = deps.filter((dep) => !existing.has(dep))
   if (missing.length === 0) return
 
-  info(`Installing missing dependencies for ${path.relative(ROOT, dir)}: ${missing.join(', ')}`)
+  info(
+    `Installing missing dependencies for ${path.relative(ROOT, dir)}: ${missing.join(', ')}`,
+  )
 
   try {
     await runCommand('bun', ['add', ...missing], { cwd: dir })
@@ -455,7 +498,10 @@ type BuildOverrides = {
   config?: FrameworkConfig
 }
 
-async function buildExample(item: RegistryIndexItem, overrides?: BuildOverrides) {
+async function buildExample(
+  item: RegistryIndexItem,
+  overrides?: BuildOverrides,
+) {
   const framework = item.meta?.framework!
   const story = item.meta?.story!
   const config = overrides?.config ?? FRAMEWORK_CONFIG[framework]
@@ -471,8 +517,14 @@ async function buildExample(item: RegistryIndexItem, overrides?: BuildOverrides)
   const destSrcDir = path.join(destDir, 'src')
   await fs.rm(destSrcDir, { recursive: true, force: true })
 
-  const templateDir = path.join(ROOT, '.templates', `template-${config.template}`)
-  const previousPackage = await readPackageJson(path.join(destDir, 'package.json'))
+  const templateDir = path.join(
+    ROOT,
+    '.templates',
+    `template-${config.template}`,
+  )
+  const previousPackage = await readPackageJson(
+    path.join(destDir, 'package.json'),
+  )
   await copyDir(templateDir, destDir)
   await preservePackageDependencies(destDir, previousPackage)
 
@@ -495,14 +547,18 @@ async function buildExample(item: RegistryIndexItem, overrides?: BuildOverrides)
 }
 
 async function buildNextFullExample(registry: RegistryIndex) {
-  const reactFull = registry.items.find((item) => item.name === 'react-example-full')
+  const reactFull = registry.items.find(
+    (item) => item.name === 'react-example-full',
+  )
   if (!reactFull) {
     warn('Skipping next-full build: react-example-full not found in registry.')
     return
   }
 
   if (!shouldBuild(reactFull)) {
-    warn('Skipping next-full build: react full example missing story/framework metadata.')
+    warn(
+      'Skipping next-full build: react full example missing story/framework metadata.',
+    )
     return
   }
 
@@ -517,7 +573,9 @@ async function main() {
   const items = registry.items.filter((item) => shouldBuild(item))
 
   if (items.length === 0) {
-    warn('No examples with valid story/framework metadata were found in the registry.')
+    warn(
+      'No examples with valid story/framework metadata were found in the registry.',
+    )
     return
   }
 
@@ -533,7 +591,9 @@ async function main() {
   }
 
   if (hasErrors) {
-    throw new Error('One or more examples failed. Check warnings above for details.')
+    throw new Error(
+      'One or more examples failed. Check warnings above for details.',
+    )
   }
 
   await buildNextFullExample(registry)

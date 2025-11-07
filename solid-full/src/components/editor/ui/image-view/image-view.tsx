@@ -1,17 +1,8 @@
 import { UploadTask } from 'prosekit/extensions/file'
 import type { ImageAttrs } from 'prosekit/extensions/image'
 import type { SolidNodeViewProps } from 'prosekit/solid'
-import {
-  ResizableHandle,
-  ResizableRoot,
-} from 'prosekit/solid/resizable'
-import {
-  createEffect,
-  createSignal,
-  onCleanup,
-  Show,
-  type JSX,
-} from 'solid-js'
+import { ResizableHandle, ResizableRoot } from 'prosekit/solid/resizable'
+import { createEffect, createSignal, onCleanup, Show, type JSX } from 'solid-js'
 
 export default function ImageView(props: SolidNodeViewProps): JSX.Element {
   const attrs = () => props.node.attrs as ImageAttrs
@@ -34,10 +25,12 @@ export default function ImageView(props: SolidNodeViewProps): JSX.Element {
       if (canceled) return
       setError(String(err))
     })
-    const unsubscribeProgress = uploadTask.subscribeProgress(({ loaded, total }) => {
-      if (canceled) return
-      setProgress(total ? loaded / total : 0)
-    })
+    const unsubscribeProgress = uploadTask.subscribeProgress(
+      ({ loaded, total }) => {
+        if (canceled) return
+        setProgress(total ? loaded / total : 0)
+      },
+    )
 
     onCleanup(() => {
       canceled = true
@@ -83,9 +76,7 @@ export default function ImageView(props: SolidNodeViewProps): JSX.Element {
       <Show when={error()}>
         <div class="absolute bottom-0 left-0 right-0 top-0 flex flex-col items-center justify-center gap-4 bg-gray-200 p-2 text-sm dark:bg-gray-800 @container">
           <div class="i-lucide-image-off size-8 block"></div>
-          <div class="hidden opacity-80 @xs:block">
-            Failed to upload image
-          </div>
+          <div class="hidden opacity-80 @xs:block">Failed to upload image</div>
         </div>
       </Show>
       <ResizableHandle
