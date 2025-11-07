@@ -50,7 +50,6 @@ export default function App() {
 }
 `
 
-const reactEntry = jsxEntry
 
 const nextEntry = (story: string) => `'use client'
 
@@ -95,7 +94,7 @@ function createFrameworkConfig(
 }
 
 const FRAMEWORK_CONFIG = {
-  react: createFrameworkConfig('react', ['src', 'app.tsx'], reactEntry),
+  react: createFrameworkConfig('react', ['src', 'App.tsx'], jsxEntry),
   preact: createFrameworkConfig('preact', ['src', 'App.tsx'], jsxEntry),
   solid: createFrameworkConfig('solid', ['src', 'App.tsx'], jsxEntry),
   svelte: createFrameworkConfig('svelte', ['src', 'App.svelte'], svelteEntry),
