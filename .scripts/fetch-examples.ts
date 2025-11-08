@@ -476,10 +476,9 @@ async function patchLoroExample(destDir: string) {
   try {
     viteConfig = await fs.readFile(viteConfigPath, 'utf-8')
   } catch {
-    warn(
-      `vite.config.ts not found for ${path.relative(ROOT, destDir)}; cannot apply wasm plugin patch`,
+    throw new Error(
+      `vite.config.ts not found for ${destDir}; cannot apply wasm plugin patch`,
     )
-    return
   }
 
   let updated = false
@@ -489,16 +488,14 @@ async function patchLoroExample(destDir: string) {
   }
 
   if (!viteConfig.includes('wasm()')) {
-    if (viteConfig.includes('react(), tailwindcss()')) {
-      viteConfig = viteConfig.replace(
-        'react(), tailwindcss()',
-        'react(), wasm(), tailwindcss()',
+    const newViteConfig = viteConfig.replace('plugins: [', 'plugins: [wasm(), ')
+    if (newViteConfig === viteConfig) {
+      throw new Error(
+        `Unable to inject wasm plugin into vite.config.ts for ${destDir}`,
       )
-      updated = true
     } else {
-      warn(
-        `Unable to inject wasm plugin into vite.config.ts for ${path.relative(ROOT, destDir)}`,
-      )
+      viteConfig = newViteConfig
+      updated = true
     }
   }
 
@@ -764,26 +761,17 @@ async function main() {
   )
 
   info(`Building ${items.length} examples from the registry`)
-  let hasErrors = false
   for (const item of items) {
     try {
       await buildExample(item)
     } catch (error) {
-      hasErrors = true
-      warn(`Failed to build ${item.name}: ${formatError(error)}`)
+      throw new Error(`Failed to build ${item.name}: ${formatError(error)}`, {
+        cause: error,
+      })
     }
-  }
-
-  if (hasErrors) {
-    throw new Error(
-      'One or more examples failed. Check warnings above for details.',
-    )
   }
 
   await buildDerivedExamples(registry)
 }
 
-main().catch((error) => {
-  console.error(error)
-  process.exit(1)
-})
+void main()
