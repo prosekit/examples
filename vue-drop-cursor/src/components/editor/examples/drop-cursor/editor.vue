@@ -6,15 +6,12 @@ import { createEditor } from 'prosekit/core'
 import { ProseKit } from 'prosekit/vue'
 import { ref, watchPostEffect } from 'vue'
 
-import { defaultDropCursorContent } from '../../sample/sample-doc-drop-cursor'
+import { defaultContent } from '../../sample/sample-doc-drop-cursor'
 
 import { defineExtension } from './extension'
 
 const extension = defineExtension()
-const editor = createEditor({
-  extension,
-  defaultContent: defaultDropCursorContent,
-})
+const editor = createEditor({ extension, defaultContent })
 
 const editorRef = ref<HTMLDivElement | null>(null)
 watchPostEffect((onCleanup) => {

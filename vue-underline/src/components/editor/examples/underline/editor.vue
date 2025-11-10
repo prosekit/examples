@@ -6,14 +6,10 @@ import { createEditor } from 'prosekit/core'
 import { ProseKit } from 'prosekit/vue'
 import { ref, watchPostEffect } from 'vue'
 
+import { defaultContent } from '../../sample/sample-doc-underline'
 import { Toolbar } from '../../ui/toolbar'
 
 import { defineExtension } from './extension'
-
-const defaultContent = `
-  <p><u>This is underline</u></p>
-  <p><span>This is normal text</span></p>
-`
 
 const extension = defineExtension()
 const editor = createEditor({ extension, defaultContent })
