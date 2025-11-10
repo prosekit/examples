@@ -6,13 +6,10 @@ import { createEditor } from 'prosekit/core'
 import { ProseKit } from 'prosekit/vue'
 import { ref, watchPostEffect } from 'vue'
 
+import { defaultContent } from '../../sample/sample-doc-link'
 import { InlineMenu } from '../../ui/inline-menu'
 
 import { defineExtension } from './extension'
-
-const defaultContent = `
-  <p>Here is an <a href="https://www.example.com">example link</a>
-`
 
 const extension = defineExtension()
 const editor = createEditor({ extension, defaultContent })

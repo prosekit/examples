@@ -6,6 +6,7 @@ import { createEditor } from 'prosekit/core'
 import { ProseKit } from 'prosekit/vue'
 import { ref, watchPostEffect } from 'vue'
 
+import { defaultContent } from '../../sample/sample-doc-word-counter'
 import { WordCounter } from '../../ui/word-counter'
 
 import { defineExtension } from './extension'
@@ -13,7 +14,7 @@ import { defineExtension } from './extension'
 const extension = defineExtension()
 const editor = createEditor({
   extension,
-  defaultContent: 'Start typing and observe the word count update below.',
+  defaultContent,
 })
 
 const editorRef = ref<HTMLDivElement | null>(null)

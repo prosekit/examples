@@ -6,15 +6,10 @@ import { createEditor } from 'prosekit/core'
 import { ProseKit } from 'prosekit/vue'
 import { ref, watchPostEffect } from 'vue'
 
+import { defaultContent } from '../../sample/sample-doc-bold'
 import { Toolbar } from '../../ui/toolbar'
 
 import { defineExtension } from './extension'
-
-const defaultContent = `
-  <p><b>This is bold</b></p>
-  <p><strong>This is bold too</strong></p>
-  <p><span>This is normal text</span></p>
-`
 
 const extension = defineExtension()
 const editor = createEditor({ extension, defaultContent })

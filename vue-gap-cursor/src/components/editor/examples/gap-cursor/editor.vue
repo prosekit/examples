@@ -6,13 +6,9 @@ import { createEditor } from 'prosekit/core'
 import { ProseKit } from 'prosekit/vue'
 import { ref, watchPostEffect } from 'vue'
 
-import { defineExtension } from './extension'
+import { defaultContent } from '../../sample/sample-doc-gap-cursor'
 
-const defaultContent = `
-<p>Click the gap between two images or press arrow keys to see the gap cursor between two images</p>
-<img src="https://static.photos/minimal/320x180/42" />
-<img src="https://static.photos/minimal/320x180/42" />
-`
+import { defineExtension } from './extension'
 
 const extension = defineExtension()
 const editor = createEditor({ extension, defaultContent })

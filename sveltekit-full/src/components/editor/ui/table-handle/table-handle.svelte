@@ -98,7 +98,7 @@ const state = useEditorDerivedValue(getTableHandleState)
       {#if $state.deleteTable.canExec}
         <TableHandlePopoverItem
           class="relative min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 data-danger:text-red-500 box-border cursor-default select-none whitespace-nowrap outline-hidden data-focused:bg-gray-100 dark:data-focused:bg-gray-800"
-          data-danger
+          data-danger=""
           onSelect={$state.deleteTable.command}
         >
           <span>Delete Table</span>
@@ -147,7 +147,7 @@ const state = useEditorDerivedValue(getTableHandleState)
       {#if $state.deleteTable.canExec}
         <TableHandlePopoverItem
           class="relative min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 data-danger:text-red-500 box-border cursor-default select-none whitespace-nowrap outline-hidden data-focused:bg-gray-100 dark:data-focused:bg-gray-800"
-          data-danger
+          data-danger=""
           onSelect={$state.deleteTable.command}
         >
           <span>Delete Table</span>

@@ -3,7 +3,7 @@ import { UploadTask } from 'prosekit/extensions/file'
 import type { ImageAttrs } from 'prosekit/extensions/image'
 import type { VueNodeViewProps } from 'prosekit/vue'
 import { ResizableHandle, ResizableRoot } from 'prosekit/vue/resizable'
-import { computed, onUnmounted, ref, watch } from 'vue'
+import { computed, ref, watchEffect } from 'vue'
 
 const props = defineProps<VueNodeViewProps>()
 
@@ -15,34 +15,30 @@ const aspectRatio = ref<number | undefined>()
 const error = ref<string | undefined>()
 const progress = ref(0)
 
-watch(
-  uploading,
-  (isUploading) => {
-    if (!isUploading) return
+watchEffect((onCleanup) => {
+  if (!uploading.value) return
 
-    const uploadTask = UploadTask.get<string>(url.value)
-    if (!uploadTask) return
+  const uploadTask = UploadTask.get<string>(url.value)
+  if (!uploadTask) return
 
-    let canceled = false
+  let canceled = false
 
-    uploadTask.finished.catch((err) => {
+  uploadTask.finished.catch((err) => {
+    if (canceled) return
+    error.value = String(err)
+  })
+  const unsubscribeProgress = uploadTask.subscribeProgress(
+    ({ loaded, total }) => {
       if (canceled) return
-      error.value = String(err)
-    })
-    const unsubscribeProgress = uploadTask.subscribeProgress(
-      ({ loaded, total }) => {
-        if (canceled) return
-        progress.value = total ? loaded / total : 0
-      },
-    )
+      progress.value = total ? loaded / total : 0
+    },
+  )
 
-    onUnmounted(() => {
-      canceled = true
-      unsubscribeProgress()
-    })
-  },
-  { immediate: true },
-)
+  onCleanup(() => {
+    canceled = true
+    unsubscribeProgress()
+  })
+})
 
 function handleImageLoad(event: Event) {
   const img = event.target as HTMLImageElement

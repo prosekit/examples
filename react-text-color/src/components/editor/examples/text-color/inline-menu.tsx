@@ -1,7 +1,7 @@
-import type { Editor } from 'prosekit/core'
+import type { Editor, Keymap } from 'prosekit/core'
 import { useEditor, useEditorDerivedValue, useKeymap } from 'prosekit/react'
 import { InlinePopover } from 'prosekit/react/inline-popover'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 
 import { Button } from '../../ui/button'
 
@@ -43,15 +43,20 @@ export default function InlineMenu() {
     }
   }
 
-  useKeymap({
-    Escape: () => {
-      if (open) {
-        setOpen(false)
-        return true
-      }
-      return false
-    },
-  })
+  const keymap: Keymap = useMemo(
+    () => ({
+      Escape: () => {
+        if (open) {
+          setOpen(false)
+          return true
+        }
+        return false
+      },
+    }),
+    [open],
+  )
+
+  useKeymap(keymap)
 
   return (
     <InlinePopover

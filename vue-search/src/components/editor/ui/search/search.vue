@@ -79,7 +79,7 @@ function handleReplaceKeyDown(event: KeyboardEvent) {
   <div
     class="z-2 box-border border-gray-200 dark:border-gray-800 border-solid border-l-0 border-r-0 border-t-0 border-b grid grid-cols-[min-content_1fr_min-content] gap-2 p-2"
   >
-    <Button tooltip="Toggle Replace" :on-click="toggleReplace">
+    <Button tooltip="Toggle Replace" @click="toggleReplace">
       <span
         :data-rotate="showReplace ? '' : undefined"
         class="i-lucide-chevron-right size-5 block transition-transform data-rotate:rotate-90"
@@ -95,14 +95,14 @@ function handleReplaceKeyDown(event: KeyboardEvent) {
     <div class="flex items-center justify-between gap-1">
       <Button
         tooltip="Previous (Shift Enter)"
-        :on-click="editor.commands.findPrev"
+        @click="editor.commands.findPrev"
       >
         <span class="i-lucide-arrow-left size-5 block" />
       </Button>
-      <Button tooltip="Next (Enter)" :on-click="editor.commands.findNext">
+      <Button tooltip="Next (Enter)" @click="editor.commands.findNext">
         <span class="i-lucide-arrow-right size-5 block" />
       </Button>
-      <Button tooltip="Close" :on-click="props.onClose">
+      <Button tooltip="Close" @click="props.onClose">
         <span class="i-lucide-x size-5 block" />
       </Button>
     </div>
@@ -115,15 +115,12 @@ function handleReplaceKeyDown(event: KeyboardEvent) {
         @keydown="handleReplaceKeyDown"
       />
       <div class="flex items-center justify-between gap-1">
-        <Button
-          tooltip="Replace (Enter)"
-          :on-click="editor.commands.replaceNext"
-        >
+        <Button tooltip="Replace (Enter)" @click="editor.commands.replaceNext">
           Replace
         </Button>
         <Button
           tooltip="Replace All (Shift Enter)"
-          :on-click="editor.commands.replaceAll"
+          @click="editor.commands.replaceAll"
         >
           All
         </Button>
