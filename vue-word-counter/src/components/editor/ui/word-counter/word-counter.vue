@@ -16,7 +16,7 @@ const counts = useEditorDerivedValue(getCounts)
 <template>
   <div class="p-4 text-center italic tabular-nums">
     Word Count: {{ counts.wordCount }}
-    <br>
+    <br />
     Character Count: {{ counts.characterCount }}
   </div>
 </template>

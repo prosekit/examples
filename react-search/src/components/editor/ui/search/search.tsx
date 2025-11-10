@@ -2,14 +2,8 @@ import {
   defineSearchQuery,
   type SearchCommandsExtension,
 } from 'prosekit/extensions/search'
-import {
-  useEditor,
-  useExtension,
-} from 'prosekit/react'
-import {
-  useMemo,
-  useState,
-} from 'react'
+import { useEditor, useExtension } from 'prosekit/react'
+import { useMemo, useState } from 'react'
 
 import { Button } from '../button'
 
@@ -33,23 +27,23 @@ export default function Search(props: { onClose?: VoidFunction }) {
 
   const isEnter = (event: React.KeyboardEvent) => {
     return (
-      event.key === 'Enter'
-      && !event.shiftKey
-      && !event.metaKey
-      && !event.altKey
-      && !event.ctrlKey
-      && !event.nativeEvent.isComposing
+      event.key === 'Enter' &&
+      !event.shiftKey &&
+      !event.metaKey &&
+      !event.altKey &&
+      !event.ctrlKey &&
+      !event.nativeEvent.isComposing
     )
   }
 
   const isShiftEnter = (event: React.KeyboardEvent) => {
     return (
-      event.key === 'Enter'
-      && event.shiftKey
-      && !event.metaKey
-      && !event.altKey
-      && !event.ctrlKey
-      && !event.nativeEvent.isComposing
+      event.key === 'Enter' &&
+      event.shiftKey &&
+      !event.metaKey &&
+      !event.altKey &&
+      !event.ctrlKey &&
+      !event.nativeEvent.isComposing
     )
   }
 

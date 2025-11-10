@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import type { VueMarkViewProps } from 'prosekit/vue'
-import {
-  onBeforeUnmount,
-  ref,
-} from 'vue'
+import { onBeforeUnmount, ref } from 'vue'
 
 const props = defineProps<VueMarkViewProps>()
 
@@ -47,6 +44,5 @@ onBeforeUnmount(() => {
     :ref="props.contentRef"
     :href="href"
     :style="{ color: color, transition: 'color 1s ease-in-out' }"
-  >
-  </a>
+  ></a>
 </template>

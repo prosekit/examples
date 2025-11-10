@@ -1,8 +1,5 @@
 import type { Ref } from 'vue'
-import {
-  ref,
-  watchEffect,
-} from 'vue'
+import { ref, watchEffect } from 'vue'
 
 import { users as allUsers } from '../../sample/user-data'
 
@@ -13,32 +10,30 @@ export function useUserQuery(query: Ref<string>, enabled: Ref<boolean>) {
   const users = ref<{ name: string; id: number }[]>([])
   const loading = ref(true)
 
-  watchEffect(
-    (onCleanup) => {
-      if (!enabled.value) {
-        users.value = []
-        return
-      }
+  watchEffect((onCleanup) => {
+    if (!enabled.value) {
+      users.value = []
+      return
+    }
 
-      loading.value = true
+    loading.value = true
 
-      const searchQuery = query.value.toLowerCase()
+    const searchQuery = query.value.toLowerCase()
 
-      const id = setTimeout(async () => {
-        await waitForTestBlocking()
+    const id = setTimeout(async () => {
+      await waitForTestBlocking()
 
-        loading.value = false
+      loading.value = false
 
-        users.value = allUsers
-          .filter((user) => user.name.toLowerCase().includes(searchQuery))
-          .slice(0, 10)
-      }, 500)
+      users.value = allUsers
+        .filter((user) => user.name.toLowerCase().includes(searchQuery))
+        .slice(0, 10)
+    }, 500)
 
-      onCleanup(() => {
-        clearTimeout(id)
-      })
-    },
-  )
+    onCleanup(() => {
+      clearTimeout(id)
+    })
+  })
 
   return { loading, users }
 }

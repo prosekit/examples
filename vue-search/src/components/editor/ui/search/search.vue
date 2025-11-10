@@ -3,14 +3,8 @@ import {
   defineSearchQuery,
   type SearchCommandsExtension,
 } from 'prosekit/extensions/search'
-import {
-  useEditor,
-  useExtension,
-} from 'prosekit/vue'
-import {
-  computed,
-  ref,
-} from 'vue'
+import { useEditor, useExtension } from 'prosekit/vue'
+import { computed, ref } from 'vue'
 
 import { Button } from '../button'
 
@@ -40,23 +34,23 @@ function toggleReplace() {
 
 function isPlainEnter(event: KeyboardEvent) {
   return (
-    event.key === 'Enter'
-    && !event.shiftKey
-    && !event.metaKey
-    && !event.altKey
-    && !event.ctrlKey
-    && !event.isComposing
+    event.key === 'Enter' &&
+    !event.shiftKey &&
+    !event.metaKey &&
+    !event.altKey &&
+    !event.ctrlKey &&
+    !event.isComposing
   )
 }
 
 function isShiftEnter(event: KeyboardEvent) {
   return (
-    event.key === 'Enter'
-    && event.shiftKey
-    && !event.metaKey
-    && !event.altKey
-    && !event.ctrlKey
-    && !event.isComposing
+    event.key === 'Enter' &&
+    event.shiftKey &&
+    !event.metaKey &&
+    !event.altKey &&
+    !event.ctrlKey &&
+    !event.isComposing
   )
 }
 
@@ -82,7 +76,9 @@ function handleReplaceKeyDown(event: KeyboardEvent) {
 </script>
 
 <template>
-  <div class="z-2 box-border border-gray-200 dark:border-gray-800 border-solid border-l-0 border-r-0 border-t-0 border-b grid grid-cols-[min-content_1fr_min-content] gap-2 p-2">
+  <div
+    class="z-2 box-border border-gray-200 dark:border-gray-800 border-solid border-l-0 border-r-0 border-t-0 border-b grid grid-cols-[min-content_1fr_min-content] gap-2 p-2"
+  >
     <Button tooltip="Toggle Replace" @click="toggleReplace">
       <span
         :data-rotate="showReplace ? '' : undefined"
@@ -95,7 +91,7 @@ function handleReplaceKeyDown(event: KeyboardEvent) {
       type="text"
       class="flex h-9 rounded-md w-full bg-white dark:bg-gray-950 px-3 py-2 text-sm placeholder:text-gray-500 dark:placeholder:text-gray-500 transition border box-border border-gray-200 dark:border-gray-800 border-solid ring-0 ring-transparent focus-visible:ring-2 focus-visible:ring-gray-900 dark:focus-visible:ring-gray-300 focus-visible:ring-offset-0 outline-hidden focus-visible:outline-hidden file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:cursor-not-allowed disabled:opacity-50 col-start-2"
       @keydown="handleSearchKeyDown"
-    >
+    />
     <div class="flex items-center justify-between gap-1">
       <Button
         tooltip="Previous (Shift Enter)"
@@ -103,10 +99,7 @@ function handleReplaceKeyDown(event: KeyboardEvent) {
       >
         <span class="i-lucide-arrow-left size-5 block" />
       </Button>
-      <Button
-        tooltip="Next (Enter)"
-        @click="editor.commands.findNext"
-      >
+      <Button tooltip="Next (Enter)" @click="editor.commands.findNext">
         <span class="i-lucide-arrow-right size-5 block" />
       </Button>
       <Button tooltip="Close" @click="props.onClose">
@@ -120,12 +113,9 @@ function handleReplaceKeyDown(event: KeyboardEvent) {
         type="text"
         class="flex h-9 rounded-md w-full bg-white dark:bg-gray-950 px-3 py-2 text-sm placeholder:text-gray-500 dark:placeholder:text-gray-500 transition border box-border border-gray-200 dark:border-gray-800 border-solid ring-0 ring-transparent focus-visible:ring-2 focus-visible:ring-gray-900 dark:focus-visible:ring-gray-300 focus-visible:ring-offset-0 outline-hidden focus-visible:outline-hidden file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:cursor-not-allowed disabled:opacity-50 col-start-2"
         @keydown="handleReplaceKeyDown"
-      >
+      />
       <div class="flex items-center justify-between gap-1">
-        <Button
-          tooltip="Replace (Enter)"
-          @click="editor.commands.replaceNext"
-        >
+        <Button tooltip="Replace (Enter)" @click="editor.commands.replaceNext">
           Replace
         </Button>
         <Button

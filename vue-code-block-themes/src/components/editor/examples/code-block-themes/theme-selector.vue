@@ -5,10 +5,7 @@ import {
   type ShikiBundledTheme,
 } from 'prosekit/extensions/code-block'
 import { useExtension } from 'prosekit/vue'
-import {
-  computed,
-  ref,
-} from 'vue'
+import { computed, ref } from 'vue'
 
 const theme = ref<ShikiBundledTheme>('github-dark')
 const extension = computed(() => {

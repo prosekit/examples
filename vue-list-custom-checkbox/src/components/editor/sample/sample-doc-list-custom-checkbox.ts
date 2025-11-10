@@ -18,14 +18,20 @@ export const defaultContent: NodeJSON = {
       type: 'list',
       attrs: { kind: 'task', checked: true },
       content: [
-        { type: 'paragraph', content: [{ type: 'text', text: 'Completed Task' }] },
+        {
+          type: 'paragraph',
+          content: [{ type: 'text', text: 'Completed Task' }],
+        },
       ],
     },
     {
       type: 'list',
       attrs: { kind: 'task', checked: false },
       content: [
-        { type: 'paragraph', content: [{ type: 'text', text: 'Incomplete Task' }] },
+        {
+          type: 'paragraph',
+          content: [{ type: 'text', text: 'Incomplete Task' }],
+        },
       ],
     },
   ],

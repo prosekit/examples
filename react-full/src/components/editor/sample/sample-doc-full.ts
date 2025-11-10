@@ -11,8 +11,15 @@ export const defaultContent: NodeJSON = {
     {
       type: 'paragraph',
       content: [
-        { type: 'text', text: 'Every keystroke flows naturally. Every feature appears exactly when you need it. This is ' },
-        { type: 'text', marks: [{ type: 'bold' }], text: 'writing without barriers' },
+        {
+          type: 'text',
+          text: 'Every keystroke flows naturally. Every feature appears exactly when you need it. This is ',
+        },
+        {
+          type: 'text',
+          marks: [{ type: 'bold' }],
+          text: 'writing without barriers',
+        },
         { type: 'text', text: '.' },
       ],
     },
@@ -49,7 +56,10 @@ export const defaultContent: NodeJSON = {
         { type: 'text', text: 'Select any text to format it. Type ' },
         { type: 'text', marks: [{ type: 'code' }], text: '@' },
         { type: 'text', text: ' to mention ' },
-        { type: 'mention', attrs: { id: '39', value: '@someone', kind: 'user' } },
+        {
+          type: 'mention',
+          attrs: { id: '39', value: '@someone', kind: 'user' },
+        },
         { type: 'text', text: ' or ' },
         { type: 'text', marks: [{ type: 'code' }], text: '#' },
         { type: 'text', text: ' for ' },
@@ -68,19 +78,10 @@ export const defaultContent: NodeJSON = {
       type: 'list',
       attrs: { kind: 'bullet', order: null, checked: false, collapsed: false },
       content: [
-        { type: 'paragraph', content: [{ type: 'text', text: 'Bullet points that guide thoughts' }] },
-      ],
-    },
-    {
-      type: 'list',
-      attrs: { kind: 'bullet', order: null, checked: false, collapsed: false },
-      content: [
-        { type: 'paragraph', content: [{ type: 'text', text: 'Nested lists for complex ideas' }] },
         {
-          type: 'list',
-          attrs: { kind: 'bullet', order: null, checked: false, collapsed: false },
+          type: 'paragraph',
           content: [
-            { type: 'paragraph', content: [{ type: 'text', text: 'Sub-points flow naturally' }] },
+            { type: 'text', text: 'Bullet points that guide thoughts' },
           ],
         },
       ],
@@ -89,19 +90,58 @@ export const defaultContent: NodeJSON = {
       type: 'list',
       attrs: { kind: 'bullet', order: null, checked: false, collapsed: false },
       content: [
-        { type: 'paragraph', content: [{ type: 'text', text: 'Tasks that focus' }] },
+        {
+          type: 'paragraph',
+          content: [{ type: 'text', text: 'Nested lists for complex ideas' }],
+        },
+        {
+          type: 'list',
+          attrs: {
+            kind: 'bullet',
+            order: null,
+            checked: false,
+            collapsed: false,
+          },
+          content: [
+            {
+              type: 'paragraph',
+              content: [{ type: 'text', text: 'Sub-points flow naturally' }],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: 'list',
+      attrs: { kind: 'bullet', order: null, checked: false, collapsed: false },
+      content: [
+        {
+          type: 'paragraph',
+          content: [{ type: 'text', text: 'Tasks that focus' }],
+        },
         {
           type: 'list',
           attrs: { kind: 'task', order: null, checked: true, collapsed: false },
           content: [
-            { type: 'paragraph', content: [{ type: 'text', text: 'Done feels good' }] },
+            {
+              type: 'paragraph',
+              content: [{ type: 'text', text: 'Done feels good' }],
+            },
           ],
         },
         {
           type: 'list',
-          attrs: { kind: 'task', order: null, checked: false, collapsed: false },
+          attrs: {
+            kind: 'task',
+            order: null,
+            checked: false,
+            collapsed: false,
+          },
           content: [
-            { type: 'paragraph', content: [{ type: 'text', text: 'Todo drives action' }] },
+            {
+              type: 'paragraph',
+              content: [{ type: 'text', text: 'Todo drives action' }],
+            },
           ],
         },
       ],
@@ -110,21 +150,30 @@ export const defaultContent: NodeJSON = {
       type: 'list',
       attrs: { kind: 'ordered', order: null, checked: false, collapsed: false },
       content: [
-        { type: 'paragraph', content: [{ type: 'text', text: 'Numbered steps' }] },
+        {
+          type: 'paragraph',
+          content: [{ type: 'text', text: 'Numbered steps' }],
+        },
       ],
     },
     {
       type: 'list',
       attrs: { kind: 'ordered', order: null, checked: false, collapsed: false },
       content: [
-        { type: 'paragraph', content: [{ type: 'text', text: 'Sequential thinking' }] },
+        {
+          type: 'paragraph',
+          content: [{ type: 'text', text: 'Sequential thinking' }],
+        },
       ],
     },
     {
       type: 'list',
       attrs: { kind: 'ordered', order: null, checked: false, collapsed: false },
       content: [
-        { type: 'paragraph', content: [{ type: 'text', text: 'Clear progress' }] },
+        {
+          type: 'paragraph',
+          content: [{ type: 'text', text: 'Clear progress' }],
+        },
       ],
     },
     {
@@ -156,7 +205,10 @@ export const defaultContent: NodeJSON = {
     {
       type: 'paragraph',
       content: [
-        { type: 'text', text: 'Drag the handle in the bottom right corner to resize.' },
+        {
+          type: 'text',
+          text: 'Drag the handle in the bottom right corner to resize.',
+        },
       ],
     },
     {
@@ -176,7 +228,13 @@ export const defaultContent: NodeJSON = {
               content: [
                 {
                   type: 'paragraph',
-                  content: [{ type: 'text', marks: [{ type: 'bold' }], text: 'Feature' }],
+                  content: [
+                    {
+                      type: 'text',
+                      marks: [{ type: 'bold' }],
+                      text: 'Feature',
+                    },
+                  ],
                 },
               ],
             },
@@ -186,7 +244,13 @@ export const defaultContent: NodeJSON = {
               content: [
                 {
                   type: 'paragraph',
-                  content: [{ type: 'text', marks: [{ type: 'bold' }], text: 'How to use' }],
+                  content: [
+                    {
+                      type: 'text',
+                      marks: [{ type: 'bold' }],
+                      text: 'How to use',
+                    },
+                  ],
                 },
               ],
             },
@@ -196,7 +260,9 @@ export const defaultContent: NodeJSON = {
               content: [
                 {
                   type: 'paragraph',
-                  content: [{ type: 'text', marks: [{ type: 'bold' }], text: 'Result' }],
+                  content: [
+                    { type: 'text', marks: [{ type: 'bold' }], text: 'Result' },
+                  ],
                 },
               ],
             },
@@ -209,47 +275,30 @@ export const defaultContent: NodeJSON = {
               type: 'tableCell',
               attrs: {},
               content: [
-                { type: 'paragraph', content: [{ type: 'text', text: 'Format text' }] },
+                {
+                  type: 'paragraph',
+                  content: [{ type: 'text', text: 'Format text' }],
+                },
               ],
             },
             {
               type: 'tableCell',
               attrs: {},
               content: [
-                { type: 'paragraph', content: [{ type: 'text', text: 'Select and choose' }] },
+                {
+                  type: 'paragraph',
+                  content: [{ type: 'text', text: 'Select and choose' }],
+                },
               ],
             },
             {
               type: 'tableCell',
               attrs: {},
               content: [
-                { type: 'paragraph', content: [{ type: 'text', text: 'Perfect styling' }] },
-              ],
-            },
-          ],
-        },
-        {
-          type: 'tableRow',
-          content: [
-            {
-              type: 'tableCell',
-              attrs: {},
-              content: [
-                { type: 'paragraph', content: [{ type: 'text', text: 'Add mentions' }] },
-              ],
-            },
-            {
-              type: 'tableCell',
-              attrs: {},
-              content: [
-                { type: 'paragraph', content: [{ type: 'text', text: 'Type @ and name' }] },
-              ],
-            },
-            {
-              type: 'tableCell',
-              attrs: {},
-              content: [
-                { type: 'paragraph', content: [{ type: 'text', text: 'Connected ideas' }] },
+                {
+                  type: 'paragraph',
+                  content: [{ type: 'text', text: 'Perfect styling' }],
+                },
               ],
             },
           ],
@@ -261,21 +310,65 @@ export const defaultContent: NodeJSON = {
               type: 'tableCell',
               attrs: {},
               content: [
-                { type: 'paragraph', content: [{ type: 'text', text: 'Insert anything' }] },
+                {
+                  type: 'paragraph',
+                  content: [{ type: 'text', text: 'Add mentions' }],
+                },
               ],
             },
             {
               type: 'tableCell',
               attrs: {},
               content: [
-                { type: 'paragraph', content: [{ type: 'text', text: 'Press / for menu' }] },
+                {
+                  type: 'paragraph',
+                  content: [{ type: 'text', text: 'Type @ and name' }],
+                },
               ],
             },
             {
               type: 'tableCell',
               attrs: {},
               content: [
-                { type: 'paragraph', content: [{ type: 'text', text: 'Endless possibilities' }] },
+                {
+                  type: 'paragraph',
+                  content: [{ type: 'text', text: 'Connected ideas' }],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          type: 'tableRow',
+          content: [
+            {
+              type: 'tableCell',
+              attrs: {},
+              content: [
+                {
+                  type: 'paragraph',
+                  content: [{ type: 'text', text: 'Insert anything' }],
+                },
+              ],
+            },
+            {
+              type: 'tableCell',
+              attrs: {},
+              content: [
+                {
+                  type: 'paragraph',
+                  content: [{ type: 'text', text: 'Press / for menu' }],
+                },
+              ],
+            },
+            {
+              type: 'tableCell',
+              attrs: {},
+              content: [
+                {
+                  type: 'paragraph',
+                  content: [{ type: 'text', text: 'Endless possibilities' }],
+                },
               ],
             },
           ],
@@ -304,7 +397,9 @@ export const defaultContent: NodeJSON = {
     { type: 'horizontalRule' },
     {
       type: 'paragraph',
-      content: [{ type: 'text', text: 'Start typing. Everything else just flows.' }],
+      content: [
+        { type: 'text', text: 'Start typing. Everything else just flows.' },
+      ],
     },
   ],
 }

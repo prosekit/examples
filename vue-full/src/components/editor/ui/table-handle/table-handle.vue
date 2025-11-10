@@ -58,11 +58,15 @@ const state = useEditorDerivedValue(getTableHandleState)
   <TableHandleRoot class="contents">
     <TableHandleDragPreview />
     <TableHandleDropIndicator />
-    <TableHandleColumnRoot class="h-[1.2em] w-[1.5em] translate-y-[80%] flex items-center box-border justify-center bg-white dark:bg-gray-950 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-sm text-gray-500/50 dark:text-gray-500/50 border border-gray-200 dark:border-gray-800 border-solid p-0 overflow-hidden duration-150 transition-discrete transition data-[state=closed]:opacity-0 starting:opacity-0 opacity-100 data-[state=closed]:scale-95 starting:scale-95 scale-100">
+    <TableHandleColumnRoot
+      class="h-[1.2em] w-[1.5em] translate-y-[80%] flex items-center box-border justify-center bg-white dark:bg-gray-950 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-sm text-gray-500/50 dark:text-gray-500/50 border border-gray-200 dark:border-gray-800 border-solid p-0 overflow-hidden duration-150 transition-discrete transition data-[state=closed]:opacity-0 starting:opacity-0 opacity-100 data-[state=closed]:scale-95 starting:scale-95 scale-100"
+    >
       <TableHandleColumnTrigger class="flex items-center justify-center">
         <div class="i-lucide-grip-horizontal size-5 block"></div>
       </TableHandleColumnTrigger>
-      <TableHandlePopoverContent class="relative block max-h-100 min-w-32 select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg [&:not([data-state])]:hidden">
+      <TableHandlePopoverContent
+        class="relative block max-h-100 min-w-32 select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg [&:not([data-state])]:hidden"
+      >
         <TableHandlePopoverItem
           v-if="state.addTableColumnBefore.canExec"
           class="relative min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 data-danger:text-red-500 box-border cursor-default select-none whitespace-nowrap outline-hidden data-focused:bg-gray-100 dark:data-focused:bg-gray-800"
@@ -83,7 +87,11 @@ const state = useEditorDerivedValue(getTableHandleState)
           @select="state.deleteCellSelection.command"
         >
           <span>Clear Contents</span>
-          <span class="text-xs tracking-widest text-gray-500 dark:text-gray-500">Del</span>
+          <span
+            class="text-xs tracking-widest text-gray-500 dark:text-gray-500"
+          >
+            Del
+          </span>
         </TableHandlePopoverItem>
         <TableHandlePopoverItem
           v-if="state.deleteTableColumn.canExec"
@@ -102,11 +110,15 @@ const state = useEditorDerivedValue(getTableHandleState)
         </TableHandlePopoverItem>
       </TableHandlePopoverContent>
     </TableHandleColumnRoot>
-    <TableHandleRowRoot class="h-[1.5em] w-[1.2em] translate-x-[80%] flex items-center box-border justify-center bg-white dark:bg-gray-950 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-sm text-gray-500/50 dark:text-gray-500/50 border border-gray-200 dark:border-gray-800 border-solid p-0 overflow-hidden duration-150 transition-discrete transition data-[state=closed]:opacity-0 starting:opacity-0 opacity-100 data-[state=closed]:scale-95 starting:scale-95 scale-100">
+    <TableHandleRowRoot
+      class="h-[1.5em] w-[1.2em] translate-x-[80%] flex items-center box-border justify-center bg-white dark:bg-gray-950 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-sm text-gray-500/50 dark:text-gray-500/50 border border-gray-200 dark:border-gray-800 border-solid p-0 overflow-hidden duration-150 transition-discrete transition data-[state=closed]:opacity-0 starting:opacity-0 opacity-100 data-[state=closed]:scale-95 starting:scale-95 scale-100"
+    >
       <TableHandleRowTrigger class="flex items-center justify-center">
         <div class="i-lucide-grip-vertical size-5 block"></div>
       </TableHandleRowTrigger>
-      <TableHandlePopoverContent class="relative block max-h-100 min-w-32 select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg [&:not([data-state])]:hidden">
+      <TableHandlePopoverContent
+        class="relative block max-h-100 min-w-32 select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg [&:not([data-state])]:hidden"
+      >
         <TableHandlePopoverItem
           v-if="state.addTableRowAbove.canExec"
           class="relative min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 data-danger:text-red-500 box-border cursor-default select-none whitespace-nowrap outline-hidden data-focused:bg-gray-100 dark:data-focused:bg-gray-800"
@@ -127,7 +139,11 @@ const state = useEditorDerivedValue(getTableHandleState)
           @select="state.deleteCellSelection.command"
         >
           <span>Clear Contents</span>
-          <span class="text-xs tracking-widest text-gray-500 dark:text-gray-500">Del</span>
+          <span
+            class="text-xs tracking-widest text-gray-500 dark:text-gray-500"
+          >
+            Del
+          </span>
         </TableHandlePopoverItem>
         <TableHandlePopoverItem
           v-if="state.deleteTableRow.canExec"

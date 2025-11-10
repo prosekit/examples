@@ -13,142 +13,145 @@ function getToolbarItems(editor: Editor<BasicExtension>) {
   return {
     undo: editor.commands.undo
       ? {
-        isActive: false,
-        canExec: editor.commands.undo.canExec(),
-        command: () => editor.commands.undo(),
-      }
+          isActive: false,
+          canExec: editor.commands.undo.canExec(),
+          command: () => editor.commands.undo(),
+        }
       : undefined,
     redo: editor.commands.redo
       ? {
-        isActive: false,
-        canExec: editor.commands.redo.canExec(),
-        command: () => editor.commands.redo(),
-      }
+          isActive: false,
+          canExec: editor.commands.redo.canExec(),
+          command: () => editor.commands.redo(),
+        }
       : undefined,
     bold: editor.commands.toggleBold
       ? {
-        isActive: editor.marks.bold.isActive(),
-        canExec: editor.commands.toggleBold.canExec(),
-        command: () => editor.commands.toggleBold(),
-      }
+          isActive: editor.marks.bold.isActive(),
+          canExec: editor.commands.toggleBold.canExec(),
+          command: () => editor.commands.toggleBold(),
+        }
       : undefined,
     italic: editor.commands.toggleItalic
       ? {
-        isActive: editor.marks.italic.isActive(),
-        canExec: editor.commands.toggleItalic.canExec(),
-        command: () => editor.commands.toggleItalic(),
-      }
+          isActive: editor.marks.italic.isActive(),
+          canExec: editor.commands.toggleItalic.canExec(),
+          command: () => editor.commands.toggleItalic(),
+        }
       : undefined,
     underline: editor.commands.toggleUnderline
       ? {
-        isActive: editor.marks.underline.isActive(),
-        canExec: editor.commands.toggleUnderline.canExec(),
-        command: () => editor.commands.toggleUnderline(),
-      }
+          isActive: editor.marks.underline.isActive(),
+          canExec: editor.commands.toggleUnderline.canExec(),
+          command: () => editor.commands.toggleUnderline(),
+        }
       : undefined,
     strike: editor.commands.toggleStrike
       ? {
-        isActive: editor.marks.strike.isActive(),
-        canExec: editor.commands.toggleStrike.canExec(),
-        command: () => editor.commands.toggleStrike(),
-      }
+          isActive: editor.marks.strike.isActive(),
+          canExec: editor.commands.toggleStrike.canExec(),
+          command: () => editor.commands.toggleStrike(),
+        }
       : undefined,
     code: editor.commands.toggleCode
       ? {
-        isActive: editor.marks.code.isActive(),
-        canExec: editor.commands.toggleCode.canExec(),
-        command: () => editor.commands.toggleCode(),
-      }
+          isActive: editor.marks.code.isActive(),
+          canExec: editor.commands.toggleCode.canExec(),
+          command: () => editor.commands.toggleCode(),
+        }
       : undefined,
     codeBlock: editor.commands.insertCodeBlock
       ? {
-        isActive: editor.nodes.codeBlock.isActive(),
-        canExec: editor.commands.insertCodeBlock.canExec({ language: 'javascript' }),
-        command: () => editor.commands.insertCodeBlock({ language: 'javascript' }),
-      }
+          isActive: editor.nodes.codeBlock.isActive(),
+          canExec: editor.commands.insertCodeBlock.canExec({
+            language: 'javascript',
+          }),
+          command: () =>
+            editor.commands.insertCodeBlock({ language: 'javascript' }),
+        }
       : undefined,
     heading1: editor.commands.toggleHeading
       ? {
-        isActive: editor.nodes.heading.isActive({ level: 1 }),
-        canExec: editor.commands.toggleHeading.canExec({ level: 1 }),
-        command: () => editor.commands.toggleHeading({ level: 1 }),
-      }
+          isActive: editor.nodes.heading.isActive({ level: 1 }),
+          canExec: editor.commands.toggleHeading.canExec({ level: 1 }),
+          command: () => editor.commands.toggleHeading({ level: 1 }),
+        }
       : undefined,
     heading2: editor.commands.toggleHeading
       ? {
-        isActive: editor.nodes.heading.isActive({ level: 2 }),
-        canExec: editor.commands.toggleHeading.canExec({ level: 2 }),
-        command: () => editor.commands.toggleHeading({ level: 2 }),
-      }
+          isActive: editor.nodes.heading.isActive({ level: 2 }),
+          canExec: editor.commands.toggleHeading.canExec({ level: 2 }),
+          command: () => editor.commands.toggleHeading({ level: 2 }),
+        }
       : undefined,
     heading3: editor.commands.toggleHeading
       ? {
-        isActive: editor.nodes.heading.isActive({ level: 3 }),
-        canExec: editor.commands.toggleHeading.canExec({ level: 3 }),
-        command: () => editor.commands.toggleHeading({ level: 3 }),
-      }
+          isActive: editor.nodes.heading.isActive({ level: 3 }),
+          canExec: editor.commands.toggleHeading.canExec({ level: 3 }),
+          command: () => editor.commands.toggleHeading({ level: 3 }),
+        }
       : undefined,
     horizontalRule: editor.commands.insertHorizontalRule
       ? {
-        isActive: editor.nodes.horizontalRule.isActive(),
-        canExec: editor.commands.insertHorizontalRule.canExec(),
-        command: () => editor.commands.insertHorizontalRule(),
-      }
+          isActive: editor.nodes.horizontalRule.isActive(),
+          canExec: editor.commands.insertHorizontalRule.canExec(),
+          command: () => editor.commands.insertHorizontalRule(),
+        }
       : undefined,
     blockquote: editor.commands.toggleBlockquote
       ? {
-        isActive: editor.nodes.blockquote.isActive(),
-        canExec: editor.commands.toggleBlockquote.canExec(),
-        command: () => editor.commands.toggleBlockquote(),
-      }
+          isActive: editor.nodes.blockquote.isActive(),
+          canExec: editor.commands.toggleBlockquote.canExec(),
+          command: () => editor.commands.toggleBlockquote(),
+        }
       : undefined,
     bulletList: editor.commands.toggleList
       ? {
-        isActive: editor.nodes.list.isActive({ kind: 'bullet' }),
-        canExec: editor.commands.toggleList.canExec({ kind: 'bullet' }),
-        command: () => editor.commands.toggleList({ kind: 'bullet' }),
-      }
+          isActive: editor.nodes.list.isActive({ kind: 'bullet' }),
+          canExec: editor.commands.toggleList.canExec({ kind: 'bullet' }),
+          command: () => editor.commands.toggleList({ kind: 'bullet' }),
+        }
       : undefined,
     orderedList: editor.commands.toggleList
       ? {
-        isActive: editor.nodes.list.isActive({ kind: 'ordered' }),
-        canExec: editor.commands.toggleList.canExec({ kind: 'ordered' }),
-        command: () => editor.commands.toggleList({ kind: 'ordered' }),
-      }
+          isActive: editor.nodes.list.isActive({ kind: 'ordered' }),
+          canExec: editor.commands.toggleList.canExec({ kind: 'ordered' }),
+          command: () => editor.commands.toggleList({ kind: 'ordered' }),
+        }
       : undefined,
     taskList: editor.commands.toggleList
       ? {
-        isActive: editor.nodes.list.isActive({ kind: 'task' }),
-        canExec: editor.commands.toggleList.canExec({ kind: 'task' }),
-        command: () => editor.commands.toggleList({ kind: 'task' }),
-      }
+          isActive: editor.nodes.list.isActive({ kind: 'task' }),
+          canExec: editor.commands.toggleList.canExec({ kind: 'task' }),
+          command: () => editor.commands.toggleList({ kind: 'task' }),
+        }
       : undefined,
     toggleList: editor.commands.toggleList
       ? {
-        isActive: editor.nodes.list.isActive({ kind: 'toggle' }),
-        canExec: editor.commands.toggleList.canExec({ kind: 'toggle' }),
-        command: () => editor.commands.toggleList({ kind: 'toggle' }),
-      }
+          isActive: editor.nodes.list.isActive({ kind: 'toggle' }),
+          canExec: editor.commands.toggleList.canExec({ kind: 'toggle' }),
+          command: () => editor.commands.toggleList({ kind: 'toggle' }),
+        }
       : undefined,
     indentList: editor.commands.indentList
       ? {
-        isActive: false,
-        canExec: editor.commands.indentList.canExec(),
-        command: () => editor.commands.indentList(),
-      }
+          isActive: false,
+          canExec: editor.commands.indentList.canExec(),
+          command: () => editor.commands.indentList(),
+        }
       : undefined,
     dedentList: editor.commands.dedentList
       ? {
-        isActive: false,
-        canExec: editor.commands.dedentList.canExec(),
-        command: () => editor.commands.dedentList(),
-      }
+          isActive: false,
+          canExec: editor.commands.dedentList.canExec(),
+          command: () => editor.commands.dedentList(),
+        }
       : undefined,
     insertImage: editor.commands.insertImage
       ? {
-        isActive: false,
-        canExec: editor.commands.insertImage.canExec(),
-      }
+          isActive: false,
+          canExec: editor.commands.insertImage.canExec(),
+        }
       : undefined,
   }
 }
@@ -157,7 +160,9 @@ const items = useEditorDerivedValue(getToolbarItems)
 </script>
 
 <template>
-  <div class="z-2 box-border border-gray-200 dark:border-gray-800 border-solid border-l-0 border-r-0 border-t-0 border-b flex flex-wrap gap-1 p-2 items-center">
+  <div
+    class="z-2 box-border border-gray-200 dark:border-gray-800 border-solid border-l-0 border-r-0 border-t-0 border-b flex flex-wrap gap-1 p-2 items-center"
+  >
     <Button
       v-if="items.undo"
       :pressed="items.undo.isActive"

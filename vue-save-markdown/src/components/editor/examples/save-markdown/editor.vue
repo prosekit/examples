@@ -3,23 +3,11 @@ import 'prosekit/basic/style.css'
 import 'prosekit/basic/typography.css'
 
 import { defineBasicExtension } from 'prosekit/basic'
-import {
-  createEditor,
-  jsonFromHTML,
-} from 'prosekit/core'
-import {
-  ProseKit,
-  useDocChange,
-} from 'prosekit/vue'
-import {
-  ref,
-  watchPostEffect,
-} from 'vue'
+import { createEditor, jsonFromHTML } from 'prosekit/core'
+import { ProseKit, useDocChange } from 'prosekit/vue'
+import { ref, watchPostEffect } from 'vue'
 
-import {
-  htmlFromMarkdown,
-  markdownFromHTML,
-} from './markdown'
+import { htmlFromMarkdown, markdownFromHTML } from './markdown'
 
 // A list of saved documents, stored as Markdown strings
 const records = ref<string[]>([])
@@ -58,7 +46,9 @@ watchPostEffect((onCleanup) => {
 </script>
 
 <template>
-  <div class="box-border h-full w-full min-h-36 overflow-y-hidden overflow-x-hidden rounded-md border border-solid border-gray-200 dark:border-gray-700 shadow-sm flex flex-col bg-white dark:bg-gray-950 text-black dark:text-white">
+  <div
+    class="box-border h-full w-full min-h-36 overflow-y-hidden overflow-x-hidden rounded-md border border-solid border-gray-200 dark:border-gray-700 shadow-sm flex flex-col bg-white dark:bg-gray-950 text-black dark:text-white"
+  >
     <button
       :disabled="!hasUnsavedChange"
       class="m-1 border border-solid bg-white px-2 py-1 text-sm text-black disabled:cursor-not-allowed disabled:text-gray-500"
@@ -85,7 +75,10 @@ watchPostEffect((onCleanup) => {
     </ul>
     <ProseKit :key="key" :editor="editor">
       <div class="relative w-full flex-1 box-border overflow-y-auto">
-        <div ref="editorRef" class="ProseMirror box-border min-h-full px-[max(4rem,calc(50%-20rem))] py-8 outline-hidden outline-0 [&_span[data-mention=user]]:text-blue-500 [&_span[data-mention=tag]]:text-violet-500"></div>
+        <div
+          ref="editorRef"
+          class="ProseMirror box-border min-h-full px-[max(4rem,calc(50%-20rem))] py-8 outline-hidden outline-0 [&_span[data-mention=user]]:text-blue-500 [&_span[data-mention=tag]]:text-violet-500"
+        ></div>
       </div>
     </ProseKit>
   </div>

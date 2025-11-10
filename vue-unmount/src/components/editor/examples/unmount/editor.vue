@@ -25,9 +25,7 @@ if (nextKey.value === 1) {
 <template>
   <div class="flex flex-col gap-2">
     <div class="flex gap-2">
-      <button class="border p-2" @click="addEditor">
-        Add editor
-      </button>
+      <button class="border p-2" @click="addEditor">Add editor</button>
       <button
         v-for="key in editorKeys"
         :key="key"
@@ -38,7 +36,9 @@ if (nextKey.value === 1) {
       </button>
     </div>
     <div v-for="key in editorKeys" :key="key" class="h-32">
-      <EditorComponent :placeholder="`Editor No.${key} of ${editorKeys.length}`" />
+      <EditorComponent
+        :placeholder="`Editor No.${key} of ${editorKeys.length}`"
+      />
     </div>
   </div>
 </template>
