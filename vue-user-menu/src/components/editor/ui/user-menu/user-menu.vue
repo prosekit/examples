@@ -33,13 +33,11 @@ function handleUserInsert(id: number, username: string) {
   <AutocompletePopover
     :regex="/@\w*$/"
     class="relative block max-h-100 min-w-60 select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg [&:not([data-state])]:hidden"
-    :on-query-change="props.onQueryChange"
-    :on-open-change="props.onOpenChange"
+    @query-change="props.onQueryChange"
+    @open-change="props.onOpenChange"
   >
     <AutocompleteList>
-      <AutocompleteEmpty
-        class="relative flex items-center justify-between min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-hidden data-focused:bg-gray-100 dark:data-focused:bg-gray-800"
-      >
+      <AutocompleteEmpty class="relative flex items-center justify-between min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-hidden data-focused:bg-gray-100 dark:data-focused:bg-gray-800">
         {{ props.loading ? 'Loading...' : 'No results' }}
       </AutocompleteEmpty>
 

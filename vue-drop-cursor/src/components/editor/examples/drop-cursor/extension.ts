@@ -1,4 +1,7 @@
-import { defineBaseKeymap, union } from 'prosekit/core'
+import {
+  defineBaseKeymap,
+  union,
+} from 'prosekit/core'
 import { defineDoc } from 'prosekit/extensions/doc'
 import { defineDropCursor } from 'prosekit/extensions/drop-cursor'
 import { defineImage } from 'prosekit/extensions/image'

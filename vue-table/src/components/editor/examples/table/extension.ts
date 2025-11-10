@@ -1,4 +1,8 @@
-import { defineBaseKeymap, defineHistory, union } from 'prosekit/core'
+import {
+  defineBaseKeymap,
+  defineHistory,
+  union,
+} from 'prosekit/core'
 import { defineDoc } from 'prosekit/extensions/doc'
 import { defineGapCursor } from 'prosekit/extensions/gap-cursor'
 import { defineParagraph } from 'prosekit/extensions/paragraph'

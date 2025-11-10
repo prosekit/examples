@@ -1,9 +1,16 @@
 import 'prosekit/basic/style.css'
 import 'prosekit/basic/typography.css'
 
-import { useCallback, useMemo, useState } from 'preact/hooks'
+import {
+  useCallback,
+  useMemo,
+  useState,
+} from 'preact/hooks'
 import type { NodeJSON } from 'prosekit/core'
-import { CommitRecorder, type Commit } from 'prosekit/extensions/commit'
+import {
+  CommitRecorder,
+  type Commit,
+} from 'prosekit/extensions/commit'
 
 import EditorDiff from './editor-diff'
 import EditorMain from './editor-main'
@@ -26,11 +33,12 @@ export default function Editor() {
   const handleRestore = useCallback(
     (id: string) => {
       const index = commits.findIndex((commit) => commit.id === id)
-      if (index === -1) return
-      const doc = commits[index].commit.doc
+      const commit = commits[index]
+      if (index === -1 || !commit) return
+      const doc = commit.commit.doc
       setDefaultContent(doc)
-      setCommits((existing) => existing.slice(index))
-      setKey((value) => value + 1)
+      setCommits((commits) => commits.slice(index))
+      setKey((key) => key + 1)
     },
     [commits],
   )
@@ -45,10 +53,7 @@ export default function Editor() {
             commitRecorder={commitRecorder}
           />
         </div>
-        <button
-          onClick={handleCommit}
-          className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-white dark:ring-offset-gray-950 transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-gray-900 dark:focus-visible:ring-gray-300 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border-0 bg-gray-900 dark:bg-gray-50 text-gray-50 dark:text-gray-900 hover:bg-gray-900/90 dark:hover:bg-gray-50/90 h-10 px-4 py-2"
-        >
+        <button onClick={handleCommit} className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-white dark:ring-offset-gray-950 transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-gray-900 dark:focus-visible:ring-gray-300 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border-0 bg-gray-900 dark:bg-gray-50 text-gray-50 dark:text-gray-900 hover:bg-gray-900/90 dark:hover:bg-gray-50/90 h-10 px-4 py-2">
           Save
         </button>
       </div>

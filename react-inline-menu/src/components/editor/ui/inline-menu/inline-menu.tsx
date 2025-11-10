@@ -2,7 +2,10 @@ import type { BasicExtension } from 'prosekit/basic'
 import type { Editor } from 'prosekit/core'
 import type { LinkAttrs } from 'prosekit/extensions/link'
 import type { EditorState } from 'prosekit/pm/state'
-import { useEditor, useEditorDerivedValue } from 'prosekit/react'
+import {
+  useEditor,
+  useEditorDerivedValue,
+} from 'prosekit/react'
 import { InlinePopover } from 'prosekit/react/inline-popover'
 import { useState } from 'react'
 
@@ -12,46 +15,46 @@ function getInlineMenuItems(editor: Editor<BasicExtension>) {
   return {
     bold: editor.commands.toggleBold
       ? {
-          isActive: editor.marks.bold.isActive(),
-          canExec: editor.commands.toggleBold.canExec(),
-          command: () => editor.commands.toggleBold(),
-        }
+        isActive: editor.marks.bold.isActive(),
+        canExec: editor.commands.toggleBold.canExec(),
+        command: () => editor.commands.toggleBold(),
+      }
       : undefined,
     italic: editor.commands.toggleItalic
       ? {
-          isActive: editor.marks.italic.isActive(),
-          canExec: editor.commands.toggleItalic.canExec(),
-          command: () => editor.commands.toggleItalic(),
-        }
+        isActive: editor.marks.italic.isActive(),
+        canExec: editor.commands.toggleItalic.canExec(),
+        command: () => editor.commands.toggleItalic(),
+      }
       : undefined,
     underline: editor.commands.toggleUnderline
       ? {
-          isActive: editor.marks.underline.isActive(),
-          canExec: editor.commands.toggleUnderline.canExec(),
-          command: () => editor.commands.toggleUnderline(),
-        }
+        isActive: editor.marks.underline.isActive(),
+        canExec: editor.commands.toggleUnderline.canExec(),
+        command: () => editor.commands.toggleUnderline(),
+      }
       : undefined,
     strike: editor.commands.toggleStrike
       ? {
-          isActive: editor.marks.strike.isActive(),
-          canExec: editor.commands.toggleStrike.canExec(),
-          command: () => editor.commands.toggleStrike(),
-        }
+        isActive: editor.marks.strike.isActive(),
+        canExec: editor.commands.toggleStrike.canExec(),
+        command: () => editor.commands.toggleStrike(),
+      }
       : undefined,
     code: editor.commands.toggleCode
       ? {
-          isActive: editor.marks.code.isActive(),
-          canExec: editor.commands.toggleCode.canExec(),
-          command: () => editor.commands.toggleCode(),
-        }
+        isActive: editor.marks.code.isActive(),
+        canExec: editor.commands.toggleCode.canExec(),
+        command: () => editor.commands.toggleCode(),
+      }
       : undefined,
     link: editor.commands.addLink
       ? {
-          isActive: editor.marks.link.isActive(),
-          canExec: editor.commands.addLink.canExec({ href: '' }),
-          command: () => editor.commands.expandLink(),
-          currentLink: getCurrentLink(editor.state) || '',
-        }
+        isActive: editor.marks.link.isActive(),
+        canExec: editor.commands.addLink.canExec({ href: '' }),
+        command: () => editor.commands.expandLink(),
+        currentLink: getCurrentLink(editor.state) || '',
+      }
       : undefined,
   }
 }
@@ -184,7 +187,8 @@ export default function InlineMenu() {
                 placeholder="Paste the link..."
                 defaultValue={items.link.currentLink}
                 className="flex h-9 rounded-md w-full bg-white dark:bg-gray-950 px-3 py-2 text-sm placeholder:text-gray-500 dark:placeholder:text-gray-500 transition border box-border border-gray-200 dark:border-gray-800 border-solid ring-0 ring-transparent focus-visible:ring-2 focus-visible:ring-gray-900 dark:focus-visible:ring-gray-300 focus-visible:ring-offset-0 outline-hidden focus-visible:outline-hidden file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:cursor-not-allowed disabled:opacity-50"
-              ></input>
+              >
+              </input>
             </form>
           )}
           {items.link.isActive && (
