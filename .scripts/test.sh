@@ -2,7 +2,7 @@
 
 # Test multiple directories using the given package manager
 # Usage: ./test.sh <package_manager> <test_dir1> <test_dir2> ...
-# Example: ./test.sh bun vue-unmount vue-router
+# Example: ./test.sh bun react-minimal vue-minimal svelte-minimal
 
 set -e 
 
@@ -19,5 +19,7 @@ TEST_DIRS=("${@:2}")
 
 # Test each directory in parallel using 4 jobs
 # If any test fails, the script will exit immediately
-parallel --halt soon,fail=1 -j4 \
-    bash ".scripts/test-one.sh" "$PACKAGE_MANAGER" {1} ::: "${TEST_DIRS[@]}"
+parallel -j4 --halt soon,fail=1 \
+  --group \
+  ".scripts/test-one.sh" "$PACKAGE_MANAGER" {1} \
+  ::: "${TEST_DIRS[@]}"
