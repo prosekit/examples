@@ -5,6 +5,11 @@
 # Example: ./test-one.sh bun react-minimal
 
 set -e 
+
+# Redirect all output to stdout
+exec 2>&1
+
+
 cd $(dirname $0)/..
 ROOT=$(pwd)
 
@@ -16,10 +21,10 @@ echo "========================================================"
 cd "$TEST_DIR"
 echo "Installing dependencies using $PACKAGE_MANAGER"
 echo "--------------------------------------------------------"
-$PACKAGE_MANAGER install --prefer-offline
+$PACKAGE_MANAGER install --prefer-offline  
 echo "========================================================"
 echo "Building $TEST_DIR"
 echo "--------------------------------------------------------"
-$PACKAGE_MANAGER run build
+$PACKAGE_MANAGER run build  
 echo "========================================================"
 echo "::endgroup::"
