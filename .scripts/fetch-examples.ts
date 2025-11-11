@@ -194,7 +194,7 @@ function memoize<Args extends any[], Result>(
 ) {
   const cache = new Map<string, Promise<Result>>()
 
-  return async (...args: Args): Promise<Result> => {
+  return (...args: Args): Promise<Result> => {
     const key = JSON.stringify(args)
     if (!cache.has(key)) {
       cache.set(
