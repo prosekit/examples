@@ -761,15 +761,18 @@ async function main() {
   )
 
   info(`Building ${items.length} examples from the registry`)
-  for (const item of items) {
-    try {
-      await buildExample(item)
-    } catch (error) {
-      throw new Error(`Failed to build ${item.name}: ${formatError(error)}`, {
-        cause: error,
-      })
-    }
-  }
+
+  await Promise.all(
+    items.map(async (item) => {
+      try {
+        await buildExample(item)
+      } catch (error) {
+        throw new Error(`Failed to build ${item.name}: ${formatError(error)}`, {
+          cause: error,
+        })
+      }
+    }),
+  )
 
   await buildDerivedExamples(registry)
 }

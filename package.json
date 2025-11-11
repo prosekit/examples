@@ -6,8 +6,8 @@
   "scripts": {
     "build": "echo 'noop'",
     "copy": "bun .scripts/build.ts",
-    "fetch": "bun .scripts/fetch-examples.ts && prettier --cache --write .",
-    "fix": "prettier --cache --write ."
+    "fetch": "bun .scripts/fetch-examples.ts && bun run fix",
+    "fix": "prettier --cache --write --log-level warn ."
   },
   "dependencies": {
     "@types/bun": "1.3.2",
