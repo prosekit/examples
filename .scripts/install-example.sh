@@ -26,4 +26,21 @@ finish() {
 }
 trap finish EXIT
 
-$PACKAGE_MANAGER install --prefer-offline
+case "$PACKAGE_MANAGER" in
+  bun)
+    bun install --prefer-offline
+    ;;
+  npm)
+    npm install --prefer-offline --no-audit --no-fund
+    ;;
+  pnpm)
+    pnpm install --prefer-offline
+    ;;
+  yarn)
+    yarn install --prefer-offline
+    ;;
+  *)
+    echo "Error: Unknown package manager '$PACKAGE_MANAGER'"
+    exit 1
+    ;;
+esac
