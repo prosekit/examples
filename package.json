@@ -5,7 +5,6 @@
   "type": "module",
   "scripts": {
     "build": "echo 'noop'",
-    "copy": "bun .scripts/build.ts",
     "fetch": "bun .scripts/fetch-examples.ts && bun run fix",
     "fix": "prettier --cache --write --log-level warn ."
   },
