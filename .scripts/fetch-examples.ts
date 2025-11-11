@@ -194,7 +194,7 @@ function memoize<Args extends any[], Result>(
 ) {
   const cache = new Map<string, Promise<Result>>()
 
-  return async (...args: Args): Promise<Result> => {
+  return (...args: Args): Promise<Result> => {
     const key = JSON.stringify(args)
     if (!cache.has(key)) {
       cache.set(
@@ -414,7 +414,10 @@ function normalizeVersionSpecifier(version: string) {
 async function ensureDependencies(
   dir: string,
   specs: DependencySpecifier[],
-  section: 'dependencies' | 'devDependencies' = 'dependencies',
+  sections: ('dependencies' | 'devDependencies')[] = [
+    'dependencies',
+    'devDependencies',
+  ],
 ) {
   if (!specs.length) return
 
@@ -427,8 +430,13 @@ async function ensureDependencies(
   for (const spec of specs) {
     const name = spec.name?.trim()
     if (!name) continue
-    if (pkg[section]?.[name]) {
+    if (sections.some((section) => pkg[section]?.[name])) {
       continue
+    }
+
+    const section = sections[0]
+    if (!section) {
+      throw new Error(`No section provided for ${name}`)
     }
 
     let version = spec.version?.trim()
@@ -463,13 +471,18 @@ async function ensureDependencies(
 async function ensurePackageDependency(
   dir: string,
   name: string,
-  section: 'dependencies' | 'devDependencies' = 'dependencies',
+  sections: ('dependencies' | 'devDependencies')[] = [
+    'dependencies',
+    'devDependencies',
+  ],
 ) {
-  await ensureDependencies(dir, [{ name }], section)
+  await ensureDependencies(dir, [{ name }], sections)
 }
 
 async function patchLoroExample(destDir: string) {
-  await ensurePackageDependency(destDir, 'vite-plugin-wasm', 'devDependencies')
+  await ensurePackageDependency(destDir, 'vite-plugin-wasm', [
+    'devDependencies',
+  ])
 
   const viteConfigPath = path.join(destDir, 'vite.config.ts')
   let viteConfig: string
@@ -761,15 +774,18 @@ async function main() {
   )
 
   info(`Building ${items.length} examples from the registry`)
-  for (const item of items) {
-    try {
-      await buildExample(item)
-    } catch (error) {
-      throw new Error(`Failed to build ${item.name}: ${formatError(error)}`, {
-        cause: error,
-      })
-    }
-  }
+
+  await Promise.all(
+    items.map(async (item) => {
+      try {
+        await buildExample(item)
+      } catch (error) {
+        throw new Error(`Failed to build ${item.name}: ${formatError(error)}`, {
+          cause: error,
+        })
+      }
+    }),
+  )
 
   await buildDerivedExamples(registry)
 }
