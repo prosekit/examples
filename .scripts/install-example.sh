@@ -37,7 +37,7 @@ case "$PACKAGE_MANAGER" in
     pnpm install --prefer-offline
     ;;
   yarn)
-    yarn install --prefer-offline
+    yarn install --prefer-offline --mutex /tmp/.yarn-mutex
     ;;
   *)
     echo "Error: Unknown package manager '$PACKAGE_MANAGER'"

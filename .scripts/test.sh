@@ -17,9 +17,9 @@ $PACKAGE_MANAGER --version
 # Rest of the arguments are the directories to test
 TEST_DIRS=("${@:2}")
 
-# Test each directory in parallel using 1 job
+# Test each directory in parallel using 4 jobs
 # If any test fails, the script will exit immediately
-parallel -j1 --halt soon,fail=1 \
+parallel -j4 --halt soon,fail=1 \
   --group \
   ".scripts/install-example.sh" "$PACKAGE_MANAGER" {1} \
   ::: "${TEST_DIRS[@]}"
