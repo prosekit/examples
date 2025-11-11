@@ -414,7 +414,10 @@ function normalizeVersionSpecifier(version: string) {
 async function ensureDependencies(
   dir: string,
   specs: DependencySpecifier[],
-  sections: ('dependencies' | 'devDependencies')[] = ['dependencies', 'devDependencies'],
+  sections: ('dependencies' | 'devDependencies')[] = [
+    'dependencies',
+    'devDependencies',
+  ],
 ) {
   if (!specs.length) return
 
@@ -427,7 +430,7 @@ async function ensureDependencies(
   for (const spec of specs) {
     const name = spec.name?.trim()
     if (!name) continue
-    if (sections.some(section => pkg[section]?.[name])) {
+    if (sections.some((section) => pkg[section]?.[name])) {
       continue
     }
 
@@ -468,13 +471,18 @@ async function ensureDependencies(
 async function ensurePackageDependency(
   dir: string,
   name: string,
-  sections: ('dependencies' | 'devDependencies')[] = ['dependencies', 'devDependencies'],
+  sections: ('dependencies' | 'devDependencies')[] = [
+    'dependencies',
+    'devDependencies',
+  ],
 ) {
   await ensureDependencies(dir, [{ name }], sections)
 }
 
 async function patchLoroExample(destDir: string) {
-  await ensurePackageDependency(destDir, 'vite-plugin-wasm', ['devDependencies'])
+  await ensurePackageDependency(destDir, 'vite-plugin-wasm', [
+    'devDependencies',
+  ])
 
   const viteConfigPath = path.join(destDir, 'vite.config.ts')
   let viteConfig: string
