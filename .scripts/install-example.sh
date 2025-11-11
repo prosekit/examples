@@ -31,7 +31,7 @@ case "$PACKAGE_MANAGER" in
     bun install --prefer-offline
     ;;
   npm)
-    npm install --prefer-offline --no-audit --no-fund
+    npm install --prefer-offline --no-audit --no-fund --install-strategy linked
     ;;
   pnpm)
     pnpm install --prefer-offline
