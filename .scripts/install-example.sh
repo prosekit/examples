@@ -26,4 +26,4 @@ finish() {
 }
 trap finish EXIT
 
-$PACKAGE_MANAGER run build  
+$PACKAGE_MANAGER install --prefer-offline
