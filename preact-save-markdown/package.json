@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "preact": "^10.27.2",
-    "prosekit": "^0.16.2",
+    "prosekit": "^0.16.3",
     "rehype-parse": "^9.0.1",
     "rehype-remark": "^10.0.1",
     "remark-gfm": "^4.0.1",
