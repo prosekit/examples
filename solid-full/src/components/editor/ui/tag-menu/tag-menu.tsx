@@ -10,6 +10,8 @@ import {
 } from 'prosekit/solid/autocomplete'
 import { For, type JSX } from 'solid-js'
 
+const regex = /#[\da-z]*$/i
+
 export default function TagMenu(props: {
   tags: { id: number; label: string }[]
 }): JSX.Element {
@@ -26,7 +28,7 @@ export default function TagMenu(props: {
 
   return (
     <AutocompletePopover
-      regex={/#[\da-z]*$/i}
+      regex={regex}
       class="relative block max-h-100 min-w-60 select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg [&:not([data-state])]:hidden"
     >
       <AutocompleteList>
