@@ -11,7 +11,7 @@ import EditorMain from './editor-main.vue'
 
 const commits = ref<{ id: string; date: Date; commit: Commit }[]>([])
 const key = ref(0)
-const defaultContent = ref<NodeJSON | undefined>()
+const initialContent = ref<NodeJSON | undefined>()
 const commitRecorder = new CommitRecorder()
 
 function handleCommit() {
@@ -26,7 +26,7 @@ function handleRestore(id: string) {
   const commit = commits.value[index]
   if (index === -1 || !commit) return
   const doc = commit.commit.doc
-  defaultContent.value = doc
+  initialContent.value = doc
   commits.value = commits.value.slice(index)
   key.value = key.value + 1
 }
@@ -38,7 +38,7 @@ function handleRestore(id: string) {
       <div class="max-h-md">
         <EditorMain
           :key="key"
-          :default-content="defaultContent"
+          :initial-content="initialContent"
           :commit-recorder="commitRecorder"
         />
       </div>

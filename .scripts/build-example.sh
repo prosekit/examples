@@ -18,10 +18,10 @@ echo "::group::Building ${TEST_DIR} using ${PACKAGE_MANAGER}"
 
 finish() {
   status=$?
-  if [ $status -ne 0 ]; then
-    echo "::error title=Build failed::$TEST_DIR exited with status $status"
-  fi
   echo "::endgroup::"
+  if [ $status -ne 0 ]; then
+    echo "::error title=Build failed::Failed to build $TEST_DIR using $PACKAGE_MANAGER and exited with status $status"
+  fi
   exit $status
 }
 trap finish EXIT
