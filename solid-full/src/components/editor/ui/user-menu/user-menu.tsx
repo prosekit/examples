@@ -1,5 +1,5 @@
 import type { BasicExtension } from 'prosekit/basic'
-import type { Union } from 'prosekit/core'
+import { canUseRegexLookbehind, type Union } from 'prosekit/core'
 import type { MentionExtension } from 'prosekit/extensions/mention'
 import { useEditor } from 'prosekit/solid'
 import {
@@ -9,6 +9,9 @@ import {
   AutocompletePopover,
 } from 'prosekit/solid/autocomplete'
 import { For, type JSX } from 'solid-js'
+
+// Match inputs like "@", "@foo", "@foo bar" etc. Do not match "@ foo".
+const regex = canUseRegexLookbehind() ? /(?<!\S)@(\S.*)?$/u : /@(\S.*)?$/u
 
 export default function UserMenu(props: {
   users: { id: number; name: string }[]
@@ -29,7 +32,7 @@ export default function UserMenu(props: {
 
   return (
     <AutocompletePopover
-      regex={/@\w*$/}
+      regex={regex}
       class="relative block max-h-100 min-w-60 select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg [&:not([data-state])]:hidden"
       onQueryChange={props.onQueryChange}
       onOpenChange={props.onOpenChange}
