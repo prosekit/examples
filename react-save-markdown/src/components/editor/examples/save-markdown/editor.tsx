@@ -38,7 +38,7 @@ export default function Editor() {
       setHasUnsavedChange(false)
       setKey((prev) => prev + 1)
     },
-    [editor.schema],
+    [editor],
   )
 
   return (

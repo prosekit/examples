@@ -9,13 +9,13 @@ import type { JSX } from 'solid-js'
 import { defineExtension } from './extension'
 
 export default function Editor(props: {
-  defaultContent?: NodeJSON
+  initialContent?: NodeJSON
   onDocUpdate?: (doc: NodeJSON) => void
 }): JSX.Element {
   const extension = defineExtension()
   const editor = createEditor({
     extension,
-    defaultContent: props.defaultContent,
+    defaultContent: props.initialContent,
   })
 
   const handleDocChange = (doc: ProseMirrorNode) =>

@@ -28,11 +28,14 @@ export default function Editor() {
     setHasUnsavedChange(false)
   }, [editor])
 
-  const handleLoad = useCallback((record: string) => {
-    editor.setContent(JSON.parse(record) as NodeJSON)
-    setHasUnsavedChange(false)
-    setKey((prev) => prev + 1)
-  }, [])
+  const handleLoad = useCallback(
+    (record: string) => {
+      editor.setContent(JSON.parse(record) as NodeJSON)
+      setHasUnsavedChange(false)
+      setKey((prev) => prev + 1)
+    },
+    [editor],
+  )
 
   return (
     <div className="box-border h-full w-full min-h-36 overflow-y-hidden overflow-x-hidden rounded-md border border-solid border-gray-200 dark:border-gray-700 shadow-sm flex flex-col bg-white dark:bg-gray-950 text-black dark:text-white">
