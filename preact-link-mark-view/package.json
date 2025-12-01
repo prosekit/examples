@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "preact": "^10.27.2",
+    "preact": "^10.28.0",
     "prosekit": "^0.16.3"
   },
   "devDependencies": {
