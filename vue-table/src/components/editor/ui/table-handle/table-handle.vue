@@ -51,6 +51,12 @@ function getTableHandleState(editor: Editor<TableExtension>) {
   }
 }
 
+interface Props {
+  dir?: 'ltr' | 'rtl'
+}
+
+const props = defineProps<Props>()
+
 const state = useEditorDerivedValue(getTableHandleState)
 </script>
 
@@ -111,7 +117,8 @@ const state = useEditorDerivedValue(getTableHandleState)
       </TableHandlePopoverContent>
     </TableHandleColumnRoot>
     <TableHandleRowRoot
-      class="h-[1.5em] w-[1.2em] translate-x-[80%] flex items-center box-border justify-center bg-white dark:bg-gray-950 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-sm text-gray-500/50 dark:text-gray-500/50 border border-gray-200 dark:border-gray-800 border-solid p-0 overflow-hidden duration-150 transition-discrete transition data-[state=closed]:opacity-0 starting:opacity-0 opacity-100 data-[state=closed]:scale-95 starting:scale-95 scale-100"
+      :placement="props.dir === 'rtl' ? 'right' : 'left'"
+      class="h-[1.5em] w-[1.2em] ltr:translate-x-[80%] rtl:translate-x-[-80%] flex items-center box-border justify-center bg-white dark:bg-gray-950 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-sm text-gray-500/50 dark:text-gray-500/50 border border-gray-200 dark:border-gray-800 border-solid p-0 overflow-hidden duration-150 transition-discrete transition data-[state=closed]:opacity-0 starting:opacity-0 opacity-100 data-[state=closed]:scale-95 starting:scale-95 scale-100"
     >
       <TableHandleRowTrigger class="flex items-center justify-center">
         <div class="i-lucide-grip-vertical size-5 block"></div>

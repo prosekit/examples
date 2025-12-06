@@ -4,10 +4,17 @@ import {
   BlockHandleDraggable,
   BlockHandlePopover,
 } from 'prosekit/vue/block-handle'
+
+interface Props {
+  dir?: 'ltr' | 'rtl'
+}
+
+const props = defineProps<Props>()
 </script>
 
 <template>
   <BlockHandlePopover
+    :placement="props.dir === 'rtl' ? 'right' : 'left'"
     class="flex items-center flex-row box-border justify-center transition border-0 [&:not([data-state])]:hidden will-change-transform motion-safe:data-[state=open]:animate-in motion-safe:data-[state=closed]:animate-out motion-safe:data-[state=open]:fade-in-0 motion-safe:data-[state=closed]:fade-out-0 motion-safe:data-[state=open]:zoom-in-95 motion-safe:data-[state=closed]:zoom-out-95 motion-safe:data-[state=open]:animate-duration-150 motion-safe:data-[state=closed]:animate-duration-200"
   >
     <BlockHandleAdd

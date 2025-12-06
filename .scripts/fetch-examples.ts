@@ -247,6 +247,17 @@ async function collectRegistryFiles(
   return Array.from(files.values())
 }
 
+async function collectRegistryDependencies(
+  item: RegistryItem,
+): Promise<string[]> {
+  const dependencies = new Set<string>()
+  const visited = new Set<string>()
+
+  await collectDependenciesRecursively(item, dependencies, visited)
+
+  return Array.from(dependencies)
+}
+
 async function collectFilesRecursively(
   item: RegistryItem,
   files: Map<string, RegistryFile>,
@@ -292,6 +303,36 @@ async function collectFilesRecursively(
       info(`Overriding ${target} with definition from ${item.name}`)
     }
     files.set(target, file)
+  }
+}
+
+async function collectDependenciesRecursively(
+  item: RegistryItem,
+  dependencies: Set<string>,
+  visited: Set<string>,
+) {
+  assert(item.name, 'Encountered registry item without a name')
+  if (visited.has(item.name)) {
+    return
+  }
+  visited.add(item.name)
+
+  for (const dep of item.dependencies || []) {
+    if (dep?.trim()) {
+      dependencies.add(dep.trim())
+    }
+  }
+
+  for (const dep of item.registryDependencies || []) {
+    try {
+      const depItem = await fetchRegistryItem(dep)
+      await collectDependenciesRecursively(depItem, dependencies, visited)
+    } catch (error) {
+      warn(
+        `Failed to fetch dependency ${dep} for ${item.name}: ${formatError(error)}`,
+      )
+      throw error
+    }
   }
 }
 
@@ -725,6 +766,7 @@ async function buildExample(
 
   const registryItem = await fetchRegistryItem(item.name)
   const files = await collectRegistryFiles(registryItem)
+  const dependencies = await collectRegistryDependencies(registryItem)
   await writeRegistryFiles(path.join(destDir, config.destDir), files)
   assert(
     files.length > 0,
@@ -736,7 +778,7 @@ async function buildExample(
   await fs.writeFile(entryPath, config.createEntryContent(story))
 
   await applyExamplePatches(item, destDir)
-  await installMissingDependencies(destDir, registryItem.dependencies)
+  await installMissingDependencies(destDir, dependencies)
   await updatePackageJsonName(destDir, `example-${destName}`)
   await writeReadme(destDir)
   await writeGitignore(destDir)
