@@ -5,7 +5,7 @@ import 'prosekit/basic/typography.css'
 import { defineBasicExtension } from 'prosekit/basic'
 import { createEditor, jsonFromHTML } from 'prosekit/core'
 import { ProseKit, useDocChange } from 'prosekit/vue'
-import { ref, watchPostEffect } from 'vue'
+import { ref } from 'vue'
 
 import { htmlFromMarkdown, markdownFromHTML } from './markdown'
 
@@ -37,12 +37,6 @@ function handleLoad(record: string) {
   hasUnsavedChange.value = false
   key.value += 1
 }
-
-const editorRef = ref<HTMLDivElement | null>(null)
-watchPostEffect((onCleanup) => {
-  editor.mount(editorRef.value)
-  onCleanup(() => editor.unmount())
-})
 </script>
 
 <template>
@@ -76,7 +70,7 @@ watchPostEffect((onCleanup) => {
     <ProseKit :key="key" :editor="editor">
       <div class="relative w-full flex-1 box-border overflow-y-auto">
         <div
-          ref="editorRef"
+          :ref="(el) => editor.mount(el as HTMLElement | null)"
           class="ProseMirror box-border min-h-full px-[max(4rem,calc(50%-20rem))] py-8 outline-hidden outline-0 [&_span[data-mention=user]]:text-blue-500 [&_span[data-mention=tag]]:text-violet-500"
         ></div>
       </div>
