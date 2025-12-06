@@ -4,7 +4,6 @@ import 'prosekit/basic/typography.css'
 
 import { createEditor } from 'prosekit/core'
 import { ProseKit } from 'prosekit/vue'
-import { ref, watchPostEffect } from 'vue'
 
 import { tags } from '../../sample/tag-data'
 import { users } from '../../sample/user-data'
@@ -15,12 +14,6 @@ import { defineExtension } from './extension'
 
 const extension = defineExtension()
 const editor = createEditor({ extension })
-
-const editorRef = ref<HTMLDivElement | null>(null)
-watchPostEffect((onCleanup) => {
-  editor.mount(editorRef.value)
-  onCleanup(() => editor.unmount())
-})
 </script>
 
 <template>
@@ -30,7 +23,7 @@ watchPostEffect((onCleanup) => {
     >
       <div class="relative w-full flex-1 box-border overflow-y-auto">
         <div
-          ref="editorRef"
+          :ref="(el) => editor.mount(el as HTMLElement | null)"
           class="ProseMirror box-border min-h-full px-[max(4rem,calc(50%-20rem))] py-8 outline-hidden outline-0 [&_span[data-mention=user]]:text-blue-500 [&_span[data-mention=tag]]:text-violet-500"
         />
         <UserMenu :users="users" />

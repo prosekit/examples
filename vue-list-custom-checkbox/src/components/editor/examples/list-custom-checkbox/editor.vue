@@ -5,7 +5,6 @@ import './custom-list.css'
 
 import { createEditor, type NodeJSON } from 'prosekit/core'
 import { ProseKit } from 'prosekit/vue'
-import { ref, watchPostEffect } from 'vue'
 
 import { sampleContent } from '../../sample/sample-doc-list-custom-checkbox'
 import { Toolbar } from '../../ui/toolbar'
@@ -22,12 +21,6 @@ const editor = createEditor({
   extension,
   defaultContent,
 })
-
-const editorRef = ref<HTMLDivElement | null>(null)
-watchPostEffect((onCleanup) => {
-  editor.mount(editorRef.value)
-  onCleanup(() => editor.unmount())
-})
 </script>
 
 <template>
@@ -39,7 +32,7 @@ watchPostEffect((onCleanup) => {
       <Toolbar />
       <div class="relative w-full flex-1 box-border overflow-y-auto">
         <div
-          ref="editorRef"
+          :ref="(el) => editor.mount(el as HTMLElement | null)"
           class="ProseMirror box-border min-h-full px-[max(4rem,calc(50%-20rem))] py-8 outline-hidden outline-0 [&_span[data-mention=user]]:text-blue-500 [&_span[data-mention=tag]]:text-violet-500"
         />
       </div>
