@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 
 import EditorComponent from './editor-component'
 
@@ -15,12 +15,6 @@ function EditorGroup() {
   const removeEditor = useCallback((key: number) => {
     setEditorKeys((keys) => keys.filter((k) => k !== key))
   }, [])
-
-  useEffect(() => {
-    if (nextKeyRef.current === 1) {
-      addEditor()
-    }
-  }, [addEditor])
 
   return (
     <div className="flex flex-col gap-2">
@@ -39,10 +33,8 @@ function EditorGroup() {
         ))}
       </div>
       {editorKeys.map((key) => (
-        <div key={key} className="h-32">
-          <EditorComponent
-            placeholder={`Editor No.${key} of ${editorKeys.length}`}
-          />
+        <div key={key}>
+          <EditorComponent placeholder={`Editor No.${key}`} />
         </div>
       ))}
     </div>

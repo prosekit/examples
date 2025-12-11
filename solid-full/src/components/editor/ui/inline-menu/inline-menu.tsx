@@ -197,7 +197,7 @@ export default function InlineMenu(): JSX.Element {
                   placeholder="Paste the link..."
                   value={item().currentLink || ''}
                   class="flex h-9 rounded-md w-full bg-white dark:bg-gray-950 px-3 py-2 text-sm placeholder:text-gray-500 dark:placeholder:text-gray-500 transition border box-border border-gray-200 dark:border-gray-800 border-solid ring-0 ring-transparent focus-visible:ring-2 focus-visible:ring-gray-900 dark:focus-visible:ring-gray-300 focus-visible:ring-offset-0 outline-hidden focus-visible:outline-hidden file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:cursor-not-allowed disabled:opacity-50"
-                ></input>
+                />
               </form>
             </Show>
             <Show when={item().isActive}>
