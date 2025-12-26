@@ -726,6 +726,7 @@ function shouldBuild(item: RegistryIndexItem): boolean {
     return false
   }
   if (item.meta?.hidden) {
+    info(`Skipping ${item.name}: hidden`)
     return false
   }
   return true
