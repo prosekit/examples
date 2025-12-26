@@ -14,6 +14,7 @@ type RegistryIndexItem = {
   meta?: {
     story?: string
     framework?: string
+    hidden?: boolean
   }
 }
 
@@ -31,8 +32,7 @@ type RegistryItem = RegistryIndexItem & {
 const REGISTRY_URL = 'https://prosekit.dev/r'
 const REGISTRY_INDEX_URL = `${REGISTRY_URL}/registry.json`
 
-const __dirname = path.dirname(new URL(import.meta.url).pathname)
-const ROOT = path.resolve(__dirname, '..')
+const ROOT = path.resolve(import.meta.dirname, '..')
 const LOG_PREFIX = '[fetch-examples]'
 
 type FrameworkConfig = {
@@ -723,6 +723,9 @@ function shouldBuild(item: RegistryIndexItem): boolean {
   }
   if (!hasFrameworkConfig(framework)) {
     warn(`Skipping ${item.name}: unsupported framework "${framework}"`)
+    return false
+  }
+  if (item.meta?.hidden) {
     return false
   }
   return true
