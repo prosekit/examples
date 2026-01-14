@@ -69,16 +69,19 @@ export default function Editor() {
 
 
 const litEntry = (story: string) => `import './components/editor/examples/${story}'
+import { LitElement, html } from 'lit'
+import { customElement } from 'lit/decorators.js'
 
-let container = document.querySelector('#example-container')
-if (!container) {
-  container = document.createElement('div')
-  container.id = 'example-container'
-  document.body.appendChild(container)
+@customElement('my-editor')
+export class MyEditor extends LitElement {
+  createRenderRoot() {
+    return this
+  }
+
+  render() {
+    return html\`<lit-editor-example-${story}></lit-editor-example-${story}>\`
+  }
 }
-
-const example = document.createElement('lit-editor-example-${story}')
-container.replace(example)
 `
 
 const vanillaEntry = (story: string) => `import { setupVanillaEditor } from './components/editor/examples/${story}'
