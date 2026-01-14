@@ -67,8 +67,9 @@ export default function Editor() {
 }
 `
 
-
-const litEntry = (story: string) => `import './components/editor/examples/${story}'
+const litEntry = (
+  story: string,
+) => `import './components/editor/examples/${story}'
 import { LitElement, html } from 'lit'
 import { customElement } from 'lit/decorators.js'
 
@@ -84,7 +85,9 @@ export class MyEditor extends LitElement {
 }
 `
 
-const vanillaEntry = (story: string) => `import { setupVanillaEditor } from './components/editor/examples/${story}'
+const vanillaEntry = (
+  story: string,
+) => `import { setupVanillaEditor } from './components/editor/examples/${story}'
 
 export function renderEditor() {
   return setupVanillaEditor().render()
@@ -112,8 +115,6 @@ import { ExampleEditor } from '${componentsPath}/${story}'
 const svelteEntry = createSvelteEntry('./components/editor/examples')
 const svelteKitEntry = createSvelteEntry('../components/editor/examples')
 const vueEntry = createVueEntry('./components/editor/examples')
-
-
 
 const FRAMEWORK_CONFIG = {
   react: {
