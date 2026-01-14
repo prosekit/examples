@@ -149,13 +149,13 @@ const FRAMEWORK_CONFIG = {
   lit: {
     template: 'lit',
     destDir: 'src',
-    entryFile: 'src/index.ts',
+    entryFile: 'src/editor.ts',
     createEntryContent: litEntry,
   },
   vanilla: {
     template: 'vanilla',
     destDir: 'src',
-    entryFile: 'src/app.ts',
+    entryFile: 'src/editor.ts',
     createEntryContent: vanillaEntry,
   },
   next: {
