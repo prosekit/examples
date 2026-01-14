@@ -69,9 +69,11 @@ export default function Editor() {
 
 const litEntry = (
   story: string,
-) => `import './components/editor/examples/${story}'
+) => `import { registerLitEditor } from './components/editor/examples/${story}'
 import { LitElement, html } from 'lit'
 import { customElement } from 'lit/decorators.js'
+
+registerLitEditor()
 
 @customElement('my-editor')
 export class MyEditor extends LitElement {
