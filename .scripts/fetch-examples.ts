@@ -66,6 +66,34 @@ export default function Editor() {
   return <EditorLazy />
 }
 `
+
+
+const litEntry = (story: string) => `import './components/editor/examples/${story}'
+
+let container = document.querySelector('#example-container')
+if (!container) {
+  container = document.createElement('div')
+  container.id = 'example-container'
+  document.body.appendChild(container)
+}
+
+const example = document.createElement('lit-editor-example-${story}')
+container.replace(example)
+`
+
+const vanillaEntry = (story: string) => `import { setupVanillaEditor } from './components/editor/examples/${story}'
+
+let container = document.querySelector('#example-container')
+if (!container) {
+  container = document.createElement('div')
+  container.id = 'example-container'
+  document.body.appendChild(container)
+}
+
+const example = setupVanillaEditor().render()
+container.replace(example)
+`
+
 const createSvelteEntry =
   (componentsPath: string) => (story: string) => `<script lang=\"ts\">
 import { ExampleEditor } from '${componentsPath}/${story}'
@@ -87,6 +115,8 @@ import { ExampleEditor } from '${componentsPath}/${story}'
 const svelteEntry = createSvelteEntry('./components/editor/examples')
 const svelteKitEntry = createSvelteEntry('../components/editor/examples')
 const vueEntry = createVueEntry('./components/editor/examples')
+
+
 
 const FRAMEWORK_CONFIG = {
   react: {
@@ -118,6 +148,18 @@ const FRAMEWORK_CONFIG = {
     destDir: 'src',
     entryFile: 'src/App.vue',
     createEntryContent: vueEntry,
+  },
+  lit: {
+    template: 'lit',
+    destDir: 'src',
+    entryFile: 'src/index.ts',
+    createEntryContent: litEntry,
+  },
+  vanilla: {
+    template: 'vanilla',
+    destDir: 'src',
+    entryFile: 'src/index.ts',
+    createEntryContent: vanillaEntry,
   },
   next: {
     template: 'next',
