@@ -1,5 +1,5 @@
 import './app.css'
-import { app } from './app'
+import { renderEditor } from './editor'
 
 let container = document.querySelector('#app')
 if (!container) {
@@ -8,4 +8,4 @@ if (!container) {
   document.body.appendChild(container)
 }
 
-container.replaceChildren(app.render())
+container.replaceChildren(renderEditor())

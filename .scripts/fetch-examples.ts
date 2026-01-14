@@ -83,7 +83,9 @@ container.replace(example)
 
 const vanillaEntry = (story: string) => `import { setupVanillaEditor } from './components/editor/examples/${story}'
 
-export const app = setupVanillaEditor()
+export function renderEditor() {
+  return setupVanillaEditor().render()
+}
 `
 
 const createSvelteEntry =
