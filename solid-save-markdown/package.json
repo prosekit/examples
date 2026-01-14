@@ -9,7 +9,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "solid-js": "^1.9.10",
     "prosekit": "^0.17.1",
     "rehype-parse": "^9.0.1",
     "rehype-remark": "^10.0.1",
@@ -17,6 +16,7 @@
     "remark-html": "^16.0.1",
     "remark-parse": "^11.0.0",
     "remark-stringify": "^11.0.0",
+    "solid-js": "^1.9.10",
     "unified": "^11.0.5"
   },
   "devDependencies": {

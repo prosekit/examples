@@ -9,9 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "prosekit": "^0.17.1",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
-    "prosekit": "^0.17.1",
     "react-parallax-tilt": "^1.7.315",
     "react-tweet": "^3.3.0"
   },
