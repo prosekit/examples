@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "nuxt": "^4.2.2",
-    "prosekit": "^0.17.1",
-    "vue": "^3.5.26"
+    "vue": "^3.5.26",
+    "prosekit": "^0.17.1"
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "^1.9.0",
