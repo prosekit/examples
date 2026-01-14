@@ -83,15 +83,7 @@ container.replace(example)
 
 const vanillaEntry = (story: string) => `import { setupVanillaEditor } from './components/editor/examples/${story}'
 
-let container = document.querySelector('#example-container')
-if (!container) {
-  container = document.createElement('div')
-  container.id = 'example-container'
-  document.body.appendChild(container)
-}
-
-const example = setupVanillaEditor().render()
-container.replace(example)
+export const app = setupVanillaEditor()
 `
 
 const createSvelteEntry =
@@ -158,7 +150,7 @@ const FRAMEWORK_CONFIG = {
   vanilla: {
     template: 'vanilla',
     destDir: 'src',
-    entryFile: 'src/index.ts',
+    entryFile: 'src/app.ts',
     createEntryContent: vanillaEntry,
   },
   next: {
