@@ -6,11 +6,6 @@ import { customElement } from 'lit/decorators.js'
 
 @customElement('my-app')
 export class MyApp extends LitElement {
-
-  createRenderRoot() {
-    return this
-  }
-
   render() {
     return html`
       <my-editor></my-editor>
