@@ -66,6 +66,36 @@ export default function Editor() {
   return <EditorLazy />
 }
 `
+
+const litEntry = (
+  story: string,
+) => `import { registerLitEditor } from './components/editor/examples/${story}'
+import { LitElement, html } from 'lit'
+import { customElement } from 'lit/decorators.js'
+
+registerLitEditor()
+
+@customElement('my-editor')
+export class MyEditor extends LitElement {
+  createRenderRoot() {
+    return this
+  }
+
+  render() {
+    return html\`<lit-editor-example-${story}></lit-editor-example-${story}>\`
+  }
+}
+`
+
+const vanillaEntry = (
+  story: string,
+) => `import { setupVanillaEditor } from './components/editor/examples/${story}'
+
+export function renderEditor() {
+  return setupVanillaEditor().render()
+}
+`
+
 const createSvelteEntry =
   (componentsPath: string) => (story: string) => `<script lang=\"ts\">
 import { ExampleEditor } from '${componentsPath}/${story}'
@@ -118,6 +148,18 @@ const FRAMEWORK_CONFIG = {
     destDir: 'src',
     entryFile: 'src/App.vue',
     createEntryContent: vueEntry,
+  },
+  lit: {
+    template: 'lit',
+    destDir: 'src',
+    entryFile: 'src/editor.ts',
+    createEntryContent: litEntry,
+  },
+  vanilla: {
+    template: 'vanilla',
+    destDir: 'src',
+    entryFile: 'src/editor.ts',
+    createEntryContent: vanillaEntry,
   },
   next: {
     template: 'next',
