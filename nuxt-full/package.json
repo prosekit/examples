@@ -10,7 +10,7 @@
     "preview": "nuxt preview"
   },
   "dependencies": {
-    "nuxt": "^4.2.2",
+    "nuxt": "^4.3.0",
     "prosekit": "^0.17.1",
     "vue": "^3.5.27"
   },
