@@ -11,8 +11,8 @@
   "dependencies": {
     "next": "^16.1.5",
     "prosekit": "^0.17.1",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3"
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "^1.9.0",

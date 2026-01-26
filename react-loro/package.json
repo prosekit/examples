@@ -12,8 +12,8 @@
     "loro-crdt": "^1.10.5",
     "loro-prosemirror": "^0.4.2",
     "prosekit": "^0.17.1",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3"
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "^1.9.0",
