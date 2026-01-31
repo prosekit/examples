@@ -17,7 +17,7 @@
     "yjs": "^13.6.29"
   },
   "devDependencies": {
-    "@egoist/tailwindcss-icons": "^1.9.0",
+    "@egoist/tailwindcss-icons": "^1.9.2",
     "@iconify-json/lucide": "^1.2.87",
     "@tailwindcss/vite": "^4.1.18",
     "@types/node": "^24.10.9",
