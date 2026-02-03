@@ -21,7 +21,7 @@
     "@egoist/tailwindcss-icons": "^1.9.2",
     "@iconify-json/lucide": "^1.2.88",
     "@tailwindcss/vite": "^4.1.18",
-    "@types/node": "^24.10.9",
+    "@types/node": "^24.10.10",
     "@types/react": "^19.2.10",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.3",
