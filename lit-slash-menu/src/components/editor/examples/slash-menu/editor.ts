@@ -1,6 +1,8 @@
 import 'prosekit/basic/style.css'
 import 'prosekit/basic/typography.css'
 
+import '../../ui/slash-menu/index'
+
 import {
   html,
   LitElement,
@@ -12,8 +14,6 @@ import type { Editor } from 'prosekit/core'
 import { createEditor } from 'prosekit/core'
 
 import { defineExtension } from './extension'
-
-import '../../ui/slash-menu/index'
 
 export class LitEditor extends LitElement {
   static override properties = {

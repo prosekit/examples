@@ -1,6 +1,5 @@
 import type { CursorAwareness, LoroDocType } from 'loro-prosemirror'
-import { defineBaseCommands, defineBaseKeymap } from 'prosekit/core'
-import { union } from 'prosekit/core'
+import { defineBaseCommands, defineBaseKeymap, union } from 'prosekit/core'
 import { defineBlockquote } from 'prosekit/extensions/blockquote'
 import { defineBold } from 'prosekit/extensions/bold'
 import { defineCode } from 'prosekit/extensions/code'
