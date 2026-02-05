@@ -1,5 +1,4 @@
-import type { ComponentChild } from 'preact'
-import type { JSX } from 'preact'
+import type { ComponentChild, JSX } from 'preact'
 import { useId, useState } from 'preact/hooks'
 import type { Uploader } from 'prosekit/extensions/file'
 import type { ImageExtension } from 'prosekit/extensions/image'
