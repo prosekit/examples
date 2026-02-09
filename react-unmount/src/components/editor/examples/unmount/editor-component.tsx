@@ -6,6 +6,8 @@ import { createEditor } from 'prosekit/core'
 import { ProseKit } from 'prosekit/react'
 import { useMemo } from 'react'
 
+import { InlineMenu } from '../../ui/inline-menu'
+
 import ExtensionComponent from './extension-component'
 
 export default function EditorComponent(props: { placeholder: string }) {
@@ -21,6 +23,7 @@ export default function EditorComponent(props: { placeholder: string }) {
             ref={editor.mount}
             className="ProseMirror box-border min-h-full px-[max(4rem,calc(50%-20rem))] py-8 outline-hidden outline-0 [&_span[data-mention=user]]:text-blue-500 [&_span[data-mention=tag]]:text-violet-500"
           ></div>
+          <InlineMenu />
         </div>
       </div>
       <ExtensionComponent placeholder={props.placeholder} />

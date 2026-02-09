@@ -6,6 +6,8 @@ import { defineBasicExtension } from 'prosekit/basic'
 import { createEditor } from 'prosekit/core'
 import { ProseKit } from 'prosekit/vue'
 
+import { InlineMenu } from '../../ui/inline-menu'
+
 import ExtensionComponent from './extension-component.vue'
 
 const props = defineProps<{
@@ -26,6 +28,7 @@ const editor = createEditor({ extension })
           :ref="(el) => editor.mount(el as HTMLElement | null)"
           class="ProseMirror box-border min-h-full px-[max(4rem,calc(50%-20rem))] py-8 outline-hidden outline-0 [&_span[data-mention=user]]:text-blue-500 [&_span[data-mention=tag]]:text-violet-500"
         />
+        <InlineMenu />
       </div>
     </div>
     <ExtensionComponent :placeholder="props.placeholder" />

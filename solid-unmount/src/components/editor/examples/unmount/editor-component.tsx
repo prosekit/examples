@@ -6,6 +6,8 @@ import { createEditor } from 'prosekit/core'
 import { ProseKit } from 'prosekit/solid'
 import type { JSX } from 'solid-js'
 
+import { InlineMenu } from '../../ui/inline-menu'
+
 import ExtensionComponent from './extension-component.tsx'
 
 export default function EditorComponent(props: {
@@ -22,6 +24,7 @@ export default function EditorComponent(props: {
             ref={editor.mount}
             class="ProseMirror box-border min-h-full px-[max(4rem,calc(50%-20rem))] py-8 outline-hidden outline-0 [&_span[data-mention=user]]:text-blue-500 [&_span[data-mention=tag]]:text-violet-500"
           ></div>
+          <InlineMenu />
         </div>
       </div>
       <ExtensionComponent placeholder={props.placeholder} />
