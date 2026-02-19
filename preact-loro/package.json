@@ -11,7 +11,7 @@
   "dependencies": {
     "loro-crdt": "^1.10.6",
     "loro-prosemirror": "^0.4.2",
-    "preact": "^10.28.3",
+    "preact": "^10.28.4",
     "prosekit": "^0.18.2"
   },
   "devDependencies": {

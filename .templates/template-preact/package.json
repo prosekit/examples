@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "preact": "^10.28.3"
+    "preact": "^10.28.4"
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "^1.9.2",
