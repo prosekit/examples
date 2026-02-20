@@ -25,28 +25,6 @@ export default function Search(props: { onClose?: VoidFunction }) {
 
   const editor = useEditor<SearchCommandsExtension>()
 
-  const isEnter = (event: KeyboardEvent) => {
-    return (
-      event.key === 'Enter' &&
-      !event.shiftKey &&
-      !event.metaKey &&
-      !event.altKey &&
-      !event.ctrlKey &&
-      !event.isComposing
-    )
-  }
-
-  const isShiftEnter = (event: KeyboardEvent) => {
-    return (
-      event.key === 'Enter' &&
-      event.shiftKey &&
-      !event.metaKey &&
-      !event.altKey &&
-      !event.ctrlKey &&
-      !event.isComposing
-    )
-  }
-
   const handleSearchKeyDown = (event: KeyboardEvent) => {
     if (isEnter(event)) {
       event.preventDefault()
@@ -124,5 +102,27 @@ export default function Search(props: { onClose?: VoidFunction }) {
         </div>
       )}
     </div>
+  )
+}
+
+function isEnter(event: KeyboardEvent) {
+  return (
+    event.key === 'Enter' &&
+    !event.shiftKey &&
+    !event.metaKey &&
+    !event.altKey &&
+    !event.ctrlKey &&
+    !event.isComposing
+  )
+}
+
+function isShiftEnter(event: KeyboardEvent) {
+  return (
+    event.key === 'Enter' &&
+    event.shiftKey &&
+    !event.metaKey &&
+    !event.altKey &&
+    !event.ctrlKey &&
+    !event.isComposing
   )
 }
