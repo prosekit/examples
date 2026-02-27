@@ -12,7 +12,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "katex": "^0.16.28",
+    "katex": "^0.16.33",
     "prosekit": "^0.18.4"
   },
   "devDependencies": {
