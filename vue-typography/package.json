@@ -9,7 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "prosekit": "^0.18.2",
+    "katex": "^0.16.33",
+    "prosekit": "^0.18.3",
     "vue": "^3.5.28"
   },
   "devDependencies": {

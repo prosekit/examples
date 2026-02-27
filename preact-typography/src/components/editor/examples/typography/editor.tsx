@@ -2,11 +2,14 @@ import 'prosekit/basic/style.css'
 import 'prosekit/basic/typography.css'
 
 import { useMemo } from 'preact/hooks'
-import { defineBasicExtension } from 'prosekit/basic'
 import { createEditor, type NodeJSON } from 'prosekit/core'
 import { ProseKit } from 'prosekit/preact'
 
 import { sampleContent } from '../../sample/sample-doc-typography'
+import { BlockHandle } from '../../ui/block-handle'
+import { DropIndicator } from '../../ui/drop-indicator'
+
+import { defineExtension } from './extension'
 
 interface EditorProps {
   initialContent?: NodeJSON
@@ -15,7 +18,8 @@ interface EditorProps {
 export default function Editor(props: EditorProps) {
   const defaultContent = props.initialContent ?? sampleContent
   const editor = useMemo(() => {
-    return createEditor({ extension: defineBasicExtension(), defaultContent })
+    const extension = defineExtension()
+    return createEditor({ extension, defaultContent })
   }, [defaultContent])
 
   return (
@@ -26,6 +30,8 @@ export default function Editor(props: EditorProps) {
             ref={editor.mount}
             className="ProseMirror box-border min-h-full px-[max(4rem,calc(50%-20rem))] py-8 outline-hidden outline-0 [&_span[data-mention=user]]:text-blue-500 [&_span[data-mention=tag]]:text-violet-500"
           ></div>
+          <BlockHandle />
+          <DropIndicator />
         </div>
       </div>
     </ProseKit>

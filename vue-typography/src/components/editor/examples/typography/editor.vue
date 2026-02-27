@@ -2,17 +2,20 @@
 import 'prosekit/basic/style.css'
 import 'prosekit/basic/typography.css'
 
-import { defineBasicExtension } from 'prosekit/basic'
 import { createEditor, type NodeJSON } from 'prosekit/core'
 import { ProseKit } from 'prosekit/vue'
 
 import { sampleContent } from '../../sample/sample-doc-typography'
+import { BlockHandle } from '../../ui/block-handle'
+import { DropIndicator } from '../../ui/drop-indicator'
+
+import { defineExtension } from './extension'
 
 const props = defineProps<{
   initialContent?: NodeJSON
 }>()
 
-const extension = defineBasicExtension()
+const extension = defineExtension()
 const defaultContent = props.initialContent ?? sampleContent
 const editor = createEditor({ extension, defaultContent })
 </script>
@@ -27,6 +30,8 @@ const editor = createEditor({ extension, defaultContent })
           :ref="(el) => editor.mount(el as HTMLElement | null)"
           class="ProseMirror box-border min-h-full px-[max(4rem,calc(50%-20rem))] py-8 outline-hidden outline-0 [&_span[data-mention=user]]:text-blue-500 [&_span[data-mention=tag]]:text-violet-500"
         />
+        <BlockHandle />
+        <DropIndicator />
       </div>
     </div>
   </ProseKit>
