@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "lit": "^3.3.2",
-    "prosekit": "^0.18.3"
+    "prosekit": "^0.18.4"
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "^1.9.2",

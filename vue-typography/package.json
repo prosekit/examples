@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "katex": "^0.16.33",
-    "prosekit": "^0.18.3",
+    "prosekit": "^0.18.4",
     "vue": "^3.5.28"
   },
   "devDependencies": {
