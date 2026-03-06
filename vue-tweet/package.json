@@ -11,7 +11,7 @@
   "dependencies": {
     "prosekit": "^0.18.4",
     "vue": "^3.5.29",
-    "vue-tweet": "^2.3.4"
+    "vue-tweet": "^2.4.0"
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "^1.9.2",
