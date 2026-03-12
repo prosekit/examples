@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "^1.9.2",
-    "@iconify-json/lucide": "^1.2.96",
+    "@iconify-json/lucide": "^1.2.97",
     "@tailwindcss/vite": "^4.2.1",
     "postcss": "^8.5.8",
     "tailwindcss": "^4.2.1",
