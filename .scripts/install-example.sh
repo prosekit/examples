@@ -14,12 +14,12 @@ PACKAGE_MANAGER="${1:?missing package manager}"
 TEST_DIR="${2:?missing test dir}"
 cd "$TEST_DIR"
 
-echo "::group::Installing dependencies for ${TEST_DIR} using ${PACKAGE_MANAGER}"
+echo "::group::${PACKAGE_MANAGER} > ${TEST_DIR} > install"
 
 finish() {
   status=$?
   if [ $status -ne 0 ]; then
-    echo "::error title=Build failed::$TEST_DIR exited with status $status"
+    echo "::error title=Install failed::$TEST_DIR exited with status $status"
   fi
   echo "::endgroup::"
   exit $status
