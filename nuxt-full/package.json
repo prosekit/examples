@@ -10,7 +10,7 @@
     "preview": "nuxt preview"
   },
   "dependencies": {
-    "katex": "^0.16.38",
+    "katex": "^0.16.39",
     "nuxt": "^4.4.2",
     "prosekit": "^0.18.4",
     "vue": "^3.5.30"
