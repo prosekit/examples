@@ -14,7 +14,7 @@ PACKAGE_MANAGER="${1:?missing package manager}"
 TEST_DIR="${2:?missing test dir}"
 cd "$TEST_DIR"
 
-echo "::group::${PACKAGE_MANAGER} > ${TEST_DIR} > build"
+echo "::group::${PACKAGE_MANAGER} > build > ${TEST_DIR}"
 
 finish() {
   status=$?
