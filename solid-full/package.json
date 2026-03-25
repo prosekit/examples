@@ -11,7 +11,7 @@
   "dependencies": {
     "katex": "^0.16.42",
     "prosekit": "^0.18.4",
-    "solid-js": "^1.9.11"
+    "solid-js": "^1.9.12"
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "^1.9.2",
