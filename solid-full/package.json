@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "katex": "^0.16.42",
+    "katex": "^0.16.43",
     "prosekit": "^0.18.4",
     "solid-js": "^1.9.12"
   },
