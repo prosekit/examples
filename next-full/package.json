@@ -9,7 +9,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "katex": "^0.16.44",
+    "katex": "^0.16.45",
     "next": "^16.2.2",
     "prosekit": "^0.20.0-beta.1",
     "react": "^19.2.4",
