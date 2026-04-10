@@ -1,6 +1,7 @@
 import '../button/index'
 import '../image-upload-popover/index'
 
+import { ContextConsumer } from '@lit/context'
 import {
   html,
   LitElement,
@@ -11,6 +12,8 @@ import {
 import type { BasicExtension } from 'prosekit/basic'
 import { defineUpdateHandler, type Editor } from 'prosekit/core'
 import type { Uploader } from 'prosekit/extensions/file'
+
+import { editorContext } from '../editor-context'
 
 function getToolbarItems(editor: Editor<BasicExtension>) {
   return {
@@ -161,14 +164,17 @@ function getToolbarItems(editor: Editor<BasicExtension>) {
 
 class LitToolbar extends LitElement {
   static override properties = {
-    editor: { attribute: false } satisfies PropertyDeclaration<Editor>,
     uploader: { attribute: false } satisfies PropertyDeclaration<
       Uploader<string>
     >,
   }
 
-  editor?: Editor<BasicExtension>
   uploader?: Uploader<string>
+
+  private editorConsumer = new ContextConsumer(this, {
+    context: editorContext,
+    subscribe: true,
+  })
 
   private removeUpdateExtension?: VoidFunction
 
@@ -189,18 +195,16 @@ class LitToolbar extends LitElement {
 
   override updated(changedProperties: PropertyValues) {
     super.updated(changedProperties)
-
-    if (changedProperties.has('editor')) {
-      this.attachEditorListener()
-    }
+    this.attachEditorListener()
   }
 
   private attachEditorListener() {
     this.detachEditorListener()
 
-    if (!this.editor) return
+    const editor = this.editorConsumer.value
+    if (!editor) return
 
-    this.removeUpdateExtension = this.editor.use(
+    this.removeUpdateExtension = editor.use(
       defineUpdateHandler(() => this.requestUpdate()),
     )
   }
@@ -211,7 +215,9 @@ class LitToolbar extends LitElement {
   }
 
   override render() {
-    const editor = this.editor
+    const editor = this.editorConsumer.value as
+      | Editor<BasicExtension>
+      | undefined
     if (!editor) {
       return nothing
     }

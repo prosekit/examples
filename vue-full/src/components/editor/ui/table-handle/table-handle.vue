@@ -2,16 +2,19 @@
 import type { Editor } from 'prosekit/core'
 import type { TableExtension } from 'prosekit/extensions/table'
 import { useEditorDerivedValue } from 'prosekit/vue'
+import { MenuItem, MenuPopup, MenuPositioner } from 'prosekit/vue/menu'
 import {
-  TableHandleColumnRoot,
-  TableHandleColumnTrigger,
+  TableHandleColumnMenuRoot,
+  TableHandleColumnMenuTrigger,
+  TableHandleColumnPopup,
+  TableHandleColumnPositioner,
   TableHandleDragPreview,
   TableHandleDropIndicator,
-  TableHandlePopoverContent,
-  TableHandlePopoverItem,
   TableHandleRoot,
-  TableHandleRowRoot,
-  TableHandleRowTrigger,
+  TableHandleRowMenuRoot,
+  TableHandleRowMenuTrigger,
+  TableHandleRowPopup,
+  TableHandleRowPositioner,
 } from 'prosekit/vue/table-handle'
 
 function getTableHandleState(editor: Editor<TableExtension>) {
@@ -64,110 +67,134 @@ const state = useEditorDerivedValue(getTableHandleState)
   <TableHandleRoot class="contents">
     <TableHandleDragPreview />
     <TableHandleDropIndicator />
-    <TableHandleColumnRoot
-      class="h-[1.2em] w-[1.5em] translate-y-[80%] flex items-center box-border justify-center bg-white dark:bg-gray-950 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-sm text-gray-500/50 dark:text-gray-500/50 border border-gray-200 dark:border-gray-800 border-solid p-0 overflow-hidden duration-150 transition-discrete transition data-[state=closed]:opacity-0 starting:opacity-0 opacity-100 data-[state=closed]:scale-95 starting:scale-95 scale-100"
+    <TableHandleColumnPositioner
+      class="block overflow-visible bg-transparent w-min h-min motion-safe:ease-out motion-safe:transition-transform motion-safe:duration-100"
     >
-      <TableHandleColumnTrigger class="flex items-center justify-center">
-        <div class="i-lucide-grip-horizontal size-5 block"></div>
-      </TableHandleColumnTrigger>
-      <TableHandlePopoverContent
-        class="relative block max-h-100 min-w-32 select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg [&:not([data-state])]:hidden"
+      <TableHandleColumnPopup
+        class="translate-y-[50%] flex motion-safe:duration-100 data-[state=closed]:motion-safe:duration-150 motion-safe:transition-discrete motion-safe:transition-all data-[state=closed]:opacity-0 starting:opacity-0 opacity-100 data-[state=closed]:scale-90 starting:scale-90 scale-100"
       >
-        <TableHandlePopoverItem
-          v-if="state.addTableColumnBefore.canExec"
-          class="relative min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 data-danger:text-red-500 box-border cursor-default select-none whitespace-nowrap outline-hidden data-focused:bg-gray-100 dark:data-focused:bg-gray-800"
-          @select="state.addTableColumnBefore.command"
-        >
-          <span>Insert Left</span>
-        </TableHandlePopoverItem>
-        <TableHandlePopoverItem
-          v-if="state.addTableColumnAfter.canExec"
-          class="relative min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 data-danger:text-red-500 box-border cursor-default select-none whitespace-nowrap outline-hidden data-focused:bg-gray-100 dark:data-focused:bg-gray-800"
-          @select="state.addTableColumnAfter.command"
-        >
-          <span>Insert Right</span>
-        </TableHandlePopoverItem>
-        <TableHandlePopoverItem
-          v-if="state.deleteCellSelection.canExec"
-          class="relative min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 data-danger:text-red-500 box-border cursor-default select-none whitespace-nowrap outline-hidden data-focused:bg-gray-100 dark:data-focused:bg-gray-800"
-          @select="state.deleteCellSelection.command"
-        >
-          <span>Clear Contents</span>
-          <span
-            class="text-xs tracking-widest text-gray-500 dark:text-gray-500"
+        <TableHandleColumnMenuRoot class="contents">
+          <TableHandleColumnMenuTrigger
+            class="h-4.5 w-6 flex items-center box-border justify-center bg-white dark:bg-gray-950 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-sm text-gray-500/50 dark:text-gray-400/50 border border-gray-200 dark:border-gray-800 border-solid p-0 transition-colors overflow-clip"
           >
-            Del
-          </span>
-        </TableHandlePopoverItem>
-        <TableHandlePopoverItem
-          v-if="state.deleteTableColumn.canExec"
-          class="relative min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 data-danger:text-red-500 box-border cursor-default select-none whitespace-nowrap outline-hidden data-focused:bg-gray-100 dark:data-focused:bg-gray-800"
-          @select="state.deleteTableColumn.command"
-        >
-          <span>Delete Column</span>
-        </TableHandlePopoverItem>
-        <TableHandlePopoverItem
-          v-if="state.deleteTable.canExec"
-          class="relative min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 data-danger:text-red-500 box-border cursor-default select-none whitespace-nowrap outline-hidden data-focused:bg-gray-100 dark:data-focused:bg-gray-800"
-          data-danger
-          @select="state.deleteTable.command"
-        >
-          <span>Delete Table</span>
-        </TableHandlePopoverItem>
-      </TableHandlePopoverContent>
-    </TableHandleColumnRoot>
-    <TableHandleRowRoot
+            <div
+              class="i-lucide-grip-horizontal size-5 min-h-5 min-w-5 block"
+            ></div>
+          </TableHandleColumnMenuTrigger>
+          <MenuPositioner class="overflow-visible bg-transparent">
+            <MenuPopup
+              class="relative block max-h-100 min-w-32 select-none overflow-auto whitespace-nowrap p-1 outline-none z-10 box-border rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg [&:not([data-state])]:hidden"
+            >
+              <MenuItem
+                v-if="state.addTableColumnBefore.canExec"
+                class="relative min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 data-danger:text-red-500 box-border cursor-default select-none whitespace-nowrap outline-hidden data-highlighted:bg-gray-100 dark:data-highlighted:bg-gray-800"
+                @select="state.addTableColumnBefore.command"
+              >
+                <span>Insert Left</span>
+              </MenuItem>
+              <MenuItem
+                v-if="state.addTableColumnAfter.canExec"
+                class="relative min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 data-danger:text-red-500 box-border cursor-default select-none whitespace-nowrap outline-hidden data-highlighted:bg-gray-100 dark:data-highlighted:bg-gray-800"
+                @select="state.addTableColumnAfter.command"
+              >
+                <span>Insert Right</span>
+              </MenuItem>
+              <MenuItem
+                v-if="state.deleteCellSelection.canExec"
+                class="relative min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 data-danger:text-red-500 box-border cursor-default select-none whitespace-nowrap outline-hidden data-highlighted:bg-gray-100 dark:data-highlighted:bg-gray-800"
+                @select="state.deleteCellSelection.command"
+              >
+                <span>Clear Contents</span>
+                <span
+                  class="text-xs tracking-widest text-gray-500 dark:text-gray-500"
+                >
+                  Del
+                </span>
+              </MenuItem>
+              <MenuItem
+                v-if="state.deleteTableColumn.canExec"
+                class="relative min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 data-danger:text-red-500 box-border cursor-default select-none whitespace-nowrap outline-hidden data-highlighted:bg-gray-100 dark:data-highlighted:bg-gray-800"
+                @select="state.deleteTableColumn.command"
+              >
+                <span>Delete Column</span>
+              </MenuItem>
+              <MenuItem
+                v-if="state.deleteTable.canExec"
+                class="relative min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 data-danger:text-red-500 box-border cursor-default select-none whitespace-nowrap outline-hidden data-highlighted:bg-gray-100 dark:data-highlighted:bg-gray-800"
+                data-danger
+                @select="state.deleteTable.command"
+              >
+                <span>Delete Table</span>
+              </MenuItem>
+            </MenuPopup>
+          </MenuPositioner>
+        </TableHandleColumnMenuRoot>
+      </TableHandleColumnPopup>
+    </TableHandleColumnPositioner>
+    <TableHandleRowPositioner
       :placement="props.dir === 'rtl' ? 'right' : 'left'"
-      class="h-[1.5em] w-[1.2em] ltr:translate-x-[80%] rtl:translate-x-[-80%] flex items-center box-border justify-center bg-white dark:bg-gray-950 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-sm text-gray-500/50 dark:text-gray-500/50 border border-gray-200 dark:border-gray-800 border-solid p-0 overflow-hidden duration-150 transition-discrete transition data-[state=closed]:opacity-0 starting:opacity-0 opacity-100 data-[state=closed]:scale-95 starting:scale-95 scale-100"
+      class="block overflow-visible bg-transparent w-min h-min motion-safe:ease-out motion-safe:transition-transform motion-safe:duration-100"
     >
-      <TableHandleRowTrigger class="flex items-center justify-center">
-        <div class="i-lucide-grip-vertical size-5 block"></div>
-      </TableHandleRowTrigger>
-      <TableHandlePopoverContent
-        class="relative block max-h-100 min-w-32 select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg [&:not([data-state])]:hidden"
+      <TableHandleRowPopup
+        class="ltr:translate-x-[50%] rtl:translate-x-[-50%] flex motion-safe:duration-100 data-[state=closed]:motion-safe:duration-150 motion-safe:transition-discrete motion-safe:transition-all data-[state=closed]:opacity-0 starting:opacity-0 opacity-100 data-[state=closed]:scale-90 starting:scale-90 scale-100"
       >
-        <TableHandlePopoverItem
-          v-if="state.addTableRowAbove.canExec"
-          class="relative min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 data-danger:text-red-500 box-border cursor-default select-none whitespace-nowrap outline-hidden data-focused:bg-gray-100 dark:data-focused:bg-gray-800"
-          @select="state.addTableRowAbove.command"
-        >
-          <span>Insert Above</span>
-        </TableHandlePopoverItem>
-        <TableHandlePopoverItem
-          v-if="state.addTableRowBelow.canExec"
-          class="relative min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 data-danger:text-red-500 box-border cursor-default select-none whitespace-nowrap outline-hidden data-focused:bg-gray-100 dark:data-focused:bg-gray-800"
-          @select="state.addTableRowBelow.command"
-        >
-          <span>Insert Below</span>
-        </TableHandlePopoverItem>
-        <TableHandlePopoverItem
-          v-if="state.deleteCellSelection.canExec"
-          class="relative min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 data-danger:text-red-500 box-border cursor-default select-none whitespace-nowrap outline-hidden data-focused:bg-gray-100 dark:data-focused:bg-gray-800"
-          @select="state.deleteCellSelection.command"
-        >
-          <span>Clear Contents</span>
-          <span
-            class="text-xs tracking-widest text-gray-500 dark:text-gray-500"
+        <TableHandleRowMenuRoot class="contents">
+          <TableHandleRowMenuTrigger
+            class="h-6 w-4.5 flex items-center box-border justify-center bg-white dark:bg-gray-950 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-sm text-gray-500/50 dark:text-gray-400/50 border border-gray-200 dark:border-gray-800 border-solid p-0 transition-colors overflow-clip"
           >
-            Del
-          </span>
-        </TableHandlePopoverItem>
-        <TableHandlePopoverItem
-          v-if="state.deleteTableRow.canExec"
-          class="relative min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 data-danger:text-red-500 box-border cursor-default select-none whitespace-nowrap outline-hidden data-focused:bg-gray-100 dark:data-focused:bg-gray-800"
-          @select="state.deleteTableRow.command"
-        >
-          <span>Delete Row</span>
-        </TableHandlePopoverItem>
-        <TableHandlePopoverItem
-          v-if="state.deleteTable.canExec"
-          class="relative min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 data-danger:text-red-500 box-border cursor-default select-none whitespace-nowrap outline-hidden data-focused:bg-gray-100 dark:data-focused:bg-gray-800"
-          data-danger
-          @select="state.deleteTable.command"
-        >
-          <span>Delete Table</span>
-        </TableHandlePopoverItem>
-      </TableHandlePopoverContent>
-    </TableHandleRowRoot>
+            <div
+              class="i-lucide-grip-vertical size-5 min-h-5 min-w-5 block"
+            ></div>
+          </TableHandleRowMenuTrigger>
+          <MenuPositioner class="overflow-visible bg-transparent">
+            <MenuPopup
+              class="relative block max-h-100 min-w-32 select-none overflow-auto whitespace-nowrap p-1 outline-none z-10 box-border rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg [&:not([data-state])]:hidden"
+            >
+              <MenuItem
+                v-if="state.addTableRowAbove.canExec"
+                class="relative min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 data-danger:text-red-500 box-border cursor-default select-none whitespace-nowrap outline-hidden data-highlighted:bg-gray-100 dark:data-highlighted:bg-gray-800"
+                @select="state.addTableRowAbove.command"
+              >
+                <span>Insert Above</span>
+              </MenuItem>
+              <MenuItem
+                v-if="state.addTableRowBelow.canExec"
+                class="relative min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 data-danger:text-red-500 box-border cursor-default select-none whitespace-nowrap outline-hidden data-highlighted:bg-gray-100 dark:data-highlighted:bg-gray-800"
+                @select="state.addTableRowBelow.command"
+              >
+                <span>Insert Below</span>
+              </MenuItem>
+              <MenuItem
+                v-if="state.deleteCellSelection.canExec"
+                class="relative min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 data-danger:text-red-500 box-border cursor-default select-none whitespace-nowrap outline-hidden data-highlighted:bg-gray-100 dark:data-highlighted:bg-gray-800"
+                @select="state.deleteCellSelection.command"
+              >
+                <span>Clear Contents</span>
+                <span
+                  class="text-xs tracking-widest text-gray-500 dark:text-gray-500"
+                >
+                  Del
+                </span>
+              </MenuItem>
+              <MenuItem
+                v-if="state.deleteTableRow.canExec"
+                class="relative min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 data-danger:text-red-500 box-border cursor-default select-none whitespace-nowrap outline-hidden data-highlighted:bg-gray-100 dark:data-highlighted:bg-gray-800"
+                @select="state.deleteTableRow.command"
+              >
+                <span>Delete Row</span>
+              </MenuItem>
+              <MenuItem
+                v-if="state.deleteTable.canExec"
+                class="relative min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 data-danger:text-red-500 box-border cursor-default select-none whitespace-nowrap outline-hidden data-highlighted:bg-gray-100 dark:data-highlighted:bg-gray-800"
+                data-danger
+                @select="state.deleteTable.command"
+              >
+                <span>Delete Table</span>
+              </MenuItem>
+            </MenuPopup>
+          </MenuPositioner>
+        </TableHandleRowMenuRoot>
+      </TableHandleRowPopup>
+    </TableHandleRowPositioner>
   </TableHandleRoot>
 </template>

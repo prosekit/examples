@@ -3,7 +3,13 @@ import type { BasicExtension } from 'prosekit/basic'
 import { canUseRegexLookbehind, type Union } from 'prosekit/core'
 import type { MentionExtension } from 'prosekit/extensions/mention'
 import { useEditor } from 'prosekit/svelte'
-import { AutocompleteEmpty, AutocompleteItem, AutocompleteList, AutocompletePopover } from 'prosekit/svelte/autocomplete'
+import {
+  AutocompleteEmpty,
+  AutocompleteItem,
+  AutocompletePopup,
+  AutocompletePositioner,
+  AutocompleteRoot,
+} from 'prosekit/svelte/autocomplete'
 
 interface Props {
   users: { id: number; name: string }[]
@@ -30,32 +36,34 @@ function handleUserInsert(id: number, username: string) {
 const regex = canUseRegexLookbehind() ? /(?<!\S)@(\S.*)?$/u : /@(\S.*)?$/u
 </script>
 
-<AutocompletePopover
+<AutocompleteRoot
   {regex}
-  class="relative block max-h-100 min-w-60 select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg [&:not([data-state])]:hidden"
-  onQueryChange={props.onQueryChange}
-  onOpenChange={props.onOpenChange}
+  class="contents"
+  onQueryChange={(event) => props.onQueryChange?.(event.detail)}
+  onOpenChange={(event) => props.onOpenChange?.(event.detail)}
 >
-  <AutocompleteList>
-    <AutocompleteEmpty class="relative flex items-center justify-between min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-hidden data-focused:bg-gray-100 dark:data-focused:bg-gray-800">
-      {loading ? 'Loading...' : 'No results'}
-    </AutocompleteEmpty>
+  <AutocompletePositioner>
+    <AutocompletePopup class="relative block max-h-100 min-w-60 select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg [&:not([data-state])]:hidden">
+      <AutocompleteEmpty class="relative flex items-center justify-between min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-hidden data-highlighted:bg-gray-100 dark:data-highlighted:bg-gray-800">
+        {loading ? 'Loading...' : 'No results'}
+      </AutocompleteEmpty>
 
-    {#each props.users as user (user.id)}
-      <AutocompleteItem
-        class="relative flex items-center justify-between min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-hidden data-focused:bg-gray-100 dark:data-focused:bg-gray-800"
-        onSelect={() => handleUserInsert(user.id, user.name)}
-      >
-        {#if loading}
-          <span class="opacity-50">
-            {user.name}
-          </span>
-        {:else}
-          <span>
-            {user.name}
-          </span>
-        {/if}
-      </AutocompleteItem>
-    {/each}
-  </AutocompleteList>
-</AutocompletePopover>
+      {#each props.users as user (user.id)}
+        <AutocompleteItem
+          class="relative flex items-center justify-between min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-hidden data-highlighted:bg-gray-100 dark:data-highlighted:bg-gray-800"
+          onSelect={() => handleUserInsert(user.id, user.name)}
+        >
+          {#if loading}
+            <span class="opacity-50">
+              {user.name}
+            </span>
+          {:else}
+            <span>
+              {user.name}
+            </span>
+          {/if}
+        </AutocompleteItem>
+      {/each}
+    </AutocompletePopup>
+  </AutocompletePositioner>
+</AutocompleteRoot>

@@ -60,7 +60,7 @@ export default function ImageView(props: PreactNodeViewProps) {
       aspectRatio={aspectRatio}
       onResizeEnd={(event) => props.setAttrs(event.detail)}
       data-selected={props.selected ? '' : undefined}
-      className="relative flex items-center justify-center box-border overflow-hidden my-2 group max-h-[600px] max-w-full min-h-[64px] min-w-[64px] outline-2 outline-transparent data-selected:outline-blue-500 outline-solid"
+      className="relative flex items-center justify-center box-border overflow-hidden my-2 group max-h-150 max-w-full min-h-16 min-w-16 outline-2 outline-transparent data-selected:outline-blue-500 outline-solid"
     >
       {url && !error && (
         <img

@@ -1,23 +1,18 @@
 import 'prosekit/web/autocomplete'
 
-import type {
-  AutocompleteItemElement,
-  AutocompleteItemEvents,
-} from 'prosekit/web/autocomplete'
+import type { AutocompleteItemElement } from 'prosekit/web/autocomplete'
 
 export function renderSlashMenuItem(options: {
   label: string
   kbd?: string
-  onSelect: (event: AutocompleteItemEvents['select']) => void
+  onSelect: () => void
 }) {
   const item = document.createElement(
     'prosekit-autocomplete-item',
   ) as AutocompleteItemElement
   item.className =
-    'relative flex items-center justify-between min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-hidden data-focused:bg-gray-100 dark:data-focused:bg-gray-800'
-  item.addEventListener('select', (event) =>
-    options.onSelect(event as AutocompleteItemEvents['select']),
-  )
+    'relative flex items-center justify-between min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-hidden data-highlighted:bg-gray-100 dark:data-highlighted:bg-gray-800'
+  item.addEventListener('select', () => options.onSelect())
 
   const span = document.createElement('span')
   span.textContent = options.label

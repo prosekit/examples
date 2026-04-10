@@ -3,6 +3,7 @@ import 'prosekit/basic/typography.css'
 
 import '../../ui/slash-menu/index'
 
+import { ContextProvider } from '@lit/context'
 import {
   html,
   LitElement,
@@ -12,6 +13,8 @@ import {
 import { createRef, ref, type Ref } from 'lit/directives/ref.js'
 import type { Editor } from 'prosekit/core'
 import { createEditor } from 'prosekit/core'
+
+import { editorContext } from '../../ui/editor-context'
 
 import { defineExtension } from './extension'
 
@@ -25,13 +28,16 @@ export class LitEditor extends LitElement {
 
   private editor: Editor
   private ref: Ref<HTMLDivElement>
-
   constructor() {
     super()
 
     const extension = defineExtension()
     this.editor = createEditor({ extension })
     this.ref = createRef<HTMLDivElement>()
+    new ContextProvider(this, {
+      context: editorContext,
+      initialValue: this.editor,
+    })
   }
 
   override createRenderRoot() {
@@ -59,7 +65,6 @@ export class LitEditor extends LitElement {
             class="ProseMirror box-border min-h-full px-[max(4rem,calc(50%-20rem))] py-8 outline-hidden outline-0 [&_span[data-mention=user]]:text-blue-500 [&_span[data-mention=tag]]:text-violet-500"
           ></div>
           <lit-editor-slash-menu
-            .editor=${this.editor}
             style="display: contents;"
           ></lit-editor-slash-menu>
         </div>

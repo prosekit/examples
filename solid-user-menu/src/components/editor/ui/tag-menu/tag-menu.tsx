@@ -5,8 +5,9 @@ import { useEditor } from 'prosekit/solid'
 import {
   AutocompleteEmpty,
   AutocompleteItem,
-  AutocompleteList,
-  AutocompletePopover,
+  AutocompletePopup,
+  AutocompletePositioner,
+  AutocompleteRoot,
 } from 'prosekit/solid/autocomplete'
 import { For, type JSX } from 'solid-js'
 
@@ -27,26 +28,25 @@ export default function TagMenu(props: {
   }
 
   return (
-    <AutocompletePopover
-      regex={regex}
-      class="relative block max-h-100 min-w-60 select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg [&:not([data-state])]:hidden"
-    >
-      <AutocompleteList>
-        <AutocompleteEmpty class="relative flex items-center justify-between min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-hidden data-focused:bg-gray-100 dark:data-focused:bg-gray-800">
-          No results
-        </AutocompleteEmpty>
+    <AutocompleteRoot regex={regex} class="contents">
+      <AutocompletePositioner>
+        <AutocompletePopup class="relative block max-h-100 min-w-60 select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg [&:not([data-state])]:hidden">
+          <AutocompleteEmpty class="relative flex items-center justify-between min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-hidden data-highlighted:bg-gray-100 dark:data-highlighted:bg-gray-800">
+            No results
+          </AutocompleteEmpty>
 
-        <For each={props.tags}>
-          {(tag) => (
-            <AutocompleteItem
-              class="relative flex items-center justify-between min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-hidden data-focused:bg-gray-100 dark:data-focused:bg-gray-800"
-              onSelect={() => handleTagInsert(tag.id, tag.label)}
-            >
-              #{tag.label}
-            </AutocompleteItem>
-          )}
-        </For>
-      </AutocompleteList>
-    </AutocompletePopover>
+          <For each={props.tags}>
+            {(tag) => (
+              <AutocompleteItem
+                class="relative flex items-center justify-between min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-hidden data-highlighted:bg-gray-100 dark:data-highlighted:bg-gray-800"
+                onSelect={() => handleTagInsert(tag.id, tag.label)}
+              >
+                #{tag.label}
+              </AutocompleteItem>
+            )}
+          </For>
+        </AutocompletePopup>
+      </AutocompletePositioner>
+    </AutocompleteRoot>
   )
 }

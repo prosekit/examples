@@ -6,8 +6,9 @@ import { useEditor } from 'prosekit/vue'
 import {
   AutocompleteEmpty,
   AutocompleteItem,
-  AutocompleteList,
-  AutocompletePopover,
+  AutocompletePopup,
+  AutocompletePositioner,
+  AutocompleteRoot,
 } from 'prosekit/vue/autocomplete'
 
 const props = defineProps<{ tags: { id: number; label: string }[] }>()
@@ -27,25 +28,26 @@ const regex = /#[\da-z]*$/i
 </script>
 
 <template>
-  <AutocompletePopover
-    :regex="regex"
-    class="relative block max-h-100 min-w-60 select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg [&:not([data-state])]:hidden"
-  >
-    <AutocompleteList>
-      <AutocompleteEmpty
-        class="relative flex items-center justify-between min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-hidden data-focused:bg-gray-100 dark:data-focused:bg-gray-800"
+  <AutocompleteRoot :regex="regex" class="contents">
+    <AutocompletePositioner>
+      <AutocompletePopup
+        class="relative block max-h-100 min-w-60 select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg [&:not([data-state])]:hidden"
       >
-        No results
-      </AutocompleteEmpty>
+        <AutocompleteEmpty
+          class="relative flex items-center justify-between min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-hidden data-highlighted:bg-gray-100 dark:data-highlighted:bg-gray-800"
+        >
+          No results
+        </AutocompleteEmpty>
 
-      <AutocompleteItem
-        v-for="tag in props.tags"
-        :key="tag.id"
-        class="relative flex items-center justify-between min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-hidden data-focused:bg-gray-100 dark:data-focused:bg-gray-800"
-        @select="() => handleTagInsert(tag.id, tag.label)"
-      >
-        #{{ tag.label }}
-      </AutocompleteItem>
-    </AutocompleteList>
-  </AutocompletePopover>
+        <AutocompleteItem
+          v-for="tag in props.tags"
+          :key="tag.id"
+          class="relative flex items-center justify-between min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-hidden data-highlighted:bg-gray-100 dark:data-highlighted:bg-gray-800"
+          @select="() => handleTagInsert(tag.id, tag.label)"
+        >
+          #{{ tag.label }}
+        </AutocompleteItem>
+      </AutocompletePopup>
+    </AutocompletePositioner>
+  </AutocompleteRoot>
 </template>
