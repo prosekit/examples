@@ -17,9 +17,9 @@ export default function SlashMenu() {
   const editor = useEditor<BasicExtension>()
 
   return (
-    <AutocompleteRoot regex={regex} className="contents">
-      <AutocompletePositioner>
-        <AutocompletePopup className="relative block max-h-100 min-w-60 select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg [&:not([data-state])]:hidden">
+    <AutocompleteRoot regex={regex}>
+      <AutocompletePositioner className="block overflow-visible bg-transparent w-min h-min z-50 motion-safe:ease-out motion-safe:transition-transform motion-safe:duration-100">
+        <AutocompletePopup className="box-border data-[state=closed]:motion-safe:duration-150 motion-safe:transition-discrete motion-safe:transition-all data-[state=closed]:opacity-0 starting:opacity-0 opacity-100 data-[state=closed]:scale-95 starting:scale-95 scale-100 motion-safe:duration-40 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg flex flex-col relative max-h-100 min-w-60 select-none overflow-auto whitespace-nowrap p-1">
           <SlashMenuItem
             label="Text"
             onSelect={() => editor.commands.setParagraph()}

@@ -102,10 +102,12 @@ function handleLinkUpdate(href?: string) {
       }
     "
   >
-    <InlinePopoverPositioner>
+    <InlinePopoverPositioner
+      class="block overflow-visible bg-transparent w-min h-min z-50 motion-safe:ease-out motion-safe:transition-transform motion-safe:duration-100"
+    >
       <InlinePopoverPopup
         data-testid="inline-menu-main"
-        class="z-10 box-border border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg [&:not([data-state])]:hidden relative flex min-w-32 space-x-1 overflow-auto whitespace-nowrap rounded-md p-1"
+        class="box-border data-[state=closed]:motion-safe:duration-150 motion-safe:transition-discrete motion-safe:transition-all data-[state=closed]:opacity-0 starting:opacity-0 opacity-100 data-[state=closed]:scale-95 starting:scale-95 scale-100 motion-safe:duration-40 border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg relative flex min-w-32 space-x-1 overflow-auto whitespace-nowrap rounded-md p-1"
       >
         <Button
           v-if="items.bold"
@@ -179,10 +181,13 @@ function handleLinkUpdate(href?: string) {
       }
     "
   >
-    <InlinePopoverPositioner placement="bottom">
+    <InlinePopoverPositioner
+      placement="bottom"
+      class="block overflow-visible bg-transparent w-min h-min z-50 motion-safe:ease-out motion-safe:transition-transform motion-safe:duration-100"
+    >
       <InlinePopoverPopup
         data-testid="inline-menu-link"
-        class="z-10 box-border border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg [&:not([data-state])]:hidden relative flex flex-col w-xs rounded-lg p-4 gap-y-2 items-stretch"
+        class="box-border data-[state=closed]:motion-safe:duration-150 motion-safe:transition-discrete motion-safe:transition-all data-[state=closed]:opacity-0 starting:opacity-0 opacity-100 data-[state=closed]:scale-95 starting:scale-95 scale-100 motion-safe:duration-40 border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg relative flex flex-col w-xs rounded-lg p-4 gap-y-2 items-stretch"
       >
         <form
           v-if="linkMenuOpen"
