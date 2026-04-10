@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "preact": "^10.29.1",
-    "prosekit": "^0.20.0-beta.3",
+    "prosekit": "^0.20.0-beta.4",
     "temml": "^0.13.2"
   },
   "devDependencies": {
