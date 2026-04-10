@@ -64,16 +64,16 @@ const state = useEditorDerivedValue(getTableHandleState)
 </script>
 
 <template>
-  <TableHandleRoot class="contents">
+  <TableHandleRoot>
     <TableHandleDragPreview />
     <TableHandleDropIndicator />
     <TableHandleColumnPositioner
-      class="block overflow-visible bg-transparent w-min h-min motion-safe:ease-out motion-safe:transition-transform motion-safe:duration-100"
+      class="block overflow-visible bg-transparent w-min h-min z-50 motion-safe:ease-out motion-safe:transition-transform motion-safe:duration-100"
     >
       <TableHandleColumnPopup
-        class="translate-y-[50%] flex motion-safe:duration-100 data-[state=closed]:motion-safe:duration-150 motion-safe:transition-discrete motion-safe:transition-all data-[state=closed]:opacity-0 starting:opacity-0 opacity-100 data-[state=closed]:scale-90 starting:scale-90 scale-100"
+        class="translate-y-[50%] flex box-border motion-safe:duration-100 data-[state=closed]:motion-safe:duration-150 motion-safe:transition-discrete motion-safe:transition-all data-[state=closed]:opacity-0 starting:opacity-0 opacity-100 data-[state=closed]:scale-95 starting:scale-95 scale-100"
       >
-        <TableHandleColumnMenuRoot class="contents">
+        <TableHandleColumnMenuRoot>
           <TableHandleColumnMenuTrigger
             class="h-4.5 w-6 flex items-center box-border justify-center bg-white dark:bg-gray-950 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-sm text-gray-500/50 dark:text-gray-400/50 border border-gray-200 dark:border-gray-800 border-solid p-0 transition-colors overflow-clip"
           >
@@ -83,7 +83,7 @@ const state = useEditorDerivedValue(getTableHandleState)
           </TableHandleColumnMenuTrigger>
           <MenuPositioner class="overflow-visible bg-transparent">
             <MenuPopup
-              class="relative block max-h-100 min-w-32 select-none overflow-auto whitespace-nowrap p-1 outline-none z-10 box-border rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg [&:not([data-state])]:hidden"
+              class="box-border data-[state=closed]:motion-safe:duration-150 motion-safe:transition-discrete motion-safe:transition-all data-[state=closed]:opacity-0 starting:opacity-0 opacity-100 data-[state=closed]:scale-95 starting:scale-95 scale-100 motion-safe:duration-40 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg relative flex flex-col max-h-100 min-w-32 select-none overflow-auto whitespace-nowrap p-1 outline-none"
             >
               <MenuItem
                 v-if="state.addTableColumnBefore.canExec"
@@ -133,12 +133,12 @@ const state = useEditorDerivedValue(getTableHandleState)
     </TableHandleColumnPositioner>
     <TableHandleRowPositioner
       :placement="props.dir === 'rtl' ? 'right' : 'left'"
-      class="block overflow-visible bg-transparent w-min h-min motion-safe:ease-out motion-safe:transition-transform motion-safe:duration-100"
+      class="block overflow-visible bg-transparent w-min h-min z-50 motion-safe:ease-out motion-safe:transition-transform motion-safe:duration-100"
     >
       <TableHandleRowPopup
-        class="ltr:translate-x-[50%] rtl:translate-x-[-50%] flex motion-safe:duration-100 data-[state=closed]:motion-safe:duration-150 motion-safe:transition-discrete motion-safe:transition-all data-[state=closed]:opacity-0 starting:opacity-0 opacity-100 data-[state=closed]:scale-90 starting:scale-90 scale-100"
+        class="ltr:translate-x-[50%] rtl:translate-x-[-50%] flex box-border motion-safe:duration-100 data-[state=closed]:motion-safe:duration-150 motion-safe:transition-discrete motion-safe:transition-all data-[state=closed]:opacity-0 starting:opacity-0 opacity-100 data-[state=closed]:scale-95 starting:scale-95 scale-100"
       >
-        <TableHandleRowMenuRoot class="contents">
+        <TableHandleRowMenuRoot>
           <TableHandleRowMenuTrigger
             class="h-6 w-4.5 flex items-center box-border justify-center bg-white dark:bg-gray-950 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-sm text-gray-500/50 dark:text-gray-400/50 border border-gray-200 dark:border-gray-800 border-solid p-0 transition-colors overflow-clip"
           >
@@ -148,7 +148,7 @@ const state = useEditorDerivedValue(getTableHandleState)
           </TableHandleRowMenuTrigger>
           <MenuPositioner class="overflow-visible bg-transparent">
             <MenuPopup
-              class="relative block max-h-100 min-w-32 select-none overflow-auto whitespace-nowrap p-1 outline-none z-10 box-border rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg [&:not([data-state])]:hidden"
+              class="box-border data-[state=closed]:motion-safe:duration-150 motion-safe:transition-discrete motion-safe:transition-all data-[state=closed]:opacity-0 starting:opacity-0 opacity-100 data-[state=closed]:scale-95 starting:scale-95 scale-100 motion-safe:duration-40 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg relative flex flex-col max-h-100 min-w-32 select-none overflow-auto whitespace-nowrap p-1 outline-none"
             >
               <MenuItem
                 v-if="state.addTableRowAbove.canExec"
