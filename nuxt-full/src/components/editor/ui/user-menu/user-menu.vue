@@ -6,8 +6,9 @@ import { useEditor } from 'prosekit/vue'
 import {
   AutocompleteEmpty,
   AutocompleteItem,
-  AutocompleteList,
-  AutocompletePopover,
+  AutocompletePopup,
+  AutocompletePositioner,
+  AutocompleteRoot,
 } from 'prosekit/vue/autocomplete'
 
 const props = defineProps<{
@@ -33,32 +34,36 @@ const regex = canUseRegexLookbehind() ? /(?<!\S)@(\S.*)?$/u : /@(\S.*)?$/u
 </script>
 
 <template>
-  <AutocompletePopover
+  <AutocompleteRoot
     :regex="regex"
-    class="relative block max-h-100 min-w-60 select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg [&:not([data-state])]:hidden"
-    @query-change="props.onQueryChange"
-    @open-change="props.onOpenChange"
+    class="contents"
+    @query-change="(event) => props.onQueryChange?.(event.detail)"
+    @open-change="(event) => props.onOpenChange?.(event.detail)"
   >
-    <AutocompleteList>
-      <AutocompleteEmpty
-        class="relative flex items-center justify-between min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-hidden data-focused:bg-gray-100 dark:data-focused:bg-gray-800"
+    <AutocompletePositioner>
+      <AutocompletePopup
+        class="relative block max-h-100 min-w-60 select-none overflow-auto whitespace-nowrap p-1 z-10 box-border rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg [&:not([data-state])]:hidden"
       >
-        {{ props.loading ? 'Loading...' : 'No results' }}
-      </AutocompleteEmpty>
+        <AutocompleteEmpty
+          class="relative flex items-center justify-between min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-hidden data-highlighted:bg-gray-100 dark:data-highlighted:bg-gray-800"
+        >
+          {{ props.loading ? 'Loading...' : 'No results' }}
+        </AutocompleteEmpty>
 
-      <AutocompleteItem
-        v-for="user in props.users"
-        :key="user.id"
-        class="relative flex items-center justify-between min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-hidden data-focused:bg-gray-100 dark:data-focused:bg-gray-800"
-        @select="() => handleUserInsert(user.id, user.name)"
-      >
-        <span v-if="props.loading" class="opacity-50">
-          {{ user.name }}
-        </span>
-        <span v-else>
-          {{ user.name }}
-        </span>
-      </AutocompleteItem>
-    </AutocompleteList>
-  </AutocompletePopover>
+        <AutocompleteItem
+          v-for="user in props.users"
+          :key="user.id"
+          class="relative flex items-center justify-between min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 box-border cursor-default select-none whitespace-nowrap outline-hidden data-highlighted:bg-gray-100 dark:data-highlighted:bg-gray-800"
+          @select="() => handleUserInsert(user.id, user.name)"
+        >
+          <span v-if="props.loading" class="opacity-50">
+            {{ user.name }}
+          </span>
+          <span v-else>
+            {{ user.name }}
+          </span>
+        </AutocompleteItem>
+      </AutocompletePopup>
+    </AutocompletePositioner>
+  </AutocompleteRoot>
 </template>

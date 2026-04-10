@@ -3,6 +3,7 @@ import 'prosekit/basic/typography.css'
 
 import '../../ui/toolbar/index'
 
+import { ContextProvider } from '@lit/context'
 import {
   html,
   LitElement,
@@ -14,6 +15,7 @@ import type { Editor } from 'prosekit/core'
 import { createEditor } from 'prosekit/core'
 
 import { sampleUploader } from '../../sample/sample-uploader'
+import { editorContext } from '../../ui/editor-context'
 
 import { defineExtension } from './extension'
 
@@ -27,13 +29,16 @@ export class LitEditor extends LitElement {
 
   private editor: Editor
   private ref: Ref<HTMLDivElement>
-
   constructor() {
     super()
 
     const extension = defineExtension()
     this.editor = createEditor({ extension })
     this.ref = createRef<HTMLDivElement>()
+    new ContextProvider(this, {
+      context: editorContext,
+      initialValue: this.editor,
+    })
   }
 
   override createRenderRoot() {
@@ -55,10 +60,7 @@ export class LitEditor extends LitElement {
       <div
         class="box-border h-full w-full min-h-36 overflow-y-hidden overflow-x-hidden rounded-md border border-solid border-gray-200 dark:border-gray-700 shadow-sm flex flex-col bg-white dark:bg-gray-950 text-black dark:text-white"
       >
-        <lit-editor-toolbar
-          .editor=${this.editor}
-          .uploader=${sampleUploader}
-        ></lit-editor-toolbar>
+        <lit-editor-toolbar .uploader=${sampleUploader}></lit-editor-toolbar>
         <div class="relative w-full flex-1 box-border overflow-y-auto">
           <div
             ${ref(this.ref)}

@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import type { Editor } from 'prosekit/core'
 import { useEditorDerivedValue, useKeymap } from 'prosekit/vue'
-import { InlinePopover } from 'prosekit/vue/inline-popover'
+import {
+  InlinePopoverPopup,
+  InlinePopoverPositioner,
+  InlinePopoverRoot,
+} from 'prosekit/vue/inline-popover'
 import { ref } from 'vue'
 
 import { Button } from '../../ui/button'
@@ -84,45 +88,53 @@ useKeymap({
 </script>
 
 <template>
-  <InlinePopover
-    class="z-10 box-border border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg [&:not([data-state])]:hidden relative flex min-w-32 space-x-1 overflow-auto whitespace-nowrap rounded-md p-1"
+  <InlinePopoverRoot
     :open="open"
-    @open-change="(value) => (open = value)"
+    @open-change="(event) => (open = event.detail)"
   >
-    <div class="flex flex-col gap-4 p-4">
-      <div class="flex flex-col gap-2">
-        <div class="text-sm">Text color</div>
-        <div class="grid grid-cols-5 gap-1">
-          <Button
-            v-for="color in textColorState"
-            :key="color.label"
-            :pressed="color.isActive"
-            :tooltip="`Text: ${color.label}`"
-            @click="color.onClick"
-          >
-            <span class="text-base font-medium" :style="{ color: color.value }">
-              A
-            </span>
-          </Button>
+    <InlinePopoverPositioner>
+      <InlinePopoverPopup
+        class="z-10 box-border border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg [&:not([data-state])]:hidden relative flex min-w-32 space-x-1 overflow-auto whitespace-nowrap rounded-md p-1"
+      >
+        <div class="flex flex-col gap-4 p-4">
+          <div class="flex flex-col gap-2">
+            <div class="text-sm">Text color</div>
+            <div class="grid grid-cols-5 gap-1">
+              <Button
+                v-for="color in textColorState"
+                :key="color.label"
+                :pressed="color.isActive"
+                :tooltip="`Text: ${color.label}`"
+                @click="color.onClick"
+              >
+                <span
+                  class="text-base font-medium"
+                  :style="{ color: color.value }"
+                >
+                  A
+                </span>
+              </Button>
+            </div>
+          </div>
+          <div class="flex flex-col gap-2">
+            <div class="text-sm">Background color</div>
+            <div class="grid grid-cols-5 gap-1">
+              <Button
+                v-for="color in backgroundColorState"
+                :key="color.label"
+                :pressed="color.isActive"
+                :tooltip="`Background: ${color.label}`"
+                @click="color.onClick"
+              >
+                <div
+                  class="w-6 h-6 rounded border border-gray-200 dark:border-gray-700"
+                  :style="{ backgroundColor: color.value }"
+                />
+              </Button>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="flex flex-col gap-2">
-        <div class="text-sm">Background color</div>
-        <div class="grid grid-cols-5 gap-1">
-          <Button
-            v-for="color in backgroundColorState"
-            :key="color.label"
-            :pressed="color.isActive"
-            :tooltip="`Background: ${color.label}`"
-            @click="color.onClick"
-          >
-            <div
-              class="w-6 h-6 rounded border border-gray-200 dark:border-gray-700"
-              :style="{ backgroundColor: color.value }"
-            />
-          </Button>
-        </div>
-      </div>
-    </div>
-  </InlinePopover>
+      </InlinePopoverPopup>
+    </InlinePopoverPositioner>
+  </InlinePopoverRoot>
 </template>
