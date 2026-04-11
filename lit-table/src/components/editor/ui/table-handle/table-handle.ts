@@ -123,10 +123,10 @@ class LitTableHandle extends LitElement {
         ></prosekit-table-handle-drop-indicator>
         <prosekit-table-handle-column-positioner
           .editor=${editor}
-          class="block overflow-visible bg-transparent w-min h-min z-50 motion-safe:ease-out motion-safe:transition-transform motion-safe:duration-100"
+          class="block overflow-visible bg-transparent w-min h-min z-50 ease-out transition-transform duration-100 motion-reduce:transition-none"
         >
           <prosekit-table-handle-column-popup
-            class="translate-y-[50%] flex box-border motion-safe:duration-100 data-[state=closed]:motion-safe:duration-150 motion-safe:transition-discrete motion-safe:transition-all data-[state=closed]:opacity-0 starting:opacity-0 opacity-100 data-[state=closed]:scale-95 starting:scale-95 scale-100"
+            class="translate-y-[50%] flex box-border origin-(--transform-origin) transition transition-discrete motion-reduce:transition-none duration-100 data-[state=closed]:duration-150 data-[state=closed]:opacity-0 starting:opacity-0 data-[state=closed]:scale-95 starting:scale-95"
           >
             <prosekit-table-handle-column-menu-root>
               <prosekit-table-handle-column-menu-trigger
@@ -139,7 +139,7 @@ class LitTableHandle extends LitElement {
               </prosekit-table-handle-column-menu-trigger>
               <prosekit-menu-positioner class="overflow-visible bg-transparent">
                 <prosekit-menu-popup
-                  class="box-border data-[state=closed]:motion-safe:duration-150 motion-safe:transition-discrete motion-safe:transition-all data-[state=closed]:opacity-0 starting:opacity-0 opacity-100 data-[state=closed]:scale-95 starting:scale-95 scale-100 motion-safe:duration-40 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg relative flex flex-col max-h-100 min-w-32 select-none overflow-auto whitespace-nowrap p-1 outline-none"
+                  class="box-border origin-(--transform-origin) transition transition-discrete motion-reduce:transition-none data-[state=closed]:duration-150 data-[state=closed]:opacity-0 starting:opacity-0 data-[state=closed]:scale-95 starting:scale-95 duration-40 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg relative flex flex-col max-h-100 min-w-32 select-none overflow-auto whitespace-nowrap p-1 outline-none"
                 >
                   ${state.addTableColumnBefore.canExec
                     ? html`
@@ -205,10 +205,10 @@ class LitTableHandle extends LitElement {
         <prosekit-table-handle-row-positioner
           .editor=${editor}
           .placement=${placement}
-          class="block overflow-visible bg-transparent w-min h-min z-50 motion-safe:ease-out motion-safe:transition-transform motion-safe:duration-100"
+          class="block overflow-visible bg-transparent w-min h-min z-50 ease-out transition-transform duration-100 motion-reduce:transition-none"
         >
           <prosekit-table-handle-row-popup
-            class="ltr:translate-x-[50%] rtl:translate-x-[-50%] flex box-border motion-safe:duration-100 data-[state=closed]:motion-safe:duration-150 motion-safe:transition-discrete motion-safe:transition-all data-[state=closed]:opacity-0 starting:opacity-0 opacity-100 data-[state=closed]:scale-95 starting:scale-95 scale-100"
+            class="ltr:translate-x-[50%] rtl:translate-x-[-50%] flex box-border origin-(--transform-origin) transition transition-discrete motion-reduce:transition-none duration-100 data-[state=closed]:duration-150 data-[state=closed]:opacity-0 starting:opacity-0 data-[state=closed]:scale-95 starting:scale-95"
           >
             <prosekit-table-handle-row-menu-root>
               <prosekit-table-handle-row-menu-trigger
@@ -221,7 +221,7 @@ class LitTableHandle extends LitElement {
               </prosekit-table-handle-row-menu-trigger>
               <prosekit-menu-positioner class="overflow-visible bg-transparent">
                 <prosekit-menu-popup
-                  class="box-border data-[state=closed]:motion-safe:duration-150 motion-safe:transition-discrete motion-safe:transition-all data-[state=closed]:opacity-0 starting:opacity-0 opacity-100 data-[state=closed]:scale-95 starting:scale-95 scale-100 motion-safe:duration-40 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg relative flex flex-col max-h-100 min-w-32 select-none overflow-auto whitespace-nowrap p-1 outline-none"
+                  class="box-border origin-(--transform-origin) transition transition-discrete motion-reduce:transition-none data-[state=closed]:duration-150 data-[state=closed]:opacity-0 starting:opacity-0 data-[state=closed]:scale-95 starting:scale-95 duration-40 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg relative flex flex-col max-h-100 min-w-32 select-none overflow-auto whitespace-nowrap p-1 outline-none"
                 >
                   ${state.addTableRowAbove.canExec
                     ? html`

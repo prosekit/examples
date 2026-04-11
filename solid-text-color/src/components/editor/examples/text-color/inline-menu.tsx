@@ -93,8 +93,8 @@ export default function InlineMenu(): JSX.Element {
       open={open()}
       onOpenChange={(event) => setOpen(event.detail)}
     >
-      <InlinePopoverPositioner class="block overflow-visible bg-transparent w-min h-min z-50 motion-safe:ease-out motion-safe:transition-transform motion-safe:duration-100">
-        <InlinePopoverPopup class="box-border data-[state=closed]:motion-safe:duration-150 motion-safe:transition-discrete motion-safe:transition-all data-[state=closed]:opacity-0 starting:opacity-0 opacity-100 data-[state=closed]:scale-95 starting:scale-95 scale-100 motion-safe:duration-40 border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg relative flex min-w-32 space-x-1 overflow-auto whitespace-nowrap rounded-md p-1">
+      <InlinePopoverPositioner class="block overflow-visible bg-transparent w-min h-min z-50 ease-out transition-transform duration-100 motion-reduce:transition-none">
+        <InlinePopoverPopup class="box-border origin-(--transform-origin) transition transition-discrete motion-reduce:transition-none data-[state=closed]:duration-150 data-[state=closed]:opacity-0 starting:opacity-0 data-[state=closed]:scale-95 starting:scale-95 duration-40 border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg relative flex min-w-32 space-x-1 overflow-auto whitespace-nowrap rounded-md p-1">
           <div class="flex flex-col gap-4 p-4">
             <div class="flex flex-col gap-2">
               <div class="text-sm">Text color</div>
