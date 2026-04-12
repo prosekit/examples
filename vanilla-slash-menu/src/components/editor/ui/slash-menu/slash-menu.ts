@@ -26,7 +26,7 @@ export function renderSlashMenu(editor: Editor<BasicExtension>) {
     'prosekit-autocomplete-positioner',
   ) as AutocompletePositionerElement
   positioner.className =
-    'block overflow-visible bg-transparent w-min h-min z-50 ease-out transition-transform duration-100 motion-reduce:transition-none'
+    'block overflow-visible w-min h-min z-50 ease-out transition-transform duration-100 motion-reduce:transition-none'
 
   const popup = document.createElement(
     'prosekit-autocomplete-popup',

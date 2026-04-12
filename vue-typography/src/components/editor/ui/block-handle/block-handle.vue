@@ -18,7 +18,7 @@ const props = defineProps<Props>()
   <BlockHandleRoot>
     <BlockHandlePositioner
       :placement="props.dir === 'rtl' ? 'right' : 'left'"
-      class="block overflow-visible bg-transparent w-min h-min z-50 ease-out transition-transform duration-100 motion-reduce:transition-none"
+      class="block overflow-visible w-min h-min z-50 ease-out transition-transform duration-100 motion-reduce:transition-none"
     >
       <BlockHandlePopup
         class="flex box-border origin-(--transform-origin) transition transition-discrete motion-reduce:transition-none duration-100 data-[state=closed]:duration-150 data-[state=closed]:opacity-0 starting:opacity-0 data-[state=closed]:scale-95 starting:scale-95"

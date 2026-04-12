@@ -103,7 +103,7 @@ function handleLinkUpdate(href?: string) {
     "
   >
     <InlinePopoverPositioner
-      class="block overflow-visible bg-transparent w-min h-min z-50 ease-out transition-transform duration-100 motion-reduce:transition-none"
+      class="block overflow-visible w-min h-min z-50 ease-out transition-transform duration-100 motion-reduce:transition-none"
     >
       <InlinePopoverPopup
         data-testid="inline-menu-main"
@@ -183,7 +183,7 @@ function handleLinkUpdate(href?: string) {
   >
     <InlinePopoverPositioner
       placement="bottom"
-      class="block overflow-visible bg-transparent w-min h-min z-50 ease-out transition-transform duration-100 motion-reduce:transition-none"
+      class="block overflow-visible w-min h-min z-50 ease-out transition-transform duration-100 motion-reduce:transition-none"
     >
       <InlinePopoverPopup
         data-testid="inline-menu-link"
