@@ -19,7 +19,7 @@
     "@egoist/tailwindcss-icons": "^1.9.2",
     "@iconify-json/lucide": "^1.2.102",
     "@tailwindcss/postcss": "^4.2.2",
-    "autoprefixer": "^10.4.27",
+    "autoprefixer": "^10.5.0",
     "postcss": "^8.5.9",
     "tailwindcss": "^4.2.2",
     "typescript": "^6.0.2"

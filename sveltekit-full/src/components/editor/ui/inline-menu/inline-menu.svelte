@@ -97,7 +97,7 @@ function handleLinkUpdate(href?: string) {
   <InlinePopoverPositioner class="block overflow-visible w-min h-min z-50 ease-out transition-transform duration-100 motion-reduce:transition-none">
     <InlinePopoverPopup
       data-testid="inline-menu-main"
-      class="box-border origin-(--transform-origin) transition transition-discrete motion-reduce:transition-none data-[state=closed]:duration-150 data-[state=closed]:opacity-0 starting:opacity-0 data-[state=closed]:scale-95 starting:scale-95 duration-40 border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg relative flex min-w-32 space-x-1 overflow-auto whitespace-nowrap rounded-md p-1"
+      class="box-border origin-(--transform-origin) transition transition-discrete motion-reduce:transition-none data-[state=closed]:duration-150 data-[state=closed]:opacity-0 starting:opacity-0 data-[state=closed]:scale-95 starting:scale-95 duration-40 border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg overscroll-none relative flex min-w-32 space-x-1 overflow-auto whitespace-nowrap rounded-md p-1"
     >
       {#if $items.bold}
         <Button
@@ -175,7 +175,7 @@ function handleLinkUpdate(href?: string) {
   <InlinePopoverPositioner placement="bottom" class="block overflow-visible w-min h-min z-50 ease-out transition-transform duration-100 motion-reduce:transition-none">
     <InlinePopoverPopup
       data-testid="inline-menu-link"
-      class="box-border origin-(--transform-origin) transition transition-discrete motion-reduce:transition-none data-[state=closed]:duration-150 data-[state=closed]:opacity-0 starting:opacity-0 data-[state=closed]:scale-95 starting:scale-95 duration-40 border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg relative flex flex-col w-xs rounded-lg p-4 gap-y-2 items-stretch"
+      class="box-border origin-(--transform-origin) transition transition-discrete motion-reduce:transition-none data-[state=closed]:duration-150 data-[state=closed]:opacity-0 starting:opacity-0 data-[state=closed]:scale-95 starting:scale-95 duration-40 border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg overscroll-none relative flex flex-col w-xs rounded-lg p-4 gap-y-2 items-stretch"
     >
       {#if linkMenuOpen && $items.link}
         <form

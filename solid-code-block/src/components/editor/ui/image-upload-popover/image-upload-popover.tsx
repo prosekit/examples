@@ -89,7 +89,7 @@ export default function ImageUploadPopover(props: {
         placement="bottom"
         class="block overflow-visible w-min h-min z-50 ease-out transition-transform duration-100 motion-reduce:transition-none"
       >
-        <PopoverPopup class="box-border origin-(--transform-origin) transition transition-discrete motion-reduce:transition-none data-[state=closed]:duration-150 data-[state=closed]:opacity-0 starting:opacity-0 data-[state=closed]:scale-95 starting:scale-95 duration-40 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg flex flex-col gap-y-4 p-6 text-sm w-sm">
+        <PopoverPopup class="box-border origin-(--transform-origin) transition transition-discrete motion-reduce:transition-none data-[state=closed]:duration-150 data-[state=closed]:opacity-0 starting:opacity-0 data-[state=closed]:scale-95 starting:scale-95 duration-40 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg overscroll-none flex flex-col gap-y-4 p-6 text-sm w-sm">
           <Show when={!file()}>
             <label for={`id-link-${ariaId}`}>Embed Link</label>
             <input

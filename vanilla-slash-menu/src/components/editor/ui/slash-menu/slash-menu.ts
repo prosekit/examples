@@ -32,7 +32,7 @@ export function renderSlashMenu(editor: Editor<BasicExtension>) {
     'prosekit-autocomplete-popup',
   ) as AutocompletePopupElement
   popup.className =
-    'box-border origin-(--transform-origin) transition transition-discrete motion-reduce:transition-none data-[state=closed]:duration-150 data-[state=closed]:opacity-0 starting:opacity-0 data-[state=closed]:scale-95 starting:scale-95 duration-40 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg flex flex-col relative max-h-100 min-w-60 select-none overflow-auto whitespace-nowrap p-1'
+    'box-border origin-(--transform-origin) transition transition-discrete motion-reduce:transition-none data-[state=closed]:duration-150 data-[state=closed]:opacity-0 starting:opacity-0 data-[state=closed]:scale-95 starting:scale-95 duration-40 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg overscroll-none flex flex-col relative max-h-100 min-w-60 select-none overflow-auto whitespace-nowrap p-1'
 
   popup.append(
     renderSlashMenuItem({
