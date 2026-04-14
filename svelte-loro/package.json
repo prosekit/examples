@@ -11,7 +11,7 @@
   "dependencies": {
     "loro-crdt": "^1.11.0",
     "loro-prosemirror": "^0.4.3",
-    "prosekit": "^0.20.0-beta.6"
+    "prosekit": "^0.20.0-beta.7"
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "^1.9.2",
