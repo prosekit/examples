@@ -16,7 +16,7 @@
     "@iconify-json/lucide": "^1.2.102",
     "@tailwindcss/vite": "^4.2.2",
     "tailwindcss": "^4.2.2",
-    "typescript": "^6.0.2",
+    "typescript": "^6.0.3",
     "vite": "^8.0.8"
   }
 }
