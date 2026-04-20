@@ -23,7 +23,7 @@
     "@vue/tsconfig": "^0.9.1",
     "tailwindcss": "^4.2.2",
     "typescript": "^6.0.3",
-    "vite": "^8.0.8",
+    "vite": "^8.0.9",
     "vite-plugin-wasm": "^3.6.0",
     "vue-tsc": "^3.2.7"
   }
