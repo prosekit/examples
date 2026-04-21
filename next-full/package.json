@@ -18,12 +18,12 @@
   "devDependencies": {
     "@egoist/tailwindcss-icons": "^1.9.2",
     "@iconify-json/lucide": "^1.2.102",
-    "@tailwindcss/postcss": "^4.2.2",
+    "@tailwindcss/postcss": "^4.2.4",
     "@types/node": "^24.12.2",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "postcss": "^8.5.10",
-    "tailwindcss": "^4.2.2",
+    "tailwindcss": "^4.2.4",
     "typescript": "^6.0.3"
   }
 }
