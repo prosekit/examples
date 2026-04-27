@@ -30,7 +30,7 @@ export default function Editor(props: EditorProps) {
     <ProseKit editor={editor}>
       <div
         dir="rtl"
-        className="box-border h-full w-full min-h-36 overflow-y-hidden overflow-x-hidden rounded-md border border-solid border-gray-200 dark:border-gray-700 shadow-sm flex flex-col bg-white dark:bg-gray-950 text-black dark:text-white"
+        className="box-border h-full w-full min-h-36 overflow-y-hidden overflow-x-hidden rounded-md border border-solid border-gray-200 dark:border-gray-700 shadow-sm flex flex-col bg-[canvas] text-black dark:text-white"
       >
         <Toolbar uploader={sampleUploader} />
         <div className="relative w-full flex-1 box-border overflow-y-auto">

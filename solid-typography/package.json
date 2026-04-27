@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "katex": "^0.16.45",
-    "prosekit": "^0.20.0-beta.8",
+    "prosekit": "^0.20.0",
     "solid-js": "^1.9.12"
   },
   "devDependencies": {
