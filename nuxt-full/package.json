@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "^1.9.2",
-    "@iconify-json/lucide": "^1.2.103",
+    "@iconify-json/lucide": "^1.2.104",
     "@tailwindcss/postcss": "^4.2.4",
     "autoprefixer": "^10.5.0",
     "postcss": "^8.5.12",
