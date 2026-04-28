@@ -2,6 +2,7 @@ import assert from 'node:assert/strict'
 import { spawn } from 'node:child_process'
 import fs from 'node:fs/promises'
 import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 
 type RegistryIndex = {
   items: RegistryIndexItem[]
@@ -29,8 +30,10 @@ type RegistryItem = RegistryIndexItem & {
   registryDependencies?: string[]
 }
 
-const REGISTRY_URL = 'https://prosekit.dev/r'
-const REGISTRY_INDEX_URL = `${REGISTRY_URL}/registry.json`
+const REGISTRY_DIR = path.dirname(
+  fileURLToPath(import.meta.resolve('prosekit-registry/dist/r/registry.json')),
+)
+const REGISTRY_INDEX_PATH = path.join(REGISTRY_DIR, 'registry.json')
 
 const ROOT = path.resolve(import.meta.dirname, '..')
 const LOG_PREFIX = '[fetch-examples]'
@@ -251,32 +254,27 @@ function memoize<Args extends any[], Result>(
   }
 }
 
-async function fetchJson<T>(url: string): Promise<T> {
-  const response = await fetch(url)
-  if (!response.ok) {
-    throw new Error(
-      `Failed to fetch ${url}: ${response.status} ${response.statusText}`,
-    )
-  }
-  return (await response.json()) as T
+async function readJson<T>(filePath: string): Promise<T> {
+  const text = await fs.readFile(filePath, 'utf-8')
+  return JSON.parse(text) as T
 }
 
-const fetchRegistryItem = memoize(async function fetchRegistryItem(
-  identifier: string,
-): Promise<RegistryItem> {
-  const url = identifier.startsWith('http')
-    ? identifier
-    : `${REGISTRY_URL}/${identifier.replace(/^https?:\/\//, '').replace(/\.json$/, '')}.json`
+function resolveRegistryPath(identifier: string): string {
+  const basename = path.basename(identifier).replace(/\.json$/, '')
+  return path.join(REGISTRY_DIR, `${basename}.json`)
+}
 
-  let item: RegistryItem
+async function fetchRegistryItem(identifier: string): Promise<RegistryItem> {
+  const filePath = resolveRegistryPath(identifier)
   try {
-    item = await fetchJson<RegistryItem>(url)
+    return await readJson<RegistryItem>(filePath)
   } catch (error) {
-    warn(`Failed to fetch registry item ${identifier}: ${formatError(error)}`)
+    warn(
+      `Failed to read registry item ${identifier} from ${filePath}: ${formatError(error)}`,
+    )
     throw error
   }
-  return item
-})
+}
 
 async function collectRegistryFiles(
   item: RegistryItem,
@@ -853,7 +851,10 @@ async function buildDerivedExamples(registry: RegistryIndex) {
 }
 
 async function main() {
-  const registry = await fetchJson<RegistryIndex>(REGISTRY_INDEX_URL)
+  const registryPkg = await readJson<{ version: string }>(
+    path.join(REGISTRY_DIR, '..', '..', 'package.json'),
+  )
+  const registry = await readJson<RegistryIndex>(REGISTRY_INDEX_PATH)
   const items = registry.items.filter((item) => shouldBuild(item))
 
   assert(
@@ -861,7 +862,9 @@ async function main() {
     'No examples with valid story/framework metadata were found in the registry.',
   )
 
-  info(`Building ${items.length} examples from the registry`)
+  info(
+    `Building ${items.length} examples from prosekit-registry@${registryPkg.version}`,
+  )
 
   await Promise.all(
     items.map(async (item) => {
