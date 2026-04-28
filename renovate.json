@@ -6,6 +6,7 @@
   "gitIgnoredAuthors": ["114827586+autofix-ci[bot]@users.noreply.github.com"],
   "extends": [
     "config:recommended",
+    "helpers:pinGitHubActionDigestsToSemver",
     ":semanticCommitTypeAll(chore)",
     ":disablePeerDependencies",
     ":includeNodeModules"
