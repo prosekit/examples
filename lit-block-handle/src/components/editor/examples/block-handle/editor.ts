@@ -1,7 +1,8 @@
 import 'prosekit/basic/style.css'
 import 'prosekit/basic/typography.css'
 
-import '../../ui/table-handle/index'
+import '../../ui/block-handle'
+import '../../ui/drop-indicator'
 
 import { ContextProvider } from '@lit/context'
 import {
@@ -14,16 +15,16 @@ import { createRef, ref, type Ref } from 'lit/directives/ref.js'
 import type { Editor, NodeJSON } from 'prosekit/core'
 import { createEditor } from 'prosekit/core'
 
-import { sampleContent } from '../../sample/sample-doc-table'
+import { sampleContent } from '../../sample/sample-doc-block-handle'
 import { editorContext } from '../../ui/editor-context'
 
 import { defineExtension } from './extension'
 
 export class LitEditor extends LitElement {
   static override properties = {
-    initialContent: { attribute: false } satisfies PropertyDeclaration<
-      NodeJSON | undefined
-    >,
+    initialContent: {
+      attribute: false,
+    } satisfies PropertyDeclaration<NodeJSON | undefined>,
   }
 
   initialContent?: NodeJSON
@@ -76,7 +77,8 @@ export class LitEditor extends LitElement {
             ${ref(this.ref)}
             class="ProseMirror box-border min-h-full px-[max(4rem,calc(50%-20rem))] py-8 outline-hidden outline-0 [&_span[data-mention=user]]:text-blue-500 [&_span[data-mention=tag]]:text-violet-500"
           ></div>
-          <lit-editor-table-handle></lit-editor-table-handle>
+          <lit-editor-block-handle></lit-editor-block-handle>
+          <lit-editor-drop-indicator></lit-editor-drop-indicator>
         </div>
       </div>
     `
@@ -84,12 +86,12 @@ export class LitEditor extends LitElement {
 }
 
 export function registerLitEditor() {
-  if (customElements.get('lit-editor-example-table')) return
-  customElements.define('lit-editor-example-table', LitEditor)
+  if (customElements.get('lit-editor-example-block-handle')) return
+  customElements.define('lit-editor-example-block-handle', LitEditor)
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    'lit-editor-example-table': LitEditor
+    'lit-editor-example-block-handle': LitEditor
   }
 }
