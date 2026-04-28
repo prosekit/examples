@@ -259,6 +259,8 @@ async function readJson<T>(filePath: string): Promise<T> {
   return JSON.parse(text) as T
 }
 
+// Identifier may be a bare name ("react-example-blockquote") or a full URL ending in ".json". Strip then re-append so both
+// shapes resolve to <REGISTRY_DIR>/<name>.json without double extensions.
 function resolveRegistryPath(identifier: string): string {
   const basename = path.basename(identifier).replace(/\.json$/, '')
   return path.join(REGISTRY_DIR, `${basename}.json`)
