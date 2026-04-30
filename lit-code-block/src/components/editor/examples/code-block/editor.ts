@@ -1,8 +1,6 @@
 import 'prosekit/basic/style.css'
 import 'prosekit/basic/typography.css'
 
-import '../../ui/toolbar/index'
-
 import { ContextProvider } from '@lit/context'
 import {
   html,
@@ -17,6 +15,7 @@ import { createEditor } from 'prosekit/core'
 import { sampleContent } from '../../sample/sample-doc-code-block'
 import { sampleUploader } from '../../sample/sample-uploader'
 import { editorContext } from '../../ui/editor-context'
+import { registerLitEditorToolbar } from '../../ui/toolbar'
 
 import { defineExtension } from './extension'
 
@@ -75,6 +74,8 @@ export class LitEditor extends LitElement {
 }
 
 export function registerLitEditor() {
+  registerLitEditorToolbar()
+
   if (customElements.get('lit-editor-example-code-block')) return
   customElements.define('lit-editor-example-code-block', LitEditor)
 }

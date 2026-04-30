@@ -1,6 +1,3 @@
-import '../button/index'
-import '../image-upload-popover/index'
-
 import { ContextConsumer } from '@lit/context'
 import {
   html,
@@ -13,7 +10,9 @@ import type { BasicExtension } from 'prosekit/basic'
 import { defineUpdateHandler, type Editor } from 'prosekit/core'
 import type { Uploader } from 'prosekit/extensions/file'
 
+import { registerLitEditorButton } from '../button'
 import { editorContext } from '../editor-context'
+import { registerLitEditorImageUploadPopover } from '../image-upload-popover'
 
 function getToolbarItems(editor: Editor<BasicExtension>) {
   return {
@@ -453,7 +452,13 @@ class LitToolbar extends LitElement {
   }
 }
 
-customElements.define('lit-editor-toolbar', LitToolbar)
+export function registerLitEditorToolbar() {
+  registerLitEditorButton()
+  registerLitEditorImageUploadPopover()
+
+  if (customElements.get('lit-editor-toolbar')) return
+  customElements.define('lit-editor-toolbar', LitToolbar)
+}
 
 declare global {
   interface HTMLElementTagNameMap {
