@@ -1,8 +1,6 @@
 import 'prosekit/basic/style.css'
 import 'prosekit/basic/typography.css'
 
-import '../../ui/table-handle/index'
-
 import { ContextProvider } from '@lit/context'
 import {
   html,
@@ -16,6 +14,7 @@ import { createEditor } from 'prosekit/core'
 
 import { sampleContent } from '../../sample/sample-doc-table'
 import { editorContext } from '../../ui/editor-context'
+import { registerLitEditorTableHandle } from '../../ui/table-handle'
 
 import { defineExtension } from './extension'
 
@@ -84,6 +83,8 @@ export class LitEditor extends LitElement {
 }
 
 export function registerLitEditor() {
+  registerLitEditorTableHandle()
+
   if (customElements.get('lit-editor-example-table')) return
   customElements.define('lit-editor-example-table', LitEditor)
 }
