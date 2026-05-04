@@ -17,7 +17,7 @@
     "@sveltejs/vite-plugin-svelte": "^7.0.0",
     "@tailwindcss/vite": "^4.2.4",
     "@tsconfig/svelte": "^5.0.8",
-    "postcss": "^8.5.13",
+    "postcss": "^8.5.14",
     "svelte": "^5.55.5",
     "svelte-check": "^4.4.7",
     "tailwindcss": "^4.2.4",
