@@ -10,8 +10,8 @@
   },
   "dependencies": {
     "prosekit": "^0.20.1",
-    "react": "^19.2.5",
-    "react-dom": "^19.2.5"
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6"
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "^1.9.2",
