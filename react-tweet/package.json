@@ -12,7 +12,7 @@
     "prosekit": "^0.20.1",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
-    "react-parallax-tilt": "^1.7.326",
+    "react-parallax-tilt": "^1.7.327",
     "react-tweet": "^3.3.0"
   },
   "devDependencies": {
