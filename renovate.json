@@ -3,6 +3,8 @@
   "branchNameStrict": true,
   "rangeStrategy": "bump",
   "automerge": true,
+  "prCreation": "not-pending",
+  "minimumReleaseAge": "3 days",
   "gitIgnoredAuthors": ["114827586+autofix-ci[bot]@users.noreply.github.com"],
   "extends": [
     "config:recommended",
