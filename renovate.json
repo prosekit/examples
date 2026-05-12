@@ -3,6 +3,7 @@
   "branchNameStrict": true,
   "rangeStrategy": "bump",
   "automerge": true,
+  "minimumReleaseAge": "7 days",
   "gitIgnoredAuthors": ["114827586+autofix-ci[bot]@users.noreply.github.com"],
   "extends": [
     "config:recommended",
@@ -10,5 +11,11 @@
     ":semanticCommitTypeAll(chore)",
     ":disablePeerDependencies",
     ":includeNodeModules"
+  ],
+  "packageRules": [
+    {
+      "matchPackageNames": ["prosekit"],
+      "minimumReleaseAge": null
+    }
   ]
 }
