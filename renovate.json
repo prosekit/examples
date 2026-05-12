@@ -12,5 +12,11 @@
     ":semanticCommitTypeAll(chore)",
     ":disablePeerDependencies",
     ":includeNodeModules"
+  ],
+  "packageRules": [
+    {
+      "matchPackageNames": ["prosekit"],
+      "minimumReleaseAge": null
+    }
   ]
 }
