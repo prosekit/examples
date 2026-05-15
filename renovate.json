@@ -14,7 +14,7 @@
   ],
   "packageRules": [
     {
-      "matchPackageNames": ["prosekit"],
+      "matchPackageNames": ["prosekit", "prosekit-registry"],
       "minimumReleaseAge": null
     }
   ]
