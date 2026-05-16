@@ -31,13 +31,13 @@ case "$PACKAGE_MANAGER" in
     bun install --prefer-offline
     ;;
   npm)
-    npm install --prefer-offline --no-audit --no-fund --ignore-scripts
+    npm install --prefer-offline --ignore-scripts --no-audit --no-fund
     ;;
   pnpm)
-    pnpm install --prefer-offline
+    pnpm install --prefer-offline --ignore-scripts
     ;;
   yarn)
-    yarn install --prefer-offline --mutex file:/tmp/.yarn-mutex --ignore-scripts
+    yarn install --prefer-offline --ignore-scripts
     ;;
   *)
     echo "Error: Unknown package manager '$PACKAGE_MANAGER'"
