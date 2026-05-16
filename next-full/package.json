@@ -11,7 +11,7 @@
   "dependencies": {
     "katex": "^0.16.45",
     "next": "^16.2.6",
-    "prosekit": "^0.20.2",
+    "prosekit": "^0.21.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6"
   },
