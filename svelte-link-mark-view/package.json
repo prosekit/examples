@@ -1,0 +1,28 @@
+{
+  "name": "example-svelte-link-mark-view",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "svelte-check --tsconfig ./tsconfig.json && vite build",
+    "dev": "vite",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "prosekit": "^0.21.0"
+  },
+  "devDependencies": {
+    "@egoist/tailwindcss-icons": "^1.9.2",
+    "@iconify-json/lucide": "^1.2.107",
+    "@sveltejs/vite-plugin-svelte": "^7.1.2",
+    "@tailwindcss/vite": "^4.3.0",
+    "@tsconfig/svelte": "^5.0.8",
+    "postcss": "^8.5.14",
+    "svelte": "5.55.7",
+    "svelte-check": "^4.4.8",
+    "tailwindcss": "^4.3.0",
+    "tslib": "^2.8.1",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.13"
+  }
+}
