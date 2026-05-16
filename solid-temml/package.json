@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "prosekit": "^0.20.2",
-    "solid-js": "^1.9.12",
+    "solid-js": "^1.9.13",
     "temml": "^0.13.2"
   },
   "devDependencies": {
