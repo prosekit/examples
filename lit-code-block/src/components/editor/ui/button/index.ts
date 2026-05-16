@@ -1,1 +1,0 @@
-export { registerLitEditorButton } from './button'

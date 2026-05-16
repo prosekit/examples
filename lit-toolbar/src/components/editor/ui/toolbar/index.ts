@@ -1,1 +1,0 @@
-export { registerLitEditorToolbar } from './toolbar'
