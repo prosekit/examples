@@ -34,7 +34,7 @@ export default function Search(props: { onClose?: VoidFunction }): JSX.Element {
 
   useExtension(extension)
 
-  const editor = useEditor<SearchCommandsExtension>({ update: true })
+  const editor = useEditor<SearchCommandsExtension>()
 
   const handleSearchKeyDown = (event: KeyboardEvent) => {
     if (isEnter(event)) {
