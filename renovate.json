@@ -5,6 +5,7 @@
   "automerge": true,
   "minimumReleaseAge": "7 days",
   "gitIgnoredAuthors": ["114827586+autofix-ci[bot]@users.noreply.github.com"],
+  "prHourlyLimit": 1,
   "extends": [
     "config:recommended",
     "helpers:pinGitHubActionDigestsToSemver",
@@ -14,7 +15,13 @@
   ],
   "packageRules": [
     {
-      "matchPackageNames": ["prosekit", "prosekit-registry"],
+      "matchPackageNames": ["prosekit"],
+      "prPriority": 100,
+      "minimumReleaseAge": null
+    },
+    {
+      "matchPackageNames": ["prosekit-registry"],
+      "prPriority": 50,
       "minimumReleaseAge": null
     }
   ]
