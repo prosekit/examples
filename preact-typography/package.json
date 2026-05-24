@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "katex": "^0.16.47",
-    "preact": "^10.29.1",
+    "preact": "^10.29.2",
     "prosekit": "^0.21.2"
   },
   "devDependencies": {
