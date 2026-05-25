@@ -5,7 +5,7 @@ import {
 import { useEditor, useExtension } from 'prosekit/solid'
 import { createMemo, createSignal, type JSX } from 'solid-js'
 
-import { Button } from '../button'
+import { Button } from '../button/index.ts'
 
 export default function Search(props: { onClose?: VoidFunction }): JSX.Element {
   const [showReplace, setShowReplace] = createSignal(false)

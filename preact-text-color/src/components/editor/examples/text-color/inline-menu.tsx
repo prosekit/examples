@@ -7,9 +7,9 @@ import {
   InlinePopoverRoot,
 } from 'prosekit/preact/inline-popover'
 
-import { Button } from '../../ui/button'
+import { Button } from '../../ui/button/index.ts'
 
-import type { EditorExtension } from './extension'
+import type { EditorExtension } from './extension.ts'
 
 const textColors = [
   { label: 'Gray', value: '#9ca3af' },

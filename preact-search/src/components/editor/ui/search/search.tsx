@@ -5,7 +5,7 @@ import {
 } from 'prosekit/extensions/search'
 import { useEditor, useExtension } from 'prosekit/preact'
 
-import { Button } from '../button'
+import { Button } from '../button/index.ts'
 
 export default function Search(props: { onClose?: VoidFunction }) {
   const [showReplace, setShowReplace] = useState(false)

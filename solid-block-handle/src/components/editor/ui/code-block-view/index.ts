@@ -4,7 +4,7 @@ import {
   type SolidNodeViewComponent,
 } from 'prosekit/solid'
 
-import CodeBlockView from './code-block-view'
+import CodeBlockView from './code-block-view.tsx'
 
 export function defineCodeBlockView(): Extension {
   return defineSolidNodeView({
