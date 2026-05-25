@@ -2,7 +2,10 @@ import { defineBasicExtension } from 'prosekit/basic'
 import { union } from 'prosekit/core'
 import { defineMath } from 'prosekit/extensions/math'
 
-import { renderKaTeXMathBlock, renderKaTeXMathInline } from '../../sample/katex'
+import {
+  renderKaTeXMathBlock,
+  renderKaTeXMathInline,
+} from '../../sample/katex.ts'
 
 export function defineExtension() {
   return union(

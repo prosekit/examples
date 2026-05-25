@@ -9,11 +9,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "prosekit": "^0.21.2"
+    "beautiful-mermaid": "^1.1.3",
+    "prosekit": "^0.21.3"
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "^1.9.2",
-    "@iconify-json/lucide": "^1.2.107",
+    "@iconify-json/lucide": "^1.2.108",
     "@sveltejs/vite-plugin-svelte": "^7.1.2",
     "@tailwindcss/vite": "^4.3.0",
     "@tsconfig/svelte": "^5.0.8",

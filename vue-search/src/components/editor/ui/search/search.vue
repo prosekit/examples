@@ -6,7 +6,7 @@ import {
 import { useEditor, useExtension } from 'prosekit/vue'
 import { computed, ref } from 'vue'
 
-import { Button } from '../button'
+import { Button } from '../button/index.ts'
 
 const props = defineProps<{ onClose?: () => void }>()
 

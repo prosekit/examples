@@ -4,7 +4,7 @@ import {
   type PreactNodeViewComponent,
 } from 'prosekit/preact'
 
-import ImageView from './image-view'
+import ImageView from './image-view.tsx'
 
 export function defineImageView(): Extension {
   return definePreactNodeView({
