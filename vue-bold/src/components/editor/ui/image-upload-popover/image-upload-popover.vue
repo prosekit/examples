@@ -11,7 +11,7 @@ import {
 import type { OpenChangeEvent } from 'prosekit/web/popover'
 import { ref, useId } from 'vue'
 
-import { Button } from '../button'
+import { Button } from '../button/index.ts'
 
 const props = defineProps<{
   uploader: Uploader<string>

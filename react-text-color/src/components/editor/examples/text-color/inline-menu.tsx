@@ -9,9 +9,9 @@ import {
 } from 'prosekit/react/inline-popover'
 import { useMemo, useState } from 'react'
 
-import { Button } from '../../ui/button'
+import { Button } from '../../ui/button/index.ts'
 
-import type { EditorExtension } from './extension'
+import type { EditorExtension } from './extension.ts'
 
 const textColors = [
   { label: 'Gray', value: '#9ca3af' },
