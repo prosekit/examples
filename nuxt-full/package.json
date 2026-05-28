@@ -21,7 +21,7 @@
     "@iconify-json/lucide": "^1.2.109",
     "@tailwindcss/postcss": "^4.3.0",
     "autoprefixer": "^10.5.0",
-    "postcss": "^8.5.14",
+    "postcss": "^8.5.15",
     "tailwindcss": "^4.3.0",
     "typescript": "^6.0.3"
   }
