@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "katex": "^0.16.47",
+    "katex": "^0.17.0",
     "preact": "^10.29.2",
     "prosekit": "^0.21.3"
   },
