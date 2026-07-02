@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "prosekit": "^0.21.4",
-    "vue": "^3.5.38",
+    "vue": "^3.5.39",
     "vue-tweet": "^2.4.0"
   },
   "devDependencies": {
