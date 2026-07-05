@@ -45,31 +45,37 @@ class LitButton extends LitElement {
             ?disabled=${this.disabled}
             @mousedown=${this.handleMouseDown}
           >
-            ${this.icon
-              ? html`
-                  <div class="${this.icon}"></div>
-                `
-              : nothing}
-            ${tooltip
-              ? html`
-                  <span class="sr-only">${tooltip}</span>
-                `
-              : nothing}
+            ${
+              this.icon
+                ? html`
+                    <div class="${this.icon}"></div>
+                  `
+                : nothing
+            }
+            ${
+              tooltip
+                ? html`
+                    <span class="sr-only">${tooltip}</span>
+                  `
+                : nothing
+            }
           </button>
         </prosekit-tooltip-trigger>
-        ${tooltip
-          ? html`
-              <prosekit-tooltip-positioner
-                class="block overflow-visible w-min h-min z-50 ease-out transition-transform duration-100 motion-reduce:transition-none"
-              >
-                <prosekit-tooltip-popup
-                  class="flex box-border origin-(--transform-origin) transition-[opacity,scale] transition-discrete motion-reduce:transition-none duration-100 data-[state=closed]:duration-150 data-[state=closed]:opacity-0 starting:opacity-0 data-[state=closed]:scale-95 starting:scale-95 overflow-hidden rounded-md border border-solid bg-gray-900 dark:bg-gray-50 px-3 py-1.5 text-xs text-gray-50 dark:text-gray-900 shadow-xs text-nowrap"
+        ${
+          tooltip
+            ? html`
+                <prosekit-tooltip-positioner
+                  class="block overflow-visible w-min h-min z-50 ease-out transition-transform duration-100 motion-reduce:transition-none"
                 >
-                  ${tooltip}
-                </prosekit-tooltip-popup>
-              </prosekit-tooltip-positioner>
-            `
-          : nothing}
+                  <prosekit-tooltip-popup
+                    class="flex box-border origin-(--transform-origin) transition-[opacity,scale] transition-discrete motion-reduce:transition-none duration-100 data-[state=closed]:duration-150 data-[state=closed]:opacity-0 starting:opacity-0 data-[state=closed]:scale-95 starting:scale-95 overflow-hidden rounded-md border border-solid bg-gray-900 dark:bg-gray-50 px-3 py-1.5 text-xs text-gray-50 dark:text-gray-900 shadow-xs text-nowrap"
+                  >
+                    ${tooltip}
+                  </prosekit-tooltip-popup>
+                </prosekit-tooltip-positioner>
+              `
+            : nothing
+        }
       </prosekit-tooltip-root>
     `
   }

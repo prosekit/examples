@@ -31,8 +31,7 @@ class SlashMenuElement extends LitElement {
 
   override render() {
     const editor = this.editorConsumer.value as
-      | Editor<BasicExtension>
-      | undefined
+      Editor<BasicExtension> | undefined
     if (!editor) {
       return html``
     }
