@@ -52,8 +52,7 @@ class TagMenuElement extends LitElement {
 
   override render() {
     const editor = this.editorConsumer.value as
-      | Editor<Union<[MentionExtension, BasicExtension]>>
-      | undefined
+      Editor<Union<[MentionExtension, BasicExtension]>> | undefined
     if (!editor) {
       return nothing
     }
@@ -75,18 +74,17 @@ class TagMenuElement extends LitElement {
                 No results
               </prosekit-autocomplete-empty>
               ${repeat(
-                this.tags,
-                (tag) => tag.id,
-                (tag) => html`
-                  <prosekit-autocomplete-item
-                    class="relative flex items-center justify-between min-w-32 scroll-my-1 rounded-md px-3 py-1.5 text-sm box-border cursor-default select-none whitespace-nowrap outline-hidden data-highlighted:bg-gray-100 dark:data-highlighted:bg-gray-800"
-                    @select=${() =>
-                      this.handleTagInsert(editor, tag.id, tag.label)}
-                  >
-                    ${'#' + tag.label}
-                  </prosekit-autocomplete-item>
-                `,
-              )}
+              this.tags,
+              (tag) => tag.id,
+              (tag) => html`
+                <prosekit-autocomplete-item
+                  class="relative flex items-center justify-between min-w-32 scroll-my-1 rounded-md px-3 py-1.5 text-sm box-border cursor-default select-none whitespace-nowrap outline-hidden data-highlighted:bg-gray-100 dark:data-highlighted:bg-gray-800"
+                  @select=${() => this.handleTagInsert(editor, tag.id, tag.label)}
+                >
+                  ${'#' + tag.label}
+                </prosekit-autocomplete-item>
+              `,
+            )}
             </div>
           </prosekit-autocomplete-popup>
         </prosekit-autocomplete-positioner>

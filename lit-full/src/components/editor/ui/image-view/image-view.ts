@@ -128,40 +128,46 @@ class ImageNodeView {
           ?data-selected=${this.selected}
           @resizeEnd=${this.handleResizeEnd}
         >
-          ${url && !this.error
-            ? html`
-                <img
-                  src=${url}
-                  alt="upload preview"
-                  class="h-full w-full max-w-full max-h-full object-contain"
-                  @load=${this.handleImageLoad}
-                />
-              `
-            : ''}
-          ${uploading && !this.error
-            ? html`
-                <div
-                  class="absolute bottom-0 left-0 m-1 flex content-center items-center gap-2 rounded-sm bg-gray-800/60 p-1.5 text-xs text-white/80 transition"
-                >
+          ${
+            url && !this.error
+              ? html`
+                  <img
+                    src=${url}
+                    alt="upload preview"
+                    class="h-full w-full max-w-full max-h-full object-contain"
+                    @load=${this.handleImageLoad}
+                  />
+                `
+              : ''
+          }
+          ${
+            uploading && !this.error
+              ? html`
                   <div
-                    class="i-lucide-loader-circle size-4 animate-spin block"
-                  ></div>
-                  <div>${Math.round(this.progress * 100)}%</div>
-                </div>
-              `
-            : ''}
-          ${this.error
-            ? html`
-                <div
-                  class="absolute bottom-0 left-0 right-0 top-0 flex flex-col items-center justify-center gap-4 bg-gray-200 p-2 text-sm dark:bg-gray-800 @container"
-                >
-                  <div class="i-lucide-image-off size-8 block"></div>
-                  <div class="hidden opacity-80 @xs:block">
-                    Failed to upload image
+                    class="absolute bottom-0 left-0 m-1 flex content-center items-center gap-2 rounded-sm bg-gray-800/60 p-1.5 text-xs text-white/80 transition"
+                  >
+                    <div
+                      class="i-lucide-loader-circle size-4 animate-spin block"
+                    ></div>
+                    <div>${Math.round(this.progress * 100)}%</div>
                   </div>
-                </div>
-              `
-            : ''}
+                `
+              : ''
+          }
+          ${
+            this.error
+              ? html`
+                  <div
+                    class="absolute bottom-0 left-0 right-0 top-0 flex flex-col items-center justify-center gap-4 bg-gray-200 p-2 text-sm dark:bg-gray-800 @container"
+                  >
+                    <div class="i-lucide-image-off size-8 block"></div>
+                    <div class="hidden opacity-80 @xs:block">
+                      Failed to upload image
+                    </div>
+                  </div>
+                `
+              : ''
+          }
           <prosekit-resizable-handle
             class="absolute bottom-0 right-0 rounded-sm m-1.5 p-1 transition bg-gray-900/30 active:bg-gray-800/60 hover:bg-gray-800/60 text-white/50 active:text-white/80 active:translate-x-0.5 active:translate-y-0.5 opacity-0 hover:opacity-100 group-hover:opacity-100 group-data-resizing:opacity-100"
           >

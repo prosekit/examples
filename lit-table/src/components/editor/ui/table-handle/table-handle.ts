@@ -124,8 +124,7 @@ class LitTableHandle extends LitElement {
 
   override render() {
     const editor = this.editorConsumer.value as
-      | Editor<TableExtension>
-      | undefined
+      Editor<TableExtension> | undefined
     if (!editor) {
       return nothing
     }
@@ -163,7 +162,8 @@ class LitTableHandle extends LitElement {
                 <prosekit-menu-popup
                   class="box-border origin-(--transform-origin) transition-[opacity,scale] transition-discrete motion-reduce:transition-none data-[state=closed]:duration-150 data-[state=closed]:opacity-0 starting:opacity-0 data-[state=closed]:scale-95 starting:scale-95 duration-40 rounded-xl border border-gray-200 dark:border-gray-800 shadow-lg bg-[canvas] relative flex flex-col max-h-100 min-w-32 select-none overflow-auto whitespace-nowrap p-1 outline-none"
                 >
-                  ${state.addTableColumnBefore.canExec
+                  ${
+                  state.addTableColumnBefore.canExec
                     ? html`
                         <prosekit-menu-item
                           class="relative min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 data-danger:text-red-500 box-border cursor-default select-none whitespace-nowrap outline-hidden data-highlighted:bg-gray-100 dark:data-highlighted:bg-gray-800"
@@ -172,8 +172,10 @@ class LitTableHandle extends LitElement {
                           <span>Insert Left</span>
                         </prosekit-menu-item>
                       `
-                    : nothing}
-                  ${state.addTableColumnAfter.canExec
+                    : nothing
+                }
+                  ${
+                  state.addTableColumnAfter.canExec
                     ? html`
                         <prosekit-menu-item
                           class="relative min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 data-danger:text-red-500 box-border cursor-default select-none whitespace-nowrap outline-hidden data-highlighted:bg-gray-100 dark:data-highlighted:bg-gray-800"
@@ -182,8 +184,10 @@ class LitTableHandle extends LitElement {
                           <span>Insert Right</span>
                         </prosekit-menu-item>
                       `
-                    : nothing}
-                  ${state.deleteCellSelection.canExec
+                    : nothing
+                }
+                  ${
+                  state.deleteCellSelection.canExec
                     ? html`
                         <prosekit-menu-item
                           class="relative min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 data-danger:text-red-500 box-border cursor-default select-none whitespace-nowrap outline-hidden data-highlighted:bg-gray-100 dark:data-highlighted:bg-gray-800"
@@ -197,8 +201,10 @@ class LitTableHandle extends LitElement {
                           </span>
                         </prosekit-menu-item>
                       `
-                    : nothing}
-                  ${state.deleteTableColumn.canExec
+                    : nothing
+                }
+                  ${
+                  state.deleteTableColumn.canExec
                     ? html`
                         <prosekit-menu-item
                           class="relative min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 data-danger:text-red-500 box-border cursor-default select-none whitespace-nowrap outline-hidden data-highlighted:bg-gray-100 dark:data-highlighted:bg-gray-800"
@@ -207,8 +213,10 @@ class LitTableHandle extends LitElement {
                           <span>Delete Column</span>
                         </prosekit-menu-item>
                       `
-                    : nothing}
-                  ${state.deleteTable.canExec
+                    : nothing
+                }
+                  ${
+                  state.deleteTable.canExec
                     ? html`
                         <prosekit-menu-item
                           class="relative min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 data-danger:text-red-500 box-border cursor-default select-none whitespace-nowrap outline-hidden data-highlighted:bg-gray-100 dark:data-highlighted:bg-gray-800"
@@ -218,7 +226,8 @@ class LitTableHandle extends LitElement {
                           <span>Delete Table</span>
                         </prosekit-menu-item>
                       `
-                    : nothing}
+                    : nothing
+                }
                 </prosekit-menu-popup>
               </prosekit-menu-positioner>
             </prosekit-table-handle-column-menu-root>
@@ -247,7 +256,8 @@ class LitTableHandle extends LitElement {
                 <prosekit-menu-popup
                   class="box-border origin-(--transform-origin) transition-[opacity,scale] transition-discrete motion-reduce:transition-none data-[state=closed]:duration-150 data-[state=closed]:opacity-0 starting:opacity-0 data-[state=closed]:scale-95 starting:scale-95 duration-40 rounded-xl border border-gray-200 dark:border-gray-800 shadow-lg bg-[canvas] relative flex flex-col max-h-100 min-w-32 select-none overflow-auto whitespace-nowrap p-1 outline-none"
                 >
-                  ${state.addTableRowAbove.canExec
+                  ${
+                  state.addTableRowAbove.canExec
                     ? html`
                         <prosekit-menu-item
                           class="relative min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 data-danger:text-red-500 box-border cursor-default select-none whitespace-nowrap outline-hidden data-highlighted:bg-gray-100 dark:data-highlighted:bg-gray-800"
@@ -256,8 +266,10 @@ class LitTableHandle extends LitElement {
                           <span>Insert Above</span>
                         </prosekit-menu-item>
                       `
-                    : nothing}
-                  ${state.addTableRowBelow.canExec
+                    : nothing
+                }
+                  ${
+                  state.addTableRowBelow.canExec
                     ? html`
                         <prosekit-menu-item
                           class="relative min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 data-danger:text-red-500 box-border cursor-default select-none whitespace-nowrap outline-hidden data-highlighted:bg-gray-100 dark:data-highlighted:bg-gray-800"
@@ -266,8 +278,10 @@ class LitTableHandle extends LitElement {
                           <span>Insert Below</span>
                         </prosekit-menu-item>
                       `
-                    : nothing}
-                  ${state.deleteCellSelection.canExec
+                    : nothing
+                }
+                  ${
+                  state.deleteCellSelection.canExec
                     ? html`
                         <prosekit-menu-item
                           class="relative min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 data-danger:text-red-500 box-border cursor-default select-none whitespace-nowrap outline-hidden data-highlighted:bg-gray-100 dark:data-highlighted:bg-gray-800"
@@ -281,8 +295,10 @@ class LitTableHandle extends LitElement {
                           </span>
                         </prosekit-menu-item>
                       `
-                    : nothing}
-                  ${state.deleteTableRow.canExec
+                    : nothing
+                }
+                  ${
+                  state.deleteTableRow.canExec
                     ? html`
                         <prosekit-menu-item
                           class="relative min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 data-danger:text-red-500 box-border cursor-default select-none whitespace-nowrap outline-hidden data-highlighted:bg-gray-100 dark:data-highlighted:bg-gray-800"
@@ -291,8 +307,10 @@ class LitTableHandle extends LitElement {
                           <span>Delete Row</span>
                         </prosekit-menu-item>
                       `
-                    : nothing}
-                  ${state.deleteTable.canExec
+                    : nothing
+                }
+                  ${
+                  state.deleteTable.canExec
                     ? html`
                         <prosekit-menu-item
                           class="relative min-w-32 scroll-my-1 rounded-sm px-3 py-1.5 flex items-center justify-between gap-8 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:data-[disabled=true]:opacity-50 data-danger:text-red-500 box-border cursor-default select-none whitespace-nowrap outline-hidden data-highlighted:bg-gray-100 dark:data-highlighted:bg-gray-800"
@@ -302,7 +320,8 @@ class LitTableHandle extends LitElement {
                           <span>Delete Table</span>
                         </prosekit-menu-item>
                       `
-                    : nothing}
+                    : nothing
+                }
                 </prosekit-menu-popup>
               </prosekit-menu-positioner>
             </prosekit-table-handle-row-menu-root>
