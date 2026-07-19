@@ -10,15 +10,13 @@
     "preview": "nuxt preview"
   },
   "dependencies": {
-    "nuxt": "^4.4.8",
+    "nuxt": "^4.5.0",
     "vue": "^3.5.39"
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "^1.9.2",
     "@iconify-json/lucide": "^1.2.116",
-    "@tailwindcss/postcss": "^4.3.2",
-    "autoprefixer": "^10.5.2",
-    "postcss": "^8.5.16",
+    "@tailwindcss/vite": "^4.0.0",
     "tailwindcss": "^4.3.2",
     "typescript": "^6.0.3"
   }
