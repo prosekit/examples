@@ -20,7 +20,7 @@
     "@iconify-json/lucide": "^1.2.117",
     "@tailwindcss/vite": "^4.3.2",
     "@types/node": "^24.13.3",
-    "@vitejs/plugin-vue": "^6.0.7",
+    "@vitejs/plugin-vue": "^6.0.8",
     "@vue/tsconfig": "^0.9.1",
     "tailwindcss": "^4.3.2",
     "typescript": "^6.0.3",
