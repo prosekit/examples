@@ -14,7 +14,7 @@
     "katex": "^0.17.0",
     "nuxt": "^4.4.8",
     "prosekit": "^0.21.4",
-    "vue": "^3.5.39"
+    "vue": "^3.5.40"
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "^1.9.2",
