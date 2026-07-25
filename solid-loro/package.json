@@ -22,7 +22,7 @@
     "tailwindcss": "^4.3.3",
     "typescript": "^6.0.3",
     "vite": "^8.1.5",
-    "vite-plugin-solid": "^2.11.12",
+    "vite-plugin-solid": "^2.11.13",
     "vite-plugin-wasm": "^3.6.0"
   }
 }
