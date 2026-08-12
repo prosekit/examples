@@ -51,7 +51,7 @@ jobs:
           corepack enable
 
       - name: Install bun
-        uses: oven-sh/setup-bun@v2
+        uses: oven-sh/setup-bun@v2.1.3
 
       - name: Test
         run: bash -c ".scripts/test.sh ${{ matrix.package_manager }} ${{ matrix.dirs }}"
