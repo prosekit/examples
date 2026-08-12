@@ -3,7 +3,7 @@
   "branchNameStrict": true,
   "rangeStrategy": "bump",
   "automerge": true,
-  "minimumReleaseAge": "14 days",
+  "minimumReleaseAge": "21 days",
   "gitIgnoredAuthors": ["114827586+autofix-ci[bot]@users.noreply.github.com"],
   "prHourlyLimit": 1,
   "prConcurrentLimit": 2,
