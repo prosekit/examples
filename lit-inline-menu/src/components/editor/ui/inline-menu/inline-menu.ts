@@ -248,9 +248,9 @@ class LitInlineMenu extends LitElement {
                       tooltip="Link"
                       icon="i-lucide-link size-5 block"
                       @click=${() => {
-                      items.link?.command?.()
-                      this.linkMenuOpen = !this.linkMenuOpen
-                    }}
+                        items.link?.command?.()
+                        this.linkMenuOpen = !this.linkMenuOpen
+                      }}
                     ></lit-editor-button>
                   `
                 : nothing
@@ -267,8 +267,8 @@ class LitInlineMenu extends LitElement {
                 .defaultOpen=${false}
                 .open=${this.linkMenuOpen}
                 @openChange=${(event: OpenChangeEvent) => {
-                this.linkMenuOpen = event.detail
-              }}
+                  this.linkMenuOpen = event.detail
+                }}
               >
                 <prosekit-inline-popover-positioner
                   placement="bottom"
@@ -279,41 +279,41 @@ class LitInlineMenu extends LitElement {
                     class="box-border origin-(--transform-origin) transition-[opacity,scale] transition-discrete motion-reduce:transition-none data-[state=closed]:duration-150 data-[state=closed]:opacity-0 starting:opacity-0 data-[state=closed]:scale-95 starting:scale-95 duration-40 border border-gray-200 dark:border-gray-800 shadow-lg bg-[canvas] relative flex flex-col w-xs rounded-lg p-4 gap-y-2 items-stretch"
                   >
                     ${
-                    this.linkMenuOpen
-                      ? html`
-                          <form
-                            @submit=${(event: SubmitEvent) => {
-                            event.preventDefault()
-                            const target =
-                              event.target as HTMLFormElement | null
-                            const href = target
-                              ?.querySelector('input')
-                              ?.value?.trim()
-                            this.handleLinkUpdate(editor, href)
-                          }}
-                          >
-                            <input
-                              placeholder="Paste the link..."
-                              value=${items.link.currentLink}
-                              class="flex h-9 rounded-md w-full bg-[canvas] px-3 py-2 text-sm placeholder:text-gray-500 dark:placeholder:text-gray-500 transition border box-border border-gray-200 dark:border-gray-800 border-solid ring-0 ring-transparent focus-visible:ring-2 focus-visible:ring-gray-900 dark:focus-visible:ring-gray-300 focus-visible:ring-offset-0 outline-hidden focus-visible:outline-hidden file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:cursor-not-allowed disabled:opacity-50"
-                            />
-                          </form>
-                        `
-                      : nothing
-                  }
+                      this.linkMenuOpen
+                        ? html`
+                            <form
+                              @submit=${(event: SubmitEvent) => {
+                                event.preventDefault()
+                                const target =
+                                  event.target as HTMLFormElement | null
+                                const href = target
+                                  ?.querySelector('input')
+                                  ?.value?.trim()
+                                this.handleLinkUpdate(editor, href)
+                              }}
+                            >
+                              <input
+                                placeholder="Paste the link..."
+                                value=${items.link.currentLink}
+                                class="flex h-9 rounded-md w-full bg-[canvas] px-3 py-2 text-sm placeholder:text-gray-500 dark:placeholder:text-gray-500 transition border box-border border-gray-200 dark:border-gray-800 border-solid ring-0 ring-transparent focus-visible:ring-2 focus-visible:ring-gray-900 dark:focus-visible:ring-gray-300 focus-visible:ring-offset-0 outline-hidden focus-visible:outline-hidden file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:cursor-not-allowed disabled:opacity-50"
+                              />
+                            </form>
+                          `
+                        : nothing
+                    }
                     ${
-                    items.link.isActive
-                      ? html`
-                          <button
-                            @click=${() => this.handleLinkUpdate(editor)}
-                            @mousedown=${(event: MouseEvent) => event.preventDefault()}
-                            class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-white dark:ring-offset-gray-950 transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-gray-900 dark:focus-visible:ring-gray-300 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border-0 bg-gray-900 dark:bg-gray-50 text-gray-50 dark:text-gray-900 hover:bg-gray-900/90 dark:hover:bg-gray-50/90 h-9 px-3"
-                          >
-                            Remove link
-                          </button>
-                        `
-                      : nothing
-                  }
+                      items.link.isActive
+                        ? html`
+                            <button
+                              @click=${() => this.handleLinkUpdate(editor)}
+                              @mousedown=${(event: MouseEvent) => event.preventDefault()}
+                              class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-white dark:ring-offset-gray-950 transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-gray-900 dark:focus-visible:ring-gray-300 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border-0 bg-gray-900 dark:bg-gray-50 text-gray-50 dark:text-gray-900 hover:bg-gray-900/90 dark:hover:bg-gray-50/90 h-9 px-3"
+                            >
+                              Remove link
+                            </button>
+                          `
+                        : nothing
+                    }
                   </prosekit-inline-popover-popup>
                 </prosekit-inline-popover-positioner>
               </prosekit-inline-popover-root>

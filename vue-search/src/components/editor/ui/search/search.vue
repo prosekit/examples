@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import {
-  defineSearchQuery,
+  defineSearchStatusHandler,
   type SearchCommandsExtension,
+  type SearchStatus,
 } from 'prosekit/extensions/search'
 import { useEditor, useExtension } from 'prosekit/vue'
-import { computed, ref } from 'vue'
+import { ref, watchEffect } from 'vue'
 
 import { Button } from '../button/index.ts'
 
@@ -18,13 +19,17 @@ const wholeWord = ref(false)
 const regexp = ref(false)
 const literal = ref(false)
 
+const searchStatus = ref<SearchStatus>({ total: 0, active: 0 })
+useExtension(
+  defineSearchStatusHandler((status) => {
+    searchStatus.value = status
+  }),
+)
+
 const editor = useEditor<SearchCommandsExtension>()
 
-const extension = computed(() => {
-  if (!searchText.value) {
-    return null
-  }
-  return defineSearchQuery({
+watchEffect(() => {
+  editor.value.commands.setSearchQuery({
     search: searchText.value,
     replace: replaceText.value,
     caseSensitive: caseSensitive.value,
@@ -33,8 +38,6 @@ const extension = computed(() => {
     literal: literal.value,
   })
 })
-
-useExtension(extension)
 
 function toggleReplace() {
   showReplace.value = !showReplace.value
@@ -101,6 +104,12 @@ function handleReplaceKeyDown(event: KeyboardEvent) {
       @keydown="handleSearchKeyDown"
     />
     <div class="flex items-center justify-between gap-1">
+      <span
+        v-if="searchText"
+        class="flex items-center px-1 text-sm whitespace-nowrap tabular-nums text-gray-500 dark:text-gray-500"
+      >
+        {{ searchStatus.active }} / {{ searchStatus.total }}
+      </span>
       <Button
         tooltip="Previous (Shift Enter)"
         @click="editor.commands.findPrev"
