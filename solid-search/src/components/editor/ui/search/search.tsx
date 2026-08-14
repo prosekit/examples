@@ -1,9 +1,10 @@
 import {
-  defineSearchQuery,
+  defineSearchStatusHandler,
   type SearchCommandsExtension,
+  type SearchStatus,
 } from 'prosekit/extensions/search'
 import { useEditor, useExtension } from 'prosekit/solid'
-import { createMemo, createSignal, type JSX } from 'solid-js'
+import { createEffect, createSignal, type JSX } from 'solid-js'
 
 import { Button } from '../button/index.ts'
 
@@ -18,11 +19,17 @@ export default function Search(props: { onClose?: VoidFunction }): JSX.Element {
   const [regexp, setRegexp] = createSignal(false)
   const [literal, setLiteral] = createSignal(false)
 
-  const extension = createMemo(() => {
-    if (!searchText()) {
-      return null
-    }
-    return defineSearchQuery({
+  const [searchStatus, setSearchStatus] = createSignal<SearchStatus>({
+    total: 0,
+    active: 0,
+  })
+  const statusHandler = defineSearchStatusHandler(setSearchStatus)
+  useExtension(() => statusHandler)
+
+  const editor = useEditor<SearchCommandsExtension>()
+
+  createEffect(() => {
+    editor().commands.setSearchQuery({
       search: searchText(),
       replace: replaceText(),
       caseSensitive: caseSensitive(),
@@ -31,10 +38,6 @@ export default function Search(props: { onClose?: VoidFunction }): JSX.Element {
       literal: literal(),
     })
   })
-
-  useExtension(extension)
-
-  const editor = useEditor<SearchCommandsExtension>()
 
   const handleSearchKeyDown = (event: KeyboardEvent) => {
     if (isEnter(event)) {
@@ -73,6 +76,11 @@ export default function Search(props: { onClose?: VoidFunction }): JSX.Element {
         class="flex h-9 rounded-md w-full bg-[canvas] px-3 py-2 text-sm placeholder:text-gray-500 dark:placeholder:text-gray-500 transition border box-border border-gray-200 dark:border-gray-800 border-solid ring-0 ring-transparent focus-visible:ring-2 focus-visible:ring-gray-900 dark:focus-visible:ring-gray-300 focus-visible:ring-offset-0 outline-hidden focus-visible:outline-hidden file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:cursor-not-allowed disabled:opacity-50 col-start-2"
       />
       <div class="flex items-center justify-between gap-1">
+        {searchText() ? (
+          <span class="flex items-center px-1 text-sm whitespace-nowrap tabular-nums text-gray-500 dark:text-gray-500">
+            {searchStatus().active} / {searchStatus().total}
+          </span>
+        ) : null}
         <Button
           tooltip="Previous (Shift Enter)"
           onClick={() => editor().commands.findPrev()}

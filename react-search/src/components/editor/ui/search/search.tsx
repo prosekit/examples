@@ -1,11 +1,12 @@
 'use client'
 
 import {
-  defineSearchQuery,
+  defineSearchStatusHandler,
   type SearchCommandsExtension,
+  type SearchStatus,
 } from 'prosekit/extensions/search'
 import { useEditor, useExtension } from 'prosekit/react'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 import { Button } from '../button/index.ts'
 
@@ -20,11 +21,16 @@ export default function Search(props: { onClose?: VoidFunction }) {
   const [regexp, setRegexp] = useState(false)
   const [literal, setLiteral] = useState(false)
 
-  const extension = useMemo(() => {
-    if (!searchText) {
-      return null
-    }
-    return defineSearchQuery({
+  const [searchStatus, setSearchStatus] = useState<SearchStatus>({
+    total: 0,
+    active: 0,
+  })
+  useExtension(useMemo(() => defineSearchStatusHandler(setSearchStatus), []))
+
+  const editor = useEditor<SearchCommandsExtension>()
+
+  useEffect(() => {
+    editor.commands.setSearchQuery({
       search: searchText,
       replace: replaceText,
       caseSensitive,
@@ -32,11 +38,15 @@ export default function Search(props: { onClose?: VoidFunction }) {
       regexp,
       literal,
     })
-  }, [searchText, replaceText, caseSensitive, wholeWord, regexp, literal])
-
-  useExtension(extension)
-
-  const editor = useEditor<SearchCommandsExtension>()
+  }, [
+    editor,
+    searchText,
+    replaceText,
+    caseSensitive,
+    wholeWord,
+    regexp,
+    literal,
+  ])
 
   const handleSearchKeyDown = (event: React.KeyboardEvent) => {
     if (isEnter(event)) {
@@ -75,6 +85,11 @@ export default function Search(props: { onClose?: VoidFunction }) {
         className="flex h-9 rounded-md w-full bg-[canvas] px-3 py-2 text-sm placeholder:text-gray-500 dark:placeholder:text-gray-500 transition border box-border border-gray-200 dark:border-gray-800 border-solid ring-0 ring-transparent focus-visible:ring-2 focus-visible:ring-gray-900 dark:focus-visible:ring-gray-300 focus-visible:ring-offset-0 outline-hidden focus-visible:outline-hidden file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:cursor-not-allowed disabled:opacity-50 col-start-2"
       />
       <div className="flex items-center justify-between gap-1">
+        {searchText ? (
+          <span className="flex items-center px-1 text-sm whitespace-nowrap tabular-nums text-gray-500 dark:text-gray-500">
+            {searchStatus.active} / {searchStatus.total}
+          </span>
+        ) : null}
         <Button
           tooltip="Previous (Shift Enter)"
           onClick={editor.commands.findPrev}
