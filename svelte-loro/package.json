@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "loro-crdt": "^1.14.1",
-    "loro-prosemirror": "^0.4.3",
+    "loro-prosemirror": "^0.4.4",
     "prosekit": "^0.22.2"
   },
   "devDependencies": {
