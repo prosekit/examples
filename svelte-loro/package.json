@@ -10,22 +10,22 @@
   },
   "dependencies": {
     "loro-crdt": "^1.16.0",
-    "loro-prosemirror": "^0.4.3",
+    "loro-prosemirror": "^0.4.4",
     "prosekit": "^0.22.2"
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "^1.9.2",
-    "@iconify-json/lucide": "^1.2.129",
+    "@iconify-json/lucide": "^1.2.130",
     "@sveltejs/vite-plugin-svelte": "^7.3.0",
     "@tailwindcss/vite": "^4.3.3",
     "@tsconfig/svelte": "^5.0.8",
-    "postcss": "^8.5.26",
-    "svelte": "^5.56.9",
+    "postcss": "^8.5.28",
+    "svelte": "^5.57.0",
     "svelte-check": "^4.7.6",
     "tailwindcss": "^4.3.3",
     "tslib": "^2.8.1",
     "typescript": "^6.0.3",
-    "vite": "^8.2.1",
+    "vite": "^8.2.2",
     "vite-plugin-wasm": "^3.6.0"
   }
 }

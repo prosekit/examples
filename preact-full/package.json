@@ -10,18 +10,18 @@
   },
   "dependencies": {
     "beautiful-mermaid": "^1.1.3",
-    "katex": "^0.18.4",
+    "katex": "^0.18.7",
     "preact": "^10.29.8",
     "prosekit": "^0.22.2"
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "^1.9.2",
-    "@iconify-json/lucide": "^1.2.129",
+    "@iconify-json/lucide": "^1.2.130",
     "@preact/preset-vite": "^2.10.6",
     "@tailwindcss/vite": "^4.3.3",
     "@types/node": "^24.13.3",
     "tailwindcss": "^4.3.3",
     "typescript": "^6.0.3",
-    "vite": "^8.2.1"
+    "vite": "^8.2.2"
   }
 }
