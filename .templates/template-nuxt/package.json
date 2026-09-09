@@ -11,11 +11,11 @@
   },
   "dependencies": {
     "nuxt": "^4.5.2",
-    "vue": "^3.5.41"
+    "vue": "^3.5.42"
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "^1.9.2",
-    "@iconify-json/lucide": "^1.2.129",
+    "@iconify-json/lucide": "^1.2.130",
     "@tailwindcss/vite": "^4.3.3",
     "tailwindcss": "^4.3.3",
     "typescript": "^6.0.3"
