@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "katex": "^0.18.7",
-    "prosekit": "^0.22.2",
+    "prosekit": "^0.22.3",
     "react": "^19.3.0",
     "react-dom": "^19.3.0"
   },
