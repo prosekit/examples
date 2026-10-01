@@ -23,7 +23,7 @@
     "@egoist/tailwindcss-icons": "^1.9.2",
     "@iconify-json/lucide": "^1.2.132",
     "@tailwindcss/vite": "^4.3.3",
-    "@types/node": "^24.13.3",
+    "@types/node": "^24.13.4",
     "@vitejs/plugin-vue": "^6.0.8",
     "@vue/tsconfig": "^0.9.1",
     "tailwindcss": "^4.3.3",
