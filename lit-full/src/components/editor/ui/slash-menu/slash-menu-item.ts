@@ -34,14 +34,14 @@ export class SlashMenuItemElement extends LitElement {
       >
         <span>${this.label}</span>
         ${
-        this.kbd
-          ? html`
-              <kbd class="text-xs font-mono text-gray-400 dark:text-gray-500">
-                ${this.kbd}
-              </kbd>
-            `
-          : ''
-      }
+          this.kbd
+            ? html`
+                <kbd class="text-xs font-mono text-gray-400 dark:text-gray-500">
+                  ${this.kbd}
+                </kbd>
+              `
+            : ''
+        }
       </prosekit-autocomplete-item>
     `
   }
