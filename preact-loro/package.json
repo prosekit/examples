@@ -9,20 +9,20 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "loro-crdt": "^1.16.3",
+    "loro-crdt": "^1.17.1",
     "loro-prosemirror": "^0.4.4",
     "preact": "^10.29.8",
     "prosekit": "^0.22.4"
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "^1.9.2",
-    "@iconify-json/lucide": "^1.2.139",
+    "@iconify-json/lucide": "^1.2.147",
     "@preact/preset-vite": "^2.10.6",
     "@tailwindcss/vite": "^4.3.3",
     "@types/node": "^24.13.6",
     "tailwindcss": "^4.3.3",
     "typescript": "^6.0.3",
-    "vite": "^8.3.1",
+    "vite": "^8.3.5",
     "vite-plugin-wasm": "^3.6.0"
   }
 }
