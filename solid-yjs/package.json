@@ -10,19 +10,19 @@
   },
   "dependencies": {
     "prosekit": "^0.22.4",
-    "solid-js": "^1.9.15",
+    "solid-js": "^1.9.17",
     "y-prosemirror": "^1.3.7",
     "y-websocket": "^3.1.0",
-    "yjs": "^13.6.32"
+    "yjs": "^13.6.33"
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "^1.9.2",
-    "@iconify-json/lucide": "^1.2.139",
+    "@iconify-json/lucide": "^1.2.147",
     "@tailwindcss/vite": "^4.3.3",
     "@types/node": "^24.13.6",
     "tailwindcss": "^4.3.3",
     "typescript": "^6.0.3",
-    "vite": "^8.3.1",
+    "vite": "^8.3.5",
     "vite-plugin-solid": "^2.11.14"
   }
 }
