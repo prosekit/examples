@@ -1,4 +1,4 @@
-import type { JSX } from 'preact'
+import type { TargetedEvent } from 'preact'
 import { useMemo, useState } from 'preact/hooks'
 import {
   defineCodeBlockShiki,
@@ -14,7 +14,7 @@ export function ThemeSelector() {
   }, [theme])
   useExtension(extension)
 
-  const handleChange = (event: JSX.TargetedEvent<HTMLSelectElement, Event>) => {
+  const handleChange = (event: TargetedEvent<HTMLSelectElement, Event>) => {
     setTheme(event.currentTarget.value)
   }
 

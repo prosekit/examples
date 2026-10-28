@@ -1,4 +1,4 @@
-import type { ComponentChild, JSX } from 'preact'
+import type { ComponentChild, TargetedEvent } from 'preact'
 import { useId, useState } from 'preact/hooks'
 import type { Uploader } from 'prosekit/extensions/file'
 import type { ImageExtension } from 'prosekit/extensions/image'
@@ -26,9 +26,7 @@ export default function ImageUploadPopover(props: {
 
   const editor = useEditor<ImageExtension>()
 
-  const handleFileChange = (
-    event: JSX.TargetedEvent<HTMLInputElement, Event>,
-  ) => {
+  const handleFileChange = (event: TargetedEvent<HTMLInputElement, Event>) => {
     const file = event.currentTarget.files?.[0]
 
     if (file) {
@@ -39,9 +37,7 @@ export default function ImageUploadPopover(props: {
     }
   }
 
-  const handleUrlChange = (
-    event: JSX.TargetedEvent<HTMLInputElement, Event>,
-  ) => {
+  const handleUrlChange = (event: TargetedEvent<HTMLInputElement, Event>) => {
     const url = event.currentTarget.value
 
     if (url) {
