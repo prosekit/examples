@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@types/bun": "1.4.2",
-    "@types/node": "26.6.4",
+    "@types/node": "26.6.5",
     "prettier": "3.9.10",
     "prettier-plugin-packagejson": "3.0.3",
     "prosekit-registry": "0.0.20261028034104"

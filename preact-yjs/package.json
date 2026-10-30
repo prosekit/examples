@@ -20,7 +20,7 @@
     "@iconify-json/lucide": "^1.2.147",
     "@preact/preset-vite": "^2.10.6",
     "@tailwindcss/vite": "^4.3.3",
-    "@types/node": "^26.6.4",
+    "@types/node": "^26.6.5",
     "tailwindcss": "^4.3.3",
     "typescript": "^6.0.3",
     "vite": "^8.3.5"
