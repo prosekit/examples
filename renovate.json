@@ -31,7 +31,6 @@
       "groupSlug": "patch-deps",
       "matchUpdateTypes": ["patch"],
       "matchPackageNames": ["!**prosekit**"],
-      "dependencyDashboardApproval": true,
       "prPriority": 30,
       "minimumReleaseAge": "7 days"
     },
@@ -40,7 +39,6 @@
       "groupSlug": "minor-deps",
       "matchUpdateTypes": ["minor"],
       "matchPackageNames": ["!**prosekit**"],
-      "dependencyDashboardApproval": true,
       "prPriority": 10,
       "minimumReleaseAge": "7 days"
     }
