@@ -32,7 +32,7 @@
       "matchUpdateTypes": ["patch"],
       "matchPackageNames": ["!/prosekit/"],
       "prPriority": 30,
-      "minimumReleaseAge": "7 days"
+      "minimumReleaseAge": "5 days"
     },
     {
       "groupName": "minor dependencies",
