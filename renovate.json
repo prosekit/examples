@@ -27,19 +27,12 @@
       "minimumReleaseAge": null
     },
     {
-      "groupName": "patch dependencies",
-      "groupSlug": "patch-deps",
-      "matchUpdateTypes": ["patch"],
+      "groupName": "dependencies",
+      "groupSlug": "deps",
+      "matchUpdateTypes": ["patch", "minor"],
       "matchPackageNames": ["!/prosekit/"],
       "prPriority": 30,
-      "minimumReleaseAge": "5 days"
-    },
-    {
-      "groupName": "minor dependencies",
-      "groupSlug": "minor-deps",
-      "matchUpdateTypes": ["minor"],
-      "matchPackageNames": ["!/prosekit/"],
-      "prPriority": 10,
+      "minimumGroupSize": 4,
       "minimumReleaseAge": "7 days"
     }
   ]
