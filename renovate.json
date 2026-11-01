@@ -6,6 +6,7 @@
   "minimumReleaseAge": "21 days",
   "gitIgnoredAuthors": ["114827586+autofix-ci[bot]@users.noreply.github.com"],
   "prHourlyLimit": 1,
+  "commitHourlyLimit": 1,
   "prConcurrentLimit": 2,
   "extends": [
     "config:recommended",
@@ -24,6 +25,24 @@
       "matchPackageNames": ["prosekit-registry"],
       "prPriority": 50,
       "minimumReleaseAge": null
+    },
+    {
+        "groupName": "patch dependencies",
+        "groupSlug": "patch-deps",
+        "matchUpdateTypes": ["patch"],
+        "matchPackageNames": ["!**prosekit**"],
+        "dependencyDashboardApproval": true,
+        "prPriority": 30,
+        "minimumReleaseAge": "7 days"
+    },
+    {
+        "groupName": "minor dependencies",
+        "groupSlug": "minor-deps",
+        "matchUpdateTypes": ["minor"],
+        "matchPackageNames": ["!**prosekit**"],
+        "dependencyDashboardApproval": true,
+        "prPriority": 10,
+        "minimumReleaseAge": "7 days"
     }
   ]
 }
