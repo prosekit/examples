@@ -18,14 +18,14 @@
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "^1.9.2",
-    "@iconify-json/lucide": "^1.2.147",
+    "@iconify-json/lucide": "^1.2.151",
     "@sveltejs/adapter-auto": "^8.0.0",
-    "@sveltejs/kit": "^3.1.0",
+    "@sveltejs/kit": "^3.1.1",
     "@sveltejs/vite-plugin-svelte": "^7.3.1",
-    "@tailwindcss/vite": "^4.3.3",
+    "@tailwindcss/vite": "^4.3.4",
     "svelte": "^5.57.3",
-    "svelte-check": "^4.7.7",
-    "tailwindcss": "^4.3.3",
+    "svelte-check": "^4.7.8",
+    "tailwindcss": "^4.3.4",
     "typescript": "^6.0.3",
     "vite": "^8.3.5"
   }
