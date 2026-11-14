@@ -12,7 +12,8 @@ import {
 
 // Match inputs like "@", "@foo", "@foo bar" etc. Do not match "@ foo".
 const regex = new RegExp(
-  (canUseRegexLookbehind() ? String.raw`(?<!\S)` : '') + String.raw`@(\S.*)?$`,
+  (canUseRegexLookbehind() ? String.raw`(?<!\S)` : '') +
+    String.raw`@(\S.{0,90})?$`,
   'u',
 )
 
