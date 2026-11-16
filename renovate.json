@@ -32,7 +32,7 @@
       "matchUpdateTypes": ["patch", "minor"],
       "matchPackageNames": ["!/prosekit/"],
       "prPriority": 30,
-      "minimumGroupSize": 4,
+      "schedule": ["* * * * 6"],
       "minimumReleaseAge": "7 days"
     }
   ]
