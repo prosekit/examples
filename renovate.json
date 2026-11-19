@@ -1,5 +1,7 @@
 {
-  "dependencyDashboard": true,
+  "dependencyDashboard": {
+    "enabled": true
+  },
   "branchNameStrict": true,
   "rangeStrategy": "bump",
   "automerge": true,
