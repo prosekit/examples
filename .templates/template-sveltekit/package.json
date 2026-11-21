@@ -13,15 +13,15 @@
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "^1.9.2",
-    "@iconify-json/lucide": "^1.2.152",
-    "@sveltejs/adapter-auto": "^8.0.0",
-    "@sveltejs/kit": "^3.1.1",
+    "@iconify-json/lucide": "^1.2.154",
+    "@sveltejs/adapter-auto": "^8.0.1",
+    "@sveltejs/kit": "^3.2.0",
     "@sveltejs/vite-plugin-svelte": "^7.3.1",
     "@tailwindcss/vite": "^4.3.5",
     "svelte": "^5.57.3",
     "svelte-check": "^4.7.8",
     "tailwindcss": "^4.3.5",
     "typescript": "^6.0.3",
-    "vite": "^8.3.6"
+    "vite": "^8.3.8"
   }
 }
