@@ -17,11 +17,11 @@
     "remark-parse": "^11.0.0",
     "remark-stringify": "^11.0.0",
     "unified": "^11.0.5",
-    "vue": "^3.5.45"
+    "vue": "^3.5.46"
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "^1.9.2",
-    "@iconify-json/lucide": "^1.2.155",
+    "@iconify-json/lucide": "^1.2.157",
     "@tailwindcss/vite": "^4.3.5",
     "@types/node": "^26.6.6",
     "@vitejs/plugin-vue": "^6.0.11",

@@ -11,7 +11,7 @@
   "dependencies": {},
   "devDependencies": {
     "@egoist/tailwindcss-icons": "^1.9.2",
-    "@iconify-json/lucide": "^1.2.155",
+    "@iconify-json/lucide": "^1.2.157",
     "@tailwindcss/vite": "^4.3.5",
     "tailwindcss": "^4.3.5",
     "typescript": "~6.0.3",

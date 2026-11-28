@@ -9,14 +9,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "loro-crdt": "^1.17.1",
+    "loro-crdt": "^1.18.0",
     "loro-prosemirror": "^0.4.4",
     "preact": "^11.2.0",
     "prosekit": "^0.23.4"
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "^1.9.2",
-    "@iconify-json/lucide": "^1.2.155",
+    "@iconify-json/lucide": "^1.2.157",
     "@preact/preset-vite": "^2.10.6",
     "@tailwindcss/vite": "^4.3.5",
     "@types/node": "^26.6.6",
